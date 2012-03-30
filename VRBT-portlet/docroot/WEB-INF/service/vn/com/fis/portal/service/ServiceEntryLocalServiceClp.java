@@ -83,6 +83,23 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_searchMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"search", java.lang.String.class, java.lang.String.class,
+				int.class, int.class, int.class, int.class);
+
+		_searchCountMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"searchCount", java.lang.String.class, java.lang.String.class,
+				int.class, int.class);
+
+		_isStartServiceMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"isStartService", java.lang.String.class);
+
+		_getStartServiceCodeMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"getStartServiceCode");
+
+		_getUploadServicePackageCodeMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"getUploadServicePackageCode");
 	}
 
 	public vn.com.fis.portal.model.ServiceEntry addServiceEntry(
@@ -548,6 +565,131 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ServiceEntry> search(
+		java.lang.String serviceCode, java.lang.String serviceName, int status,
+		int start, int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_searchMethodKey17,
+				ClpSerializer.translateInput(serviceCode),
+				ClpSerializer.translateInput(serviceName), status, start, end,
+				searchTypeFlag);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int searchCount(java.lang.String serviceCode,
+		java.lang.String serviceName, int status, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_searchCountMethodKey18,
+				ClpSerializer.translateInput(serviceCode),
+				ClpSerializer.translateInput(serviceName), status,
+				searchTypeFlag);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public boolean isStartService(java.lang.String serviceCode) {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_isStartServiceMethodKey19,
+				ClpSerializer.translateInput(serviceCode));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Boolean)returnObj).booleanValue();
+	}
+
+	public java.lang.String getStartServiceCode() {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getStartServiceCodeMethodKey20);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.lang.String getUploadServicePackageCode() {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getUploadServicePackageCodeMethodKey21);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -570,4 +712,9 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 	private MethodKey _updateServiceEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _searchMethodKey17;
+	private MethodKey _searchCountMethodKey18;
+	private MethodKey _isStartServiceMethodKey19;
+	private MethodKey _getStartServiceCodeMethodKey20;
+	private MethodKey _getUploadServicePackageCodeMethodKey21;
 }

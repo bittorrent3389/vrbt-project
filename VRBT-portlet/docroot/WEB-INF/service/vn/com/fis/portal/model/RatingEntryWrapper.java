@@ -209,7 +209,7 @@ public class RatingEntryWrapper implements RatingEntry,
 		return new RatingEntryWrapper((RatingEntry)_ratingEntry.clone());
 	}
 
-	public int compareTo(RatingEntry ratingEntry) {
+	public int compareTo(vn.com.fis.portal.model.RatingEntry ratingEntry) {
 		return _ratingEntry.compareTo(ratingEntry);
 	}
 
@@ -218,11 +218,11 @@ public class RatingEntryWrapper implements RatingEntry,
 		return _ratingEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<RatingEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.RatingEntry> toCacheModel() {
 		return _ratingEntry.toCacheModel();
 	}
 
-	public RatingEntry toEscapedModel() {
+	public vn.com.fis.portal.model.RatingEntry toEscapedModel() {
 		return new RatingEntryWrapper(_ratingEntry.toEscapedModel());
 	}
 

@@ -191,7 +191,7 @@ public class ContactEntryWrapper implements ContactEntry,
 		return new ContactEntryWrapper((ContactEntry)_contactEntry.clone());
 	}
 
-	public int compareTo(ContactEntry contactEntry) {
+	public int compareTo(vn.com.fis.portal.model.ContactEntry contactEntry) {
 		return _contactEntry.compareTo(contactEntry);
 	}
 
@@ -200,11 +200,11 @@ public class ContactEntryWrapper implements ContactEntry,
 		return _contactEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<ContactEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.ContactEntry> toCacheModel() {
 		return _contactEntry.toCacheModel();
 	}
 
-	public ContactEntry toEscapedModel() {
+	public vn.com.fis.portal.model.ContactEntry toEscapedModel() {
 		return new ContactEntryWrapper(_contactEntry.toEscapedModel());
 	}
 

@@ -261,7 +261,8 @@ public class ServicePackageEntryWrapper implements ServicePackageEntry,
 		return new ServicePackageEntryWrapper((ServicePackageEntry)_servicePackageEntry.clone());
 	}
 
-	public int compareTo(ServicePackageEntry servicePackageEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.ServicePackageEntry servicePackageEntry) {
 		return _servicePackageEntry.compareTo(servicePackageEntry);
 	}
 
@@ -270,11 +271,11 @@ public class ServicePackageEntryWrapper implements ServicePackageEntry,
 		return _servicePackageEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<ServicePackageEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.ServicePackageEntry> toCacheModel() {
 		return _servicePackageEntry.toCacheModel();
 	}
 
-	public ServicePackageEntry toEscapedModel() {
+	public vn.com.fis.portal.model.ServicePackageEntry toEscapedModel() {
 		return new ServicePackageEntryWrapper(_servicePackageEntry.toEscapedModel());
 	}
 

@@ -233,4 +233,24 @@ public interface ServiceEntryLocalService extends PersistedModelLocalService {
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<vn.com.fis.portal.model.ServiceEntry> search(
+		java.lang.String serviceCode, java.lang.String serviceName, int status,
+		int start, int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int searchCount(java.lang.String serviceCode,
+		java.lang.String serviceName, int status, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isStartService(java.lang.String serviceCode);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.lang.String getStartServiceCode();
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.lang.String getUploadServicePackageCode();
 }

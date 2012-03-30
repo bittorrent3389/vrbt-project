@@ -153,7 +153,8 @@ public class CategoryVideoEntryWrapper implements CategoryVideoEntry,
 		return new CategoryVideoEntryWrapper((CategoryVideoEntry)_categoryVideoEntry.clone());
 	}
 
-	public int compareTo(CategoryVideoEntry categoryVideoEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.CategoryVideoEntry categoryVideoEntry) {
 		return _categoryVideoEntry.compareTo(categoryVideoEntry);
 	}
 
@@ -162,11 +163,11 @@ public class CategoryVideoEntryWrapper implements CategoryVideoEntry,
 		return _categoryVideoEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<CategoryVideoEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.CategoryVideoEntry> toCacheModel() {
 		return _categoryVideoEntry.toCacheModel();
 	}
 
-	public CategoryVideoEntry toEscapedModel() {
+	public vn.com.fis.portal.model.CategoryVideoEntry toEscapedModel() {
 		return new CategoryVideoEntryWrapper(_categoryVideoEntry.toEscapedModel());
 	}
 

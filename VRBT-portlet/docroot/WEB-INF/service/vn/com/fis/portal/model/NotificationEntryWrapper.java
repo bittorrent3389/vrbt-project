@@ -225,7 +225,8 @@ public class NotificationEntryWrapper implements NotificationEntry,
 		return new NotificationEntryWrapper((NotificationEntry)_notificationEntry.clone());
 	}
 
-	public int compareTo(NotificationEntry notificationEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.NotificationEntry notificationEntry) {
 		return _notificationEntry.compareTo(notificationEntry);
 	}
 
@@ -234,11 +235,11 @@ public class NotificationEntryWrapper implements NotificationEntry,
 		return _notificationEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<NotificationEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.NotificationEntry> toCacheModel() {
 		return _notificationEntry.toCacheModel();
 	}
 
-	public NotificationEntry toEscapedModel() {
+	public vn.com.fis.portal.model.NotificationEntry toEscapedModel() {
 		return new NotificationEntryWrapper(_notificationEntry.toEscapedModel());
 	}
 

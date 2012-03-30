@@ -261,6 +261,34 @@ public class ServiceEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	public static java.util.List<vn.com.fis.portal.model.ServiceEntry> search(
+		java.lang.String serviceCode, java.lang.String serviceName, int status,
+		int start, int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .search(serviceCode, serviceName, status, start, end,
+			searchTypeFlag);
+	}
+
+	public static int searchCount(java.lang.String serviceCode,
+		java.lang.String serviceName, int status, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .searchCount(serviceCode, serviceName, status, searchTypeFlag);
+	}
+
+	public static boolean isStartService(java.lang.String serviceCode) {
+		return getService().isStartService(serviceCode);
+	}
+
+	public static java.lang.String getStartServiceCode() {
+		return getService().getStartServiceCode();
+	}
+
+	public static java.lang.String getUploadServicePackageCode() {
+		return getService().getUploadServicePackageCode();
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

@@ -263,7 +263,8 @@ public class UserServiceEntryWrapper implements UserServiceEntry,
 		return new UserServiceEntryWrapper((UserServiceEntry)_userServiceEntry.clone());
 	}
 
-	public int compareTo(UserServiceEntry userServiceEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.UserServiceEntry userServiceEntry) {
 		return _userServiceEntry.compareTo(userServiceEntry);
 	}
 
@@ -272,11 +273,11 @@ public class UserServiceEntryWrapper implements UserServiceEntry,
 		return _userServiceEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<UserServiceEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.UserServiceEntry> toCacheModel() {
 		return _userServiceEntry.toCacheModel();
 	}
 
-	public UserServiceEntry toEscapedModel() {
+	public vn.com.fis.portal.model.UserServiceEntry toEscapedModel() {
 		return new UserServiceEntryWrapper(_userServiceEntry.toEscapedModel());
 	}
 

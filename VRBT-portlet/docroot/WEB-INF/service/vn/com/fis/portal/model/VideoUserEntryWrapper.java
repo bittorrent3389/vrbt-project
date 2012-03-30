@@ -301,7 +301,7 @@ public class VideoUserEntryWrapper implements VideoUserEntry,
 		return new VideoUserEntryWrapper((VideoUserEntry)_videoUserEntry.clone());
 	}
 
-	public int compareTo(VideoUserEntry videoUserEntry) {
+	public int compareTo(vn.com.fis.portal.model.VideoUserEntry videoUserEntry) {
 		return _videoUserEntry.compareTo(videoUserEntry);
 	}
 
@@ -310,11 +310,11 @@ public class VideoUserEntryWrapper implements VideoUserEntry,
 		return _videoUserEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<VideoUserEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.VideoUserEntry> toCacheModel() {
 		return _videoUserEntry.toCacheModel();
 	}
 
-	public VideoUserEntry toEscapedModel() {
+	public vn.com.fis.portal.model.VideoUserEntry toEscapedModel() {
 		return new VideoUserEntryWrapper(_videoUserEntry.toEscapedModel());
 	}
 

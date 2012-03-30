@@ -83,6 +83,7 @@ import vn.com.fis.portal.service.persistence.ContactGroupVideoGroupEntryPersiste
 import vn.com.fis.portal.service.persistence.FolderEntryPersistence;
 import vn.com.fis.portal.service.persistence.NotificationEntryPersistence;
 import vn.com.fis.portal.service.persistence.RatingEntryPersistence;
+import vn.com.fis.portal.service.persistence.ServiceEntryFinder;
 import vn.com.fis.portal.service.persistence.ServiceEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServiceTransactionEntryPersistence;
@@ -683,6 +684,24 @@ public abstract class VideoUserVideoGroupEntryServiceBaseImpl
 	public void setServiceEntryPersistence(
 		ServiceEntryPersistence serviceEntryPersistence) {
 		this.serviceEntryPersistence = serviceEntryPersistence;
+	}
+
+	/**
+	 * Returns the service entry finder.
+	 *
+	 * @return the service entry finder
+	 */
+	public ServiceEntryFinder getServiceEntryFinder() {
+		return serviceEntryFinder;
+	}
+
+	/**
+	 * Sets the service entry finder.
+	 *
+	 * @param serviceEntryFinder the service entry finder
+	 */
+	public void setServiceEntryFinder(ServiceEntryFinder serviceEntryFinder) {
+		this.serviceEntryFinder = serviceEntryFinder;
 	}
 
 	/**
@@ -1605,6 +1624,8 @@ public abstract class VideoUserVideoGroupEntryServiceBaseImpl
 	protected ServiceEntryService serviceEntryService;
 	@BeanReference(type = ServiceEntryPersistence.class)
 	protected ServiceEntryPersistence serviceEntryPersistence;
+	@BeanReference(type = ServiceEntryFinder.class)
+	protected ServiceEntryFinder serviceEntryFinder;
 	@BeanReference(type = ServicePackageEntryLocalService.class)
 	protected ServicePackageEntryLocalService servicePackageEntryLocalService;
 	@BeanReference(type = ServicePackageEntryService.class)

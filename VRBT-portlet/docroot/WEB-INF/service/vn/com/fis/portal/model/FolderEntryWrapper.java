@@ -245,7 +245,7 @@ public class FolderEntryWrapper implements FolderEntry,
 		return new FolderEntryWrapper((FolderEntry)_folderEntry.clone());
 	}
 
-	public int compareTo(FolderEntry folderEntry) {
+	public int compareTo(vn.com.fis.portal.model.FolderEntry folderEntry) {
 		return _folderEntry.compareTo(folderEntry);
 	}
 
@@ -254,11 +254,11 @@ public class FolderEntryWrapper implements FolderEntry,
 		return _folderEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<FolderEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.FolderEntry> toCacheModel() {
 		return _folderEntry.toCacheModel();
 	}
 
-	public FolderEntry toEscapedModel() {
+	public vn.com.fis.portal.model.FolderEntry toEscapedModel() {
 		return new FolderEntryWrapper(_folderEntry.toEscapedModel());
 	}
 

@@ -209,7 +209,8 @@ public class ContactGroupEntryWrapper implements ContactGroupEntry,
 		return new ContactGroupEntryWrapper((ContactGroupEntry)_contactGroupEntry.clone());
 	}
 
-	public int compareTo(ContactGroupEntry contactGroupEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.ContactGroupEntry contactGroupEntry) {
 		return _contactGroupEntry.compareTo(contactGroupEntry);
 	}
 
@@ -218,11 +219,11 @@ public class ContactGroupEntryWrapper implements ContactGroupEntry,
 		return _contactGroupEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<ContactGroupEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.ContactGroupEntry> toCacheModel() {
 		return _contactGroupEntry.toCacheModel();
 	}
 
-	public ContactGroupEntry toEscapedModel() {
+	public vn.com.fis.portal.model.ContactGroupEntry toEscapedModel() {
 		return new ContactGroupEntryWrapper(_contactGroupEntry.toEscapedModel());
 	}
 

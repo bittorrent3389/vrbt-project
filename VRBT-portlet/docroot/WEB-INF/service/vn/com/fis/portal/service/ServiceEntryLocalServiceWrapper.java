@@ -253,6 +253,33 @@ public class ServiceEntryLocalServiceWrapper implements ServiceEntryLocalService
 		_serviceEntryLocalService.setBeanIdentifier(beanIdentifier);
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ServiceEntry> search(
+		java.lang.String serviceCode, java.lang.String serviceName, int status,
+		int start, int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceEntryLocalService.search(serviceCode, serviceName,
+			status, start, end, searchTypeFlag);
+	}
+
+	public int searchCount(java.lang.String serviceCode,
+		java.lang.String serviceName, int status, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceEntryLocalService.searchCount(serviceCode, serviceName,
+			status, searchTypeFlag);
+	}
+
+	public boolean isStartService(java.lang.String serviceCode) {
+		return _serviceEntryLocalService.isStartService(serviceCode);
+	}
+
+	public java.lang.String getStartServiceCode() {
+		return _serviceEntryLocalService.getStartServiceCode();
+	}
+
+	public java.lang.String getUploadServicePackageCode() {
+		return _serviceEntryLocalService.getUploadServicePackageCode();
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

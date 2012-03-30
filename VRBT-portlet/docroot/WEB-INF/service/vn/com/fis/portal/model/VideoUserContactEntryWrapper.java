@@ -264,7 +264,8 @@ public class VideoUserContactEntryWrapper implements VideoUserContactEntry,
 		return new VideoUserContactEntryWrapper((VideoUserContactEntry)_videoUserContactEntry.clone());
 	}
 
-	public int compareTo(VideoUserContactEntry videoUserContactEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.VideoUserContactEntry videoUserContactEntry) {
 		return _videoUserContactEntry.compareTo(videoUserContactEntry);
 	}
 
@@ -273,11 +274,11 @@ public class VideoUserContactEntryWrapper implements VideoUserContactEntry,
 		return _videoUserContactEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<VideoUserContactEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.VideoUserContactEntry> toCacheModel() {
 		return _videoUserContactEntry.toCacheModel();
 	}
 
-	public VideoUserContactEntry toEscapedModel() {
+	public vn.com.fis.portal.model.VideoUserContactEntry toEscapedModel() {
 		return new VideoUserContactEntryWrapper(_videoUserContactEntry.toEscapedModel());
 	}
 

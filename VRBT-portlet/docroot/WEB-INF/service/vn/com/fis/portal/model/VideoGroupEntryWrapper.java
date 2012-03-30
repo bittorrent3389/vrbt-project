@@ -153,7 +153,8 @@ public class VideoGroupEntryWrapper implements VideoGroupEntry,
 		return new VideoGroupEntryWrapper((VideoGroupEntry)_videoGroupEntry.clone());
 	}
 
-	public int compareTo(VideoGroupEntry videoGroupEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.VideoGroupEntry videoGroupEntry) {
 		return _videoGroupEntry.compareTo(videoGroupEntry);
 	}
 
@@ -162,11 +163,11 @@ public class VideoGroupEntryWrapper implements VideoGroupEntry,
 		return _videoGroupEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<VideoGroupEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.VideoGroupEntry> toCacheModel() {
 		return _videoGroupEntry.toCacheModel();
 	}
 
-	public VideoGroupEntry toEscapedModel() {
+	public vn.com.fis.portal.model.VideoGroupEntry toEscapedModel() {
 		return new VideoGroupEntryWrapper(_videoGroupEntry.toEscapedModel());
 	}
 

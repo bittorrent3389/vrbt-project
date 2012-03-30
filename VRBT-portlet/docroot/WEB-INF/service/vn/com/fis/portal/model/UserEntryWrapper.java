@@ -244,7 +244,7 @@ public class UserEntryWrapper implements UserEntry, ModelWrapper<UserEntry> {
 		return new UserEntryWrapper((UserEntry)_userEntry.clone());
 	}
 
-	public int compareTo(UserEntry userEntry) {
+	public int compareTo(vn.com.fis.portal.model.UserEntry userEntry) {
 		return _userEntry.compareTo(userEntry);
 	}
 
@@ -253,11 +253,11 @@ public class UserEntryWrapper implements UserEntry, ModelWrapper<UserEntry> {
 		return _userEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<UserEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.UserEntry> toCacheModel() {
 		return _userEntry.toCacheModel();
 	}
 
-	public UserEntry toEscapedModel() {
+	public vn.com.fis.portal.model.UserEntry toEscapedModel() {
 		return new UserEntryWrapper(_userEntry.toEscapedModel());
 	}
 

@@ -171,7 +171,7 @@ public class ViolationEntryWrapper implements ViolationEntry,
 		return new ViolationEntryWrapper((ViolationEntry)_violationEntry.clone());
 	}
 
-	public int compareTo(ViolationEntry violationEntry) {
+	public int compareTo(vn.com.fis.portal.model.ViolationEntry violationEntry) {
 		return _violationEntry.compareTo(violationEntry);
 	}
 
@@ -180,11 +180,11 @@ public class ViolationEntryWrapper implements ViolationEntry,
 		return _violationEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<ViolationEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.ViolationEntry> toCacheModel() {
 		return _violationEntry.toCacheModel();
 	}
 
-	public ViolationEntry toEscapedModel() {
+	public vn.com.fis.portal.model.ViolationEntry toEscapedModel() {
 		return new ViolationEntryWrapper(_violationEntry.toEscapedModel());
 	}
 

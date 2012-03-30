@@ -171,7 +171,7 @@ public class CategoryEntyWrapper implements CategoryEnty,
 		return new CategoryEntyWrapper((CategoryEnty)_categoryEnty.clone());
 	}
 
-	public int compareTo(CategoryEnty categoryEnty) {
+	public int compareTo(vn.com.fis.portal.model.CategoryEnty categoryEnty) {
 		return _categoryEnty.compareTo(categoryEnty);
 	}
 
@@ -180,11 +180,11 @@ public class CategoryEntyWrapper implements CategoryEnty,
 		return _categoryEnty.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<CategoryEnty> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.CategoryEnty> toCacheModel() {
 		return _categoryEnty.toCacheModel();
 	}
 
-	public CategoryEnty toEscapedModel() {
+	public vn.com.fis.portal.model.CategoryEnty toEscapedModel() {
 		return new CategoryEntyWrapper(_categoryEnty.toEscapedModel());
 	}
 

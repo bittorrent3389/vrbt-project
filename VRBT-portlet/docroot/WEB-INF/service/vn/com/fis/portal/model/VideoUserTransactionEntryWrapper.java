@@ -229,7 +229,8 @@ public class VideoUserTransactionEntryWrapper
 		return new VideoUserTransactionEntryWrapper((VideoUserTransactionEntry)_videoUserTransactionEntry.clone());
 	}
 
-	public int compareTo(VideoUserTransactionEntry videoUserTransactionEntry) {
+	public int compareTo(
+		vn.com.fis.portal.model.VideoUserTransactionEntry videoUserTransactionEntry) {
 		return _videoUserTransactionEntry.compareTo(videoUserTransactionEntry);
 	}
 
@@ -238,11 +239,11 @@ public class VideoUserTransactionEntryWrapper
 		return _videoUserTransactionEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<VideoUserTransactionEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.VideoUserTransactionEntry> toCacheModel() {
 		return _videoUserTransactionEntry.toCacheModel();
 	}
 
-	public VideoUserTransactionEntry toEscapedModel() {
+	public vn.com.fis.portal.model.VideoUserTransactionEntry toEscapedModel() {
 		return new VideoUserTransactionEntryWrapper(_videoUserTransactionEntry.toEscapedModel());
 	}
 

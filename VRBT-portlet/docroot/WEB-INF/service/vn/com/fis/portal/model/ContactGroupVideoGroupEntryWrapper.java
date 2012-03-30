@@ -157,7 +157,7 @@ public class ContactGroupVideoGroupEntryWrapper
 	}
 
 	public int compareTo(
-		ContactGroupVideoGroupEntry contactGroupVideoGroupEntry) {
+		vn.com.fis.portal.model.ContactGroupVideoGroupEntry contactGroupVideoGroupEntry) {
 		return _contactGroupVideoGroupEntry.compareTo(contactGroupVideoGroupEntry);
 	}
 
@@ -166,11 +166,11 @@ public class ContactGroupVideoGroupEntryWrapper
 		return _contactGroupVideoGroupEntry.hashCode();
 	}
 
-	public com.liferay.portal.model.CacheModel<ContactGroupVideoGroupEntry> toCacheModel() {
+	public com.liferay.portal.model.CacheModel<vn.com.fis.portal.model.ContactGroupVideoGroupEntry> toCacheModel() {
 		return _contactGroupVideoGroupEntry.toCacheModel();
 	}
 
-	public ContactGroupVideoGroupEntry toEscapedModel() {
+	public vn.com.fis.portal.model.ContactGroupVideoGroupEntry toEscapedModel() {
 		return new ContactGroupVideoGroupEntryWrapper(_contactGroupVideoGroupEntry.toEscapedModel());
 	}
 
