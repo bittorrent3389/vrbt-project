@@ -14,7 +14,12 @@
 
 package vn.com.fis.portal.service.impl;
 
+import com.liferay.portal.kernel.exception.SystemException;
+
+import vn.com.fis.portal.NoSuchContactGroupContactEntryException;
+import vn.com.fis.portal.model.ContactGroupContactEntry;
 import vn.com.fis.portal.service.base.ContactGroupContactEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.ContactGroupContactEntryUtil;
 
 /**
  * The implementation of the contact group contact entry local service.
@@ -37,4 +42,43 @@ public class ContactGroupContactEntryLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link vn.com.fis.portal.service.ContactGroupContactEntryLocalServiceUtil} to access the contact group contact entry local service.
 	 */
+	/**
+	 * Returns the contact group contact entry where contactId = &#63; and contactGroupId = &#63; or throws a {@link vn.com.fis.portal.NoSuchContactGroupContactEntryException} if it could not be found.
+	 *
+	 * @param contactId the contact ID
+	 * @param contactGroupId the contact group ID
+	 * @return the matching contact group contact entry
+	 * @throws vn.com.fis.portal.NoSuchContactGroupContactEntryException if a matching contact group contact entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public ContactGroupContactEntry findByContactId_ContactGroupId(
+		String contactId, String contactGroupId)
+		throws NoSuchContactGroupContactEntryException, SystemException {
+		return ContactGroupContactEntryUtil.findByContactId_ContactGroupId(contactId, contactGroupId);
+	}
+	
+	/**
+	 * Returns the number of contact group contact entries where contactId = &#63; and contactGroupId = &#63;.
+	 *
+	 * @param contactId the contact ID
+	 * @param contactGroupId the contact group ID
+	 * @return the number of matching contact group contact entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByContactId_ContactGroupId(String contactId,
+		String contactGroupId) throws SystemException {
+		return ContactGroupContactEntryUtil.countByContactId_ContactGroupId(contactId, contactGroupId);
+	}
+	/**
+	 * Removes the contact group contact entry where contactId = &#63; and contactGroupId = &#63; from the database.
+	 *
+	 * @param contactId the contact ID
+	 * @param contactGroupId the contact group ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByContactId_ContactGroupId(String contactId,
+		String contactGroupId)
+		throws NoSuchContactGroupContactEntryException, SystemException {
+		ContactGroupContactEntryUtil.removeByContactId_ContactGroupId(contactId, contactGroupId);
+	}
 }
