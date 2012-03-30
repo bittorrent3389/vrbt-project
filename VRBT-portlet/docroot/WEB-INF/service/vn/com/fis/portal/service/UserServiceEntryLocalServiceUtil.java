@@ -261,6 +261,132 @@ public class UserServiceEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* returns the user service entry where userId = &#63; and serviceId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserServiceEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param serviceId the service ID
+	* @return the matching user service entry
+	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.UserServiceEntry findByUserId_ServiceId(
+		long userId, long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		return getService().findByUserId_ServiceId(userId, serviceId);
+	}
+
+	/**
+	* Removes the user service entry where userId = &#63; and serviceId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @param serviceId the service ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUserId_ServiceId(long userId, long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		getService().removeByUserId_ServiceId(userId, serviceId);
+	}
+
+	/**
+	* Returns the number of user service entries where userId = &#63; and serviceId = &#63;.
+	*
+	* @param userId the user ID
+	* @param serviceId the service ID
+	* @return the number of matching user service entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUserId_ServiceId(long userId, long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUserId_ServiceId(userId, serviceId);
+	}
+
+	/**
+	* Returns the user service entry where userId = &#63; and servicePackageId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserServiceEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param servicePackageId the service package ID
+	* @return the matching user service entry
+	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.UserServiceEntry findByUserId_ServicePackageId(
+		long userId, long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		return getService()
+				   .findByUserId_ServicePackageId(userId, servicePackageId);
+	}
+
+	/**
+	* Removes the user service entry where userId = &#63; and servicePackageId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @param servicePackageId the service package ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUserId_ServicePackageId(long userId,
+		long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		getService().removeByUserId_ServicePackageId(userId, servicePackageId);
+	}
+
+	/**
+	* Returns the user service entry where userId = &#63; and serviceId = &#63; and servicePackageId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserServiceEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param serviceId the service ID
+	* @param servicePackageId the service package ID
+	* @return the matching user service entry
+	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.UserServiceEntry findByUserId_ServiceId_PackageId(
+		long userId, long serviceId, long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		return getService()
+				   .findByUserId_ServiceId_PackageId(userId, serviceId,
+			servicePackageId);
+	}
+
+	/**
+	* Returns the number of user service entries where userId = &#63; and serviceId = &#63; and servicePackageId = &#63;.
+	*
+	* @param userId the user ID
+	* @param serviceId the service ID
+	* @param servicePackageId the service package ID
+	* @return the number of matching user service entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUserId_ServiceId_PackageId(long userId,
+		long serviceId, long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .countByUserId_ServiceId_PackageId(userId, serviceId,
+			servicePackageId);
+	}
+
+	/**
+	* Removes the user service entry where userId = &#63; and serviceId = &#63; and servicePackageId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @param serviceId the service ID
+	* @param servicePackageId the service package ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUserId_ServiceId_PackageId(long userId,
+		long serviceId, long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		getService()
+			.removeByUserId_ServiceId_PackageId(userId, serviceId,
+			servicePackageId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

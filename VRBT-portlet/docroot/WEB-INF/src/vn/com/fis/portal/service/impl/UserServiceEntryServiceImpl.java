@@ -14,7 +14,12 @@
 
 package vn.com.fis.portal.service.impl;
 
+import com.liferay.portal.kernel.exception.SystemException;
+
+import vn.com.fis.portal.NoSuchUserServiceEntryException;
+import vn.com.fis.portal.model.UserServiceEntry;
 import vn.com.fis.portal.service.base.UserServiceEntryServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.UserServiceEntryUtil;
 
 /**
  * The implementation of the user service entry remote service.
@@ -36,4 +41,6 @@ public class UserServiceEntryServiceImpl extends UserServiceEntryServiceBaseImpl
 	 *
 	 * Never reference this interface directly. Always use {@link vn.com.fis.portal.service.UserServiceEntryServiceUtil} to access the user service entry remote service.
 	 */
+	
+	
 }

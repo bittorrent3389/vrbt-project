@@ -2,8 +2,45 @@
 
 <deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 	<service name="Plugin_VRBTPortal_UserServiceEntryService" provider="java:RPC" style="rpc" use="encoded">
-		<parameter name="allowedMethods" value="*" />
+		<typeMapping xmlns:ns="http://model.portal.fis.com.vn" qname="ns:UserServiceEntrySoap" type="java:vn.com.fis.portal.model.UserServiceEntrySoap" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></typeMapping>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="countByUserId_ServiceId" qname="operNS:countByUserId_ServiceId" returnQName="countByUserId_ServiceIdReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="countByUserId_ServiceId_PackageId" qname="operNS:countByUserId_ServiceId_PackageId" returnQName="countByUserId_ServiceId_PackageIdReturn" returnType="rtns:int" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicePackageId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" xmlns:rtns="http://model.portal.fis.com.vn" name="findByUserId_ServiceId" qname="operNS:findByUserId_ServiceId" returnQName="findByUserId_ServiceIdReturn" returnType="rtns:UserServiceEntrySoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" xmlns:rtns="http://model.portal.fis.com.vn" name="findByUserId_ServiceId_PackageId" qname="operNS:findByUserId_ServiceId_PackageId" returnQName="findByUserId_ServiceId_PackageIdReturn" returnType="rtns:UserServiceEntrySoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicePackageId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" xmlns:rtns="http://model.portal.fis.com.vn" name="findByUserId_ServicePackageId" qname="operNS:findByUserId_ServicePackageId" returnQName="findByUserId_ServicePackageIdReturn" returnType="rtns:UserServiceEntrySoap" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicePackageId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" name="removeByUserId_ServiceId" qname="operNS:removeByUserId_ServiceId" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" name="removeByUserId_ServiceId_PackageId" qname="operNS:removeByUserId_ServiceId_PackageId" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="serviceId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicePackageId" type="tns:long"></parameter>
+		</operation>
+		<operation xmlns:operNS="urn:http.service.portal.fis.com.vn" name="removeByUserId_ServicePackageId" qname="operNS:removeByUserId_ServicePackageId" soapAction="">
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="userId" type="tns:long"></parameter>
+			<parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="servicePackageId" type="tns:long"></parameter>
+		</operation>
+		<parameter name="allowedMethods" value="countByUserId_ServiceId countByUserId_ServiceId_PackageId findByUserId_ServiceId findByUserId_ServiceId_PackageId findByUserId_ServicePackageId removeByUserId_ServiceId removeByUserId_ServiceId_PackageId removeByUserId_ServicePackageId" />
 		<parameter name="className" value="vn.com.fis.portal.service.http.UserServiceEntryServiceSoap" />
+		<parameter name="schemaUnqualified" value="http://model.portal.fis.com.vn" />
 		<parameter name="typeMappingVersion" value="1.2" />
 		<parameter name="wsdlPortType" value="UserServiceEntryServiceSoap" />
 		<parameter name="wsdlServiceElement" value="UserServiceEntryServiceSoapService" />
