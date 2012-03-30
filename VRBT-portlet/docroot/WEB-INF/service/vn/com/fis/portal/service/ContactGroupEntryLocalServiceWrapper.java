@@ -259,6 +259,94 @@ public class ContactGroupEntryLocalServiceWrapper
 	}
 
 	/**
+	* Returns all the contact group entries where userId = &#63;.
+	*
+	* @param userId the user ID
+	* @return the matching contact group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ContactGroupEntry> findByUserId(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _contactGroupEntryLocalService.findByUserId(userId);
+	}
+
+	/**
+	* Returns a range of all the contact group entries where userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param userId the user ID
+	* @param start the lower bound of the range of contact group entries
+	* @param end the upper bound of the range of contact group entries (not inclusive)
+	* @return the range of matching contact group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ContactGroupEntry> findByUserId(
+		long userId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _contactGroupEntryLocalService.findByUserId(userId, start, end);
+	}
+
+	/**
+	* Returns the number of contact group entries where userId = &#63;.
+	*
+	* @param userId the user ID
+	* @return the number of matching contact group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _contactGroupEntryLocalService.countByUserId(userId);
+	}
+
+	/**
+	* Returns the contact group entry where userId = &#63; and contactGroupId = &#63; or throws a {@link vn.com.fis.portal.NoSuchContactGroupEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param contactGroupId the contact group ID
+	* @return the matching contact group entry
+	* @throws vn.com.fis.portal.NoSuchContactGroupEntryException if a matching contact group entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.ContactGroupEntry findByUserId_ContactGroupId(
+		long userId, long contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupEntryException {
+		return _contactGroupEntryLocalService.findByUserId_ContactGroupId(userId,
+			contactGroupId);
+	}
+
+	/**
+	* Returns the number of contact group entries where userId = &#63; and contactGroupId = &#63;.
+	*
+	* @param userId the user ID
+	* @param contactGroupId the contact group ID
+	* @return the number of matching contact group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId_ContactGroupId(long userId, long contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _contactGroupEntryLocalService.countByUserId_ContactGroupId(userId,
+			contactGroupId);
+	}
+
+	/**
+	* Removes the contact group entry where userId = &#63; and contactGroupId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @param contactGroupId the contact group ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByUserId_ContactGroupId(long userId, long contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupEntryException {
+		_contactGroupEntryLocalService.removeByUserId_ContactGroupId(userId,
+			contactGroupId);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public ContactGroupEntryLocalService getWrappedContactGroupEntryLocalService() {

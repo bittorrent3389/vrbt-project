@@ -260,6 +260,53 @@ public class ContactGroupContactEntryLocalServiceWrapper
 	}
 
 	/**
+	* Returns the contact group contact entry where contactId = &#63; and contactGroupId = &#63; or throws a {@link vn.com.fis.portal.NoSuchContactGroupContactEntryException} if it could not be found.
+	*
+	* @param contactId the contact ID
+	* @param contactGroupId the contact group ID
+	* @return the matching contact group contact entry
+	* @throws vn.com.fis.portal.NoSuchContactGroupContactEntryException if a matching contact group contact entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.ContactGroupContactEntry findByContactId_ContactGroupId(
+		java.lang.String contactId, java.lang.String contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupContactEntryException {
+		return _contactGroupContactEntryLocalService.findByContactId_ContactGroupId(contactId,
+			contactGroupId);
+	}
+
+	/**
+	* Returns the number of contact group contact entries where contactId = &#63; and contactGroupId = &#63;.
+	*
+	* @param contactId the contact ID
+	* @param contactGroupId the contact group ID
+	* @return the number of matching contact group contact entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByContactId_ContactGroupId(java.lang.String contactId,
+		java.lang.String contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _contactGroupContactEntryLocalService.countByContactId_ContactGroupId(contactId,
+			contactGroupId);
+	}
+
+	/**
+	* Removes the contact group contact entry where contactId = &#63; and contactGroupId = &#63; from the database.
+	*
+	* @param contactId the contact ID
+	* @param contactGroupId the contact group ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByContactId_ContactGroupId(java.lang.String contactId,
+		java.lang.String contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupContactEntryException {
+		_contactGroupContactEntryLocalService.removeByContactId_ContactGroupId(contactId,
+			contactGroupId);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public ContactGroupContactEntryLocalService getWrappedContactGroupContactEntryLocalService() {

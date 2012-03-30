@@ -262,6 +262,54 @@ public class NotificationEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* Returns all the notification entries where userIdFrom = &#63; and userIdTo = &#63;.
+	*
+	* @param userIdFrom the user ID from
+	* @param userIdTo the user ID to
+	* @return the matching notification entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.NotificationEntry> findByUserIdFrom_UserIdTo(
+		long userIdFrom, long userIdTo)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByUserIdFrom_UserIdTo(userIdFrom, userIdTo);
+	}
+
+	/**
+	* Returns a range of all the notification entries where userIdFrom = &#63; and userIdTo = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param userIdFrom the user ID from
+	* @param userIdTo the user ID to
+	* @param start the lower bound of the range of notification entries
+	* @param end the upper bound of the range of notification entries (not inclusive)
+	* @return the range of matching notification entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.NotificationEntry> findByUserIdFrom_UserIdTo(
+		long userIdFrom, long userIdTo, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByUserIdFrom_UserIdTo(userIdFrom, userIdTo, start, end);
+	}
+
+	/**
+	* Returns the number of notification entries where userIdFrom = &#63; and userIdTo = &#63;.
+	*
+	* @param userIdFrom the user ID from
+	* @param userIdTo the user ID to
+	* @return the number of matching notification entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUserIdFrom_UserIdTo(long userIdFrom, long userIdTo)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUserIdFrom_UserIdTo(userIdFrom, userIdTo);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

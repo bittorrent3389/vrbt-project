@@ -252,6 +252,95 @@ public class FolderEntryLocalServiceWrapper implements FolderEntryLocalService,
 	}
 
 	/**
+	* Returns all the folder entries where folderName = &#63;.
+	*
+	* @param folderName the folder name
+	* @return the matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderName(
+		java.lang.String folderName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _folderEntryLocalService.findByFolderName(folderName);
+	}
+
+	/**
+	* Returns a range of all the folder entries where folderName = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param folderName the folder name
+	* @param start the lower bound of the range of folder entries
+	* @param end the upper bound of the range of folder entries (not inclusive)
+	* @return the range of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderName(
+		java.lang.String folderName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _folderEntryLocalService.findByFolderName(folderName, start, end);
+	}
+
+	/**
+	* Returns the number of folder entries where folderName = &#63;.
+	*
+	* @param folderName the folder name
+	* @return the number of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByFolderName(java.lang.String folderName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _folderEntryLocalService.countByFolderName(folderName);
+	}
+
+	/**
+	* Returns all the folder entries where folderIdParent = &#63;.
+	*
+	* @param folderIdParent the folder ID parent
+	* @return the matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent(
+		long folderIdParent)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _folderEntryLocalService.findByFolderIdParent(folderIdParent);
+	}
+
+	/**
+	* Returns a range of all the folder entries where folderIdParent = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param folderIdParent the folder ID parent
+	* @param start the lower bound of the range of folder entries
+	* @param end the upper bound of the range of folder entries (not inclusive)
+	* @return the range of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent(
+		long folderIdParent, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _folderEntryLocalService.findByFolderIdParent(folderIdParent,
+			start, end);
+	}
+
+	/**
+	* Returns the number of folder entries where folderIdParent = &#63;.
+	*
+	* @param folderIdParent the folder ID parent
+	* @return the number of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByFolderIdParent(long folderIdParent)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _folderEntryLocalService.countByFolderIdParent(folderIdParent);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public FolderEntryLocalService getWrappedFolderEntryLocalService() {

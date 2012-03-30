@@ -89,6 +89,18 @@ public class ContactGroupContactEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByContactId_ContactGroupIdMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByContactId_ContactGroupId", java.lang.String.class,
+				java.lang.String.class);
+
+		_countByContactId_ContactGroupIdMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByContactId_ContactGroupId", java.lang.String.class,
+				java.lang.String.class);
+
+		_removeByContactId_ContactGroupIdMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByContactId_ContactGroupId", java.lang.String.class,
+				java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.ContactGroupContactEntry addContactGroupContactEntry(
@@ -556,6 +568,99 @@ public class ContactGroupContactEntryLocalServiceClp
 		}
 	}
 
+	public vn.com.fis.portal.model.ContactGroupContactEntry findByContactId_ContactGroupId(
+		java.lang.String contactId, java.lang.String contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupContactEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByContactId_ContactGroupIdMethodKey17,
+				ClpSerializer.translateInput(contactId),
+				ClpSerializer.translateInput(contactGroupId));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchContactGroupContactEntryException) {
+				throw (vn.com.fis.portal.NoSuchContactGroupContactEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.ContactGroupContactEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByContactId_ContactGroupId(java.lang.String contactId,
+		java.lang.String contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByContactId_ContactGroupIdMethodKey18,
+				ClpSerializer.translateInput(contactId),
+				ClpSerializer.translateInput(contactGroupId));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByContactId_ContactGroupId(java.lang.String contactId,
+		java.lang.String contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupContactEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByContactId_ContactGroupIdMethodKey19,
+				ClpSerializer.translateInput(contactId),
+				ClpSerializer.translateInput(contactGroupId));
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchContactGroupContactEntryException) {
+				throw (vn.com.fis.portal.NoSuchContactGroupContactEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -578,4 +683,7 @@ public class ContactGroupContactEntryLocalServiceClp
 	private MethodKey _updateContactGroupContactEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByContactId_ContactGroupIdMethodKey17;
+	private MethodKey _countByContactId_ContactGroupIdMethodKey18;
+	private MethodKey _removeByContactId_ContactGroupIdMethodKey19;
 }

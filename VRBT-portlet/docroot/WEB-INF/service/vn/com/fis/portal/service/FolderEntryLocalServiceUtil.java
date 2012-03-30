@@ -261,6 +261,94 @@ public class FolderEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* Returns all the folder entries where folderName = &#63;.
+	*
+	* @param folderName the folder name
+	* @return the matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderName(
+		java.lang.String folderName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByFolderName(folderName);
+	}
+
+	/**
+	* Returns a range of all the folder entries where folderName = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param folderName the folder name
+	* @param start the lower bound of the range of folder entries
+	* @param end the upper bound of the range of folder entries (not inclusive)
+	* @return the range of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderName(
+		java.lang.String folderName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByFolderName(folderName, start, end);
+	}
+
+	/**
+	* Returns the number of folder entries where folderName = &#63;.
+	*
+	* @param folderName the folder name
+	* @return the number of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByFolderName(java.lang.String folderName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByFolderName(folderName);
+	}
+
+	/**
+	* Returns all the folder entries where folderIdParent = &#63;.
+	*
+	* @param folderIdParent the folder ID parent
+	* @return the matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent(
+		long folderIdParent)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByFolderIdParent(folderIdParent);
+	}
+
+	/**
+	* Returns a range of all the folder entries where folderIdParent = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param folderIdParent the folder ID parent
+	* @param start the lower bound of the range of folder entries
+	* @param end the upper bound of the range of folder entries (not inclusive)
+	* @return the range of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent(
+		long folderIdParent, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByFolderIdParent(folderIdParent, start, end);
+	}
+
+	/**
+	* Returns the number of folder entries where folderIdParent = &#63;.
+	*
+	* @param folderIdParent the folder ID parent
+	* @return the number of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByFolderIdParent(long folderIdParent)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByFolderIdParent(folderIdParent);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

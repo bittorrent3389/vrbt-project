@@ -258,6 +258,122 @@ public class UserEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* Returns the user entry where userName = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
+	*
+	* @param userName the user name
+	* @return the matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.UserEntry findByUserName(
+		java.lang.String userName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		return getService().findByUserName(userName);
+	}
+
+	/**
+	* Removes the user entry where userName = &#63; from the database.
+	*
+	* @param userName the user name
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUserName(java.lang.String userName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		getService().removeByUserName(userName);
+	}
+
+	/**
+	* Returns the number of user entries where userName = &#63;.
+	*
+	* @param userName the user name
+	* @return the number of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUserName(java.lang.String userName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUserName(userName);
+	}
+
+	/**
+	* Returns the user entry where mobileNumber = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
+	*
+	* @param mobileNumber the mobile number
+	* @return the matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.UserEntry findByMobileNumber(
+		long mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		return getService().findByMobileNumber(mobileNumber);
+	}
+
+	/**
+	* Returns the number of user entries where mobileNumber = &#63;.
+	*
+	* @param mobileNumber the mobile number
+	* @return the number of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByMobileNumber(long mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByMobileNumber(mobileNumber);
+	}
+
+	/**
+	* Removes the user entry where mobileNumber = &#63; from the database.
+	*
+	* @param mobileNumber the mobile number
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByMobileNumber(long mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		getService().removeByMobileNumber(mobileNumber);
+	}
+
+	/**
+	* Returns the user entry where userId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @return the matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.UserEntry findByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		return getService().findByUserId(userId);
+	}
+
+	/**
+	* Returns the number of user entries where userId = &#63;.
+	*
+	* @param userId the user ID
+	* @return the number of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUserId(userId);
+	}
+
+	/**
+	* Removes the user entry where userId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		getService().removeByUserId(userId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

@@ -87,6 +87,16 @@ public class NotificationEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByUserIdFrom_UserIdToMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserIdFrom_UserIdTo", long.class, long.class);
+
+		_findByUserIdFrom_UserIdToMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserIdFrom_UserIdTo", long.class, long.class, int.class,
+				int.class);
+
+		_countByUserIdFrom_UserIdToMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserIdFrom_UserIdTo", long.class, long.class);
 	}
 
 	public vn.com.fis.portal.model.NotificationEntry addNotificationEntry(
@@ -554,6 +564,89 @@ public class NotificationEntryLocalServiceClp
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.NotificationEntry> findByUserIdFrom_UserIdTo(
+		long userIdFrom, long userIdTo)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserIdFrom_UserIdToMethodKey17,
+				userIdFrom, userIdTo);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.NotificationEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.NotificationEntry> findByUserIdFrom_UserIdTo(
+		long userIdFrom, long userIdTo, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserIdFrom_UserIdToMethodKey18,
+				userIdFrom, userIdTo, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.NotificationEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByUserIdFrom_UserIdTo(long userIdFrom, long userIdTo)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserIdFrom_UserIdToMethodKey19,
+				userIdFrom, userIdTo);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -576,4 +669,7 @@ public class NotificationEntryLocalServiceClp
 	private MethodKey _updateNotificationEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByUserIdFrom_UserIdToMethodKey17;
+	private MethodKey _findByUserIdFrom_UserIdToMethodKey18;
+	private MethodKey _countByUserIdFrom_UserIdToMethodKey19;
 }

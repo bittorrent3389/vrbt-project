@@ -83,6 +83,12 @@ public class ContactEntryLocalServiceClp implements ContactEntryLocalService {
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByUserId_MobileNumberMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId_MobileNumber", long.class, java.lang.String.class);
+
+		_countByUserId_MobileNumberMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserId_MobileNumber", long.class, java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.ContactEntry addContactEntry(
@@ -548,6 +554,67 @@ public class ContactEntryLocalServiceClp implements ContactEntryLocalService {
 		}
 	}
 
+	public vn.com.fis.portal.model.ContactEntry findByUserId_MobileNumber(
+		long userId, java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserId_MobileNumberMethodKey17,
+				userId, ClpSerializer.translateInput(mobileNumber));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchContactEntryException) {
+				throw (vn.com.fis.portal.NoSuchContactEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.ContactEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByUserId_MobileNumber(long userId,
+		java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserId_MobileNumberMethodKey18,
+				userId, ClpSerializer.translateInput(mobileNumber));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -570,4 +637,6 @@ public class ContactEntryLocalServiceClp implements ContactEntryLocalService {
 	private MethodKey _updateContactEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByUserId_MobileNumberMethodKey17;
+	private MethodKey _countByUserId_MobileNumberMethodKey18;
 }

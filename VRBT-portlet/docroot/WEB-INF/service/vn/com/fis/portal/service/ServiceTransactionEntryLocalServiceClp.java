@@ -89,6 +89,34 @@ public class ServiceTransactionEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByTransactionCodeMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByTransactionCode", int.class);
+
+		_countByTransactionCodeMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByTransactionCode", int.class);
+
+		_findByTransactionCode_DateMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByTransactionCode_Date", int.class, java.util.Date.class);
+
+		_findByTransactionCode_DateMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByTransactionCode_Date", int.class, java.util.Date.class,
+				int.class, int.class);
+
+		_countByTransactionCode_DateMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByTransactionCode_Date", int.class, java.util.Date.class);
+
+		_findByUserId_TransactionCode_DateMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId_TransactionCode_Date", long.class, int.class,
+				java.util.Date.class);
+
+		_findByUserId_TransactionCode_DateMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId_TransactionCode_Date", long.class, int.class,
+				java.util.Date.class, int.class, int.class);
+
+		_countByUserId_TransactionCode_DateMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserId_TransactionCode_Date", long.class, int.class,
+				java.util.Date.class);
 	}
 
 	public vn.com.fis.portal.model.ServiceTransactionEntry addServiceTransactionEntry(
@@ -556,6 +584,230 @@ public class ServiceTransactionEntryLocalServiceClp
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByTransactionCode(
+		int transactionCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByTransactionCodeMethodKey17,
+				transactionCode);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByTransactionCode(int transactionCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByTransactionCodeMethodKey18,
+				transactionCode);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByTransactionCode_Date(
+		int transactionCode, java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByTransactionCode_DateMethodKey19,
+				transactionCode, ClpSerializer.translateInput(date_));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByTransactionCode_Date(
+		int transactionCode, java.util.Date date_, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByTransactionCode_DateMethodKey20,
+				transactionCode, ClpSerializer.translateInput(date_), start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByTransactionCode_Date(int transactionCode,
+		java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByTransactionCode_DateMethodKey21,
+				transactionCode, ClpSerializer.translateInput(date_));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByUserId_TransactionCode_Date(
+		long userId, int transactionCode, java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserId_TransactionCode_DateMethodKey22,
+				userId, transactionCode, ClpSerializer.translateInput(date_));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByUserId_TransactionCode_Date(
+		long userId, int transactionCode, java.util.Date date_, int start,
+		int end) throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserId_TransactionCode_DateMethodKey23,
+				userId, transactionCode, ClpSerializer.translateInput(date_),
+				start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByUserId_TransactionCode_Date(long userId,
+		int transactionCode, java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserId_TransactionCode_DateMethodKey24,
+				userId, transactionCode, ClpSerializer.translateInput(date_));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -578,4 +830,12 @@ public class ServiceTransactionEntryLocalServiceClp
 	private MethodKey _updateServiceTransactionEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByTransactionCodeMethodKey17;
+	private MethodKey _countByTransactionCodeMethodKey18;
+	private MethodKey _findByTransactionCode_DateMethodKey19;
+	private MethodKey _findByTransactionCode_DateMethodKey20;
+	private MethodKey _countByTransactionCode_DateMethodKey21;
+	private MethodKey _findByUserId_TransactionCode_DateMethodKey22;
+	private MethodKey _findByUserId_TransactionCode_DateMethodKey23;
+	private MethodKey _countByUserId_TransactionCode_DateMethodKey24;
 }

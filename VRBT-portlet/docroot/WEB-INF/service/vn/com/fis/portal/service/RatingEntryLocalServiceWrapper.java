@@ -252,6 +252,231 @@ public class RatingEntryLocalServiceWrapper implements RatingEntryLocalService,
 	}
 
 	/**
+	* Returns all the rating entries where videoId = &#63;.
+	*
+	* @param videoId the video ID
+	* @return the matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId(
+		long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByVideoId(videoId);
+	}
+
+	/**
+	* Returns a range of all the rating entries where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @return the range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId(
+		long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByVideoId(videoId, start, end);
+	}
+
+	/**
+	* Returns the number of rating entries where videoId = &#63;.
+	*
+	* @param videoId the video ID
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByVideoId(videoId);
+	}
+
+	/**
+	* Returns all the rating entries where userId = &#63;.
+	*
+	* @param userId the user ID
+	* @return the matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByUserId(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByUserId(userId);
+	}
+
+	/**
+	* Returns a range of all the rating entries where userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param userId the user ID
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @return the range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByUserId(
+		long userId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByUserId(userId, start, end);
+	}
+
+	/**
+	* Returns the number of rating entries where userId = &#63;.
+	*
+	* @param userId the user ID
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByUserId(userId);
+	}
+
+	/**
+	* Returns all the rating entries where code = &#63;.
+	*
+	* @param code the code
+	* @return the matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByRatingCode(
+		int code) throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByRatingCode(code);
+	}
+
+	/**
+	* Returns a range of all the rating entries where code = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param code the code
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @return the range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByRatingCode(
+		int code, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByRatingCode(code, start, end);
+	}
+
+	/**
+	* Returns the number of rating entries where code = &#63;.
+	*
+	* @param code the code
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByRatingCode(int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByRatingCode(code);
+	}
+
+	/**
+	* Returns all the rating entries where code = &#63; and videoId = &#63;.
+	*
+	* @param code the code
+	* @param videoId the video ID
+	* @return the matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
+		int code, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByCode_Video(code, videoId);
+	}
+
+	/**
+	* Returns a range of all the rating entries where code = &#63; and videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param code the code
+	* @param videoId the video ID
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @return the range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
+		int code, long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByCode_Video(code, videoId, start,
+			end);
+	}
+
+	/**
+	* Returns the number of rating entries where code = &#63; and videoId = &#63;.
+	*
+	* @param code the code
+	* @param videoId the video ID
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByCode_Video(int code, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByCode_Video(code, videoId);
+	}
+
+	/**
+	* Returns the rating entry where userId = &#63; and videoId = &#63; and code = &#63; or throws a {@link vn.com.fis.portal.NoSuchRatingEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @param code the code
+	* @return the matching rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.RatingEntry findByUser_Video_Code(
+		long userId, long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return _ratingEntryLocalService.findByUser_Video_Code(userId, videoId,
+			code);
+	}
+
+	/**
+	* Returns the number of rating entries where userId = &#63; and videoId = &#63; and code = &#63;.
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @param code the code
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUser_Video_Code(long userId, long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByUser_Video_Code(userId, videoId,
+			code);
+	}
+
+	/**
+	* Removes the rating entry where userId = &#63; and videoId = &#63; and code = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @param code the code
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByUser_Video_Code(long userId, long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		_ratingEntryLocalService.removeByUser_Video_Code(userId, videoId, code);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public RatingEntryLocalService getWrappedRatingEntryLocalService() {

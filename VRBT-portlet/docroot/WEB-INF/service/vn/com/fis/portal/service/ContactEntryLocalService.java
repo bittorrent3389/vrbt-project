@@ -233,4 +233,30 @@ public interface ContactEntryLocalService extends PersistedModelLocalService {
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	/**
+	* Returns the contact entry where userId = &#63; and mobileNumber = &#63; or throws a {@link vn.com.fis.portal.NoSuchContactEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param mobileNumber the mobile number
+	* @return the matching contact entry
+	* @throws vn.com.fis.portal.NoSuchContactEntryException if a matching contact entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.ContactEntry findByUserId_MobileNumber(
+		long userId, java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactEntryException;
+
+	/**
+	* Returns the number of contact entries where userId = &#63; and mobileNumber = &#63;.
+	*
+	* @param userId the user ID
+	* @param mobileNumber the mobile number
+	* @return the number of matching contact entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId_MobileNumber(long userId,
+		java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

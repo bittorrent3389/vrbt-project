@@ -254,6 +254,51 @@ public class CategoryEntyLocalServiceWrapper implements CategoryEntyLocalService
 	}
 
 	/**
+	* Returns all the category enties where categoryName = &#63;.
+	*
+	* @param categoryName the category name
+	* @return the matching category enties
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryEnty> findByCategoryName(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntyLocalService.findByCategoryName(categoryName);
+	}
+
+	/**
+	* Returns a range of all the category enties where categoryName = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryName the category name
+	* @param start the lower bound of the range of category enties
+	* @param end the upper bound of the range of category enties (not inclusive)
+	* @return the range of matching category enties
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryEnty> findByCategoryName(
+		java.lang.String categoryName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntyLocalService.findByCategoryName(categoryName,
+			start, end);
+	}
+
+	/**
+	* Returns the number of category enties where categoryName = &#63;.
+	*
+	* @param categoryName the category name
+	* @return the number of matching category enties
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByCategoryName(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntyLocalService.countByCategoryName(categoryName);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public CategoryEntyLocalService getWrappedCategoryEntyLocalService() {

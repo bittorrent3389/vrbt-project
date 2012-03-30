@@ -89,6 +89,27 @@ public class ContactGroupVideoGroupEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByContactGroup_VideoGroupMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByContactGroup_VideoGroup", long.class, long.class);
+
+		_countByContactGroup_VideoGroupMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByContactGroup_VideoGroup", long.class, long.class);
+
+		_removeByContactGroup_VideoGroupMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByContactGroup_VideoGroup", long.class, long.class);
+
+		_findByContactGroupMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByContactGroup", long.class);
+
+		_findByContactGroupMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByContactGroup", long.class, int.class, int.class);
+
+		_countByContactGroupMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByContactGroup", long.class);
+
+		_removeByContactGroupMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByContactGroup", long.class);
 	}
 
 	public vn.com.fis.portal.model.ContactGroupVideoGroupEntry addContactGroupVideoGroupEntry(
@@ -557,6 +578,202 @@ public class ContactGroupVideoGroupEntryLocalServiceClp
 		}
 	}
 
+	public vn.com.fis.portal.model.ContactGroupVideoGroupEntry findByContactGroup_VideoGroup(
+		long contactGroupId, long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupVideoGroupEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByContactGroup_VideoGroupMethodKey17,
+				contactGroupId, videoGroupId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchContactGroupVideoGroupEntryException) {
+				throw (vn.com.fis.portal.NoSuchContactGroupVideoGroupEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.ContactGroupVideoGroupEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByContactGroup_VideoGroup(long contactGroupId,
+		long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByContactGroup_VideoGroupMethodKey18,
+				contactGroupId, videoGroupId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByContactGroup_VideoGroup(long contactGroupId,
+		long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactGroupVideoGroupEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByContactGroup_VideoGroupMethodKey19,
+				contactGroupId, videoGroupId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchContactGroupVideoGroupEntryException) {
+				throw (vn.com.fis.portal.NoSuchContactGroupVideoGroupEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ContactGroupVideoGroupEntry> findByContactGroup(
+		long contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByContactGroupMethodKey20,
+				contactGroupId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ContactGroupVideoGroupEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ContactGroupVideoGroupEntry> findByContactGroup(
+		long contactGroupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByContactGroupMethodKey21,
+				contactGroupId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ContactGroupVideoGroupEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByContactGroup(long contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByContactGroupMethodKey22,
+				contactGroupId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByContactGroup(long contactGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_removeByContactGroupMethodKey23,
+				contactGroupId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -579,4 +796,11 @@ public class ContactGroupVideoGroupEntryLocalServiceClp
 	private MethodKey _updateContactGroupVideoGroupEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByContactGroup_VideoGroupMethodKey17;
+	private MethodKey _countByContactGroup_VideoGroupMethodKey18;
+	private MethodKey _removeByContactGroup_VideoGroupMethodKey19;
+	private MethodKey _findByContactGroupMethodKey20;
+	private MethodKey _findByContactGroupMethodKey21;
+	private MethodKey _countByContactGroupMethodKey22;
+	private MethodKey _removeByContactGroupMethodKey23;
 }

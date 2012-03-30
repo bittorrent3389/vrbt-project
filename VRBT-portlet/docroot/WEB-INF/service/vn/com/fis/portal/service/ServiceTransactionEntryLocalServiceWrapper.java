@@ -260,6 +260,136 @@ public class ServiceTransactionEntryLocalServiceWrapper
 	}
 
 	/**
+	* Returns all the service transaction entries where transactionCode = &#63;.
+	*
+	* @param transactionCode the transaction code
+	* @return the matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByTransactionCode(
+		int transactionCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.findByTransactionCode(transactionCode);
+	}
+
+	/**
+	* Returns the number of service transaction entries where transactionCode = &#63;.
+	*
+	* @param transactionCode the transaction code
+	* @return the number of matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByTransactionCode(int transactionCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.countByTransactionCode(transactionCode);
+	}
+
+	/**
+	* Returns all the service transaction entries where transactionCode = &#63; and date_ = &#63;.
+	*
+	* @param transactionCode the transaction code
+	* @param date_ the date_
+	* @return the matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByTransactionCode_Date(
+		int transactionCode, java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.findByTransactionCode_Date(transactionCode,
+			date_);
+	}
+
+	/**
+	* Returns a range of all the service transaction entries where transactionCode = &#63; and date_ = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param transactionCode the transaction code
+	* @param date_ the date_
+	* @param start the lower bound of the range of service transaction entries
+	* @param end the upper bound of the range of service transaction entries (not inclusive)
+	* @return the range of matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByTransactionCode_Date(
+		int transactionCode, java.util.Date date_, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.findByTransactionCode_Date(transactionCode,
+			date_, start, end);
+	}
+
+	/**
+	* Returns the number of service transaction entries where transactionCode = &#63; and date_ = &#63;.
+	*
+	* @param transactionCode the transaction code
+	* @param date_ the date_
+	* @return the number of matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByTransactionCode_Date(int transactionCode,
+		java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.countByTransactionCode_Date(transactionCode,
+			date_);
+	}
+
+	/**
+	* Returns all the service transaction entries where userId = &#63; and transactionCode = &#63; and date_ = &#63;.
+	*
+	* @param userId the user ID
+	* @param transactionCode the transaction code
+	* @param date_ the date_
+	* @return the matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByUserId_TransactionCode_Date(
+		long userId, int transactionCode, java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.findByUserId_TransactionCode_Date(userId,
+			transactionCode, date_);
+	}
+
+	/**
+	* Returns a range of all the service transaction entries where userId = &#63; and transactionCode = &#63; and date_ = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param userId the user ID
+	* @param transactionCode the transaction code
+	* @param date_ the date_
+	* @param start the lower bound of the range of service transaction entries
+	* @param end the upper bound of the range of service transaction entries (not inclusive)
+	* @return the range of matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> findByUserId_TransactionCode_Date(
+		long userId, int transactionCode, java.util.Date date_, int start,
+		int end) throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.findByUserId_TransactionCode_Date(userId,
+			transactionCode, date_, start, end);
+	}
+
+	/**
+	* Returns the number of service transaction entries where userId = &#63; and transactionCode = &#63; and date_ = &#63;.
+	*
+	* @param userId the user ID
+	* @param transactionCode the transaction code
+	* @param date_ the date_
+	* @return the number of matching service transaction entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId_TransactionCode_Date(long userId,
+		int transactionCode, java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.countByUserId_TransactionCode_Date(userId,
+			transactionCode, date_);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public ServiceTransactionEntryLocalService getWrappedServiceTransactionEntryLocalService() {

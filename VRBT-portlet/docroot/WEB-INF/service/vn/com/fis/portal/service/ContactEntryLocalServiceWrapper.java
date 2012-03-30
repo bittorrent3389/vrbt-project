@@ -254,6 +254,38 @@ public class ContactEntryLocalServiceWrapper implements ContactEntryLocalService
 	}
 
 	/**
+	* Returns the contact entry where userId = &#63; and mobileNumber = &#63; or throws a {@link vn.com.fis.portal.NoSuchContactEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @param mobileNumber the mobile number
+	* @return the matching contact entry
+	* @throws vn.com.fis.portal.NoSuchContactEntryException if a matching contact entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.ContactEntry findByUserId_MobileNumber(
+		long userId, java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchContactEntryException {
+		return _contactEntryLocalService.findByUserId_MobileNumber(userId,
+			mobileNumber);
+	}
+
+	/**
+	* Returns the number of contact entries where userId = &#63; and mobileNumber = &#63;.
+	*
+	* @param userId the user ID
+	* @param mobileNumber the mobile number
+	* @return the number of matching contact entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId_MobileNumber(long userId,
+		java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _contactEntryLocalService.countByUserId_MobileNumber(userId,
+			mobileNumber);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public ContactEntryLocalService getWrappedContactEntryLocalService() {

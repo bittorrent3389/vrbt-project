@@ -83,6 +83,24 @@ public class FolderEntryLocalServiceClp implements FolderEntryLocalService {
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByFolderNameMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByFolderName", java.lang.String.class);
+
+		_findByFolderNameMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByFolderName", java.lang.String.class, int.class, int.class);
+
+		_countByFolderNameMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByFolderName", java.lang.String.class);
+
+		_findByFolderIdParentMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByFolderIdParent", long.class);
+
+		_findByFolderIdParentMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByFolderIdParent", long.class, int.class, int.class);
+
+		_countByFolderIdParentMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByFolderIdParent", long.class);
 	}
 
 	public vn.com.fis.portal.model.FolderEntry addFolderEntry(
@@ -546,6 +564,172 @@ public class FolderEntryLocalServiceClp implements FolderEntryLocalService {
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderName(
+		java.lang.String folderName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByFolderNameMethodKey17,
+				ClpSerializer.translateInput(folderName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.FolderEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderName(
+		java.lang.String folderName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByFolderNameMethodKey18,
+				ClpSerializer.translateInput(folderName), start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.FolderEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByFolderName(java.lang.String folderName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByFolderNameMethodKey19,
+				ClpSerializer.translateInput(folderName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent(
+		long folderIdParent)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByFolderIdParentMethodKey20,
+				folderIdParent);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.FolderEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent(
+		long folderIdParent, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByFolderIdParentMethodKey21,
+				folderIdParent, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.FolderEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByFolderIdParent(long folderIdParent)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByFolderIdParentMethodKey22,
+				folderIdParent);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -568,4 +752,10 @@ public class FolderEntryLocalServiceClp implements FolderEntryLocalService {
 	private MethodKey _updateFolderEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByFolderNameMethodKey17;
+	private MethodKey _findByFolderNameMethodKey18;
+	private MethodKey _countByFolderNameMethodKey19;
+	private MethodKey _findByFolderIdParentMethodKey20;
+	private MethodKey _findByFolderIdParentMethodKey21;
+	private MethodKey _countByFolderIdParentMethodKey22;
 }

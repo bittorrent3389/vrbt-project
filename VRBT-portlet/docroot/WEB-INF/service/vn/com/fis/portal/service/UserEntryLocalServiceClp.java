@@ -83,6 +83,33 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByUserNameMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserName", java.lang.String.class);
+
+		_removeByUserNameMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByUserName", java.lang.String.class);
+
+		_countByUserNameMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserName", java.lang.String.class);
+
+		_findByMobileNumberMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByMobileNumber", long.class);
+
+		_countByMobileNumberMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByMobileNumber", long.class);
+
+		_removeByMobileNumberMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByMobileNumber", long.class);
+
+		_findByUserIdMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId", long.class);
+
+		_countByUserIdMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserId", long.class);
+
+		_removeByUserIdMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByUserId", long.class);
 	}
 
 	public vn.com.fis.portal.model.UserEntry addUserEntry(
@@ -545,6 +572,269 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		}
 	}
 
+	public vn.com.fis.portal.model.UserEntry findByUserName(
+		java.lang.String userName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserNameMethodKey17,
+				ClpSerializer.translateInput(userName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public void removeByUserName(java.lang.String userName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByUserNameMethodKey18,
+				ClpSerializer.translateInput(userName));
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public int countByUserName(java.lang.String userName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserNameMethodKey19,
+				ClpSerializer.translateInput(userName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
+		long mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByMobileNumberMethodKey20,
+				mobileNumber);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByMobileNumber(long mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByMobileNumberMethodKey21,
+				mobileNumber);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByMobileNumber(long mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByMobileNumberMethodKey22,
+				mobileNumber);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public vn.com.fis.portal.model.UserEntry findByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserIdMethodKey23,
+				userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserIdMethodKey24,
+				userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByUserIdMethodKey25,
+				userId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -567,4 +857,13 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 	private MethodKey _updateUserEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByUserNameMethodKey17;
+	private MethodKey _removeByUserNameMethodKey18;
+	private MethodKey _countByUserNameMethodKey19;
+	private MethodKey _findByMobileNumberMethodKey20;
+	private MethodKey _countByMobileNumberMethodKey21;
+	private MethodKey _removeByMobileNumberMethodKey22;
+	private MethodKey _findByUserIdMethodKey23;
+	private MethodKey _countByUserIdMethodKey24;
+	private MethodKey _removeByUserIdMethodKey25;
 }
