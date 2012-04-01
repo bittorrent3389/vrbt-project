@@ -22,12 +22,16 @@ import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.util.dao.orm.CustomSQLUtil;
 
+import vn.com.fis.portal.NoSuchServiceEntryException;
 import vn.com.fis.portal.model.ServiceEntry;
 import vn.com.fis.portal.model.impl.ServiceEntryImpl;
 import vn.com.fis.portal.service.base.ServiceEntryLocalServiceBaseImpl;
 import vn.com.fis.portal.service.persistence.ServiceEntryFinderUtil;
+import vn.com.fis.portal.service.persistence.ServiceEntryUtil;
 
 /**
  * The implementation of the service entry local service.
@@ -69,5 +73,17 @@ public class ServiceEntryLocalServiceImpl
 	
 	public String getUploadServicePackageCode() {
 		return ServiceEntryFinderUtil.getUploadServicePackageCode();
+	}
+	
+	public List<ServiceEntry> findBystatus(int status) throws SystemException {
+			return ServiceEntryUtil.findBystatus(status);
+	}
+	
+	public ServiceEntry findByserviceCode(String serviceCode) throws NoSuchServiceEntryException, SystemException {
+		return ServiceEntryUtil.findByserviceCode(serviceCode);
+	}
+	
+	public ServiceEntry findByserviceName(String serviceName) throws NoSuchServiceEntryException, SystemException {
+		return ServiceEntryUtil.findByserviceName(serviceName);
 	}
 }

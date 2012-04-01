@@ -8,8 +8,10 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 
 import vn.com.fis.portal.model.ServiceEntry;
+import vn.com.fis.portal.model.ServicePackageEntry;
 import vn.com.fis.portal.service.ServiceEntryLocalService;
 import vn.com.fis.portal.service.ServiceEntryLocalServiceUtil;
+import vn.com.fis.portal.service.ServicePackageEntryLocalServiceUtil;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -22,7 +24,7 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
  */
 public class ServiceAdmin extends MVCPortlet {
 	
-	/*public void serviceSearch(ActionRequest actionRequest, ActionResponse actionResponse) {
+	public void serviceSearch(ActionRequest actionRequest, ActionResponse actionResponse) {
 		
 		actionResponse.setRenderParameter("searchType", ParamUtil.getString(actionRequest, "searchType"));
 		actionResponse.setRenderParameter("serviceCode", ParamUtil.getString(actionRequest, "serviceCode"));
@@ -83,7 +85,7 @@ public class ServiceAdmin extends MVCPortlet {
 				serviceExt.setStatus(status);
 			
 				ServiceEntryLocalServiceUtil.updateServiceEntry(serviceExt);	
-				UserEntryLocalServiceUtil.updateServiceName_ByServiceId(serviceId, serviceName);
+				//UserEntryLocalServiceUtil.updateServiceName_ByServiceId(serviceId, serviceName);
 			} 
 			catch (Exception e) {
 				// TODO: handle exception
@@ -127,15 +129,27 @@ public boolean checkAddServiceValidator(String serviceCode, String serviceName) 
 		boolean isValidCode = false;
 		boolean isValidName = false;
 			
-		List<ServiceEntry> listServiceCheckCode = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode);
-		List<ServiceEntry> listServiceCheckName = ServiceEntryLocalServiceUtil.findByserviceName(serviceName);
+		ServiceEntry serviceCheckCode = null;
+		ServiceEntry serviceCheckName = null;
+		
+		try {
+			 serviceCheckCode = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode);
+		} catch (Exception e) {
+			serviceCheckCode = null;
+		}
+		
+		try {
+			serviceCheckName = ServiceEntryLocalServiceUtil.findByserviceName(serviceName);
+		} catch (Exception e) {
+			serviceCheckName = null;
+		}
 				
 		//Check Service Code is valid or not
-		if (listServiceCheckCode.size() <= 0)
+		if (serviceCheckCode == null)
 			isValidCode = true;
 			
 		//Check service Name is valid or not
-		if (listServiceCheckName.size() <= 0)
+		if (serviceCheckName == null)
 			isValidName = true;
 			
 		//If service Code & service Name are not the same other record in db => return true
@@ -153,28 +167,36 @@ public boolean checkAddServiceValidator(String serviceCode, String serviceName) 
 			boolean isValidCode = false;
 			boolean isValidName = false;
 			
-			List<ServiceEntry> listServiceCheckCode = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode);
-			List<ServiceEntry> listServiceCheckName = ServiceEntryLocalServiceUtil.findByserviceName(serviceName);
-				
+			ServiceEntry serviceCheckCode = null;
+			ServiceEntry serviceCheckName = null;
+			
+			try {
+				 serviceCheckCode = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode);
+			} catch (Exception e) {
+				serviceCheckCode = null;
+			}
+			
+			try {
+				serviceCheckName = ServiceEntryLocalServiceUtil.findByserviceName(serviceName);
+			} catch (Exception e) {
+				serviceCheckName = null;
+			}
+			
 			//Check Service Code is valid or not
-			if (listServiceCheckCode.size() == 1) {
-				ServiceEntry serviceCheckCode = listServiceCheckCode.get(0);
-				
+			if (serviceCheckCode != null) {
 				if (serviceCheckCode.getServiceId() == serviceId)
 					isValidCode = true;
 				
-			}else if (listServiceCheckCode.size() <= 0) {
+			}else if (serviceCheckCode == null) {
 				isValidCode = true;
 			}
 			
 			//Check service Name is valid or not
-			if (listServiceCheckName.size() == 1) {
-				ServiceEntry serviceCheckName = listServiceCheckName.get(0);
-				
+			if (serviceCheckName != null) {
 				if (serviceCheckName.getServiceId() == serviceId)
 					isValidName = true;
 				
-			}else if (listServiceCheckName.size() <= 0) {
+			}else if (serviceCheckName == null) {
 				isValidName = true;
 			}
 			
@@ -185,6 +207,6 @@ public boolean checkAddServiceValidator(String serviceCode, String serviceName) 
 		}
 		
 		return false;
-	}*/
+	}
 
 }

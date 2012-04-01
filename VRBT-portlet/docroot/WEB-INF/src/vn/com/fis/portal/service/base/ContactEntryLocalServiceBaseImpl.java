@@ -94,6 +94,7 @@ import vn.com.fis.portal.service.persistence.NotificationEntryPersistence;
 import vn.com.fis.portal.service.persistence.RatingEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServiceEntryFinder;
 import vn.com.fis.portal.service.persistence.ServiceEntryPersistence;
+import vn.com.fis.portal.service.persistence.ServicePackageEntryFinder;
 import vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServiceTransactionEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserEntryPersistence;
@@ -1020,6 +1021,25 @@ public abstract class ContactEntryLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the service package entry finder.
+	 *
+	 * @return the service package entry finder
+	 */
+	public ServicePackageEntryFinder getServicePackageEntryFinder() {
+		return servicePackageEntryFinder;
+	}
+
+	/**
+	 * Sets the service package entry finder.
+	 *
+	 * @param servicePackageEntryFinder the service package entry finder
+	 */
+	public void setServicePackageEntryFinder(
+		ServicePackageEntryFinder servicePackageEntryFinder) {
+		this.servicePackageEntryFinder = servicePackageEntryFinder;
+	}
+
+	/**
 	 * Returns the service transaction entry local service.
 	 *
 	 * @return the service transaction entry local service
@@ -1894,6 +1914,8 @@ public abstract class ContactEntryLocalServiceBaseImpl
 	protected ServicePackageEntryService servicePackageEntryService;
 	@BeanReference(type = ServicePackageEntryPersistence.class)
 	protected ServicePackageEntryPersistence servicePackageEntryPersistence;
+	@BeanReference(type = ServicePackageEntryFinder.class)
+	protected ServicePackageEntryFinder servicePackageEntryFinder;
 	@BeanReference(type = ServiceTransactionEntryLocalService.class)
 	protected ServiceTransactionEntryLocalService serviceTransactionEntryLocalService;
 	@BeanReference(type = ServiceTransactionEntryService.class)

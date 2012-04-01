@@ -101,6 +101,7 @@
 		<property name="service" ref="vn.com.fis.portal.service.ServicePackageEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence" class="vn.com.fis.portal.service.persistence.ServicePackageEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.ServicePackageEntryFinder" class="vn.com.fis.portal.service.persistence.ServicePackageEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.ServiceTransactionEntryLocalService" class="vn.com.fis.portal.service.impl.ServiceTransactionEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.ServiceTransactionEntryLocalServiceUtil" class="vn.com.fis.portal.service.ServiceTransactionEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.ServiceTransactionEntryLocalService" />
