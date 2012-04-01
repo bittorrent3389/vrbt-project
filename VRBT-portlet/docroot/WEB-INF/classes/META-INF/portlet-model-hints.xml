@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="vn.com.fis.portal.model.CategoryEnty">
+		<field name="categoryId" type="long" />
+		<field name="categoryName" type="String" />
+		<field name="description" type="String" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.CategoryVideoEntry">
+		<field name="categoryViceoId" type="long" />
+		<field name="categoryId" type="long" />
+		<field name="videoId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.ContactEntry">
+		<field name="contactId" type="long" />
+		<field name="contactName" type="String" />
+		<field name="mobileNumber" type="String" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.ContactGroupContactEntry">
+		<field name="contactGroupContactId" type="long" />
+		<field name="contactId" type="String" />
+		<field name="contactGroupId" type="String" />
+	</model>
+	<model name="vn.com.fis.portal.model.ContactGroupEntry">
+		<field name="contactGroupId" type="long" />
+		<field name="contactGroupName" type="String" />
+		<field name="description" type="String" />
+		<field name="contactGroupType" type="int" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.ContactGroupVideoGroupEntry">
+		<field name="contactGroupVideoGroupEntryId" type="long" />
+		<field name="contactGroupId" type="long" />
+		<field name="videoGroupId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.FolderEntry">
+		<field name="folderId" type="long" />
+		<field name="folderName" type="String" />
+		<field name="description" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="folderIdParent" type="long" />
+		<field name="userId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.NotificationEntry">
+		<field name="notificationId" type="long" />
+		<field name="userIdFrom" type="long" />
+		<field name="userIdTo" type="long" />
+		<field name="subject" type="String" />
+		<field name="message" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.RatingEntry">
+		<field name="ratingId" type="long" />
+		<field name="videoId" type="long" />
+		<field name="userId" type="long" />
+		<field name="code" type="int" />
+		<field name="date_" type="Date" />
+	</model>
+	<model name="vn.com.fis.portal.model.ServiceEntry">
+		<field name="serviceId" type="long" />
+		<field name="serviceCode" type="String" />
+		<field name="serviceName" type="String" />
+		<field name="description" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.ServicePackageEntry">
+		<field name="servicePackageId" type="long" />
+		<field name="servicePackageName" type="String" />
+		<field name="servicePackageCode" type="String" />
+		<field name="description" type="String" />
+		<field name="totalFile" type="int" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="serviceId" type="long" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.ServiceTransactionEntry">
+		<field name="transactionId" type="long" />
+		<field name="transactionCode" type="int" />
+		<field name="date_" type="Date" />
+		<field name="userId" type="long" />
+		<field name="serviceId" type="long" />
+		<field name="serviceStatus" type="int" />
+		<field name="serviceStartDate" type="Date" />
+		<field name="serviceEndDate" type="Date" />
+		<field name="servicePackageId" type="long" />
+		<field name="packageDate" type="Date" />
+	</model>
+	<model name="vn.com.fis.portal.model.UserEntry">
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="mobileNumber" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.UserServiceEntry">
+		<field name="userServiceId" type="long" />
+		<field name="userId" type="long" />
+		<field name="serviceId" type="long" />
+		<field name="serviceStatus" type="int" />
+		<field name="serviceStartDate" type="Date" />
+		<field name="serviceStopDate" type="Date" />
+		<field name="servicePackageId" type="long" />
+		<field name="packageDate" type="Date" />
+	</model>
+	<model name="vn.com.fis.portal.model.VideoEntry">
+		<field name="videoId" type="long" />
+		<field name="videoName" type="String" />
+		<field name="description" type="String" />
+		<field name="videoUrl" type="String" />
+		<field name="viewCount" type="long" />
+		<field name="date_" type="Date" />
+		<field name="smallImageUrl" type="String" />
+		<field name="largeImageUrl" type="String" />
+		<field name="accessModifier" type="int" />
+		<field name="uploaderId" type="long" />
+		<field name="folderId" type="long" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.VideoGroupEntry">
+		<field name="videoGroupId" type="long" />
+		<field name="videoGroupName" type="String" />
+		<field name="description" type="String" />
+	</model>
+	<model name="vn.com.fis.portal.model.VideoUserContactEntry">
+		<field name="videoUserContactId" type="long" />
+		<field name="videoUserId" type="long" />
+		<field name="contactId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="startTime" type="Date" />
+		<field name="endTime" type="Date" />
+		<field name="priority" type="int" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.VideoUserEntry">
+		<field name="videoUserId" type="long" />
+		<field name="videoId" type="long" />
+		<field name="userId" type="long" />
+		<field name="originCode" type="int" />
+		<field name="date_" type="Date" />
+		<field name="startDate" type="Date" />
+		<field name="endDate" type="Date" />
+		<field name="senderId" type="long" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.VideoUserTransactionEntry">
+		<field name="transactionId" type="long" />
+		<field name="transactionCode" type="long" />
+		<field name="date_" type="Date" />
+		<field name="videoId" type="long" />
+		<field name="userId" type="long" />
+		<field name="receiverId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.VideoUserVideoGroupEntry">
+		<field name="videoUserVideoGroupID" type="long" />
+		<field name="videoUserId" type="long" />
+		<field name="videoGroupId" type="long" />
+	</model>
+	<model name="vn.com.fis.portal.model.ViolationEntry">
+		<field name="violationId" type="long" />
+		<field name="violationTitle" type="String" />
+		<field name="description" type="String" />
+		<field name="status" type="int" />
+	</model>
+	<model name="vn.com.fis.portal.model.ViolationVideoEntry">
+		<field name="violationVideoId" type="long" />
+		<field name="violationId" type="long" />
+		<field name="videoId" type="long" />
+		<field name="userId" type="long" />
+		<field name="date_" type="Date" />
+		<field name="description" type="String" />
+	</model>
+</model-hints>

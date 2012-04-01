@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.CategoryEntyModelImpl">
+		<attributes>
+			<id name="categoryId" />
+			<basic name="categoryName" />
+			<basic name="description" />
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.CategoryVideoEntryModelImpl">
+		<attributes>
+			<id name="categoryViceoId" />
+			<basic name="categoryId" />
+			<basic name="videoId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ContactEntryModelImpl">
+		<attributes>
+			<id name="contactId" />
+			<basic name="contactName" />
+			<basic name="mobileNumber" />
+			<basic name="userId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ContactGroupContactEntryModelImpl">
+		<attributes>
+			<id name="contactGroupContactId" />
+			<basic name="contactId" />
+			<basic name="contactGroupId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ContactGroupEntryModelImpl">
+		<attributes>
+			<id name="contactGroupId" />
+			<basic name="contactGroupName" />
+			<basic name="description" />
+			<basic name="contactGroupType" />
+			<basic name="userId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ContactGroupVideoGroupEntryModelImpl">
+		<attributes>
+			<id name="contactGroupVideoGroupEntryId" />
+			<basic name="contactGroupId" />
+			<basic name="videoGroupId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.FolderEntryModelImpl">
+		<attributes>
+			<id name="folderId" />
+			<basic name="folderName" />
+			<basic name="description" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="folderIdParent" />
+			<basic name="userId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.NotificationEntryModelImpl">
+		<attributes>
+			<id name="notificationId" />
+			<basic name="userIdFrom" />
+			<basic name="userIdTo" />
+			<basic name="subject" />
+			<basic name="message" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.RatingEntryModelImpl">
+		<attributes>
+			<id name="ratingId" />
+			<basic name="videoId" />
+			<basic name="userId" />
+			<basic name="code">
+				<column name="CODE_" />
+			</basic>
+			<basic name="date_">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ServiceEntryModelImpl">
+		<attributes>
+			<id name="serviceId" />
+			<basic name="serviceCode" />
+			<basic name="serviceName" />
+			<basic name="description" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ServicePackageEntryModelImpl">
+		<attributes>
+			<id name="servicePackageId" />
+			<basic name="servicePackageName" />
+			<basic name="servicePackageCode" />
+			<basic name="description" />
+			<basic name="totalFile" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="serviceId" />
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ServiceTransactionEntryModelImpl">
+		<attributes>
+			<id name="transactionId" />
+			<basic name="transactionCode" />
+			<basic name="date_">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="userId" />
+			<basic name="serviceId" />
+			<basic name="serviceStatus" />
+			<basic name="serviceStartDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="serviceEndDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="servicePackageId" />
+			<basic name="packageDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.UserEntryModelImpl">
+		<attributes>
+			<id name="userId" />
+			<basic name="userName" />
+			<basic name="mobileNumber" />
+			<basic name="companyId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.UserServiceEntryModelImpl">
+		<attributes>
+			<id name="userServiceId" />
+			<basic name="userId" />
+			<basic name="serviceId" />
+			<basic name="serviceStatus" />
+			<basic name="serviceStartDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="serviceStopDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="servicePackageId" />
+			<basic name="packageDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.VideoEntryModelImpl">
+		<attributes>
+			<id name="videoId" />
+			<basic name="videoName" />
+			<basic name="description" />
+			<basic name="videoUrl" />
+			<basic name="viewCount" />
+			<basic name="date_">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="smallImageUrl" />
+			<basic name="largeImageUrl" />
+			<basic name="accessModifier" />
+			<basic name="uploaderId" />
+			<basic name="folderId" />
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.VideoGroupEntryModelImpl">
+		<attributes>
+			<id name="videoGroupId" />
+			<basic name="videoGroupName" />
+			<basic name="description" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.VideoUserContactEntryModelImpl">
+		<attributes>
+			<id name="videoUserContactId" />
+			<basic name="videoUserId" />
+			<basic name="contactId" />
+			<basic name="companyId" />
+			<basic name="startTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="endTime">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="priority" />
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="videoUserUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.VideoUserEntryModelImpl">
+		<attributes>
+			<id name="videoUserId" />
+			<basic name="videoId" />
+			<basic name="userId" />
+			<basic name="originCode" />
+			<basic name="date_">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="startDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="endDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="senderId" />
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+			<transient name="videoUserUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.VideoUserTransactionEntryModelImpl">
+		<attributes>
+			<id name="transactionId" />
+			<basic name="transactionCode" />
+			<basic name="date_">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="videoId" />
+			<basic name="userId" />
+			<basic name="receiverId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.VideoUserVideoGroupEntryModelImpl">
+		<attributes>
+			<id name="videoUserVideoGroupID" />
+			<basic name="videoUserId" />
+			<basic name="videoGroupId" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="videoUserUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ViolationEntryModelImpl">
+		<attributes>
+			<id name="violationId" />
+			<basic name="violationTitle" />
+			<basic name="description" />
+			<basic name="status" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="vn.com.fis.portal.model.impl.ViolationVideoEntryModelImpl">
+		<attributes>
+			<id name="violationVideoId" />
+			<basic name="violationId" />
+			<basic name="videoId" />
+			<basic name="userId" />
+			<basic name="date_">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="description" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="vn.com.fis.portal.model.impl.CategoryEntyImpl" name="CategoryEnty">
+		<table name="TBL_CATEGORY" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.CategoryVideoEntryImpl" name="CategoryVideoEntry">
+		<table name="TBL_CATEGORY_VIDEO" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ContactEntryImpl" name="ContactEntry">
+		<table name="TBL_CONTACT" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ContactGroupContactEntryImpl" name="ContactGroupContactEntry">
+		<table name="TBL_CONTACT_GROUP_CONTACT" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ContactGroupEntryImpl" name="ContactGroupEntry">
+		<table name="TBL_CONTACT_GROUP" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ContactGroupVideoGroupEntryImpl" name="ContactGroupVideoGroupEntry">
+		<table name="TBL_CONTACT_GROUP_VIDEO_GROUP" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.FolderEntryImpl" name="FolderEntry">
+		<table name="TBL_FOLDER" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.NotificationEntryImpl" name="NotificationEntry">
+		<table name="TBL_NOTIFICATION" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.RatingEntryImpl" name="RatingEntry">
+		<table name="TBL_RATING" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ServiceEntryImpl" name="ServiceEntry">
+		<table name="TBL_SERVICE" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ServicePackageEntryImpl" name="ServicePackageEntry">
+		<table name="TBL_SERVICE_PACKAGE" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ServiceTransactionEntryImpl" name="ServiceTransactionEntry">
+		<table name="TBL_SERVICE_TRANSACTION" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.UserEntryImpl" name="UserEntry">
+		<table name="TBL_USER" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.UserServiceEntryImpl" name="UserServiceEntry">
+		<table name="TBL_USER_SERVICE" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.VideoEntryImpl" name="VideoEntry">
+		<table name="TBL_VIDEO" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.VideoGroupEntryImpl" name="VideoGroupEntry">
+		<table name="TBL_VIDEO_GROUP" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.VideoUserContactEntryImpl" name="VideoUserContactEntry">
+		<table name="TBL_VIDEO_USER_CONTACT" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.VideoUserEntryImpl" name="VideoUserEntry">
+		<table name="TBL_VIDEO_USER" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.VideoUserTransactionEntryImpl" name="VideoUserTransactionEntry">
+		<table name="TBL_VIDEO_USER_TRANSACTION" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.VideoUserVideoGroupEntryImpl" name="VideoUserVideoGroupEntry">
+		<table name="TBL_VIDEO_USER_VIDEO_GROUP" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ViolationEntryImpl" name="ViolationEntry">
+		<table name="TBL_VIOLATION" />
+		<attributes />
+	</entity>
+	<entity class="vn.com.fis.portal.model.impl.ViolationVideoEntryImpl" name="ViolationVideoEntry">
+		<table name="TBL_VIOLATION_VIDEO" />
+		<attributes />
+	</entity>
+</entity-mappings>
