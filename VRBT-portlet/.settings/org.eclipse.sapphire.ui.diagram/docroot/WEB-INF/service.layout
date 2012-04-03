@@ -11,7 +11,7 @@
         <bounds x="36" y="36"/>
     </node>
     <node>
-        <id>Entity#CategoryEnty</id>
+        <id>Entity#CategoryEntry</id>
         <bounds x="50" y="50"/>
     </node>
     <node>

@@ -101,14 +101,8 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 		_getUploadServicePackageCodeMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
 				"getUploadServicePackageCode");
 
-		_findBystatusMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findBystatus", int.class);
-
-		_findByserviceCodeMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+		_findByserviceCodeMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByserviceCode", java.lang.String.class);
-
-		_findByserviceNameMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findByserviceName", java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.ServiceEntry addServiceEntry(
@@ -699,74 +693,14 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 		return (java.lang.String)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public java.util.List<vn.com.fis.portal.model.ServiceEntry> findBystatus(
-		int status) throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		MethodHandler methodHandler = new MethodHandler(_findBystatusMethodKey22,
-				status);
-
-		try {
-			returnObj = _classLoaderProxy.invoke(methodHandler);
-		}
-		catch (Throwable t) {
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<vn.com.fis.portal.model.ServiceEntry>)ClpSerializer.translateOutput(returnObj);
-	}
-
 	public vn.com.fis.portal.model.ServiceEntry findByserviceCode(
 		java.lang.String serviceCode)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchServiceEntryException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_findByserviceCodeMethodKey23,
+		MethodHandler methodHandler = new MethodHandler(_findByserviceCodeMethodKey22,
 				ClpSerializer.translateInput(serviceCode));
-
-		try {
-			returnObj = _classLoaderProxy.invoke(methodHandler);
-		}
-		catch (Throwable t) {
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof vn.com.fis.portal.NoSuchServiceEntryException) {
-				throw (vn.com.fis.portal.NoSuchServiceEntryException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (vn.com.fis.portal.model.ServiceEntry)ClpSerializer.translateOutput(returnObj);
-	}
-
-	public vn.com.fis.portal.model.ServiceEntry findByserviceName(
-		java.lang.String serviceName)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchServiceEntryException {
-		Object returnObj = null;
-
-		MethodHandler methodHandler = new MethodHandler(_findByserviceNameMethodKey24,
-				ClpSerializer.translateInput(serviceName));
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -819,7 +753,5 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 	private MethodKey _isStartServiceMethodKey19;
 	private MethodKey _getStartServiceCodeMethodKey20;
 	private MethodKey _getUploadServicePackageCodeMethodKey21;
-	private MethodKey _findBystatusMethodKey22;
-	private MethodKey _findByserviceCodeMethodKey23;
-	private MethodKey _findByserviceNameMethodKey24;
+	private MethodKey _findByserviceCodeMethodKey22;
 }

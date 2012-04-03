@@ -40,7 +40,7 @@
 		</finder>
 	</entity>
 	
-	<entity name="CategoryEnty"  table="TBL_CATEGORY" local-service="true" remote-service="true">
+	<entity name="CategoryEntry"  table="TBL_CATEGORY" local-service="true" remote-service="true">
 
 		<!-- PK fields -->
 		<column name="categoryId" type="long" primary="true" />

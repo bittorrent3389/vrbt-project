@@ -17,8 +17,8 @@ package vn.com.fis.portal.service.messaging;
 import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
 
-import vn.com.fis.portal.service.CategoryEntyLocalServiceUtil;
-import vn.com.fis.portal.service.CategoryEntyServiceUtil;
+import vn.com.fis.portal.service.CategoryEntryLocalServiceUtil;
+import vn.com.fis.portal.service.CategoryEntryServiceUtil;
 import vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil;
 import vn.com.fis.portal.service.CategoryVideoEntryServiceUtil;
 import vn.com.fis.portal.service.ClpSerializer;
@@ -78,9 +78,9 @@ public class ClpMessageListener extends BaseMessageListener {
 
 		if (command.equals("undeploy") &&
 				servletContextName.equals(getServletContextName())) {
-			CategoryEntyLocalServiceUtil.clearService();
+			CategoryEntryLocalServiceUtil.clearService();
 
-			CategoryEntyServiceUtil.clearService();
+			CategoryEntryServiceUtil.clearService();
 			CategoryVideoEntryLocalServiceUtil.clearService();
 
 			CategoryVideoEntryServiceUtil.clearService();

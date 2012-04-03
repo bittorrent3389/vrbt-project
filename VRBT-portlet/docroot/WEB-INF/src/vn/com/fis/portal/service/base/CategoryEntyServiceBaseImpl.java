@@ -90,6 +90,7 @@ import vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServiceTransactionEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserServiceEntryPersistence;
+import vn.com.fis.portal.service.persistence.VideoEntryFinder;
 import vn.com.fis.portal.service.persistence.VideoEntryPersistence;
 import vn.com.fis.portal.service.persistence.VideoGroupEntryPersistence;
 import vn.com.fis.portal.service.persistence.VideoUserContactEntryPersistence;
@@ -1007,6 +1008,24 @@ public abstract class CategoryEntyServiceBaseImpl extends PrincipalBean
 	}
 
 	/**
+	 * Returns the video entry finder.
+	 *
+	 * @return the video entry finder
+	 */
+	public VideoEntryFinder getVideoEntryFinder() {
+		return videoEntryFinder;
+	}
+
+	/**
+	 * Sets the video entry finder.
+	 *
+	 * @param videoEntryFinder the video entry finder
+	 */
+	public void setVideoEntryFinder(VideoEntryFinder videoEntryFinder) {
+		this.videoEntryFinder = videoEntryFinder;
+	}
+
+	/**
 	 * Returns the video group entry local service.
 	 *
 	 * @return the video group entry local service
@@ -1677,6 +1696,8 @@ public abstract class CategoryEntyServiceBaseImpl extends PrincipalBean
 	protected VideoEntryService videoEntryService;
 	@BeanReference(type = VideoEntryPersistence.class)
 	protected VideoEntryPersistence videoEntryPersistence;
+	@BeanReference(type = VideoEntryFinder.class)
+	protected VideoEntryFinder videoEntryFinder;
 	@BeanReference(type = VideoGroupEntryLocalService.class)
 	protected VideoGroupEntryLocalService videoGroupEntryLocalService;
 	@BeanReference(type = VideoGroupEntryService.class)

@@ -39,8 +39,8 @@ import com.liferay.portal.service.persistence.ResourcePersistence;
 import com.liferay.portal.service.persistence.UserPersistence;
 
 import vn.com.fis.portal.model.RatingEntry;
-import vn.com.fis.portal.service.CategoryEntyLocalService;
-import vn.com.fis.portal.service.CategoryEntyService;
+import vn.com.fis.portal.service.CategoryEntryLocalService;
+import vn.com.fis.portal.service.CategoryEntryService;
 import vn.com.fis.portal.service.CategoryVideoEntryLocalService;
 import vn.com.fis.portal.service.CategoryVideoEntryService;
 import vn.com.fis.portal.service.ContactEntryLocalService;
@@ -83,7 +83,8 @@ import vn.com.fis.portal.service.ViolationEntryLocalService;
 import vn.com.fis.portal.service.ViolationEntryService;
 import vn.com.fis.portal.service.ViolationVideoEntryLocalService;
 import vn.com.fis.portal.service.ViolationVideoEntryService;
-import vn.com.fis.portal.service.persistence.CategoryEntyPersistence;
+import vn.com.fis.portal.service.persistence.CategoryEntryFinder;
+import vn.com.fis.portal.service.persistence.CategoryEntryPersistence;
 import vn.com.fis.portal.service.persistence.CategoryVideoEntryPersistence;
 import vn.com.fis.portal.service.persistence.ContactEntryPersistence;
 import vn.com.fis.portal.service.persistence.ContactGroupContactEntryPersistence;
@@ -99,6 +100,7 @@ import vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServiceTransactionEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserServiceEntryPersistence;
+import vn.com.fis.portal.service.persistence.VideoEntryFinder;
 import vn.com.fis.portal.service.persistence.VideoEntryPersistence;
 import vn.com.fis.portal.service.persistence.VideoGroupEntryPersistence;
 import vn.com.fis.portal.service.persistence.VideoUserContactEntryPersistence;
@@ -381,59 +383,78 @@ public abstract class RatingEntryLocalServiceBaseImpl
 	}
 
 	/**
-	 * Returns the category enty local service.
+	 * Returns the category entry local service.
 	 *
-	 * @return the category enty local service
+	 * @return the category entry local service
 	 */
-	public CategoryEntyLocalService getCategoryEntyLocalService() {
-		return categoryEntyLocalService;
+	public CategoryEntryLocalService getCategoryEntryLocalService() {
+		return categoryEntryLocalService;
 	}
 
 	/**
-	 * Sets the category enty local service.
+	 * Sets the category entry local service.
 	 *
-	 * @param categoryEntyLocalService the category enty local service
+	 * @param categoryEntryLocalService the category entry local service
 	 */
-	public void setCategoryEntyLocalService(
-		CategoryEntyLocalService categoryEntyLocalService) {
-		this.categoryEntyLocalService = categoryEntyLocalService;
+	public void setCategoryEntryLocalService(
+		CategoryEntryLocalService categoryEntryLocalService) {
+		this.categoryEntryLocalService = categoryEntryLocalService;
 	}
 
 	/**
-	 * Returns the category enty remote service.
+	 * Returns the category entry remote service.
 	 *
-	 * @return the category enty remote service
+	 * @return the category entry remote service
 	 */
-	public CategoryEntyService getCategoryEntyService() {
-		return categoryEntyService;
+	public CategoryEntryService getCategoryEntryService() {
+		return categoryEntryService;
 	}
 
 	/**
-	 * Sets the category enty remote service.
+	 * Sets the category entry remote service.
 	 *
-	 * @param categoryEntyService the category enty remote service
+	 * @param categoryEntryService the category entry remote service
 	 */
-	public void setCategoryEntyService(CategoryEntyService categoryEntyService) {
-		this.categoryEntyService = categoryEntyService;
+	public void setCategoryEntryService(
+		CategoryEntryService categoryEntryService) {
+		this.categoryEntryService = categoryEntryService;
 	}
 
 	/**
-	 * Returns the category enty persistence.
+	 * Returns the category entry persistence.
 	 *
-	 * @return the category enty persistence
+	 * @return the category entry persistence
 	 */
-	public CategoryEntyPersistence getCategoryEntyPersistence() {
-		return categoryEntyPersistence;
+	public CategoryEntryPersistence getCategoryEntryPersistence() {
+		return categoryEntryPersistence;
 	}
 
 	/**
-	 * Sets the category enty persistence.
+	 * Sets the category entry persistence.
 	 *
-	 * @param categoryEntyPersistence the category enty persistence
+	 * @param categoryEntryPersistence the category entry persistence
 	 */
-	public void setCategoryEntyPersistence(
-		CategoryEntyPersistence categoryEntyPersistence) {
-		this.categoryEntyPersistence = categoryEntyPersistence;
+	public void setCategoryEntryPersistence(
+		CategoryEntryPersistence categoryEntryPersistence) {
+		this.categoryEntryPersistence = categoryEntryPersistence;
+	}
+
+	/**
+	 * Returns the category entry finder.
+	 *
+	 * @return the category entry finder
+	 */
+	public CategoryEntryFinder getCategoryEntryFinder() {
+		return categoryEntryFinder;
+	}
+
+	/**
+	 * Sets the category entry finder.
+	 *
+	 * @param categoryEntryFinder the category entry finder
+	 */
+	public void setCategoryEntryFinder(CategoryEntryFinder categoryEntryFinder) {
+		this.categoryEntryFinder = categoryEntryFinder;
 	}
 
 	/**
@@ -1266,6 +1287,24 @@ public abstract class RatingEntryLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the video entry finder.
+	 *
+	 * @return the video entry finder
+	 */
+	public VideoEntryFinder getVideoEntryFinder() {
+		return videoEntryFinder;
+	}
+
+	/**
+	 * Sets the video entry finder.
+	 *
+	 * @param videoEntryFinder the video entry finder
+	 */
+	public void setVideoEntryFinder(VideoEntryFinder videoEntryFinder) {
+		this.videoEntryFinder = videoEntryFinder;
+	}
+
+	/**
 	 * Returns the video group entry local service.
 	 *
 	 * @return the video group entry local service
@@ -1846,12 +1885,14 @@ public abstract class RatingEntryLocalServiceBaseImpl
 		}
 	}
 
-	@BeanReference(type = CategoryEntyLocalService.class)
-	protected CategoryEntyLocalService categoryEntyLocalService;
-	@BeanReference(type = CategoryEntyService.class)
-	protected CategoryEntyService categoryEntyService;
-	@BeanReference(type = CategoryEntyPersistence.class)
-	protected CategoryEntyPersistence categoryEntyPersistence;
+	@BeanReference(type = CategoryEntryLocalService.class)
+	protected CategoryEntryLocalService categoryEntryLocalService;
+	@BeanReference(type = CategoryEntryService.class)
+	protected CategoryEntryService categoryEntryService;
+	@BeanReference(type = CategoryEntryPersistence.class)
+	protected CategoryEntryPersistence categoryEntryPersistence;
+	@BeanReference(type = CategoryEntryFinder.class)
+	protected CategoryEntryFinder categoryEntryFinder;
 	@BeanReference(type = CategoryVideoEntryLocalService.class)
 	protected CategoryVideoEntryLocalService categoryVideoEntryLocalService;
 	@BeanReference(type = CategoryVideoEntryService.class)
@@ -1940,6 +1981,8 @@ public abstract class RatingEntryLocalServiceBaseImpl
 	protected VideoEntryService videoEntryService;
 	@BeanReference(type = VideoEntryPersistence.class)
 	protected VideoEntryPersistence videoEntryPersistence;
+	@BeanReference(type = VideoEntryFinder.class)
+	protected VideoEntryFinder videoEntryFinder;
 	@BeanReference(type = VideoGroupEntryLocalService.class)
 	protected VideoGroupEntryLocalService videoGroupEntryLocalService;
 	@BeanReference(type = VideoGroupEntryService.class)

@@ -1458,8 +1458,8 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 		FinderCacheUtil.removeCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
 	}
 
-	@BeanReference(type = CategoryEntyPersistence.class)
-	protected CategoryEntyPersistence categoryEntyPersistence;
+	@BeanReference(type = CategoryEntryPersistence.class)
+	protected CategoryEntryPersistence categoryEntryPersistence;
 	@BeanReference(type = CategoryVideoEntryPersistence.class)
 	protected CategoryVideoEntryPersistence categoryVideoEntryPersistence;
 	@BeanReference(type = ContactEntryPersistence.class)

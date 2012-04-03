@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-	<bean id="vn.com.fis.portal.service.CategoryEntyLocalService" class="vn.com.fis.portal.service.impl.CategoryEntyLocalServiceImpl" />
-	<bean id="vn.com.fis.portal.service.CategoryEntyLocalServiceUtil" class="vn.com.fis.portal.service.CategoryEntyLocalServiceUtil">
-		<property name="service" ref="vn.com.fis.portal.service.CategoryEntyLocalService" />
+	<bean id="vn.com.fis.portal.service.CategoryEntryLocalService" class="vn.com.fis.portal.service.impl.CategoryEntryLocalServiceImpl" />
+	<bean id="vn.com.fis.portal.service.CategoryEntryLocalServiceUtil" class="vn.com.fis.portal.service.CategoryEntryLocalServiceUtil">
+		<property name="service" ref="vn.com.fis.portal.service.CategoryEntryLocalService" />
 	</bean>
-	<bean id="vn.com.fis.portal.service.CategoryEntyService" class="vn.com.fis.portal.service.impl.CategoryEntyServiceImpl" />
-	<bean id="vn.com.fis.portal.service.CategoryEntyServiceUtil" class="vn.com.fis.portal.service.CategoryEntyServiceUtil">
-		<property name="service" ref="vn.com.fis.portal.service.CategoryEntyService" />
+	<bean id="vn.com.fis.portal.service.CategoryEntryService" class="vn.com.fis.portal.service.impl.CategoryEntryServiceImpl" />
+	<bean id="vn.com.fis.portal.service.CategoryEntryServiceUtil" class="vn.com.fis.portal.service.CategoryEntryServiceUtil">
+		<property name="service" ref="vn.com.fis.portal.service.CategoryEntryService" />
 	</bean>
-	<bean id="vn.com.fis.portal.service.persistence.CategoryEntyPersistence" class="vn.com.fis.portal.service.persistence.CategoryEntyPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.CategoryEntryPersistence" class="vn.com.fis.portal.service.persistence.CategoryEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.CategoryEntryFinder" class="vn.com.fis.portal.service.persistence.CategoryEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.CategoryVideoEntryLocalService" class="vn.com.fis.portal.service.impl.CategoryVideoEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil" class="vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.CategoryVideoEntryLocalService" />
@@ -138,6 +139,7 @@
 		<property name="service" ref="vn.com.fis.portal.service.VideoEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.VideoEntryPersistence" class="vn.com.fis.portal.service.persistence.VideoEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.VideoEntryFinder" class="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.VideoGroupEntryLocalService" class="vn.com.fis.portal.service.impl.VideoGroupEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.VideoGroupEntryLocalServiceUtil" class="vn.com.fis.portal.service.VideoGroupEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.VideoGroupEntryLocalService" />

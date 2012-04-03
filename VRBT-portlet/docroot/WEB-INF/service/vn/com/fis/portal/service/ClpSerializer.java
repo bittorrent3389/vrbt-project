@@ -20,7 +20,7 @@ import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
-import vn.com.fis.portal.model.CategoryEntyClp;
+import vn.com.fis.portal.model.CategoryEntryClp;
 import vn.com.fis.portal.model.CategoryVideoEntryClp;
 import vn.com.fis.portal.model.ContactEntryClp;
 import vn.com.fis.portal.model.ContactGroupContactEntryClp;
@@ -120,8 +120,8 @@ public class ClpSerializer {
 
 		String oldModelClassName = oldModelClass.getName();
 
-		if (oldModelClassName.equals(CategoryEntyClp.class.getName())) {
-			return translateInputCategoryEnty(oldModel);
+		if (oldModelClassName.equals(CategoryEntryClp.class.getName())) {
+			return translateInputCategoryEntry(oldModel);
 		}
 
 		if (oldModelClassName.equals(CategoryVideoEntryClp.class.getName())) {
@@ -227,8 +227,8 @@ public class ClpSerializer {
 		return newList;
 	}
 
-	public static Object translateInputCategoryEnty(BaseModel<?> oldModel) {
-		CategoryEntyClp oldCplModel = (CategoryEntyClp)oldModel;
+	public static Object translateInputCategoryEntry(BaseModel<?> oldModel) {
+		CategoryEntryClp oldCplModel = (CategoryEntryClp)oldModel;
 
 		Thread currentThread = Thread.currentThread();
 
@@ -238,7 +238,7 @@ public class ClpSerializer {
 			currentThread.setContextClassLoader(_classLoader);
 
 			try {
-				Class<?> newModelClass = Class.forName("vn.com.fis.portal.model.impl.CategoryEntyImpl",
+				Class<?> newModelClass = Class.forName("vn.com.fis.portal.model.impl.CategoryEntryImpl",
 						true, _classLoader);
 
 				Object newModel = newModelClass.newInstance();
@@ -1822,8 +1822,8 @@ public class ClpSerializer {
 		String oldModelClassName = oldModelClass.getName();
 
 		if (oldModelClassName.equals(
-					"vn.com.fis.portal.model.impl.CategoryEntyImpl")) {
-			return translateOutputCategoryEnty(oldModel);
+					"vn.com.fis.portal.model.impl.CategoryEntryImpl")) {
+			return translateOutputCategoryEntry(oldModel);
 		}
 
 		if (oldModelClassName.equals(
@@ -1958,7 +1958,7 @@ public class ClpSerializer {
 		}
 	}
 
-	public static Object translateOutputCategoryEnty(BaseModel<?> oldModel) {
+	public static Object translateOutputCategoryEntry(BaseModel<?> oldModel) {
 		Thread currentThread = Thread.currentThread();
 
 		ClassLoader contextClassLoader = currentThread.getContextClassLoader();
@@ -1967,7 +1967,7 @@ public class ClpSerializer {
 			currentThread.setContextClassLoader(_classLoader);
 
 			try {
-				CategoryEntyClp newModel = new CategoryEntyClp();
+				CategoryEntryClp newModel = new CategoryEntryClp();
 
 				Class<?> oldModelClass = oldModel.getClass();
 

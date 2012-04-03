@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="vn.com.fis.portal.model.CategoryEnty">
+	<model name="vn.com.fis.portal.model.CategoryEntry">
 		<field name="categoryId" type="long" />
 		<field name="categoryName" type="String" />
 		<field name="description" type="String" />

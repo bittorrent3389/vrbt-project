@@ -1,1 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByCategory">
+		<![CDATA[
+			SELECT TBL_VIDEO.*
+			FROM TBL_CATE_VIDEO
+				INNER JOIN TBL_VIDEO
+				ON TBL_VIDEO.VIDEOID = TBL_CATE_VIDEO.VIDEOID
+						INNER JOIN TBL_CATEGORY
+						ON TBL_CATEGORY.CATEGORYID = TBL_CATE_VIDEO.CATEGORYID
+				 WHERE ( TBL_CATEGORY.CATEGORYID = ?)	
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByCategoryCount">
+		<![CDATA[
+			SELECT COUNT(*) AS COUNT_VALUE
+			FROM TBL_CATE_VIDEO
+				INNER JOIN TBL_VIDEO
+				ON TBL_VIDEO.VIDEOID = TBL_CATE_VIDEO.VIDEOID
+						INNER JOIN TBL_CATEGORY
+						ON TBL_CATEGORY.CATEGORYID = TBL_CATE_VIDEO.CATEGORYID
+				WHERE ( TBL_CATEGORY.CATEGORYID = ? )	
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByUser">
+		<![CDATA[
+			SELECT TBL_VIDEO.*
+				FROM TBL_VIDEO_USER
+					INNER JOIN TBL_VIDEO
+					ON TBL_VIDEO.VIDEOID = TBL_VIDEO_USER.VIDEOID
+				WHERE TBL_VIDEO_USER.USERID = ?
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByUserCount">
+		<![CDATA[
+				SELECT COUNT(*) AS COUNT_VALUE
+				FROM TBL_VIDEO_USER
+					INNER JOIN TBL_VIDEO
+					ON TBL_VIDEO.VIDEOID = TBL_VIDEO_USER.VIDEOID
+				WHERE TBL_VIDEO_USER.USERID = ?
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByCategoryId_UserId">
+		<![CDATA[
+			SELECT TBL_VIDEO.*
+			FROM TBL_CATE_VIDEO
+				INNER JOIN TBL_VIDEO
+				ON TBL_VIDEO.VIDEOID = TBL_CATE_VIDEO.VIDEOID
+						INNER JOIN TBL_CATEGORY
+						ON TBL_CATEGORY.CATEGORYID = TBL_CATE_VIDEO.CATEGORYID
+			WHERE ( TBL_CATEGORY.CATEGORYID = ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]	
+					(TBL_VIDEO.USERID = ? [$AND_OR_NULL_CHECK$])	
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByCategoryId_UserIdCount">
+		<![CDATA[
+			SELECT COUNT(*) AS COUNT_VALUE
+			FROM TBL_CATE_VIDEO
+				INNER JOIN TBL_VIDEO
+				ON TBL_VIDEO.VIDEOID = TBL_CATE_VIDEO.VIDEOID
+						INNER JOIN TBL_CATEGORY
+						ON TBL_CATEGORY.CATEGORYID = TBL_CATE_VIDEO.CATEGORYID
+			WHERE ( TBL_CATEGORY.CATEGORYID = ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]	
+					(TBL_VIDEO.USERID = ? [$AND_OR_NULL_CHECK$])	
+		]]>
+	</sql>
+	<!--  other user upload  -->
+	
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByCategoryId_OtherUserId">
+		<![CDATA[
+			SELECT DISTINCT TBL_VIDEO.*
+			FROM TBL_CATE_VIDEO
+				INNER JOIN TBL_VIDEO
+				ON TBL_VIDEO.VIDEOID = TBL_CATE_VIDEO.VIDEOID
+						INNER JOIN TBL_CATEGORY
+						ON TBL_CATEGORY.CATEGORYID = TBL_CATE_VIDEO.CATEGORYID
+			WHERE 
+				 TBL_VIDEO.USERID != ? 	
+				
+				 	
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByCategoryId_OtherUserIdCount">
+		<![CDATA[
+			SELECT    COUNT(*) AS COUNT_VALUE FROM ( 
+				SELECT DISTINCT TBL_VIDEO.VIDEOID
+					FROM TBL_CATE_VIDEO
+						INNER JOIN TBL_VIDEO
+						ON TBL_VIDEO.VIDEOID = TBL_CATE_VIDEO.VIDEOID
+								INNER JOIN TBL_CATEGORY
+								ON TBL_CATEGORY.CATEGORYID = TBL_CATE_VIDEO.CATEGORYID
+						WHERE TBL_VIDEO.USERID != ?
+						
+					
+		]]>
+	</sql>
+	<!--  end other user upload  -->
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByVideoName_Folder_User">
+		<![CDATA[
+			SELECT
+				  TBL_VIDEO.*
+				FROM
+				  TBL_VIDEO
+				INNER JOIN TBL_FOLDER
+				ON
+				  TBL_FOLDER.FOLDERID = TBL_VIDEO.FOLDERID
+				  WHERE
+				  (	 TBL_VIDEO.USERID = ? )
+				  AND ( TBL_VIDEO.FOLDERID = ? )
+				  AND ( TBL_VIDEO.VIDEONAME LIKE ? [$AND_OR_NULL_CHECK$]) 
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByVideoName_Folder_User_Count">
+		<![CDATA[
+			SELECT
+				  COUNT(*) AS COUNT_VALUE
+				FROM
+				  TBL_VIDEO
+				INNER JOIN TBL_FOLDER
+				ON
+				  TBL_FOLDER.FOLDERID = TBL_VIDEO.FOLDERID
+				  WHERE
+				  (	 TBL_VIDEO.USERID = ? )
+				  AND ( TBL_VIDEO.FOLDERID = ? )
+				  AND ( TBL_VIDEO.VIDEONAME LIKE ? [$AND_OR_NULL_CHECK$]) 
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByVideoName_OriginCode_ServiceActive">
+		<![CDATA[
+			SELECT TBL_VIDEO.*
+			FROM TBL_VIDEO
+				INNER JOIN TBL_VIDEO_USER
+				ON TBL_VIDEO_USER.VIDEOID = TBL_VIDEO.VIDEOID
+			WHERE 
+				( TBL_VIDEO.VIDEONAME  LIKE ? [$AND_OR_NULL_CHECK$] ) 
+				[$AND_OR_CONNECTOR$] ( TBL_VIDEO_USER.USERID =  ? )
+				
+				
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl.searchVideoByVideoName_OriginCode_ServiceActive_Count">
+		<![CDATA[
+			SELECT COUNT(*) AS COUNT_VALUE
+			FROM TBL_VIDEO
+				INNER JOIN TBL_VIDEO_USER
+				ON TBL_VIDEO_USER.VIDEOID = TBL_VIDEO.VIDEOID
+			WHERE 
+				( TBL_VIDEO.VIDEONAME  LIKE ? [$AND_OR_NULL_CHECK$] ) 
+				[$AND_OR_CONNECTOR$] ( TBL_VIDEO_USER.USERID =  ? )
+		]]>
+	</sql>
+</custom-sql>

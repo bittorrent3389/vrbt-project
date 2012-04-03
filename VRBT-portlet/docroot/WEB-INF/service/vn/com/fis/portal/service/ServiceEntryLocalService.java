@@ -254,16 +254,8 @@ public interface ServiceEntryLocalService extends PersistedModelLocalService {
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.lang.String getUploadServicePackageCode();
 
-	public java.util.List<vn.com.fis.portal.model.ServiceEntry> findBystatus(
-		int status) throws com.liferay.portal.kernel.exception.SystemException;
-
 	public vn.com.fis.portal.model.ServiceEntry findByserviceCode(
 		java.lang.String serviceCode)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchServiceEntryException;
-
-	public vn.com.fis.portal.model.ServiceEntry findByserviceName(
-		java.lang.String serviceName)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchServiceEntryException;
 }
