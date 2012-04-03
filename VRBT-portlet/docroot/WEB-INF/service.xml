@@ -58,6 +58,10 @@
 		<finder name="CategoryName" return-type="Collection">
 			<finder-column name="categoryName" />
 		</finder>
+		
+		<finder name="status" return-type="Collection">
+			<finder-column name="status" />
+		</finder>
 	</entity>
 	<entity name="CategoryVideoEntry"  table="TBL_CATEGORY_VIDEO" local-service="true" remote-service="true">
 		<!-- PK fields -->
@@ -202,14 +206,16 @@
 		<finder name="UserId" return-type="Collection">
 			<finder-column name="userId" />
 		</finder>
-		
-		<finder name="RatingCode" return-type="Collection">
+		<finder name="VideoId_userId" return-type="Collection">
+			<finder-column name="videoId" />
+			<finder-column name="userId" />
+		</finder>
+		<finder name="VideoId_code" return-type="Collection">
+			<finder-column name="videoId" />
 			<finder-column name="code" />
 		</finder>
-		
-		<finder name="Code_Video" return-type="Collection">
+		<finder name="RatingCode" return-type="Collection">
 			<finder-column name="code" />
-			<finder-column name="videoId" />
 		</finder>
 		<finder name="User_Video_Code" return-type="RatingEntry">
 			<finder-column name="userId" />
@@ -421,7 +427,14 @@
 		<finder name="serviceCode" return-type="ServiceEntry">
 			<finder-column name="serviceCode" />
 		</finder>
-		 
+		<finder name="serviceName" return-type="ServiceEntry">
+			<finder-column name="serviceName" />
+		</finder>
+		
+		<finder name="status" return-type="Collection">
+			<finder-column name="status" />
+		</finder>
+
 	</entity>
 	<entity name="UserServiceEntry"  table="TBL_USER_SERVICE" local-service="true" remote-service="true">
 		<!-- PK fields -->
@@ -454,6 +467,13 @@
 		<finder name="UserId_ServiceId_PackageId" return-type="UserServiceEntry">
 			<finder-column name="userId" />
 			<finder-column name="serviceId" />
+			<finder-column name="servicePackageId" />
+		</finder>
+		<finder name="serviceId_status" return-type="Collection">
+			<finder-column name="serviceId" />
+			<finder-column name="serviceStatus" />
+		</finder>
+		<finder name="servicePackageId" return-type="Collection">
 			<finder-column name="servicePackageId" />
 		</finder>
 	</entity>
@@ -587,6 +607,26 @@
 		</order>
 
 		<!-- Finder methods -->	 
+		<finder name="status" return-type="Collection">
+			<finder-column name="status" />
+		</finder>
+			 
+		<finder name="serviceId" return-type="Collection">
+			<finder-column name="serviceId" />
+		</finder>	 
+		
+		<finder name="servicePackageName" return-type="ServicePackageEntry">
+			<finder-column name="servicePackageName" />
+		</finder>	 
+		
+		<finder name="servicePackageCode" return-type="ServicePackageEntry">
+			<finder-column name="servicePackageCode" />
+		</finder>	 
+		
+		<finder name="serviceId_status" return-type="Collection">
+			<finder-column name="serviceId" />
+			<finder-column name="status" />
+		</finder>
 	</entity>
 	<entity name="NotificationEntry"  table="TBL_NOTIFICATION" local-service="true" remote-service="true">
 		<!-- PK fields -->
