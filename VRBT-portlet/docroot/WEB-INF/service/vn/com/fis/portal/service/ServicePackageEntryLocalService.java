@@ -236,4 +236,37 @@ public interface ServicePackageEntryLocalService
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> search(
+		java.lang.String ser_pacCode, java.lang.String ser_pacName,
+		long serviceId, int status, int start, int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int searchCount(java.lang.String ser_pacCode,
+		java.lang.String ser_pacName, long serviceId, int status,
+		int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findBystatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId(
+		long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId_Status(
+		long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public vn.com.fis.portal.model.ServicePackageEntry findByservicePackageCode(
+		java.lang.String servicePackageCode)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException;
+
+	public vn.com.fis.portal.model.ServicePackageEntry findByservicePackageName(
+		java.lang.String servicePackageName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException;
 }

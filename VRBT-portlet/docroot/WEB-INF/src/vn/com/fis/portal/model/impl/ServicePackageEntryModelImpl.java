@@ -85,13 +85,7 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 	public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.finder.cache.enabled.vn.com.fis.portal.model.ServicePackageEntry"),
 			true);
-	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
-				"value.object.column.bitmask.enabled.vn.com.fis.portal.model.ServicePackageEntry"),
-			true);
-	public static long SERVICEID_COLUMN_BITMASK = 1L;
-	public static long SERVICEPACKAGECODE_COLUMN_BITMASK = 2L;
-	public static long SERVICEPACKAGENAME_COLUMN_BITMASK = 4L;
-	public static long STATUS_COLUMN_BITMASK = 8L;
+	public static final boolean COLUMN_BITMASK_ENABLED = false;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -182,17 +176,7 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 	}
 
 	public void setServicePackageName(String servicePackageName) {
-		_columnBitmask = -1L;
-
-		if (_originalServicePackageName == null) {
-			_originalServicePackageName = _servicePackageName;
-		}
-
 		_servicePackageName = servicePackageName;
-	}
-
-	public String getOriginalServicePackageName() {
-		return GetterUtil.getString(_originalServicePackageName);
 	}
 
 	@JSON
@@ -206,17 +190,7 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 	}
 
 	public void setServicePackageCode(String servicePackageCode) {
-		_columnBitmask |= SERVICEPACKAGECODE_COLUMN_BITMASK;
-
-		if (_originalServicePackageCode == null) {
-			_originalServicePackageCode = _servicePackageCode;
-		}
-
 		_servicePackageCode = servicePackageCode;
-	}
-
-	public String getOriginalServicePackageCode() {
-		return GetterUtil.getString(_originalServicePackageCode);
 	}
 
 	@JSON
@@ -266,19 +240,7 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 	}
 
 	public void setServiceId(long serviceId) {
-		_columnBitmask |= SERVICEID_COLUMN_BITMASK;
-
-		if (!_setOriginalServiceId) {
-			_setOriginalServiceId = true;
-
-			_originalServiceId = _serviceId;
-		}
-
 		_serviceId = serviceId;
-	}
-
-	public long getOriginalServiceId() {
-		return _originalServiceId;
 	}
 
 	@JSON
@@ -287,23 +249,7 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 	}
 
 	public void setStatus(int status) {
-		_columnBitmask |= STATUS_COLUMN_BITMASK;
-
-		if (!_setOriginalStatus) {
-			_setOriginalStatus = true;
-
-			_originalStatus = _status;
-		}
-
 		_status = status;
-	}
-
-	public int getOriginalStatus() {
-		return _originalStatus;
-	}
-
-	public long getColumnBitmask() {
-		return _columnBitmask;
 	}
 
 	@Override
@@ -396,21 +342,6 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 
 	@Override
 	public void resetOriginalValues() {
-		ServicePackageEntryModelImpl servicePackageEntryModelImpl = this;
-
-		servicePackageEntryModelImpl._originalServicePackageName = servicePackageEntryModelImpl._servicePackageName;
-
-		servicePackageEntryModelImpl._originalServicePackageCode = servicePackageEntryModelImpl._servicePackageCode;
-
-		servicePackageEntryModelImpl._originalServiceId = servicePackageEntryModelImpl._serviceId;
-
-		servicePackageEntryModelImpl._setOriginalServiceId = false;
-
-		servicePackageEntryModelImpl._originalStatus = servicePackageEntryModelImpl._status;
-
-		servicePackageEntryModelImpl._setOriginalStatus = false;
-
-		servicePackageEntryModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -552,20 +483,13 @@ public class ServicePackageEntryModelImpl extends BaseModelImpl<ServicePackageEn
 		};
 	private long _servicePackageId;
 	private String _servicePackageName;
-	private String _originalServicePackageName;
 	private String _servicePackageCode;
-	private String _originalServicePackageCode;
 	private String _description;
 	private int _totalFile;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private long _serviceId;
-	private long _originalServiceId;
-	private boolean _setOriginalServiceId;
 	private int _status;
-	private int _originalStatus;
-	private boolean _setOriginalStatus;
 	private transient ExpandoBridge _expandoBridge;
-	private long _columnBitmask;
 	private ServicePackageEntry _escapedModelProxy;
 }

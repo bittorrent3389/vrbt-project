@@ -280,6 +280,25 @@ public class ServiceEntryLocalServiceWrapper implements ServiceEntryLocalService
 		return _serviceEntryLocalService.getUploadServicePackageCode();
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ServiceEntry> findBystatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceEntryLocalService.findBystatus(status);
+	}
+
+	public vn.com.fis.portal.model.ServiceEntry findByserviceCode(
+		java.lang.String serviceCode)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServiceEntryException {
+		return _serviceEntryLocalService.findByserviceCode(serviceCode);
+	}
+
+	public vn.com.fis.portal.model.ServiceEntry findByserviceName(
+		java.lang.String serviceName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServiceEntryException {
+		return _serviceEntryLocalService.findByserviceName(serviceName);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

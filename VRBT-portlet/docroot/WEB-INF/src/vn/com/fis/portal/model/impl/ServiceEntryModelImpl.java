@@ -87,8 +87,6 @@ public class ServiceEntryModelImpl extends BaseModelImpl<ServiceEntry>
 				"value.object.column.bitmask.enabled.vn.com.fis.portal.model.ServiceEntry"),
 			true);
 	public static long SERVICECODE_COLUMN_BITMASK = 1L;
-	public static long SERVICENAME_COLUMN_BITMASK = 2L;
-	public static long STATUS_COLUMN_BITMASK = 4L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -202,15 +200,7 @@ public class ServiceEntryModelImpl extends BaseModelImpl<ServiceEntry>
 	public void setServiceName(String serviceName) {
 		_columnBitmask = -1L;
 
-		if (_originalServiceName == null) {
-			_originalServiceName = _serviceName;
-		}
-
 		_serviceName = serviceName;
-	}
-
-	public String getOriginalServiceName() {
-		return GetterUtil.getString(_originalServiceName);
 	}
 
 	@JSON
@@ -251,19 +241,7 @@ public class ServiceEntryModelImpl extends BaseModelImpl<ServiceEntry>
 	}
 
 	public void setStatus(int status) {
-		_columnBitmask |= STATUS_COLUMN_BITMASK;
-
-		if (!_setOriginalStatus) {
-			_setOriginalStatus = true;
-
-			_originalStatus = _status;
-		}
-
 		_status = status;
-	}
-
-	public int getOriginalStatus() {
-		return _originalStatus;
 	}
 
 	public long getColumnBitmask() {
@@ -366,12 +344,6 @@ public class ServiceEntryModelImpl extends BaseModelImpl<ServiceEntry>
 		ServiceEntryModelImpl serviceEntryModelImpl = this;
 
 		serviceEntryModelImpl._originalServiceCode = serviceEntryModelImpl._serviceCode;
-
-		serviceEntryModelImpl._originalServiceName = serviceEntryModelImpl._serviceName;
-
-		serviceEntryModelImpl._originalStatus = serviceEntryModelImpl._status;
-
-		serviceEntryModelImpl._setOriginalStatus = false;
 
 		serviceEntryModelImpl._columnBitmask = 0;
 	}
@@ -501,13 +473,10 @@ public class ServiceEntryModelImpl extends BaseModelImpl<ServiceEntry>
 	private String _serviceCode;
 	private String _originalServiceCode;
 	private String _serviceName;
-	private String _originalServiceName;
 	private String _description;
 	private Date _createDate;
 	private Date _modifiedDate;
 	private int _status;
-	private int _originalStatus;
-	private boolean _setOriginalStatus;
 	private transient ExpandoBridge _expandoBridge;
 	private long _columnBitmask;
 	private ServiceEntry _escapedModelProxy;

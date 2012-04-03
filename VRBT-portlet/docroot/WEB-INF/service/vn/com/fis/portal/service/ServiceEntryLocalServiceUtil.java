@@ -289,6 +289,25 @@ public class ServiceEntryLocalServiceUtil {
 		return getService().getUploadServicePackageCode();
 	}
 
+	public static java.util.List<vn.com.fis.portal.model.ServiceEntry> findBystatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findBystatus(status);
+	}
+
+	public static vn.com.fis.portal.model.ServiceEntry findByserviceCode(
+		java.lang.String serviceCode)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServiceEntryException {
+		return getService().findByserviceCode(serviceCode);
+	}
+
+	public static vn.com.fis.portal.model.ServiceEntry findByserviceName(
+		java.lang.String serviceName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServiceEntryException {
+		return getService().findByserviceName(serviceName);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

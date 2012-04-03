@@ -75,15 +75,15 @@ public class ServiceEntryLocalServiceImpl
 		return ServiceEntryFinderUtil.getUploadServicePackageCode();
 	}
 	
-	public List<ServiceEntry> findBystatus(int status) throws SystemException {
+	/*public List<ServiceEntry> findBystatus(int status) throws SystemException {
 			return ServiceEntryUtil.findBystatus(status);
-	}
+	}*/
 	
 	public ServiceEntry findByserviceCode(String serviceCode) throws NoSuchServiceEntryException, SystemException {
 		return ServiceEntryUtil.findByserviceCode(serviceCode);
 	}
 	
-	public ServiceEntry findByserviceName(String serviceName) throws NoSuchServiceEntryException, SystemException {
+	/*public ServiceEntry findByserviceName(String serviceName) throws NoSuchServiceEntryException, SystemException {
 		return ServiceEntryUtil.findByserviceName(serviceName);
-	}
+	}*/
 }

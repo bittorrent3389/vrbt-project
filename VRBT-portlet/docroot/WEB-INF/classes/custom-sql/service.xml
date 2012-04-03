@@ -22,153 +22,27 @@
 		]]>
 	</sql>
 	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_PackageEntryFinderImpl.search">
+	<sql id="vn.com.fis.portal.portlet.util.service.persistence.ServicePackageEntryFinderImpl.search">
 		<![CDATA[
-		 SELECT vrbt_service_package.* 
-   		 FROM  vrbt_service_package 
+		 SELECT TBL_SERVICE_PACKAGE.* 
+   		 FROM  TBL_SERVICE_PACKAGE 
        	 WHERE
-            (vrbt_service_package.servicepackagecode LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
-            (vrbt_service_package.servicepackagename LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
-            (vrbt_service_package.serviceid LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
-            (vrbt_service_package.status LIKE  ? [$AND_OR_NULL_CHECK$])	
+            (TBL_SERVICE_PACKAGE.servicepackagecode LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
+            (TBL_SERVICE_PACKAGE.servicepackagename LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
+            (TBL_SERVICE_PACKAGE.serviceid LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+            (TBL_SERVICE_PACKAGE.status LIKE  ? [$AND_OR_NULL_CHECK$])	
 		]]>
 	</sql>
 	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_PackageEntryFinderImpl.searchCount">
+	<sql id="vn.com.fis.portal.portlet.util.service.persistence.ServicePackageEntryFinderImpl.searchCount">
 		<![CDATA[
 		 SELECT  COUNT(*) AS COUNT_VALUE
-		 FROM  vrbt_service_package 
+		 FROM  TBL_SERVICE_PACKAGE 
        	 WHERE
-            (vrbt_service_package.servicepackagecode LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
-            (vrbt_service_package.servicepackagename LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
-            (vrbt_service_package.serviceid LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
-            (vrbt_service_package.status LIKE  ? [$AND_OR_NULL_CHECK$])
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_PackageExtFinderImpl.search_ServicePackage_ByServiceId">
-		<![CDATA[
-		 SELECT vrbt_service_package.* 
-		 FROM   vrbt_service_package 
-		 WHERE  vrbt_service_package.serviceid = ?
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.UserExtFinderImpl.getService_ByUserCount">
-		<![CDATA[
-			SELECT COUNT(*) AS total 
-			FROM vrbt_user 
-			WHERE 
-				vrbt_user.serviceid = ? 
-				AND vrbt_user.servicestatus = ?
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.UserExtFinderImpl.getService_ByServicePackageId_AndUserCount">
-		<![CDATA[
-			SELECT COUNT(*) AS total 
-			FROM  vrbt_user
-			WHERE vrbt_user.servicepackageid = ? 
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.UserExtFinderImpl.updateServiceName_ByServiceId">
-		<![CDATA[
-			UPDATE vrbt_user 
-			SET vrbt_user.servicename = ?
-			WHERE vrbt_user.serviceid = ?
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.UserExtFinderImpl.updateServicePackageName_ByServicePackageId">
-		<![CDATA[
-			UPDATE vrbt_user 
-			SET vrbt_user.servicepackagename = ?
-			WHERE vrbt_user.servicepackageid = ?
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_Transaction_HistoryExtFinderImpl.searchAll">
-		<![CDATA[
-			SELECT service_transaction_history.* 
-			FROM service_transaction_history
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_Transaction_HistoryExtFinderImpl.searchCountAll">
-		<![CDATA[
-		 SELECT  COUNT(*) AS COUNT_VALUE
-		 FROM service_transaction_history
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_Transaction_HistoryExtFinderImpl.search">
-		<![CDATA[
-			SELECT service_transaction_history.* 
-			FROM service_transaction_history
-			WHERE 
-				service_transaction_history.transactioncode = ?
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Service_Transaction_HistoryExtFinderImpl.searchCount">
-		<![CDATA[
-		 SELECT  COUNT(*) AS COUNT_VALUE
-		 FROM service_transaction_history
-		 WHERE
-		 	service_transaction_history.transactioncode = ?
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.CategoryExtFinderImpl.search">
-		<![CDATA[
-		 SELECT vrbt_category.* 
-   		 FROM  vrbt_category 
-       	 WHERE
-            (vrbt_category.categoryname LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
-            (vrbt_category.status LIKE  ? [$AND_OR_NULL_CHECK$])	
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.CategoryExtFinderImpl.searchCount">
-		<![CDATA[
-		 SELECT  COUNT(*) AS COUNT_VALUE
-		 FROM  vrbt_category 
-       	 WHERE
-            (vrbt_category.categoryname LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
-            (vrbt_category.status LIKE  ? [$AND_OR_NULL_CHECK$])
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.VideoExtFinderImpl.search">
-		<![CDATA[
-		SELECT vrbt_video.*
-		FROM vrbt_video, vrbt_cate_video, vrbt_category
-		WHERE 
-			vrbt_video.videoid = vrbt_cate_video.videoid
-			AND vrbt_cate_video.categoryid = vrbt_category.categoryid
-			AND (vrbt_category.categoryid = ?)
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.VideoExtFinderImpl.searchCount">
-		<![CDATA[
-		 SELECT  COUNT(*) AS COUNT_VALUE
-		 FROM vrbt_video, vrbt_cate_video, vrbt_category
-		 WHERE 
-			vrbt_video.videoid = vrbt_cate_video.videoid
-			AND vrbt_cate_video.categoryid = vrbt_category.categoryid
-			AND (vrbt_category.categoryid = ?)
-		]]>
-	</sql>
-	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.Video_Transaction_HistoryExtFinderImpl.searchByDate">
-		<![CDATA[
-		 SELECT * 
-		 FROM vrbt_video_transaction_history
-		 WHERE userid = ?
-		 		AND transactiondate > ?
-				AND transactiondate < ?
+            (TBL_SERVICE_PACKAGE.servicepackagecode LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
+            (TBL_SERVICE_PACKAGE.servicepackagename LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$] 
+            (TBL_SERVICE_PACKAGE.serviceid LIKE ? [$AND_OR_NULL_CHECK$]) [$AND_OR_CONNECTOR$]
+            (TBL_SERVICE_PACKAGE.status LIKE  ? [$AND_OR_NULL_CHECK$])
 		]]>
 	</sql>
 </custom-sql>

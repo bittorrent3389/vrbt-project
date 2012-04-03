@@ -87,6 +87,29 @@ public class ServicePackageEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_searchMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"search", java.lang.String.class, java.lang.String.class,
+				long.class, int.class, int.class, int.class, int.class);
+
+		_searchCountMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"searchCount", java.lang.String.class, java.lang.String.class,
+				long.class, int.class, int.class);
+
+		_findBystatusMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findBystatus", int.class);
+
+		_findByserviceIdMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByserviceId", long.class);
+
+		_findByserviceId_StatusMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByserviceId_Status", long.class, int.class);
+
+		_findByservicePackageCodeMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByservicePackageCode", java.lang.String.class);
+
+		_findByservicePackageNameMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByservicePackageName", java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.ServicePackageEntry addServicePackageEntry(
@@ -554,6 +577,217 @@ public class ServicePackageEntryLocalServiceClp
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> search(
+		java.lang.String ser_pacCode, java.lang.String ser_pacName,
+		long serviceId, int status, int start, int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_searchMethodKey17,
+				ClpSerializer.translateInput(ser_pacCode),
+				ClpSerializer.translateInput(ser_pacName), serviceId, status,
+				start, end, searchTypeFlag);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServicePackageEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int searchCount(java.lang.String ser_pacCode,
+		java.lang.String ser_pacName, long serviceId, int status,
+		int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_searchCountMethodKey18,
+				ClpSerializer.translateInput(ser_pacCode),
+				ClpSerializer.translateInput(ser_pacName), serviceId, status,
+				searchTypeFlag);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findBystatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findBystatusMethodKey19,
+				status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServicePackageEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId(
+		long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByserviceIdMethodKey20,
+				serviceId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServicePackageEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId_Status(
+		long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByserviceId_StatusMethodKey21,
+				serviceId, status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServicePackageEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public vn.com.fis.portal.model.ServicePackageEntry findByservicePackageCode(
+		java.lang.String servicePackageCode)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByservicePackageCodeMethodKey22,
+				ClpSerializer.translateInput(servicePackageCode));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchServicePackageEntryException) {
+				throw (vn.com.fis.portal.NoSuchServicePackageEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.ServicePackageEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public vn.com.fis.portal.model.ServicePackageEntry findByservicePackageName(
+		java.lang.String servicePackageName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByservicePackageNameMethodKey23,
+				ClpSerializer.translateInput(servicePackageName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchServicePackageEntryException) {
+				throw (vn.com.fis.portal.NoSuchServicePackageEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.ServicePackageEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -576,4 +810,11 @@ public class ServicePackageEntryLocalServiceClp
 	private MethodKey _updateServicePackageEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _searchMethodKey17;
+	private MethodKey _searchCountMethodKey18;
+	private MethodKey _findBystatusMethodKey19;
+	private MethodKey _findByserviceIdMethodKey20;
+	private MethodKey _findByserviceId_StatusMethodKey21;
+	private MethodKey _findByservicePackageCodeMethodKey22;
+	private MethodKey _findByservicePackageNameMethodKey23;
 }
