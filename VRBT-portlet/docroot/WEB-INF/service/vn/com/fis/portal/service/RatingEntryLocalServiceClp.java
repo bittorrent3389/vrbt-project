@@ -111,22 +111,13 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 		_countByRatingCodeMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByRatingCode", int.class);
 
-		_findByCode_VideoMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findByCode_Video", int.class, long.class);
-
-		_findByCode_VideoMethodKey27 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findByCode_Video", int.class, long.class, int.class, int.class);
-
-		_countByCode_VideoMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
-				"countByCode_Video", int.class, long.class);
-
-		_findByUser_Video_CodeMethodKey29 = new MethodKey(_classLoaderProxy.getClassName(),
+		_findByUser_Video_CodeMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByUser_Video_Code", long.class, long.class, int.class);
 
-		_countByUser_Video_CodeMethodKey30 = new MethodKey(_classLoaderProxy.getClassName(),
+		_countByUser_Video_CodeMethodKey27 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByUser_Video_Code", long.class, long.class, int.class);
 
-		_removeByUser_Video_CodeMethodKey31 = new MethodKey(_classLoaderProxy.getClassName(),
+		_removeByUser_Video_CodeMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
 				"removeByUser_Video_Code", long.class, long.class, int.class);
 	}
 
@@ -838,96 +829,13 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 		return ((Integer)returnObj).intValue();
 	}
 
-	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		MethodHandler methodHandler = new MethodHandler(_findByCode_VideoMethodKey26,
-				code, videoId);
-
-		try {
-			returnObj = _classLoaderProxy.invoke(methodHandler);
-		}
-		catch (Throwable t) {
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<vn.com.fis.portal.model.RatingEntry>)ClpSerializer.translateOutput(returnObj);
-	}
-
-	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId, int start, int end)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		MethodHandler methodHandler = new MethodHandler(_findByCode_VideoMethodKey27,
-				code, videoId, start, end);
-
-		try {
-			returnObj = _classLoaderProxy.invoke(methodHandler);
-		}
-		catch (Throwable t) {
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<vn.com.fis.portal.model.RatingEntry>)ClpSerializer.translateOutput(returnObj);
-	}
-
-	public int countByCode_Video(int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		MethodHandler methodHandler = new MethodHandler(_countByCode_VideoMethodKey28,
-				code, videoId);
-
-		try {
-			returnObj = _classLoaderProxy.invoke(methodHandler);
-		}
-		catch (Throwable t) {
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return ((Integer)returnObj).intValue();
-	}
-
 	public vn.com.fis.portal.model.RatingEntry findByUser_Video_Code(
 		long userId, long videoId, int code)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_findByUser_Video_CodeMethodKey29,
+		MethodHandler methodHandler = new MethodHandler(_findByUser_Video_CodeMethodKey26,
 				userId, videoId, code);
 
 		try {
@@ -958,7 +866,7 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_countByUser_Video_CodeMethodKey30,
+		MethodHandler methodHandler = new MethodHandler(_countByUser_Video_CodeMethodKey27,
 				userId, videoId, code);
 
 		try {
@@ -984,7 +892,7 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 	public void removeByUser_Video_Code(long userId, long videoId, int code)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException {
-		MethodHandler methodHandler = new MethodHandler(_removeByUser_Video_CodeMethodKey31,
+		MethodHandler methodHandler = new MethodHandler(_removeByUser_Video_CodeMethodKey28,
 				userId, videoId, code);
 
 		try {
@@ -1040,10 +948,7 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 	private MethodKey _findByRatingCodeMethodKey23;
 	private MethodKey _findByRatingCodeMethodKey24;
 	private MethodKey _countByRatingCodeMethodKey25;
-	private MethodKey _findByCode_VideoMethodKey26;
-	private MethodKey _findByCode_VideoMethodKey27;
-	private MethodKey _countByCode_VideoMethodKey28;
-	private MethodKey _findByUser_Video_CodeMethodKey29;
-	private MethodKey _countByUser_Video_CodeMethodKey30;
-	private MethodKey _removeByUser_Video_CodeMethodKey31;
+	private MethodKey _findByUser_Video_CodeMethodKey26;
+	private MethodKey _countByUser_Video_CodeMethodKey27;
+	private MethodKey _removeByUser_Video_CodeMethodKey28;
 }

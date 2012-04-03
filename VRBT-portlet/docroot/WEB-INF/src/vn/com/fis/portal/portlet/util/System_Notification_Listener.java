@@ -1,7 +1,7 @@
 package vn.com.fis.portal.portlet.util;
 
-import vn.com.fis.portal.portlet.util.model.NotificationExt;
-import vn.com.fis.portal.portlet.util.service.NotificationExtLocalServiceUtil;
+import vn.com.fis.portal.model.NotificationEntry;
+import vn.com.fis.portal.service.NotificationEntryLocalServiceUtil;
 
 import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
@@ -11,11 +11,11 @@ public class System_Notification_Listener extends BaseMessageListener {
 	@Override
 	protected void doReceive(Message message) throws Exception {
 		// TODO Auto-generated method stub
-		NotificationExt notificationToAdmin = (NotificationExt) message.get("notificationToAdmin");
-		NotificationExt notificationToUser = (NotificationExt) message.get("notificationToUser");
+		NotificationEntry notificationToAdmin = (NotificationEntry) message.get("notificationToAdmin");
+		NotificationEntry notificationToUser = (NotificationEntry) message.get("notificationToUser");
 		
-		NotificationExtLocalServiceUtil.addNotificationExt(notificationToAdmin);
-		NotificationExtLocalServiceUtil.addNotificationExt(notificationToUser);
+		NotificationEntryLocalServiceUtil.addNotificationEntry(notificationToAdmin);
+		NotificationEntryLocalServiceUtil.addNotificationEntry(notificationToUser);
 	}
 
 }

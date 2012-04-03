@@ -195,6 +195,467 @@ public class ServicePackageEntryUtil {
 	}
 
 	/**
+	* Returns all the service package entries where status = &#63;.
+	*
+	* @param status the status
+	* @return the matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findBystatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findBystatus(status);
+	}
+
+	/**
+	* Returns a range of all the service package entries where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of service package entries
+	* @param end the upper bound of the range of service package entries (not inclusive)
+	* @return the range of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findBystatus(
+		int status, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findBystatus(status, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the service package entries where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of service package entries
+	* @param end the upper bound of the range of service package entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findBystatus(
+		int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findBystatus(status, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first service package entry in the ordered set where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findBystatus_First(
+		int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence().findBystatus_First(status, orderByComparator);
+	}
+
+	/**
+	* Returns the last service package entry in the ordered set where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findBystatus_Last(
+		int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence().findBystatus_Last(status, orderByComparator);
+	}
+
+	/**
+	* Returns the service package entries before and after the current service package entry in the ordered set where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param servicePackageId the primary key of the current service package entry
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a service package entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry[] findBystatus_PrevAndNext(
+		long servicePackageId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findBystatus_PrevAndNext(servicePackageId, status,
+			orderByComparator);
+	}
+
+	/**
+	* Returns all the service package entries where serviceId = &#63;.
+	*
+	* @param serviceId the service ID
+	* @return the matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId(
+		long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByserviceId(serviceId);
+	}
+
+	/**
+	* Returns a range of all the service package entries where serviceId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param start the lower bound of the range of service package entries
+	* @param end the upper bound of the range of service package entries (not inclusive)
+	* @return the range of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId(
+		long serviceId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByserviceId(serviceId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the service package entries where serviceId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param start the lower bound of the range of service package entries
+	* @param end the upper bound of the range of service package entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId(
+		long serviceId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByserviceId(serviceId, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first service package entry in the ordered set where serviceId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findByserviceId_First(
+		long serviceId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findByserviceId_First(serviceId, orderByComparator);
+	}
+
+	/**
+	* Returns the last service package entry in the ordered set where serviceId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findByserviceId_Last(
+		long serviceId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findByserviceId_Last(serviceId, orderByComparator);
+	}
+
+	/**
+	* Returns the service package entries before and after the current service package entry in the ordered set where serviceId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param servicePackageId the primary key of the current service package entry
+	* @param serviceId the service ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a service package entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry[] findByserviceId_PrevAndNext(
+		long servicePackageId, long serviceId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findByserviceId_PrevAndNext(servicePackageId, serviceId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the service package entry where servicePackageName = &#63; or throws a {@link vn.com.fis.portal.NoSuchServicePackageEntryException} if it could not be found.
+	*
+	* @param servicePackageName the service package name
+	* @return the matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findByservicePackageName(
+		java.lang.String servicePackageName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence().findByservicePackageName(servicePackageName);
+	}
+
+	/**
+	* Returns the service package entry where servicePackageName = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param servicePackageName the service package name
+	* @return the matching service package entry, or <code>null</code> if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry fetchByservicePackageName(
+		java.lang.String servicePackageName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByservicePackageName(servicePackageName);
+	}
+
+	/**
+	* Returns the service package entry where servicePackageName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param servicePackageName the service package name
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching service package entry, or <code>null</code> if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry fetchByservicePackageName(
+		java.lang.String servicePackageName, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByservicePackageName(servicePackageName,
+			retrieveFromCache);
+	}
+
+	/**
+	* Returns the service package entry where servicePackageCode = &#63; or throws a {@link vn.com.fis.portal.NoSuchServicePackageEntryException} if it could not be found.
+	*
+	* @param servicePackageCode the service package code
+	* @return the matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findByservicePackageCode(
+		java.lang.String servicePackageCode)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence().findByservicePackageCode(servicePackageCode);
+	}
+
+	/**
+	* Returns the service package entry where servicePackageCode = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param servicePackageCode the service package code
+	* @return the matching service package entry, or <code>null</code> if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry fetchByservicePackageCode(
+		java.lang.String servicePackageCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByservicePackageCode(servicePackageCode);
+	}
+
+	/**
+	* Returns the service package entry where servicePackageCode = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param servicePackageCode the service package code
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching service package entry, or <code>null</code> if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry fetchByservicePackageCode(
+		java.lang.String servicePackageCode, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByservicePackageCode(servicePackageCode,
+			retrieveFromCache);
+	}
+
+	/**
+	* Returns all the service package entries where serviceId = &#63; and status = &#63;.
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @return the matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId_status(
+		long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByserviceId_status(serviceId, status);
+	}
+
+	/**
+	* Returns a range of all the service package entries where serviceId = &#63; and status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @param start the lower bound of the range of service package entries
+	* @param end the upper bound of the range of service package entries (not inclusive)
+	* @return the range of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId_status(
+		long serviceId, int status, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByserviceId_status(serviceId, status, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the service package entries where serviceId = &#63; and status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @param start the lower bound of the range of service package entries
+	* @param end the upper bound of the range of service package entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.ServicePackageEntry> findByserviceId_status(
+		long serviceId, int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByserviceId_status(serviceId, status, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the first service package entry in the ordered set where serviceId = &#63; and status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findByserviceId_status_First(
+		long serviceId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findByserviceId_status_First(serviceId, status,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the last service package entry in the ordered set where serviceId = &#63; and status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a matching service package entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry findByserviceId_status_Last(
+		long serviceId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findByserviceId_status_Last(serviceId, status,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the service package entries before and after the current service package entry in the ordered set where serviceId = &#63; and status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param servicePackageId the primary key of the current service package entry
+	* @param serviceId the service ID
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next service package entry
+	* @throws vn.com.fis.portal.NoSuchServicePackageEntryException if a service package entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.ServicePackageEntry[] findByserviceId_status_PrevAndNext(
+		long servicePackageId, long serviceId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		return getPersistence()
+				   .findByserviceId_status_PrevAndNext(servicePackageId,
+			serviceId, status, orderByComparator);
+	}
+
+	/**
 	* Returns all the service package entries.
 	*
 	* @return the service package entries
@@ -244,6 +705,66 @@ public class ServicePackageEntryUtil {
 	}
 
 	/**
+	* Removes all the service package entries where status = &#63; from the database.
+	*
+	* @param status the status
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeBystatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeBystatus(status);
+	}
+
+	/**
+	* Removes all the service package entries where serviceId = &#63; from the database.
+	*
+	* @param serviceId the service ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByserviceId(long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByserviceId(serviceId);
+	}
+
+	/**
+	* Removes the service package entry where servicePackageName = &#63; from the database.
+	*
+	* @param servicePackageName the service package name
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByservicePackageName(
+		java.lang.String servicePackageName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		getPersistence().removeByservicePackageName(servicePackageName);
+	}
+
+	/**
+	* Removes the service package entry where servicePackageCode = &#63; from the database.
+	*
+	* @param servicePackageCode the service package code
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByservicePackageCode(
+		java.lang.String servicePackageCode)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchServicePackageEntryException {
+		getPersistence().removeByservicePackageCode(servicePackageCode);
+	}
+
+	/**
+	* Removes all the service package entries where serviceId = &#63; and status = &#63; from the database.
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByserviceId_status(long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByserviceId_status(serviceId, status);
+	}
+
+	/**
 	* Removes all the service package entries from the database.
 	*
 	* @throws SystemException if a system exception occurred
@@ -251,6 +772,69 @@ public class ServicePackageEntryUtil {
 	public static void removeAll()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		getPersistence().removeAll();
+	}
+
+	/**
+	* Returns the number of service package entries where status = &#63;.
+	*
+	* @param status the status
+	* @return the number of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countBystatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countBystatus(status);
+	}
+
+	/**
+	* Returns the number of service package entries where serviceId = &#63;.
+	*
+	* @param serviceId the service ID
+	* @return the number of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByserviceId(long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByserviceId(serviceId);
+	}
+
+	/**
+	* Returns the number of service package entries where servicePackageName = &#63;.
+	*
+	* @param servicePackageName the service package name
+	* @return the number of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByservicePackageName(
+		java.lang.String servicePackageName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByservicePackageName(servicePackageName);
+	}
+
+	/**
+	* Returns the number of service package entries where servicePackageCode = &#63;.
+	*
+	* @param servicePackageCode the service package code
+	* @return the number of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByservicePackageCode(
+		java.lang.String servicePackageCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByservicePackageCode(servicePackageCode);
+	}
+
+	/**
+	* Returns the number of service package entries where serviceId = &#63; and status = &#63;.
+	*
+	* @param serviceId the service ID
+	* @param status the status
+	* @return the number of matching service package entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByserviceId_status(long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByserviceId_status(serviceId, status);
 	}
 
 	/**

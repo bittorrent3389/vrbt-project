@@ -382,54 +382,6 @@ public class RatingEntryLocalServiceWrapper implements RatingEntryLocalService,
 	}
 
 	/**
-	* Returns all the rating entries where code = &#63; and videoId = &#63;.
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @return the matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _ratingEntryLocalService.findByCode_Video(code, videoId);
-	}
-
-	/**
-	* Returns a range of all the rating entries where code = &#63; and videoId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	* </p>
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @param start the lower bound of the range of rating entries
-	* @param end the upper bound of the range of rating entries (not inclusive)
-	* @return the range of matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId, int start, int end)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _ratingEntryLocalService.findByCode_Video(code, videoId, start,
-			end);
-	}
-
-	/**
-	* Returns the number of rating entries where code = &#63; and videoId = &#63;.
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @return the number of matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public int countByCode_Video(int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _ratingEntryLocalService.countByCode_Video(code, videoId);
-	}
-
-	/**
 	* Returns the rating entry where userId = &#63; and videoId = &#63; and code = &#63; or throws a {@link vn.com.fis.portal.NoSuchRatingEntryException} if it could not be found.
 	*
 	* @param userId the user ID

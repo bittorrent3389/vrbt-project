@@ -135,6 +135,48 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserId",
 			new String[] { Long.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID_USERID =
+		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
+			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId_userId",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_USERID =
+		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
+			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId_userId",
+			new String[] { Long.class.getName(), Long.class.getName() },
+			RatingEntryModelImpl.VIDEOID_COLUMN_BITMASK |
+			RatingEntryModelImpl.USERID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_VIDEOID_USERID = new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
+			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId_userId",
+			new String[] { Long.class.getName(), Long.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID_CODE =
+		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
+			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId_code",
+			new String[] {
+				Long.class.getName(), Integer.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_CODE =
+		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
+			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId_code",
+			new String[] { Long.class.getName(), Integer.class.getName() },
+			RatingEntryModelImpl.VIDEOID_COLUMN_BITMASK |
+			RatingEntryModelImpl.CODE_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_VIDEOID_CODE = new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
+			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId_code",
+			new String[] { Long.class.getName(), Integer.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_RATINGCODE =
 		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
@@ -155,27 +197,6 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByRatingCode",
 			new String[] { Integer.class.getName() });
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_CODE_VIDEO =
-		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
-			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByCode_Video",
-			new String[] {
-				Integer.class.getName(), Long.class.getName(),
-				
-			"java.lang.Integer", "java.lang.Integer",
-				"com.liferay.portal.kernel.util.OrderByComparator"
-			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CODE_VIDEO =
-		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
-			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByCode_Video",
-			new String[] { Integer.class.getName(), Long.class.getName() },
-			RatingEntryModelImpl.CODE_COLUMN_BITMASK |
-			RatingEntryModelImpl.VIDEOID_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_CODE_VIDEO = new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
-			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCode_Video",
-			new String[] { Integer.class.getName(), Long.class.getName() });
 	public static final FinderPath FINDER_PATH_FETCH_BY_USER_VIDEO_CODE = new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
 			FINDER_CLASS_NAME_ENTITY, "fetchByUser_Video_Code",
@@ -483,6 +504,52 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 			}
 
 			if ((ratingEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_USERID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Long.valueOf(ratingEntryModelImpl.getOriginalVideoId()),
+						Long.valueOf(ratingEntryModelImpl.getOriginalUserId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_VIDEOID_USERID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_USERID,
+					args);
+
+				args = new Object[] {
+						Long.valueOf(ratingEntryModelImpl.getVideoId()),
+						Long.valueOf(ratingEntryModelImpl.getUserId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_VIDEOID_USERID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_USERID,
+					args);
+			}
+
+			if ((ratingEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_CODE.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Long.valueOf(ratingEntryModelImpl.getOriginalVideoId()),
+						Integer.valueOf(ratingEntryModelImpl.getOriginalCode())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_VIDEOID_CODE,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_CODE,
+					args);
+
+				args = new Object[] {
+						Long.valueOf(ratingEntryModelImpl.getVideoId()),
+						Integer.valueOf(ratingEntryModelImpl.getCode())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_VIDEOID_CODE,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_CODE,
+					args);
+			}
+
+			if ((ratingEntryModelImpl.getColumnBitmask() &
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RATINGCODE.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
 						Integer.valueOf(ratingEntryModelImpl.getOriginalCode())
@@ -500,29 +567,6 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_RATINGCODE,
 					args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_RATINGCODE,
-					args);
-			}
-
-			if ((ratingEntryModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CODE_VIDEO.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] {
-						Integer.valueOf(ratingEntryModelImpl.getOriginalCode()),
-						Long.valueOf(ratingEntryModelImpl.getOriginalVideoId())
-					};
-
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CODE_VIDEO,
-					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CODE_VIDEO,
-					args);
-
-				args = new Object[] {
-						Integer.valueOf(ratingEntryModelImpl.getCode()),
-						Long.valueOf(ratingEntryModelImpl.getVideoId())
-					};
-
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CODE_VIDEO,
-					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CODE_VIDEO,
 					args);
 			}
 		}
@@ -1731,6 +1775,750 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	}
 
 	/**
+	 * Returns all the rating entries where videoId = &#63; and userId = &#63;.
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @return the matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<RatingEntry> findByVideoId_userId(long videoId, long userId)
+		throws SystemException {
+		return findByVideoId_userId(videoId, userId, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the rating entries where videoId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of rating entries
+	 * @param end the upper bound of the range of rating entries (not inclusive)
+	 * @return the range of matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<RatingEntry> findByVideoId_userId(long videoId, long userId,
+		int start, int end) throws SystemException {
+		return findByVideoId_userId(videoId, userId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the rating entries where videoId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of rating entries
+	 * @param end the upper bound of the range of rating entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<RatingEntry> findByVideoId_userId(long videoId, long userId,
+		int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_USERID;
+			finderArgs = new Object[] { videoId, userId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID_USERID;
+			finderArgs = new Object[] {
+					videoId, userId,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<RatingEntry> list = (List<RatingEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_RATINGENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_VIDEOID_USERID_VIDEOID_2);
+
+			query.append(_FINDER_COLUMN_VIDEOID_USERID_USERID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(RatingEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(videoId);
+
+				qPos.add(userId);
+
+				list = (List<RatingEntry>)QueryUtil.list(q, getDialect(),
+						start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first rating entry in the ordered set where videoId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching rating entry
+	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public RatingEntry findByVideoId_userId_First(long videoId, long userId,
+		OrderByComparator orderByComparator)
+		throws NoSuchRatingEntryException, SystemException {
+		List<RatingEntry> list = findByVideoId_userId(videoId, userId, 0, 1,
+				orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("videoId=");
+			msg.append(videoId);
+
+			msg.append(", userId=");
+			msg.append(userId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchRatingEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last rating entry in the ordered set where videoId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching rating entry
+	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public RatingEntry findByVideoId_userId_Last(long videoId, long userId,
+		OrderByComparator orderByComparator)
+		throws NoSuchRatingEntryException, SystemException {
+		int count = countByVideoId_userId(videoId, userId);
+
+		List<RatingEntry> list = findByVideoId_userId(videoId, userId,
+				count - 1, count, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("videoId=");
+			msg.append(videoId);
+
+			msg.append(", userId=");
+			msg.append(userId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchRatingEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the rating entries before and after the current rating entry in the ordered set where videoId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param ratingId the primary key of the current rating entry
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next rating entry
+	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public RatingEntry[] findByVideoId_userId_PrevAndNext(long ratingId,
+		long videoId, long userId, OrderByComparator orderByComparator)
+		throws NoSuchRatingEntryException, SystemException {
+		RatingEntry ratingEntry = findByPrimaryKey(ratingId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			RatingEntry[] array = new RatingEntryImpl[3];
+
+			array[0] = getByVideoId_userId_PrevAndNext(session, ratingEntry,
+					videoId, userId, orderByComparator, true);
+
+			array[1] = ratingEntry;
+
+			array[2] = getByVideoId_userId_PrevAndNext(session, ratingEntry,
+					videoId, userId, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected RatingEntry getByVideoId_userId_PrevAndNext(Session session,
+		RatingEntry ratingEntry, long videoId, long userId,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_RATINGENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_VIDEOID_USERID_VIDEOID_2);
+
+		query.append(_FINDER_COLUMN_VIDEOID_USERID_USERID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(RatingEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(videoId);
+
+		qPos.add(userId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(ratingEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<RatingEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Returns all the rating entries where videoId = &#63; and code = &#63;.
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @return the matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<RatingEntry> findByVideoId_code(long videoId, int code)
+		throws SystemException {
+		return findByVideoId_code(videoId, code, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the rating entries where videoId = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @param start the lower bound of the range of rating entries
+	 * @param end the upper bound of the range of rating entries (not inclusive)
+	 * @return the range of matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<RatingEntry> findByVideoId_code(long videoId, int code,
+		int start, int end) throws SystemException {
+		return findByVideoId_code(videoId, code, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the rating entries where videoId = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @param start the lower bound of the range of rating entries
+	 * @param end the upper bound of the range of rating entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<RatingEntry> findByVideoId_code(long videoId, int code,
+		int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_CODE;
+			finderArgs = new Object[] { videoId, code };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID_CODE;
+			finderArgs = new Object[] {
+					videoId, code,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<RatingEntry> list = (List<RatingEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_RATINGENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_VIDEOID_CODE_VIDEOID_2);
+
+			query.append(_FINDER_COLUMN_VIDEOID_CODE_CODE_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(RatingEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(videoId);
+
+				qPos.add(code);
+
+				list = (List<RatingEntry>)QueryUtil.list(q, getDialect(),
+						start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first rating entry in the ordered set where videoId = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching rating entry
+	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public RatingEntry findByVideoId_code_First(long videoId, int code,
+		OrderByComparator orderByComparator)
+		throws NoSuchRatingEntryException, SystemException {
+		List<RatingEntry> list = findByVideoId_code(videoId, code, 0, 1,
+				orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("videoId=");
+			msg.append(videoId);
+
+			msg.append(", code=");
+			msg.append(code);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchRatingEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last rating entry in the ordered set where videoId = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching rating entry
+	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public RatingEntry findByVideoId_code_Last(long videoId, int code,
+		OrderByComparator orderByComparator)
+		throws NoSuchRatingEntryException, SystemException {
+		int count = countByVideoId_code(videoId, code);
+
+		List<RatingEntry> list = findByVideoId_code(videoId, code, count - 1,
+				count, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("videoId=");
+			msg.append(videoId);
+
+			msg.append(", code=");
+			msg.append(code);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchRatingEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the rating entries before and after the current rating entry in the ordered set where videoId = &#63; and code = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param ratingId the primary key of the current rating entry
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next rating entry
+	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public RatingEntry[] findByVideoId_code_PrevAndNext(long ratingId,
+		long videoId, int code, OrderByComparator orderByComparator)
+		throws NoSuchRatingEntryException, SystemException {
+		RatingEntry ratingEntry = findByPrimaryKey(ratingId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			RatingEntry[] array = new RatingEntryImpl[3];
+
+			array[0] = getByVideoId_code_PrevAndNext(session, ratingEntry,
+					videoId, code, orderByComparator, true);
+
+			array[1] = ratingEntry;
+
+			array[2] = getByVideoId_code_PrevAndNext(session, ratingEntry,
+					videoId, code, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected RatingEntry getByVideoId_code_PrevAndNext(Session session,
+		RatingEntry ratingEntry, long videoId, int code,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_RATINGENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_VIDEOID_CODE_VIDEOID_2);
+
+		query.append(_FINDER_COLUMN_VIDEOID_CODE_CODE_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(RatingEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(videoId);
+
+		qPos.add(code);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(ratingEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<RatingEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
 	 * Returns all the rating entries where code = &#63;.
 	 *
 	 * @param code the code
@@ -2076,378 +2864,6 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	}
 
 	/**
-	 * Returns all the rating entries where code = &#63; and videoId = &#63;.
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @return the matching rating entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public List<RatingEntry> findByCode_Video(int code, long videoId)
-		throws SystemException {
-		return findByCode_Video(code, videoId, QueryUtil.ALL_POS,
-			QueryUtil.ALL_POS, null);
-	}
-
-	/**
-	 * Returns a range of all the rating entries where code = &#63; and videoId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	 * </p>
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @param start the lower bound of the range of rating entries
-	 * @param end the upper bound of the range of rating entries (not inclusive)
-	 * @return the range of matching rating entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public List<RatingEntry> findByCode_Video(int code, long videoId,
-		int start, int end) throws SystemException {
-		return findByCode_Video(code, videoId, start, end, null);
-	}
-
-	/**
-	 * Returns an ordered range of all the rating entries where code = &#63; and videoId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	 * </p>
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @param start the lower bound of the range of rating entries
-	 * @param end the upper bound of the range of rating entries (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the ordered range of matching rating entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public List<RatingEntry> findByCode_Video(int code, long videoId,
-		int start, int end, OrderByComparator orderByComparator)
-		throws SystemException {
-		FinderPath finderPath = null;
-		Object[] finderArgs = null;
-
-		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-				(orderByComparator == null)) {
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CODE_VIDEO;
-			finderArgs = new Object[] { code, videoId };
-		}
-		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_CODE_VIDEO;
-			finderArgs = new Object[] {
-					code, videoId,
-					
-					start, end, orderByComparator
-				};
-		}
-
-		List<RatingEntry> list = (List<RatingEntry>)FinderCacheUtil.getResult(finderPath,
-				finderArgs, this);
-
-		if (list == null) {
-			StringBundler query = null;
-
-			if (orderByComparator != null) {
-				query = new StringBundler(4 +
-						(orderByComparator.getOrderByFields().length * 3));
-			}
-			else {
-				query = new StringBundler(4);
-			}
-
-			query.append(_SQL_SELECT_RATINGENTRY_WHERE);
-
-			query.append(_FINDER_COLUMN_CODE_VIDEO_CODE_2);
-
-			query.append(_FINDER_COLUMN_CODE_VIDEO_VIDEOID_2);
-
-			if (orderByComparator != null) {
-				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
-					orderByComparator);
-			}
-
-			else {
-				query.append(RatingEntryModelImpl.ORDER_BY_JPQL);
-			}
-
-			String sql = query.toString();
-
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				Query q = session.createQuery(sql);
-
-				QueryPos qPos = QueryPos.getInstance(q);
-
-				qPos.add(code);
-
-				qPos.add(videoId);
-
-				list = (List<RatingEntry>)QueryUtil.list(q, getDialect(),
-						start, end);
-			}
-			catch (Exception e) {
-				throw processException(e);
-			}
-			finally {
-				if (list == null) {
-					FinderCacheUtil.removeResult(finderPath, finderArgs);
-				}
-				else {
-					cacheResult(list);
-
-					FinderCacheUtil.putResult(finderPath, finderArgs, list);
-				}
-
-				closeSession(session);
-			}
-		}
-
-		return list;
-	}
-
-	/**
-	 * Returns the first rating entry in the ordered set where code = &#63; and videoId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	 * </p>
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the first matching rating entry
-	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
-	 * @throws SystemException if a system exception occurred
-	 */
-	public RatingEntry findByCode_Video_First(int code, long videoId,
-		OrderByComparator orderByComparator)
-		throws NoSuchRatingEntryException, SystemException {
-		List<RatingEntry> list = findByCode_Video(code, videoId, 0, 1,
-				orderByComparator);
-
-		if (list.isEmpty()) {
-			StringBundler msg = new StringBundler(6);
-
-			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-			msg.append("code=");
-			msg.append(code);
-
-			msg.append(", videoId=");
-			msg.append(videoId);
-
-			msg.append(StringPool.CLOSE_CURLY_BRACE);
-
-			throw new NoSuchRatingEntryException(msg.toString());
-		}
-		else {
-			return list.get(0);
-		}
-	}
-
-	/**
-	 * Returns the last rating entry in the ordered set where code = &#63; and videoId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	 * </p>
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the last matching rating entry
-	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
-	 * @throws SystemException if a system exception occurred
-	 */
-	public RatingEntry findByCode_Video_Last(int code, long videoId,
-		OrderByComparator orderByComparator)
-		throws NoSuchRatingEntryException, SystemException {
-		int count = countByCode_Video(code, videoId);
-
-		List<RatingEntry> list = findByCode_Video(code, videoId, count - 1,
-				count, orderByComparator);
-
-		if (list.isEmpty()) {
-			StringBundler msg = new StringBundler(6);
-
-			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-			msg.append("code=");
-			msg.append(code);
-
-			msg.append(", videoId=");
-			msg.append(videoId);
-
-			msg.append(StringPool.CLOSE_CURLY_BRACE);
-
-			throw new NoSuchRatingEntryException(msg.toString());
-		}
-		else {
-			return list.get(0);
-		}
-	}
-
-	/**
-	 * Returns the rating entries before and after the current rating entry in the ordered set where code = &#63; and videoId = &#63;.
-	 *
-	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	 * </p>
-	 *
-	 * @param ratingId the primary key of the current rating entry
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	 * @return the previous, current, and next rating entry
-	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
-	 * @throws SystemException if a system exception occurred
-	 */
-	public RatingEntry[] findByCode_Video_PrevAndNext(long ratingId, int code,
-		long videoId, OrderByComparator orderByComparator)
-		throws NoSuchRatingEntryException, SystemException {
-		RatingEntry ratingEntry = findByPrimaryKey(ratingId);
-
-		Session session = null;
-
-		try {
-			session = openSession();
-
-			RatingEntry[] array = new RatingEntryImpl[3];
-
-			array[0] = getByCode_Video_PrevAndNext(session, ratingEntry, code,
-					videoId, orderByComparator, true);
-
-			array[1] = ratingEntry;
-
-			array[2] = getByCode_Video_PrevAndNext(session, ratingEntry, code,
-					videoId, orderByComparator, false);
-
-			return array;
-		}
-		catch (Exception e) {
-			throw processException(e);
-		}
-		finally {
-			closeSession(session);
-		}
-	}
-
-	protected RatingEntry getByCode_Video_PrevAndNext(Session session,
-		RatingEntry ratingEntry, int code, long videoId,
-		OrderByComparator orderByComparator, boolean previous) {
-		StringBundler query = null;
-
-		if (orderByComparator != null) {
-			query = new StringBundler(6 +
-					(orderByComparator.getOrderByFields().length * 6));
-		}
-		else {
-			query = new StringBundler(3);
-		}
-
-		query.append(_SQL_SELECT_RATINGENTRY_WHERE);
-
-		query.append(_FINDER_COLUMN_CODE_VIDEO_CODE_2);
-
-		query.append(_FINDER_COLUMN_CODE_VIDEO_VIDEOID_2);
-
-		if (orderByComparator != null) {
-			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
-
-			if (orderByConditionFields.length > 0) {
-				query.append(WHERE_AND);
-			}
-
-			for (int i = 0; i < orderByConditionFields.length; i++) {
-				query.append(_ORDER_BY_ENTITY_ALIAS);
-				query.append(orderByConditionFields[i]);
-
-				if ((i + 1) < orderByConditionFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						query.append(WHERE_GREATER_THAN_HAS_NEXT);
-					}
-					else {
-						query.append(WHERE_LESSER_THAN_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						query.append(WHERE_GREATER_THAN);
-					}
-					else {
-						query.append(WHERE_LESSER_THAN);
-					}
-				}
-			}
-
-			query.append(ORDER_BY_CLAUSE);
-
-			String[] orderByFields = orderByComparator.getOrderByFields();
-
-			for (int i = 0; i < orderByFields.length; i++) {
-				query.append(_ORDER_BY_ENTITY_ALIAS);
-				query.append(orderByFields[i]);
-
-				if ((i + 1) < orderByFields.length) {
-					if (orderByComparator.isAscending() ^ previous) {
-						query.append(ORDER_BY_ASC_HAS_NEXT);
-					}
-					else {
-						query.append(ORDER_BY_DESC_HAS_NEXT);
-					}
-				}
-				else {
-					if (orderByComparator.isAscending() ^ previous) {
-						query.append(ORDER_BY_ASC);
-					}
-					else {
-						query.append(ORDER_BY_DESC);
-					}
-				}
-			}
-		}
-
-		else {
-			query.append(RatingEntryModelImpl.ORDER_BY_JPQL);
-		}
-
-		String sql = query.toString();
-
-		Query q = session.createQuery(sql);
-
-		q.setFirstResult(0);
-		q.setMaxResults(2);
-
-		QueryPos qPos = QueryPos.getInstance(q);
-
-		qPos.add(code);
-
-		qPos.add(videoId);
-
-		if (orderByComparator != null) {
-			Object[] values = orderByComparator.getOrderByConditionValues(ratingEntry);
-
-			for (Object value : values) {
-				qPos.add(value);
-			}
-		}
-
-		List<RatingEntry> list = q.list();
-
-		if (list.size() == 2) {
-			return list.get(1);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
 	 * Returns the rating entry where userId = &#63; and videoId = &#63; and code = &#63; or throws a {@link vn.com.fis.portal.NoSuchRatingEntryException} if it could not be found.
 	 *
 	 * @param userId the user ID
@@ -2751,6 +3167,34 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	}
 
 	/**
+	 * Removes all the rating entries where videoId = &#63; and userId = &#63; from the database.
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByVideoId_userId(long videoId, long userId)
+		throws SystemException {
+		for (RatingEntry ratingEntry : findByVideoId_userId(videoId, userId)) {
+			remove(ratingEntry);
+		}
+	}
+
+	/**
+	 * Removes all the rating entries where videoId = &#63; and code = &#63; from the database.
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByVideoId_code(long videoId, int code)
+		throws SystemException {
+		for (RatingEntry ratingEntry : findByVideoId_code(videoId, code)) {
+			remove(ratingEntry);
+		}
+	}
+
+	/**
 	 * Removes all the rating entries where code = &#63; from the database.
 	 *
 	 * @param code the code
@@ -2758,20 +3202,6 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 */
 	public void removeByRatingCode(int code) throws SystemException {
 		for (RatingEntry ratingEntry : findByRatingCode(code)) {
-			remove(ratingEntry);
-		}
-	}
-
-	/**
-	 * Removes all the rating entries where code = &#63; and videoId = &#63; from the database.
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @throws SystemException if a system exception occurred
-	 */
-	public void removeByCode_Video(int code, long videoId)
-		throws SystemException {
-		for (RatingEntry ratingEntry : findByCode_Video(code, videoId)) {
 			remove(ratingEntry);
 		}
 	}
@@ -2969,6 +3399,124 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	}
 
 	/**
+	 * Returns the number of rating entries where videoId = &#63; and userId = &#63;.
+	 *
+	 * @param videoId the video ID
+	 * @param userId the user ID
+	 * @return the number of matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByVideoId_userId(long videoId, long userId)
+		throws SystemException {
+		Object[] finderArgs = new Object[] { videoId, userId };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_VIDEOID_USERID,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_RATINGENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_VIDEOID_USERID_VIDEOID_2);
+
+			query.append(_FINDER_COLUMN_VIDEOID_USERID_USERID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(videoId);
+
+				qPos.add(userId);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_VIDEOID_USERID,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
+	 * Returns the number of rating entries where videoId = &#63; and code = &#63;.
+	 *
+	 * @param videoId the video ID
+	 * @param code the code
+	 * @return the number of matching rating entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByVideoId_code(long videoId, int code)
+		throws SystemException {
+		Object[] finderArgs = new Object[] { videoId, code };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_VIDEOID_CODE,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_RATINGENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_VIDEOID_CODE_VIDEOID_2);
+
+			query.append(_FINDER_COLUMN_VIDEOID_CODE_CODE_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(videoId);
+
+				qPos.add(code);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_VIDEOID_CODE,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
 	 * Returns the number of rating entries where code = &#63;.
 	 *
 	 * @param code the code
@@ -3012,65 +3560,6 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 				}
 
 				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_RATINGCODE,
-					finderArgs, count);
-
-				closeSession(session);
-			}
-		}
-
-		return count.intValue();
-	}
-
-	/**
-	 * Returns the number of rating entries where code = &#63; and videoId = &#63;.
-	 *
-	 * @param code the code
-	 * @param videoId the video ID
-	 * @return the number of matching rating entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public int countByCode_Video(int code, long videoId)
-		throws SystemException {
-		Object[] finderArgs = new Object[] { code, videoId };
-
-		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_CODE_VIDEO,
-				finderArgs, this);
-
-		if (count == null) {
-			StringBundler query = new StringBundler(3);
-
-			query.append(_SQL_COUNT_RATINGENTRY_WHERE);
-
-			query.append(_FINDER_COLUMN_CODE_VIDEO_CODE_2);
-
-			query.append(_FINDER_COLUMN_CODE_VIDEO_VIDEOID_2);
-
-			String sql = query.toString();
-
-			Session session = null;
-
-			try {
-				session = openSession();
-
-				Query q = session.createQuery(sql);
-
-				QueryPos qPos = QueryPos.getInstance(q);
-
-				qPos.add(code);
-
-				qPos.add(videoId);
-
-				count = (Long)q.uniqueResult();
-			}
-			catch (Exception e) {
-				throw processException(e);
-			}
-			finally {
-				if (count == null) {
-					count = Long.valueOf(0);
-				}
-
-				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_CODE_VIDEO,
 					finderArgs, count);
 
 				closeSession(session);
@@ -3269,9 +3758,11 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	private static final String _FINDER_COLUMN_DATE_DATE__1 = "ratingEntry.date_ IS NULL";
 	private static final String _FINDER_COLUMN_DATE_DATE__2 = "ratingEntry.date_ = ?";
 	private static final String _FINDER_COLUMN_USERID_USERID_2 = "ratingEntry.userId = ?";
+	private static final String _FINDER_COLUMN_VIDEOID_USERID_VIDEOID_2 = "ratingEntry.videoId = ? AND ";
+	private static final String _FINDER_COLUMN_VIDEOID_USERID_USERID_2 = "ratingEntry.userId = ?";
+	private static final String _FINDER_COLUMN_VIDEOID_CODE_VIDEOID_2 = "ratingEntry.videoId = ? AND ";
+	private static final String _FINDER_COLUMN_VIDEOID_CODE_CODE_2 = "ratingEntry.code = ?";
 	private static final String _FINDER_COLUMN_RATINGCODE_CODE_2 = "ratingEntry.code = ?";
-	private static final String _FINDER_COLUMN_CODE_VIDEO_CODE_2 = "ratingEntry.code = ? AND ";
-	private static final String _FINDER_COLUMN_CODE_VIDEO_VIDEOID_2 = "ratingEntry.videoId = ?";
 	private static final String _FINDER_COLUMN_USER_VIDEO_CODE_USERID_2 = "ratingEntry.userId = ? AND ";
 	private static final String _FINDER_COLUMN_USER_VIDEO_CODE_VIDEOID_2 = "ratingEntry.videoId = ? AND ";
 	private static final String _FINDER_COLUMN_USER_VIDEO_CODE_CODE_2 = "ratingEntry.code = ?";

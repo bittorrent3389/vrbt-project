@@ -83,6 +83,7 @@ public class CategoryEntryModelImpl extends BaseModelImpl<CategoryEntry>
 				"value.object.column.bitmask.enabled.vn.com.fis.portal.model.CategoryEntry"),
 			true);
 	public static long CATEGORYNAME_COLUMN_BITMASK = 1L;
+	public static long STATUS_COLUMN_BITMASK = 2L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -200,7 +201,19 @@ public class CategoryEntryModelImpl extends BaseModelImpl<CategoryEntry>
 	}
 
 	public void setStatus(int status) {
+		_columnBitmask |= STATUS_COLUMN_BITMASK;
+
+		if (!_setOriginalStatus) {
+			_setOriginalStatus = true;
+
+			_originalStatus = _status;
+		}
+
 		_status = status;
+	}
+
+	public int getOriginalStatus() {
+		return _originalStatus;
 	}
 
 	public long getColumnBitmask() {
@@ -295,6 +308,10 @@ public class CategoryEntryModelImpl extends BaseModelImpl<CategoryEntry>
 
 		categoryEntryModelImpl._originalCategoryName = categoryEntryModelImpl._categoryName;
 
+		categoryEntryModelImpl._originalStatus = categoryEntryModelImpl._status;
+
+		categoryEntryModelImpl._setOriginalStatus = false;
+
 		categoryEntryModelImpl._columnBitmask = 0;
 	}
 
@@ -380,6 +397,8 @@ public class CategoryEntryModelImpl extends BaseModelImpl<CategoryEntry>
 	private String _originalCategoryName;
 	private String _description;
 	private int _status;
+	private int _originalStatus;
+	private boolean _setOriginalStatus;
 	private transient ExpandoBridge _expandoBridge;
 	private long _columnBitmask;
 	private CategoryEntry _escapedModelProxy;

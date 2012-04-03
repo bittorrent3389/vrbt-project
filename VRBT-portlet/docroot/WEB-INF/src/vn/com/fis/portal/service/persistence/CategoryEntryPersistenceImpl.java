@@ -98,6 +98,26 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 			CategoryEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCategoryName",
 			new String[] { String.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS = new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryEntryImpl.class, FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
+			"findBystatus",
+			new String[] {
+				Integer.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS =
+		new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryEntryImpl.class, FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"findBystatus", new String[] { Integer.class.getName() },
+			CategoryEntryModelImpl.STATUS_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_STATUS = new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countBystatus",
+			new String[] { Integer.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
 			CategoryEntryModelImpl.FINDER_CACHE_ENABLED,
 			CategoryEntryImpl.class, FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
@@ -330,6 +350,25 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CATEGORYNAME,
 					args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CATEGORYNAME,
+					args);
+			}
+
+			if ((categoryEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Integer.valueOf(categoryEntryModelImpl.getOriginalStatus())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS,
+					args);
+
+				args = new Object[] {
+						Integer.valueOf(categoryEntryModelImpl.getStatus())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS,
 					args);
 			}
 		}
@@ -835,6 +874,351 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
+	 * Returns all the category entries where status = &#63;.
+	 *
+	 * @param status the status
+	 * @return the matching category entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryEntry> findBystatus(int status)
+		throws SystemException {
+		return findBystatus(status, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the category entries where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param start the lower bound of the range of category entries
+	 * @param end the upper bound of the range of category entries (not inclusive)
+	 * @return the range of matching category entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryEntry> findBystatus(int status, int start, int end)
+		throws SystemException {
+		return findBystatus(status, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the category entries where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param start the lower bound of the range of category entries
+	 * @param end the upper bound of the range of category entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching category entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryEntry> findBystatus(int status, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS;
+			finderArgs = new Object[] { status };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS;
+			finderArgs = new Object[] { status, start, end, orderByComparator };
+		}
+
+		List<CategoryEntry> list = (List<CategoryEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_CATEGORYENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_STATUS_STATUS_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(CategoryEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(status);
+
+				list = (List<CategoryEntry>)QueryUtil.list(q, getDialect(),
+						start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first category entry in the ordered set where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching category entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryEntryException if a matching category entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry findBystatus_First(int status,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryEntryException, SystemException {
+		List<CategoryEntry> list = findBystatus(status, 0, 1, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("status=");
+			msg.append(status);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchCategoryEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last category entry in the ordered set where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching category entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryEntryException if a matching category entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry findBystatus_Last(int status,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryEntryException, SystemException {
+		int count = countBystatus(status);
+
+		List<CategoryEntry> list = findBystatus(status, count - 1, count,
+				orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("status=");
+			msg.append(status);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchCategoryEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the category entries before and after the current category entry in the ordered set where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryId the primary key of the current category entry
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next category entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryEntryException if a category entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry[] findBystatus_PrevAndNext(long categoryId,
+		int status, OrderByComparator orderByComparator)
+		throws NoSuchCategoryEntryException, SystemException {
+		CategoryEntry categoryEntry = findByPrimaryKey(categoryId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			CategoryEntry[] array = new CategoryEntryImpl[3];
+
+			array[0] = getBystatus_PrevAndNext(session, categoryEntry, status,
+					orderByComparator, true);
+
+			array[1] = categoryEntry;
+
+			array[2] = getBystatus_PrevAndNext(session, categoryEntry, status,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected CategoryEntry getBystatus_PrevAndNext(Session session,
+		CategoryEntry categoryEntry, int status,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_CATEGORYENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_STATUS_STATUS_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(CategoryEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(status);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(categoryEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<CategoryEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
 	 * Returns all the category entries.
 	 *
 	 * @return the category entries
@@ -963,6 +1347,18 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
+	 * Removes all the category entries where status = &#63; from the database.
+	 *
+	 * @param status the status
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeBystatus(int status) throws SystemException {
+		for (CategoryEntry categoryEntry : findBystatus(status)) {
+			remove(categoryEntry);
+		}
+	}
+
+	/**
 	 * Removes all the category entries from the database.
 	 *
 	 * @throws SystemException if a system exception occurred
@@ -1030,6 +1426,59 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 				}
 
 				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_CATEGORYNAME,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
+	 * Returns the number of category entries where status = &#63;.
+	 *
+	 * @param status the status
+	 * @return the number of matching category entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countBystatus(int status) throws SystemException {
+		Object[] finderArgs = new Object[] { status };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_STATUS,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_CATEGORYENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_STATUS_STATUS_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(status);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUS,
 					finderArgs, count);
 
 				closeSession(session);
@@ -1163,6 +1612,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_1 = "categoryEntry.categoryName IS NULL";
 	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_2 = "categoryEntry.categoryName = ?";
 	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_3 = "(categoryEntry.categoryName IS NULL OR categoryEntry.categoryName = ?)";
+	private static final String _FINDER_COLUMN_STATUS_STATUS_2 = "categoryEntry.status = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "categoryEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No CategoryEntry exists with the primary key ";
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No CategoryEntry exists with the key {";

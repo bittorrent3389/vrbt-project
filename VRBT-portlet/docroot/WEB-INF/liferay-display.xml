@@ -9,5 +9,8 @@
 		<portlet id="videolistdisplay"></portlet>
 		<portlet id="myvideoportlet"></portlet>
 		<portlet id="videoadminportlet"></portlet>
+		<portlet id="categoryadmin"></portlet>
+		<portlet id="subscriber_servicemng"></portlet>
+		<portlet id="service_transaction_history"></portlet>
 	</category>
 </display>

@@ -64,7 +64,7 @@ public class ServicePackageEntryLocalServiceImpl
 	}
 	
 	public List<ServicePackageEntry> findByserviceId_Status(long serviceId, int status) throws SystemException {
-		return ServicePackageEntryUtil.findByserviceId_Status(serviceId, status);
+		return ServicePackageEntryUtil.findByserviceId_status(serviceId, status);
 	}
 	
 	public ServicePackageEntry findByservicePackageCode(String servicePackageCode) throws NoSuchServicePackageEntryException, SystemException{

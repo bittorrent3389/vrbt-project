@@ -90,7 +90,8 @@ public class UserServiceEntryModelImpl extends BaseModelImpl<UserServiceEntry>
 			true);
 	public static long SERVICEID_COLUMN_BITMASK = 1L;
 	public static long SERVICEPACKAGEID_COLUMN_BITMASK = 2L;
-	public static long USERID_COLUMN_BITMASK = 4L;
+	public static long SERVICESTATUS_COLUMN_BITMASK = 4L;
+	public static long USERID_COLUMN_BITMASK = 8L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -225,7 +226,19 @@ public class UserServiceEntryModelImpl extends BaseModelImpl<UserServiceEntry>
 	}
 
 	public void setServiceStatus(int serviceStatus) {
+		_columnBitmask |= SERVICESTATUS_COLUMN_BITMASK;
+
+		if (!_setOriginalServiceStatus) {
+			_setOriginalServiceStatus = true;
+
+			_originalServiceStatus = _serviceStatus;
+		}
+
 		_serviceStatus = serviceStatus;
+	}
+
+	public int getOriginalServiceStatus() {
+		return _originalServiceStatus;
 	}
 
 	@JSON
@@ -386,6 +399,10 @@ public class UserServiceEntryModelImpl extends BaseModelImpl<UserServiceEntry>
 
 		userServiceEntryModelImpl._setOriginalServiceId = false;
 
+		userServiceEntryModelImpl._originalServiceStatus = userServiceEntryModelImpl._serviceStatus;
+
+		userServiceEntryModelImpl._setOriginalServiceStatus = false;
+
 		userServiceEntryModelImpl._originalServicePackageId = userServiceEntryModelImpl._servicePackageId;
 
 		userServiceEntryModelImpl._setOriginalServicePackageId = false;
@@ -520,6 +537,8 @@ public class UserServiceEntryModelImpl extends BaseModelImpl<UserServiceEntry>
 	private long _originalServiceId;
 	private boolean _setOriginalServiceId;
 	private int _serviceStatus;
+	private int _originalServiceStatus;
+	private boolean _setOriginalServiceStatus;
 	private Date _serviceStartDate;
 	private Date _serviceStopDate;
 	private long _servicePackageId;

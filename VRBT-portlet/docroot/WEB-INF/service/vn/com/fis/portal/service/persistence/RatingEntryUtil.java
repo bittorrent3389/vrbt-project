@@ -545,6 +545,265 @@ public class RatingEntryUtil {
 	}
 
 	/**
+	* Returns all the rating entries where videoId = &#63; and userId = &#63;.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @return the matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_userId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByVideoId_userId(videoId, userId);
+	}
+
+	/**
+	* Returns a range of all the rating entries where videoId = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @return the range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_userId(
+		long videoId, long userId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByVideoId_userId(videoId, userId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the rating entries where videoId = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_userId(
+		long videoId, long userId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByVideoId_userId(videoId, userId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the first rating entry in the ordered set where videoId = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.RatingEntry findByVideoId_userId_First(
+		long videoId, long userId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return getPersistence()
+				   .findByVideoId_userId_First(videoId, userId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the last rating entry in the ordered set where videoId = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.RatingEntry findByVideoId_userId_Last(
+		long videoId, long userId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return getPersistence()
+				   .findByVideoId_userId_Last(videoId, userId, orderByComparator);
+	}
+
+	/**
+	* Returns the rating entries before and after the current rating entry in the ordered set where videoId = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param ratingId the primary key of the current rating entry
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.RatingEntry[] findByVideoId_userId_PrevAndNext(
+		long ratingId, long videoId, long userId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return getPersistence()
+				   .findByVideoId_userId_PrevAndNext(ratingId, videoId, userId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns all the rating entries where videoId = &#63; and code = &#63;.
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @return the matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_code(
+		long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByVideoId_code(videoId, code);
+	}
+
+	/**
+	* Returns a range of all the rating entries where videoId = &#63; and code = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @return the range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_code(
+		long videoId, int code, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByVideoId_code(videoId, code, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the rating entries where videoId = &#63; and code = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @param start the lower bound of the range of rating entries
+	* @param end the upper bound of the range of rating entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_code(
+		long videoId, int code, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByVideoId_code(videoId, code, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the first rating entry in the ordered set where videoId = &#63; and code = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.RatingEntry findByVideoId_code_First(
+		long videoId, int code,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return getPersistence()
+				   .findByVideoId_code_First(videoId, code, orderByComparator);
+	}
+
+	/**
+	* Returns the last rating entry in the ordered set where videoId = &#63; and code = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.RatingEntry findByVideoId_code_Last(
+		long videoId, int code,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return getPersistence()
+				   .findByVideoId_code_Last(videoId, code, orderByComparator);
+	}
+
+	/**
+	* Returns the rating entries before and after the current rating entry in the ordered set where videoId = &#63; and code = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param ratingId the primary key of the current rating entry
+	* @param videoId the video ID
+	* @param code the code
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next rating entry
+	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.RatingEntry[] findByVideoId_code_PrevAndNext(
+		long ratingId, long videoId, int code,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return getPersistence()
+				   .findByVideoId_code_PrevAndNext(ratingId, videoId, code,
+			orderByComparator);
+	}
+
+	/**
 	* Returns all the rating entries where code = &#63;.
 	*
 	* @param code the code
@@ -660,135 +919,6 @@ public class RatingEntryUtil {
 			vn.com.fis.portal.NoSuchRatingEntryException {
 		return getPersistence()
 				   .findByRatingCode_PrevAndNext(ratingId, code,
-			orderByComparator);
-	}
-
-	/**
-	* Returns all the rating entries where code = &#63; and videoId = &#63;.
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @return the matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().findByCode_Video(code, videoId);
-	}
-
-	/**
-	* Returns a range of all the rating entries where code = &#63; and videoId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	* </p>
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @param start the lower bound of the range of rating entries
-	* @param end the upper bound of the range of rating entries (not inclusive)
-	* @return the range of matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId, int start, int end)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().findByCode_Video(code, videoId, start, end);
-	}
-
-	/**
-	* Returns an ordered range of all the rating entries where code = &#63; and videoId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	* </p>
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @param start the lower bound of the range of rating entries
-	* @param end the upper bound of the range of rating entries (not inclusive)
-	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	* @return the ordered range of matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByCode_Video(
-		int code, long videoId, int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence()
-				   .findByCode_Video(code, videoId, start, end,
-			orderByComparator);
-	}
-
-	/**
-	* Returns the first rating entry in the ordered set where code = &#63; and videoId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	* </p>
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the first matching rating entry
-	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public static vn.com.fis.portal.model.RatingEntry findByCode_Video_First(
-		int code, long videoId,
-		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchRatingEntryException {
-		return getPersistence()
-				   .findByCode_Video_First(code, videoId, orderByComparator);
-	}
-
-	/**
-	* Returns the last rating entry in the ordered set where code = &#63; and videoId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	* </p>
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the last matching rating entry
-	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public static vn.com.fis.portal.model.RatingEntry findByCode_Video_Last(
-		int code, long videoId,
-		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchRatingEntryException {
-		return getPersistence()
-				   .findByCode_Video_Last(code, videoId, orderByComparator);
-	}
-
-	/**
-	* Returns the rating entries before and after the current rating entry in the ordered set where code = &#63; and videoId = &#63;.
-	*
-	* <p>
-	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
-	* </p>
-	*
-	* @param ratingId the primary key of the current rating entry
-	* @param code the code
-	* @param videoId the video ID
-	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-	* @return the previous, current, and next rating entry
-	* @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public static vn.com.fis.portal.model.RatingEntry[] findByCode_Video_PrevAndNext(
-		long ratingId, int code, long videoId,
-		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchRatingEntryException {
-		return getPersistence()
-				   .findByCode_Video_PrevAndNext(ratingId, code, videoId,
 			orderByComparator);
 	}
 
@@ -925,6 +1055,30 @@ public class RatingEntryUtil {
 	}
 
 	/**
+	* Removes all the rating entries where videoId = &#63; and userId = &#63; from the database.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByVideoId_userId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByVideoId_userId(videoId, userId);
+	}
+
+	/**
+	* Removes all the rating entries where videoId = &#63; and code = &#63; from the database.
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByVideoId_code(long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByVideoId_code(videoId, code);
+	}
+
+	/**
 	* Removes all the rating entries where code = &#63; from the database.
 	*
 	* @param code the code
@@ -933,18 +1087,6 @@ public class RatingEntryUtil {
 	public static void removeByRatingCode(int code)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		getPersistence().removeByRatingCode(code);
-	}
-
-	/**
-	* Removes all the rating entries where code = &#63; and videoId = &#63; from the database.
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @throws SystemException if a system exception occurred
-	*/
-	public static void removeByCode_Video(int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		getPersistence().removeByCode_Video(code, videoId);
 	}
 
 	/**
@@ -1009,6 +1151,32 @@ public class RatingEntryUtil {
 	}
 
 	/**
+	* Returns the number of rating entries where videoId = &#63; and userId = &#63;.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByVideoId_userId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByVideoId_userId(videoId, userId);
+	}
+
+	/**
+	* Returns the number of rating entries where videoId = &#63; and code = &#63;.
+	*
+	* @param videoId the video ID
+	* @param code the code
+	* @return the number of matching rating entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByVideoId_code(long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByVideoId_code(videoId, code);
+	}
+
+	/**
 	* Returns the number of rating entries where code = &#63;.
 	*
 	* @param code the code
@@ -1018,19 +1186,6 @@ public class RatingEntryUtil {
 	public static int countByRatingCode(int code)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByRatingCode(code);
-	}
-
-	/**
-	* Returns the number of rating entries where code = &#63; and videoId = &#63;.
-	*
-	* @param code the code
-	* @param videoId the video ID
-	* @return the number of matching rating entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public static int countByCode_Video(int code, long videoId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().countByCode_Video(code, videoId);
 	}
 
 	/**

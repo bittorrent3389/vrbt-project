@@ -169,10 +169,7 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 	 * @return the matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByCode_Video(int code, long videoId)
-		throws SystemException {
-		return RatingEntryUtil.findByCode_Video(code, videoId);
-	}
+	
 	/**
 	 * Returns a range of all the rating entries where code = &#63; and videoId = &#63;.
 	 *
@@ -187,10 +184,7 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 	 * @return the range of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByCode_Video(int code, long videoId,
-		int start, int end) throws SystemException {
-		return RatingEntryUtil.findByCode_Video(code, videoId, start, end);
-	}
+	
 	/**
 	 * Returns the number of rating entries where code = &#63; and videoId = &#63;.
 	 *
@@ -199,10 +193,7 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 	 * @return the number of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByCode_Video(int code, long videoId)
-		throws SystemException {
-		return RatingEntryUtil.countByCode_Video(code, videoId);
-	}
+	
 	/**
 	 * Returns the rating entry where userId = &#63; and videoId = &#63; and code = &#63; or throws a {@link vn.com.fis.portal.NoSuchRatingEntryException} if it could not be found.
 	 *

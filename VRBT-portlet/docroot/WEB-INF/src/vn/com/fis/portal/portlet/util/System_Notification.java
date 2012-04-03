@@ -1,7 +1,7 @@
 package vn.com.fis.portal.portlet.util;
 
-import vn.com.fis.portal.portlet.util.model.NotificationExt;
-import vn.com.fis.portal.portlet.util.service.NotificationExtLocalServiceUtil;
+import vn.com.fis.portal.model.NotificationEntry;
+import vn.com.fis.portal.service.NotificationEntryLocalServiceUtil;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -23,14 +23,14 @@ public class System_Notification {
 		//Create message object
 		Message notificationMessage = new Message();
 		
-		NotificationExt notificationToAdmin = NotificationExtLocalServiceUtil.createNotificationExt(CounterLocalServiceUtil.increment());
+		NotificationEntry notificationToAdmin = NotificationEntryLocalServiceUtil.createNotificationEntry(CounterLocalServiceUtil.increment());
 		notificationToAdmin.setUserIdFrom(userIdForm);
 		notificationToAdmin.setUserIdTo(10196);
 		notificationToAdmin.setSubject(subject);
 		notificationToAdmin.setMessage(messageToAdmin);
 		notificationToAdmin.setStatus(1);
 		
-		NotificationExt notificationToUser = NotificationExtLocalServiceUtil.createNotificationExt(CounterLocalServiceUtil.increment());
+		NotificationEntry notificationToUser = NotificationEntryLocalServiceUtil.createNotificationEntry(CounterLocalServiceUtil.increment());
 		notificationToUser.setUserIdFrom(userIdForm);
 		notificationToUser.setUserIdTo(userIdForm);
 		notificationToUser.setSubject(subject);
@@ -54,14 +54,14 @@ public class System_Notification {
 		//Create message object
 		Message notificationMessage = new Message();
 		
-		NotificationExt notificationExt = NotificationExtLocalServiceUtil.createNotificationExt(CounterLocalServiceUtil.increment());
-		notificationExt.setUserIdFrom(10196);
-		notificationExt.setUserIdTo(userIdTo);
-		notificationExt.setSubject(subject);
-		notificationExt.setMessage(message);
-		notificationExt.setStatus(1);
+		NotificationEntry notificationEntry = NotificationEntryLocalServiceUtil.createNotificationEntry(CounterLocalServiceUtil.increment());
+		notificationEntry.setUserIdFrom(10196);
+		notificationEntry.setUserIdTo(userIdTo);
+		notificationEntry.setSubject(subject);
+		notificationEntry.setMessage(message);
+		notificationEntry.setStatus(1);
 		 
-		notificationMessage.put("notificationToUser", notificationExt);
+		notificationMessage.put("notificationToUser", notificationEntry);
 		MessageBusUtil.sendMessage("notificationToUserDestination", notificationMessage);
 		
 	}

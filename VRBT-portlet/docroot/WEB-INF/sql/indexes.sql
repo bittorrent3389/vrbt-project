@@ -1,4 +1,5 @@
 create index IX_1E5C022 on TBL_CATEGORY (categoryName);
+create index IX_1EBA966B on TBL_CATEGORY (status);
 
 create index IX_C2884D58 on TBL_CATEGORY_VIDEO (categoryId, videoId);
 
@@ -25,8 +26,18 @@ create index IX_9F230EBD on TBL_RATING (date_);
 create index IX_CA7849DE on TBL_RATING (userId);
 create index IX_1A691CBA on TBL_RATING (userId, videoId, code_);
 create index IX_C1007782 on TBL_RATING (videoId);
+create index IX_8B655C80 on TBL_RATING (videoId, code_);
+create index IX_5172DBC on TBL_RATING (videoId, userId);
 
 create index IX_39FDC678 on TBL_SERVICE (serviceCode);
+create index IX_4C01E396 on TBL_SERVICE (serviceName);
+create index IX_A1C7BAA0 on TBL_SERVICE (status);
+
+create index IX_AB11E0DF on TBL_SERVICE_PACKAGE (serviceId);
+create index IX_9B0CD0C5 on TBL_SERVICE_PACKAGE (serviceId, status);
+create index IX_9015F2B3 on TBL_SERVICE_PACKAGE (servicePackageCode);
+create index IX_A21A0FD1 on TBL_SERVICE_PACKAGE (servicePackageName);
+create index IX_ADEAB8C7 on TBL_SERVICE_PACKAGE (status);
 
 create index IX_B65661C8 on TBL_SERVICE_TRANSACTION (date_);
 create index IX_DC6AC082 on TBL_SERVICE_TRANSACTION (transactionCode);
@@ -38,6 +49,8 @@ create index IX_CE6E8ED1 on TBL_USER (mobileNumber);
 create index IX_569DD2CC on TBL_USER (userId);
 create index IX_2EF1D07C on TBL_USER (userName);
 
+create index IX_56C125FF on TBL_USER_SERVICE (serviceId, serviceStatus);
+create index IX_B851E128 on TBL_USER_SERVICE (servicePackageId);
 create index IX_8427CC7E on TBL_USER_SERVICE (userId, serviceId);
 create index IX_F00677BE on TBL_USER_SERVICE (userId, serviceId, servicePackageId);
 create index IX_6A5E76E2 on TBL_USER_SERVICE (userId, servicePackageId);
