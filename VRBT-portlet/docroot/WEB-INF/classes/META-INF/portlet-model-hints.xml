@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="vn.com.fis.portal.model.CategoryEnty">
+	<model name="vn.com.fis.portal.model.CategoryEntry">
 		<field name="categoryId" type="long" />
 		<field name="categoryName" type="String" />
 		<field name="description" type="String" />
@@ -95,7 +95,7 @@
 	<model name="vn.com.fis.portal.model.UserEntry">
 		<field name="userId" type="long" />
 		<field name="userName" type="String" />
-		<field name="mobileNumber" type="long" />
+		<field name="mobileNumber" type="String" />
 		<field name="companyId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
@@ -115,7 +115,6 @@
 		<field name="videoId" type="long" />
 		<field name="videoName" type="String" />
 		<field name="description" type="String" />
-		<field name="videoUrl" type="String" />
 		<field name="viewCount" type="long" />
 		<field name="date_" type="Date" />
 		<field name="smallImageUrl" type="String" />

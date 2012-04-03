@@ -104,21 +104,6 @@ public interface VideoEntryModel extends BaseModel<VideoEntry> {
 	public void setDescription(String description);
 
 	/**
-	 * Returns the video url of this video entry.
-	 *
-	 * @return the video url of this video entry
-	 */
-	@AutoEscape
-	public String getVideoUrl();
-
-	/**
-	 * Sets the video url of this video entry.
-	 *
-	 * @param videoUrl the video url of this video entry
-	 */
-	public void setVideoUrl(String videoUrl);
-
-	/**
 	 * Returns the view count of this video entry.
 	 *
 	 * @return the view count of this video entry

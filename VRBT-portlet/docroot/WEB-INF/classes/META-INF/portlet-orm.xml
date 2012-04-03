@@ -7,7 +7,7 @@
 			<access>PROPERTY</access>
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>
-	<mapped-superclass class="vn.com.fis.portal.model.impl.CategoryEntyModelImpl">
+	<mapped-superclass class="vn.com.fis.portal.model.impl.CategoryEntryModelImpl">
 		<attributes>
 			<id name="categoryId" />
 			<basic name="categoryName" />
@@ -221,7 +221,6 @@
 			<id name="videoId" />
 			<basic name="videoName" />
 			<basic name="description" />
-			<basic name="videoUrl" />
 			<basic name="viewCount" />
 			<basic name="date_">
 				<temporal>TIMESTAMP</temporal>
@@ -337,7 +336,7 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
-	<entity class="vn.com.fis.portal.model.impl.CategoryEntyImpl" name="CategoryEnty">
+	<entity class="vn.com.fis.portal.model.impl.CategoryEntryImpl" name="CategoryEntry">
 		<table name="TBL_CATEGORY" />
 		<attributes />
 	</entity>

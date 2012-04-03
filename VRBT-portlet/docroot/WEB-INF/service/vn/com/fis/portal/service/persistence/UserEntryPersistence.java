@@ -143,7 +143,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
 
@@ -155,7 +155,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public vn.com.fis.portal.model.UserEntry fetchByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -167,7 +167,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public vn.com.fis.portal.model.UserEntry fetchByMobileNumber(
-		long mobileNumber, boolean retrieveFromCache)
+		java.lang.String mobileNumber, boolean retrieveFromCache)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -263,7 +263,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @param mobileNumber the mobile number
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByMobileNumber(long mobileNumber)
+	public void removeByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
 
@@ -302,7 +302,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByMobileNumber(long mobileNumber)
+	public int countByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

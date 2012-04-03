@@ -237,7 +237,7 @@ public class UserEntryUtil {
 	* @throws SystemException if a system exception occurred
 	*/
 	public static vn.com.fis.portal.model.UserEntry findByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		return getPersistence().findByMobileNumber(mobileNumber);
@@ -251,7 +251,7 @@ public class UserEntryUtil {
 	* @throws SystemException if a system exception occurred
 	*/
 	public static vn.com.fis.portal.model.UserEntry fetchByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().fetchByMobileNumber(mobileNumber);
 	}
@@ -265,7 +265,7 @@ public class UserEntryUtil {
 	* @throws SystemException if a system exception occurred
 	*/
 	public static vn.com.fis.portal.model.UserEntry fetchByMobileNumber(
-		long mobileNumber, boolean retrieveFromCache)
+		java.lang.String mobileNumber, boolean retrieveFromCache)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence()
 				   .fetchByMobileNumber(mobileNumber, retrieveFromCache);
@@ -378,7 +378,7 @@ public class UserEntryUtil {
 	* @param mobileNumber the mobile number
 	* @throws SystemException if a system exception occurred
 	*/
-	public static void removeByMobileNumber(long mobileNumber)
+	public static void removeByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		getPersistence().removeByMobileNumber(mobileNumber);
@@ -425,7 +425,7 @@ public class UserEntryUtil {
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public static int countByMobileNumber(long mobileNumber)
+	public static int countByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByMobileNumber(mobileNumber);
 	}

@@ -34,7 +34,6 @@ public class VideoEntrySoap implements Serializable {
 		soapModel.setVideoId(model.getVideoId());
 		soapModel.setVideoName(model.getVideoName());
 		soapModel.setDescription(model.getDescription());
-		soapModel.setVideoUrl(model.getVideoUrl());
 		soapModel.setViewCount(model.getViewCount());
 		soapModel.setDate_(model.getDate_());
 		soapModel.setSmallImageUrl(model.getSmallImageUrl());
@@ -119,14 +118,6 @@ public class VideoEntrySoap implements Serializable {
 		_description = description;
 	}
 
-	public String getVideoUrl() {
-		return _videoUrl;
-	}
-
-	public void setVideoUrl(String videoUrl) {
-		_videoUrl = videoUrl;
-	}
-
 	public long getViewCount() {
 		return _viewCount;
 	}
@@ -194,7 +185,6 @@ public class VideoEntrySoap implements Serializable {
 	private long _videoId;
 	private String _videoName;
 	private String _description;
-	private String _videoUrl;
 	private long _viewCount;
 	private Date _date_;
 	private String _smallImageUrl;

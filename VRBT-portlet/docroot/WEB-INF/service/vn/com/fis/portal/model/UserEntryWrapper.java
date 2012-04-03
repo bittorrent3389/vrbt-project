@@ -117,7 +117,7 @@ public class UserEntryWrapper implements UserEntry, ModelWrapper<UserEntry> {
 	*
 	* @return the mobile number of this user entry
 	*/
-	public long getMobileNumber() {
+	public java.lang.String getMobileNumber() {
 		return _userEntry.getMobileNumber();
 	}
 
@@ -126,7 +126,7 @@ public class UserEntryWrapper implements UserEntry, ModelWrapper<UserEntry> {
 	*
 	* @param mobileNumber the mobile number of this user entry
 	*/
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(java.lang.String mobileNumber) {
 		_userEntry.setMobileNumber(mobileNumber);
 	}
 

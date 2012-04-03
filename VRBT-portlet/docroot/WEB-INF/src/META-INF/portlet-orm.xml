@@ -221,7 +221,6 @@
 			<id name="videoId" />
 			<basic name="videoName" />
 			<basic name="description" />
-			<basic name="videoUrl" />
 			<basic name="viewCount" />
 			<basic name="date_">
 				<temporal>TIMESTAMP</temporal>

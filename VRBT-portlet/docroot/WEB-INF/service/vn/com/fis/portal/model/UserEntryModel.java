@@ -110,14 +110,15 @@ public interface UserEntryModel extends AuditedModel, BaseModel<UserEntry> {
 	 *
 	 * @return the mobile number of this user entry
 	 */
-	public long getMobileNumber();
+	@AutoEscape
+	public String getMobileNumber();
 
 	/**
 	 * Sets the mobile number of this user entry.
 	 *
 	 * @param mobileNumber the mobile number of this user entry
 	 */
-	public void setMobileNumber(long mobileNumber);
+	public void setMobileNumber(String mobileNumber);
 
 	/**
 	 * Returns the company ID of this user entry.

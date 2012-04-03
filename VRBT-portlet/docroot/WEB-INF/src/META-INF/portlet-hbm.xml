@@ -157,7 +157,7 @@
 			<generator class="assigned" />
 		</id>
 		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="mobileNumber" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="mobileNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
@@ -183,7 +183,6 @@
 		</id>
 		<property name="videoName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="videoUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="viewCount" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="date_" type="org.hibernate.type.TimestampType" />
 		<property name="smallImageUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />

@@ -83,11 +83,11 @@ public class UserEntryClp extends BaseModelImpl<UserEntry> implements UserEntry 
 		_userName = userName;
 	}
 
-	public long getMobileNumber() {
+	public String getMobileNumber() {
 		return _mobileNumber;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		_mobileNumber = mobileNumber;
 	}
 
@@ -162,15 +162,7 @@ public class UserEntryClp extends BaseModelImpl<UserEntry> implements UserEntry 
 			return value;
 		}
 
-		if (getMobileNumber() < userEntry.getMobileNumber()) {
-			value = -1;
-		}
-		else if (getMobileNumber() > userEntry.getMobileNumber()) {
-			value = 1;
-		}
-		else {
-			value = 0;
-		}
+		value = getMobileNumber().compareTo(userEntry.getMobileNumber());
 
 		if (value != 0) {
 			return value;
@@ -276,7 +268,7 @@ public class UserEntryClp extends BaseModelImpl<UserEntry> implements UserEntry 
 	private long _userId;
 	private String _userUuid;
 	private String _userName;
-	private long _mobileNumber;
+	private String _mobileNumber;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;

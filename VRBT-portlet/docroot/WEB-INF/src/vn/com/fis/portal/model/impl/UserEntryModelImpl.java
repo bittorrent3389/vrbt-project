@@ -66,13 +66,13 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "userId", Types.BIGINT },
 			{ "userName", Types.VARCHAR },
-			{ "mobileNumber", Types.BIGINT },
+			{ "mobileNumber", Types.VARCHAR },
 			{ "companyId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "status", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TBL_USER (userId LONG not null primary key,userName VARCHAR(75) null,mobileNumber LONG,companyId LONG,createDate DATE null,modifiedDate DATE null,status INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table TBL_USER (userId LONG not null primary key,userName VARCHAR(75) null,mobileNumber VARCHAR(75) null,companyId LONG,createDate DATE null,modifiedDate DATE null,status INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table TBL_USER";
 	public static final String ORDER_BY_JPQL = " ORDER BY userEntry.userName ASC, userEntry.mobileNumber ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TBL_USER.userName ASC, TBL_USER.mobileNumber ASC";
@@ -212,24 +212,27 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 	}
 
 	@JSON
-	public long getMobileNumber() {
-		return _mobileNumber;
+	public String getMobileNumber() {
+		if (_mobileNumber == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _mobileNumber;
+		}
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		_columnBitmask = -1L;
 
-		if (!_setOriginalMobileNumber) {
-			_setOriginalMobileNumber = true;
-
+		if (_originalMobileNumber == null) {
 			_originalMobileNumber = _mobileNumber;
 		}
 
 		_mobileNumber = mobileNumber;
 	}
 
-	public long getOriginalMobileNumber() {
-		return _originalMobileNumber;
+	public String getOriginalMobileNumber() {
+		return GetterUtil.getString(_originalMobileNumber);
 	}
 
 	@JSON
@@ -324,15 +327,7 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 			return value;
 		}
 
-		if (getMobileNumber() < userEntry.getMobileNumber()) {
-			value = -1;
-		}
-		else if (getMobileNumber() > userEntry.getMobileNumber()) {
-			value = 1;
-		}
-		else {
-			value = 0;
-		}
+		value = getMobileNumber().compareTo(userEntry.getMobileNumber());
 
 		if (value != 0) {
 			return value;
@@ -383,8 +378,6 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 
 		userEntryModelImpl._originalMobileNumber = userEntryModelImpl._mobileNumber;
 
-		userEntryModelImpl._setOriginalMobileNumber = false;
-
 		userEntryModelImpl._columnBitmask = 0;
 	}
 
@@ -403,6 +396,12 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 		}
 
 		userEntryCacheModel.mobileNumber = getMobileNumber();
+
+		String mobileNumber = userEntryCacheModel.mobileNumber;
+
+		if ((mobileNumber != null) && (mobileNumber.length() == 0)) {
+			userEntryCacheModel.mobileNumber = null;
+		}
 
 		userEntryCacheModel.companyId = getCompanyId();
 
@@ -503,9 +502,8 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 	private boolean _setOriginalUserId;
 	private String _userName;
 	private String _originalUserName;
-	private long _mobileNumber;
-	private long _originalMobileNumber;
-	private boolean _setOriginalMobileNumber;
+	private String _mobileNumber;
+	private String _originalMobileNumber;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;

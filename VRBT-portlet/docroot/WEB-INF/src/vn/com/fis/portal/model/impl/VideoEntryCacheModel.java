@@ -35,7 +35,7 @@ public class VideoEntryCacheModel implements CacheModel<VideoEntry>,
 	Serializable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{videoId=");
 		sb.append(videoId);
@@ -43,8 +43,6 @@ public class VideoEntryCacheModel implements CacheModel<VideoEntry>,
 		sb.append(videoName);
 		sb.append(", description=");
 		sb.append(description);
-		sb.append(", videoUrl=");
-		sb.append(videoUrl);
 		sb.append(", viewCount=");
 		sb.append(viewCount);
 		sb.append(", date_=");
@@ -85,13 +83,6 @@ public class VideoEntryCacheModel implements CacheModel<VideoEntry>,
 			videoEntryImpl.setDescription(description);
 		}
 
-		if (videoUrl == null) {
-			videoEntryImpl.setVideoUrl(StringPool.BLANK);
-		}
-		else {
-			videoEntryImpl.setVideoUrl(videoUrl);
-		}
-
 		videoEntryImpl.setViewCount(viewCount);
 
 		if (date_ == Long.MIN_VALUE) {
@@ -128,7 +119,6 @@ public class VideoEntryCacheModel implements CacheModel<VideoEntry>,
 	public long videoId;
 	public String videoName;
 	public String description;
-	public String videoUrl;
 	public long viewCount;
 	public long date_;
 	public String smallImageUrl;

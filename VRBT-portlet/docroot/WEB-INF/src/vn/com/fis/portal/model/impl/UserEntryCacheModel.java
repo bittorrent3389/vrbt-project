@@ -67,7 +67,13 @@ public class UserEntryCacheModel implements CacheModel<UserEntry>, Serializable 
 			userEntryImpl.setUserName(userName);
 		}
 
-		userEntryImpl.setMobileNumber(mobileNumber);
+		if (mobileNumber == null) {
+			userEntryImpl.setMobileNumber(StringPool.BLANK);
+		}
+		else {
+			userEntryImpl.setMobileNumber(mobileNumber);
+		}
+
 		userEntryImpl.setCompanyId(companyId);
 
 		if (createDate == Long.MIN_VALUE) {
@@ -93,7 +99,7 @@ public class UserEntryCacheModel implements CacheModel<UserEntry>, Serializable 
 
 	public long userId;
 	public String userName;
-	public long mobileNumber;
+	public String mobileNumber;
 	public long companyId;
 	public long createDate;
 	public long modifiedDate;

@@ -84,7 +84,7 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry findByMobileNumber(long mobileNumber)
+	public UserEntry findByMobileNumber(String mobileNumber)
 		throws NoSuchUserEntryException, SystemException {
 		return UserEntryUtil.findByMobileNumber(mobileNumber);
 	}
@@ -95,7 +95,7 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	 * @return the number of matching user entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByMobileNumber(long mobileNumber) throws SystemException {
+	public int countByMobileNumber(String mobileNumber) throws SystemException {
 		return UserEntryUtil.countByMobileNumber(mobileNumber);
 	}
 	/**
@@ -104,7 +104,7 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	 * @param mobileNumber the mobile number
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByMobileNumber(long mobileNumber)
+	public void removeByMobileNumber(String mobileNumber)
 		throws NoSuchUserEntryException, SystemException {
 		UserEntryUtil.removeByMobileNumber(mobileNumber);
 	}

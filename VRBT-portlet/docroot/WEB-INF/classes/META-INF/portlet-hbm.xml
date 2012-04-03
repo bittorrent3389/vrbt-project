@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-lazy="false" auto-import="false">
-	<import class="vn.com.fis.portal.model.CategoryEnty" />
+	<import class="vn.com.fis.portal.model.CategoryEntry" />
 	<import class="vn.com.fis.portal.model.CategoryVideoEntry" />
 	<import class="vn.com.fis.portal.model.ContactEntry" />
 	<import class="vn.com.fis.portal.model.ContactGroupContactEntry" />
@@ -24,7 +24,7 @@
 	<import class="vn.com.fis.portal.model.VideoUserVideoGroupEntry" />
 	<import class="vn.com.fis.portal.model.ViolationEntry" />
 	<import class="vn.com.fis.portal.model.ViolationVideoEntry" />
-	<class name="vn.com.fis.portal.model.impl.CategoryEntyImpl" table="TBL_CATEGORY">
+	<class name="vn.com.fis.portal.model.impl.CategoryEntryImpl" table="TBL_CATEGORY">
 		<cache usage="read-write" />
 		<id name="categoryId" type="long">
 			<generator class="assigned" />
@@ -157,7 +157,7 @@
 			<generator class="assigned" />
 		</id>
 		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="mobileNumber" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="mobileNumber" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="createDate" type="org.hibernate.type.TimestampType" />
 		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
@@ -183,7 +183,6 @@
 		</id>
 		<property name="videoName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="videoUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="viewCount" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="date_" type="org.hibernate.type.TimestampType" />
 		<property name="smallImageUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />

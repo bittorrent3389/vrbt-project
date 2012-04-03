@@ -298,7 +298,7 @@ public class UserEntryLocalServiceWrapper implements UserEntryLocalService,
 	* @throws SystemException if a system exception occurred
 	*/
 	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		return _userEntryLocalService.findByMobileNumber(mobileNumber);
@@ -311,7 +311,7 @@ public class UserEntryLocalServiceWrapper implements UserEntryLocalService,
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByMobileNumber(long mobileNumber)
+	public int countByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _userEntryLocalService.countByMobileNumber(mobileNumber);
 	}
@@ -322,7 +322,7 @@ public class UserEntryLocalServiceWrapper implements UserEntryLocalService,
 	* @param mobileNumber the mobile number
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByMobileNumber(long mobileNumber)
+	public void removeByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		_userEntryLocalService.removeByMobileNumber(mobileNumber);

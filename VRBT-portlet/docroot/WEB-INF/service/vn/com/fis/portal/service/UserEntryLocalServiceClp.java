@@ -94,13 +94,13 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 				"countByUserName", java.lang.String.class);
 
 		_findByMobileNumberMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findByMobileNumber", long.class);
+				"findByMobileNumber", java.lang.String.class);
 
 		_countByMobileNumberMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
-				"countByMobileNumber", long.class);
+				"countByMobileNumber", java.lang.String.class);
 
 		_removeByMobileNumberMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
-				"removeByMobileNumber", long.class);
+				"removeByMobileNumber", java.lang.String.class);
 
 		_findByUserIdMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByUserId", long.class);
@@ -661,13 +661,13 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 	}
 
 	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		Object returnObj = null;
 
 		MethodHandler methodHandler = new MethodHandler(_findByMobileNumberMethodKey20,
-				mobileNumber);
+				ClpSerializer.translateInput(mobileNumber));
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -693,12 +693,12 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public int countByMobileNumber(long mobileNumber)
+	public int countByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
 		MethodHandler methodHandler = new MethodHandler(_countByMobileNumberMethodKey21,
-				mobileNumber);
+				ClpSerializer.translateInput(mobileNumber));
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -720,11 +720,11 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		return ((Integer)returnObj).intValue();
 	}
 
-	public void removeByMobileNumber(long mobileNumber)
+	public void removeByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		MethodHandler methodHandler = new MethodHandler(_removeByMobileNumberMethodKey22,
-				mobileNumber);
+				ClpSerializer.translateInput(mobileNumber));
 
 		try {
 			_classLoaderProxy.invoke(methodHandler);

@@ -104,7 +104,7 @@ create table TBL_SERVICE_TRANSACTION (
 create table TBL_USER (
 	userId LONG not null primary key,
 	userName VARCHAR(75) null,
-	mobileNumber LONG,
+	mobileNumber VARCHAR(75) null,
 	companyId LONG,
 	createDate DATE null,
 	modifiedDate DATE null,
@@ -126,7 +126,6 @@ create table TBL_VIDEO (
 	videoId LONG not null primary key,
 	videoName VARCHAR(75) null,
 	description VARCHAR(75) null,
-	videoUrl VARCHAR(75) null,
 	viewCount LONG,
 	date_ DATE null,
 	smallImageUrl VARCHAR(75) null,

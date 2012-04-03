@@ -306,7 +306,7 @@ public class UserEntryLocalServiceUtil {
 	* @throws SystemException if a system exception occurred
 	*/
 	public static vn.com.fis.portal.model.UserEntry findByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		return getService().findByMobileNumber(mobileNumber);
@@ -319,7 +319,7 @@ public class UserEntryLocalServiceUtil {
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public static int countByMobileNumber(long mobileNumber)
+	public static int countByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().countByMobileNumber(mobileNumber);
 	}
@@ -330,7 +330,7 @@ public class UserEntryLocalServiceUtil {
 	* @param mobileNumber the mobile number
 	* @throws SystemException if a system exception occurred
 	*/
-	public static void removeByMobileNumber(long mobileNumber)
+	public static void removeByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		getService().removeByMobileNumber(mobileNumber);

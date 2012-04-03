@@ -106,11 +106,11 @@ public class UserEntrySoap implements Serializable {
 		_userName = userName;
 	}
 
-	public long getMobileNumber() {
+	public String getMobileNumber() {
 		return _mobileNumber;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		_mobileNumber = mobileNumber;
 	}
 
@@ -148,7 +148,7 @@ public class UserEntrySoap implements Serializable {
 
 	private long _userId;
 	private String _userName;
-	private long _mobileNumber;
+	private String _mobileNumber;
 	private long _companyId;
 	private Date _createDate;
 	private Date _modifiedDate;

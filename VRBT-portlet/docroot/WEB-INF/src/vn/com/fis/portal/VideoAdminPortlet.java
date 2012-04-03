@@ -21,12 +21,12 @@ import org.apache.commons.logging.LogFactory;
 
 import oracle.net.aso.f;
 
-import vn.com.fis.portal.model.CateVideoEntry;
+
 import vn.com.fis.portal.model.FolderEntry;
 import vn.com.fis.portal.model.VideoEntry;
 import vn.com.fis.portal.model.VideoEntryModel;
 import vn.com.fis.portal.model.VideoUserEntry;
-import vn.com.fis.portal.service.CateVideoEntryLocalServiceUtil;
+
 import vn.com.fis.portal.service.FolderEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoUserEntryLocalServiceUtil;
@@ -139,7 +139,8 @@ public class VideoAdminPortlet extends MVCPortlet {
 			folderEntry = FolderEntryLocalServiceUtil.fetchFolderEntry(folderId);
 			folderEntry.setUserId(userId);
 			folderEntry.setFolderName(folderName);
-			folderEntry.setFolderParentId(currFolderId);
+//			folderEntry.setFolderParentId(currFolderId);
+			folderEntry.setFolderIdParent(currFolderId);
 			folderEntry.setModifiedDate(Calendar.getInstance().getTime());
 			FolderEntryLocalServiceUtil.updateFolderEntry(folderEntry);
 		} catch (Exception e) {

@@ -89,12 +89,12 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	public static final FinderPath FINDER_PATH_FETCH_BY_MOBILENUMBER = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
 			FINDER_CLASS_NAME_ENTITY, "fetchByMobileNumber",
-			new String[] { Long.class.getName() },
+			new String[] { String.class.getName() },
 			UserEntryModelImpl.MOBILENUMBER_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_MOBILENUMBER = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByMobileNumber",
-			new String[] { Long.class.getName() });
+			new String[] { String.class.getName() });
 	public static final FinderPath FINDER_PATH_FETCH_BY_USERID = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
 			FINDER_CLASS_NAME_ENTITY, "fetchByUserId",
@@ -127,8 +127,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 			new Object[] { userEntry.getUserName() }, userEntry);
 
 		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_MOBILENUMBER,
-			new Object[] { Long.valueOf(userEntry.getMobileNumber()) },
-			userEntry);
+			new Object[] { userEntry.getMobileNumber() }, userEntry);
 
 		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_USERID,
 			new Object[] { Long.valueOf(userEntry.getUserId()) }, userEntry);
@@ -210,7 +209,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 			new Object[] { userEntry.getUserName() });
 
 		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_MOBILENUMBER,
-			new Object[] { Long.valueOf(userEntry.getMobileNumber()) });
+			new Object[] { userEntry.getMobileNumber() });
 
 		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_USERID,
 			new Object[] { Long.valueOf(userEntry.getUserId()) });
@@ -348,8 +347,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 				new Object[] { userEntry.getUserName() }, userEntry);
 
 			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_MOBILENUMBER,
-				new Object[] { Long.valueOf(userEntry.getMobileNumber()) },
-				userEntry);
+				new Object[] { userEntry.getMobileNumber() }, userEntry);
 
 			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_USERID,
 				new Object[] { Long.valueOf(userEntry.getUserId()) }, userEntry);
@@ -371,7 +369,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 			if ((userEntryModelImpl.getColumnBitmask() &
 					FINDER_PATH_FETCH_BY_MOBILENUMBER.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
-						Long.valueOf(userEntryModelImpl.getOriginalMobileNumber())
+						userEntryModelImpl.getOriginalMobileNumber()
 					};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_MOBILENUMBER,
@@ -380,8 +378,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 					args);
 
 				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_MOBILENUMBER,
-					new Object[] { Long.valueOf(userEntry.getMobileNumber()) },
-					userEntry);
+					new Object[] { userEntry.getMobileNumber() }, userEntry);
 			}
 
 			if ((userEntryModelImpl.getColumnBitmask() &
@@ -671,7 +668,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry findByMobileNumber(long mobileNumber)
+	public UserEntry findByMobileNumber(String mobileNumber)
 		throws NoSuchUserEntryException, SystemException {
 		UserEntry userEntry = fetchByMobileNumber(mobileNumber);
 
@@ -702,7 +699,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the matching user entry, or <code>null</code> if a matching user entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry fetchByMobileNumber(long mobileNumber)
+	public UserEntry fetchByMobileNumber(String mobileNumber)
 		throws SystemException {
 		return fetchByMobileNumber(mobileNumber, true);
 	}
@@ -715,7 +712,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the matching user entry, or <code>null</code> if a matching user entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry fetchByMobileNumber(long mobileNumber,
+	public UserEntry fetchByMobileNumber(String mobileNumber,
 		boolean retrieveFromCache) throws SystemException {
 		Object[] finderArgs = new Object[] { mobileNumber };
 
@@ -731,7 +728,17 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 			query.append(_SQL_SELECT_USERENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2);
+			if (mobileNumber == null) {
+				query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_1);
+			}
+			else {
+				if (mobileNumber.equals(StringPool.BLANK)) {
+					query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_3);
+				}
+				else {
+					query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2);
+				}
+			}
 
 			query.append(UserEntryModelImpl.ORDER_BY_JPQL);
 
@@ -746,7 +753,9 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				qPos.add(mobileNumber);
+				if (mobileNumber != null) {
+					qPos.add(mobileNumber);
+				}
 
 				List<UserEntry> list = q.list();
 
@@ -763,7 +772,8 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 					cacheResult(userEntry);
 
-					if ((userEntry.getMobileNumber() != mobileNumber)) {
+					if ((userEntry.getMobileNumber() == null) ||
+							!userEntry.getMobileNumber().equals(mobileNumber)) {
 						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_MOBILENUMBER,
 							finderArgs, userEntry);
 					}
@@ -1056,7 +1066,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @param mobileNumber the mobile number
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByMobileNumber(long mobileNumber)
+	public void removeByMobileNumber(String mobileNumber)
 		throws NoSuchUserEntryException, SystemException {
 		UserEntry userEntry = findByMobileNumber(mobileNumber);
 
@@ -1159,7 +1169,8 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the number of matching user entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByMobileNumber(long mobileNumber) throws SystemException {
+	public int countByMobileNumber(String mobileNumber)
+		throws SystemException {
 		Object[] finderArgs = new Object[] { mobileNumber };
 
 		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_MOBILENUMBER,
@@ -1170,7 +1181,17 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 			query.append(_SQL_COUNT_USERENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2);
+			if (mobileNumber == null) {
+				query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_1);
+			}
+			else {
+				if (mobileNumber.equals(StringPool.BLANK)) {
+					query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_3);
+				}
+				else {
+					query.append(_FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2);
+				}
+			}
 
 			String sql = query.toString();
 
@@ -1183,7 +1204,9 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				qPos.add(mobileNumber);
+				if (mobileNumber != null) {
+					qPos.add(mobileNumber);
+				}
 
 				count = (Long)q.uniqueResult();
 			}
@@ -1382,7 +1405,9 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	private static final String _FINDER_COLUMN_USERNAME_USERNAME_1 = "userEntry.userName IS NULL";
 	private static final String _FINDER_COLUMN_USERNAME_USERNAME_2 = "userEntry.userName = ?";
 	private static final String _FINDER_COLUMN_USERNAME_USERNAME_3 = "(userEntry.userName IS NULL OR userEntry.userName = ?)";
+	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_1 = "userEntry.mobileNumber IS NULL";
 	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2 = "userEntry.mobileNumber = ?";
+	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_3 = "(userEntry.mobileNumber IS NULL OR userEntry.mobileNumber = ?)";
 	private static final String _FINDER_COLUMN_USERID_USERID_2 = "userEntry.userId = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "userEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No UserEntry exists with the primary key ";

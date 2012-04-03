@@ -111,24 +111,6 @@ public class VideoEntryWrapper implements VideoEntry, ModelWrapper<VideoEntry> {
 	}
 
 	/**
-	* Returns the video url of this video entry.
-	*
-	* @return the video url of this video entry
-	*/
-	public java.lang.String getVideoUrl() {
-		return _videoEntry.getVideoUrl();
-	}
-
-	/**
-	* Sets the video url of this video entry.
-	*
-	* @param videoUrl the video url of this video entry
-	*/
-	public void setVideoUrl(java.lang.String videoUrl) {
-		_videoEntry.setVideoUrl(videoUrl);
-	}
-
-	/**
 	* Returns the view count of this video entry.
 	*
 	* @return the view count of this video entry

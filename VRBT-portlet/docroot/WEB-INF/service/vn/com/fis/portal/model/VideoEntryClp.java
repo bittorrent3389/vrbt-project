@@ -84,14 +84,6 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 		_description = description;
 	}
 
-	public String getVideoUrl() {
-		return _videoUrl;
-	}
-
-	public void setVideoUrl(String videoUrl) {
-		_videoUrl = videoUrl;
-	}
-
 	public long getViewCount() {
 		return _viewCount;
 	}
@@ -178,7 +170,6 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 		clone.setVideoId(getVideoId());
 		clone.setVideoName(getVideoName());
 		clone.setDescription(getDescription());
-		clone.setVideoUrl(getVideoUrl());
 		clone.setViewCount(getViewCount());
 		clone.setDate_(getDate_());
 		clone.setSmallImageUrl(getSmallImageUrl());
@@ -241,7 +232,7 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(25);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{videoId=");
 		sb.append(getVideoId());
@@ -249,8 +240,6 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 		sb.append(getVideoName());
 		sb.append(", description=");
 		sb.append(getDescription());
-		sb.append(", videoUrl=");
-		sb.append(getVideoUrl());
 		sb.append(", viewCount=");
 		sb.append(getViewCount());
 		sb.append(", date_=");
@@ -273,7 +262,7 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(40);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("vn.com.fis.portal.model.VideoEntry");
@@ -290,10 +279,6 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 		sb.append(
 			"<column><column-name>description</column-name><column-value><![CDATA[");
 		sb.append(getDescription());
-		sb.append("]]></column-value></column>");
-		sb.append(
-			"<column><column-name>videoUrl</column-name><column-value><![CDATA[");
-		sb.append(getVideoUrl());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>viewCount</column-name><column-value><![CDATA[");
@@ -336,7 +321,6 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 	private long _videoId;
 	private String _videoName;
 	private String _description;
-	private String _videoUrl;
 	private long _viewCount;
 	private Date _date_;
 	private String _smallImageUrl;

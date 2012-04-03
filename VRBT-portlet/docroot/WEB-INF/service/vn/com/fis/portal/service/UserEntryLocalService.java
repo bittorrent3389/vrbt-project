@@ -273,7 +273,7 @@ public interface UserEntryLocalService extends PersistedModelLocalService {
 	* @throws SystemException if a system exception occurred
 	*/
 	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
-		long mobileNumber)
+		java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
 
@@ -284,7 +284,7 @@ public interface UserEntryLocalService extends PersistedModelLocalService {
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByMobileNumber(long mobileNumber)
+	public int countByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -293,7 +293,7 @@ public interface UserEntryLocalService extends PersistedModelLocalService {
 	* @param mobileNumber the mobile number
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByMobileNumber(long mobileNumber)
+	public void removeByMobileNumber(java.lang.String mobileNumber)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
 

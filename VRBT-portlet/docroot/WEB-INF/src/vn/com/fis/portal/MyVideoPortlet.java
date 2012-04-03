@@ -14,8 +14,7 @@ import vn.com.fis.portal.model.UserEntry;
 import vn.com.fis.portal.model.VideoEntry;
 import vn.com.fis.portal.model.VideoUserEntry;
 import vn.com.fis.portal.portlet.util.System_Notification;
-import vn.com.fis.portal.portlet.util.service.UserExtLocalServiceUtil;
-import vn.com.fis.portal.portlet.util.service.VideoExtLocalServiceUtil;
+
 import vn.com.fis.portal.service.UserEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoUserEntryLocalServiceUtil;
@@ -58,7 +57,8 @@ public class MyVideoPortlet extends MVCPortlet {
 		String redirect = ParamUtil.getString(actionRequest, "redirect");
 		VideoUserEntry  videoUserEntry =null;
 		try {
-			videoUserEntry = VideoUserEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId);
+			//videoUserEntry = VideoUserEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId);
+			videoUserEntry = (VideoUserEntry) VideoUserEntryLocalServiceUtil.findByUserId_VideoId(userId, videoId);
 			if(videoUserEntry!=null){
 				VideoUserEntryLocalServiceUtil.deleteVideoUserEntry(videoUserEntry.getVideoUserId());
 			}
@@ -83,13 +83,13 @@ public class MyVideoPortlet extends MVCPortlet {
 		VideoUserEntry  videoUserEntry =null; // 
 				try {
 					
-					videoUserEntry = VideoUserEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId);
+					videoUserEntry = (VideoUserEntry) VideoUserEntryLocalServiceUtil.findByUserId_VideoId( userId,videoId);
 					// set serviceActive=1
-					if(inactiveService){ //inactive
+				/*	if(inactiveService){ //inactive
 						videoUserEntry.setServiceActive(0);
 					}else{
 						videoUserEntry.setServiceActive(1);
-					}
+					}*/
 					VideoUserEntryLocalServiceUtil.updateVideoUserEntry(videoUserEntry,true);
 					
 				} catch (Exception e) {
@@ -116,7 +116,8 @@ public class MyVideoPortlet extends MVCPortlet {
 		
 		UserEntry receiver =null; 
 		try {
-			receiver =UserEntryLocalServiceUtil.findByMobilePhone(receiverMobileNumber);
+			//receiver =UserEntryLocalServiceUtil.findByMobilePhone(receiverMobileNumber);
+			receiver =UserEntryLocalServiceUtil.findByMobileNumber(receiverMobileNumber);
 			if(receiver ==null)  throw new Exception();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -140,7 +141,8 @@ public class MyVideoPortlet extends MVCPortlet {
 			VideoUserEntryLocalServiceUtil.updateVideoUserEntry(videoUserEntry);
 // 	remove video of sender  
 //			VideoUserEntryLocalServiceUtil.deleteVideoUserEntry(videoUserId)
-			videoUserEntry =	VideoUserEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId);
+			//videoUserEntry =	VideoUserEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId);
+			//videoUserEntry =	VideoUserEntryLocalServiceUtil.findByUserId_VideoId(userId, videoId);
 			VideoUserEntryLocalServiceUtil.deleteVideoUserEntry(videoUserEntry);
 			
 			
@@ -148,9 +150,9 @@ public class MyVideoPortlet extends MVCPortlet {
 			
 			//Send notification to admin (TEST Account)
 			try {
-				String subject = "New video  received from " + UserExtLocalServiceUtil.getUserExt(PortalUtil.getUserId(actionRequest)).getUserName() + " account";
-				 String message = "You received '" + VideoExtLocalServiceUtil.getVideoExt(videoId).getVideoName()+"' vrbt from "
-										+ UserExtLocalServiceUtil.getUserExt(PortalUtil.getUserId(actionRequest)).getUserName() + " account" ;
+				String subject = "New video  received from " + UserEntryLocalServiceUtil.getUserEntry(PortalUtil.getUserId(actionRequest)).getUserName() + " account";
+				 String message = "You received '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+"' vrbt from "
+										+ UserEntryLocalServiceUtil.getUserEntry(PortalUtil.getUserId(actionRequest)).getUserName() + " account" ;
 				
 				new System_Notification().sendNotificationToUser(receiver.getUserId(), subject, message);
 				_log.info("a notification sent");

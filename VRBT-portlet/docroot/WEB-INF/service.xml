@@ -9,7 +9,6 @@
 		<!-- Audit fields -->
 		<column name="videoName" type="String" />
 		<column name="description" type="String" />
-		<column name="videoUrl" type="String" />
 		<column name="viewCount" type="long" />
 		<column name="date_" type="Date" />
 		<column name="smallImageUrl" type="String" />
@@ -206,11 +205,11 @@
 		<finder name="UserId" return-type="Collection">
 			<finder-column name="userId" />
 		</finder>
-		<finder name="VideoId_userId" return-type="Collection">
+		<finder name="VideoId_UserId" return-type="Collection">
 			<finder-column name="videoId" />
 			<finder-column name="userId" />
 		</finder>
-		<finder name="VideoId_code" return-type="Collection">
+		<finder name="VideoId_Code" return-type="Collection">
 			<finder-column name="videoId" />
 			<finder-column name="code" />
 		</finder>
@@ -309,7 +308,7 @@
 		<!-- Audit fields -->
 		<column name="userName" type="String" />
 
-		<column name="mobileNumber" type="long" />
+		<column name="mobileNumber" type="String" />
 		<column name="companyId" type="long" />
 		<column name="createDate" type="Date" />
 		<column name="modifiedDate" type="Date" />
