@@ -5,5 +5,9 @@
 	<category name="category.sample">
 		<portlet id="VRBT" />
 		<portlet id="serviceadmin"></portlet>
+		<!-- loind3 -->
+		<portlet id="videolistdisplay"></portlet>
+		<portlet id="myvideoportlet"></portlet>
+		<portlet id="videoadminportlet"></portlet>
 	</category>
 </display>

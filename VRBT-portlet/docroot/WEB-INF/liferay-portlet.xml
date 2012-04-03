@@ -20,6 +20,43 @@
 		</footer-portlet-javascript>
 		<css-class-wrapper>serviceadmin-portlet</css-class-wrapper>
 	</portlet>
+	
+	<portlet>
+		<portlet-name>videolistdisplay</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<header-portlet-javascript>/html/jwplayer/jwplayer.js</header-portlet-javascript>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>videolistdisplay-portlet</css-class-wrapper>
+		
+	</portlet>
+	<portlet>
+		<portlet-name>myvideoportlet</portlet-name>
+		<icon>/icon.png</icon>
+		<action-url-redirect>true</action-url-redirect>
+		<instanceable>false</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>myvideoportlet-portlet</css-class-wrapper>
+	</portlet>
+	 
+	<portlet>
+		<portlet-name>videoadminportlet</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>videoadminportlet-portlet</css-class-wrapper>
+	</portlet>
+	
+	
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>
