@@ -86,6 +86,19 @@ public class VideoUserEntryLocalServiceClp implements VideoUserEntryLocalService
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByUserId_VideoIdMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId_VideoId", long.class, long.class);
+
+		_findByUserId_VideoIdMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId_VideoId", long.class, long.class, int.class,
+				int.class);
+
+		_removeByUserId_VideoIdMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByUserId_VideoId", long.class, long.class);
+
+		_countByUserId_VideoIdMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserId_VideoId", long.class, long.class);
 	}
 
 	public vn.com.fis.portal.model.VideoUserEntry addVideoUserEntry(
@@ -552,6 +565,112 @@ public class VideoUserEntryLocalServiceClp implements VideoUserEntryLocalService
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.VideoUserEntry> findByUserId_VideoId(
+		long userId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserId_VideoIdMethodKey17,
+				userId, videoId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoUserEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoUserEntry> findByUserId_VideoId(
+		long userId, long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserId_VideoIdMethodKey18,
+				userId, videoId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoUserEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public void removeByUserId_VideoId(long userId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_removeByUserId_VideoIdMethodKey19,
+				userId, videoId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public int countByUserId_VideoId(long userId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserId_VideoIdMethodKey20,
+				userId, videoId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -574,4 +693,8 @@ public class VideoUserEntryLocalServiceClp implements VideoUserEntryLocalService
 	private MethodKey _updateVideoUserEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByUserId_VideoIdMethodKey17;
+	private MethodKey _findByUserId_VideoIdMethodKey18;
+	private MethodKey _removeByUserId_VideoIdMethodKey19;
+	private MethodKey _countByUserId_VideoIdMethodKey20;
 }

@@ -83,6 +83,31 @@ public class VideoEntryLocalServiceClp implements VideoEntryLocalService {
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByDateUploadMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByDateUpload", java.util.Date.class);
+
+		_findByDateUploadMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByDateUpload", java.util.Date.class, int.class, int.class);
+
+		_countByDateUploadMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByDateUpload", java.util.Date.class);
+
+		_findByUploaderIdMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUploaderId", long.class);
+
+		_findByUploaderIdMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUploaderId", long.class, int.class, int.class);
+
+		_findByUploaderId_FolderMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUploaderId_Folder", long.class, long.class);
+
+		_findByUploaderId_FolderMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUploaderId_Folder", long.class, long.class, int.class,
+				int.class);
+
+		_countByUploaderId_FolderMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUploaderId_Folder", long.class, long.class);
 	}
 
 	public vn.com.fis.portal.model.VideoEntry addVideoEntry(
@@ -545,6 +570,228 @@ public class VideoEntryLocalServiceClp implements VideoEntryLocalService {
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> findByDateUpload(
+		java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByDateUploadMethodKey17,
+				ClpSerializer.translateInput(date_));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> findByDateUpload(
+		java.util.Date date_, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByDateUploadMethodKey18,
+				ClpSerializer.translateInput(date_), start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByDateUpload(java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByDateUploadMethodKey19,
+				ClpSerializer.translateInput(date_));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId(
+		long uploaderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUploaderIdMethodKey20,
+				uploaderId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId(
+		long uploaderId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUploaderIdMethodKey21,
+				uploaderId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId_Folder(
+		long uploaderId, long folderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUploaderId_FolderMethodKey22,
+				uploaderId, folderId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId_Folder(
+		long uploaderId, long folderId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUploaderId_FolderMethodKey23,
+				uploaderId, folderId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByUploaderId_Folder(long uploaderId, long folderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUploaderId_FolderMethodKey24,
+				uploaderId, folderId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -567,4 +814,12 @@ public class VideoEntryLocalServiceClp implements VideoEntryLocalService {
 	private MethodKey _updateVideoEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByDateUploadMethodKey17;
+	private MethodKey _findByDateUploadMethodKey18;
+	private MethodKey _countByDateUploadMethodKey19;
+	private MethodKey _findByUploaderIdMethodKey20;
+	private MethodKey _findByUploaderIdMethodKey21;
+	private MethodKey _findByUploaderId_FolderMethodKey22;
+	private MethodKey _findByUploaderId_FolderMethodKey23;
+	private MethodKey _countByUploaderId_FolderMethodKey24;
 }

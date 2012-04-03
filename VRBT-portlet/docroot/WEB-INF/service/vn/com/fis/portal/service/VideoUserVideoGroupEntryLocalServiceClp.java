@@ -89,6 +89,15 @@ public class VideoUserVideoGroupEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByVideoUser_VideoGroupMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByVideoUser_VideoGroup", long.class, long.class);
+
+		_removeByVideoUser_VideoGroupMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByVideoUser_VideoGroup", long.class, long.class);
+
+		_countByVideoUser_VideoGroupMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByVideoUser_VideoGroup", long.class, long.class);
 	}
 
 	public vn.com.fis.portal.model.VideoUserVideoGroupEntry addVideoUserVideoGroupEntry(
@@ -556,6 +565,94 @@ public class VideoUserVideoGroupEntryLocalServiceClp
 		}
 	}
 
+	public vn.com.fis.portal.model.VideoUserVideoGroupEntry findByVideoUser_VideoGroup(
+		long videoUserId, long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByVideoUser_VideoGroupMethodKey17,
+				videoUserId, videoGroupId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException) {
+				throw (vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.VideoUserVideoGroupEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public void removeByVideoUser_VideoGroup(long videoUserId, long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByVideoUser_VideoGroupMethodKey18,
+				videoUserId, videoGroupId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException) {
+				throw (vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public int countByVideoUser_VideoGroup(long videoUserId, long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByVideoUser_VideoGroupMethodKey19,
+				videoUserId, videoGroupId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -578,4 +675,7 @@ public class VideoUserVideoGroupEntryLocalServiceClp
 	private MethodKey _updateVideoUserVideoGroupEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByVideoUser_VideoGroupMethodKey17;
+	private MethodKey _removeByVideoUser_VideoGroupMethodKey18;
+	private MethodKey _countByVideoUser_VideoGroupMethodKey19;
 }

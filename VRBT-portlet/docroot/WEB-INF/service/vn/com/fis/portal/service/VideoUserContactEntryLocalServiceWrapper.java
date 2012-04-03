@@ -260,6 +260,69 @@ public class VideoUserContactEntryLocalServiceWrapper
 	}
 
 	/**
+	* Returns all the video user contact entries where contactId = &#63; and videoUserId = &#63;.
+	*
+	* @param contactId the contact ID
+	* @param videoUserId the video user ID
+	* @return the matching video user contact entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.VideoUserContactEntry> findByContactId_VideoUserId(
+		long contactId, long videoUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoUserContactEntryLocalService.findByContactId_VideoUserId(contactId,
+			videoUserId);
+	}
+
+	/**
+	* Returns a range of all the video user contact entries where contactId = &#63; and videoUserId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param contactId the contact ID
+	* @param videoUserId the video user ID
+	* @param start the lower bound of the range of video user contact entries
+	* @param end the upper bound of the range of video user contact entries (not inclusive)
+	* @return the range of matching video user contact entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.VideoUserContactEntry> findByContactId_VideoUserId(
+		long contactId, long videoUserId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoUserContactEntryLocalService.findByContactId_VideoUserId(contactId,
+			videoUserId, start, end);
+	}
+
+	/**
+	* Returns the number of video user contact entries where contactId = &#63; and videoUserId = &#63;.
+	*
+	* @param contactId the contact ID
+	* @param videoUserId the video user ID
+	* @return the number of matching video user contact entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByContactId_VideoUserId(long contactId, long videoUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoUserContactEntryLocalService.countByContactId_VideoUserId(contactId,
+			videoUserId);
+	}
+
+	/**
+	* Removes all the video user contact entries where contactId = &#63; and videoUserId = &#63; from the database.
+	*
+	* @param contactId the contact ID
+	* @param videoUserId the video user ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByContactId_VideoUserId(long contactId, long videoUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_videoUserContactEntryLocalService.removeByContactId_VideoUserId(contactId,
+			videoUserId);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public VideoUserContactEntryLocalService getWrappedVideoUserContactEntryLocalService() {

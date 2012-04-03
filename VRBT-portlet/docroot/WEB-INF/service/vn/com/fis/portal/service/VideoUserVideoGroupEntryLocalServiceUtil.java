@@ -266,6 +266,51 @@ public class VideoUserVideoGroupEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* Returns the video user video group entry where videoUserId = &#63; and videoGroupId = &#63; or throws a {@link vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException} if it could not be found.
+	*
+	* @param videoUserId the video user ID
+	* @param videoGroupId the video group ID
+	* @return the matching video user video group entry
+	* @throws vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException if a matching video user video group entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.VideoUserVideoGroupEntry findByVideoUser_VideoGroup(
+		long videoUserId, long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException {
+		return getService().findByVideoUser_VideoGroup(videoUserId, videoGroupId);
+	}
+
+	/**
+	* Removes the video user video group entry where videoUserId = &#63; and videoGroupId = &#63; from the database.
+	*
+	* @param videoUserId the video user ID
+	* @param videoGroupId the video group ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByVideoUser_VideoGroup(long videoUserId,
+		long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException {
+		getService().removeByVideoUser_VideoGroup(videoUserId, videoGroupId);
+	}
+
+	/**
+	* Returns the number of video user video group entries where videoUserId = &#63; and videoGroupId = &#63;.
+	*
+	* @param videoUserId the video user ID
+	* @param videoGroupId the video group ID
+	* @return the number of matching video user video group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByVideoUser_VideoGroup(long videoUserId,
+		long videoGroupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .countByVideoUser_VideoGroup(videoUserId, videoGroupId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

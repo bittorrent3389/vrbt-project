@@ -89,6 +89,19 @@ public class VideoUserContactEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByContactId_VideoUserIdMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByContactId_VideoUserId", long.class, long.class);
+
+		_findByContactId_VideoUserIdMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByContactId_VideoUserId", long.class, long.class,
+				int.class, int.class);
+
+		_countByContactId_VideoUserIdMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByContactId_VideoUserId", long.class, long.class);
+
+		_removeByContactId_VideoUserIdMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByContactId_VideoUserId", long.class, long.class);
 	}
 
 	public vn.com.fis.portal.model.VideoUserContactEntry addVideoUserContactEntry(
@@ -556,6 +569,112 @@ public class VideoUserContactEntryLocalServiceClp
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.VideoUserContactEntry> findByContactId_VideoUserId(
+		long contactId, long videoUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByContactId_VideoUserIdMethodKey17,
+				contactId, videoUserId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoUserContactEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoUserContactEntry> findByContactId_VideoUserId(
+		long contactId, long videoUserId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByContactId_VideoUserIdMethodKey18,
+				contactId, videoUserId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoUserContactEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByContactId_VideoUserId(long contactId, long videoUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByContactId_VideoUserIdMethodKey19,
+				contactId, videoUserId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByContactId_VideoUserId(long contactId, long videoUserId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_removeByContactId_VideoUserIdMethodKey20,
+				contactId, videoUserId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -578,4 +697,8 @@ public class VideoUserContactEntryLocalServiceClp
 	private MethodKey _updateVideoUserContactEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByContactId_VideoUserIdMethodKey17;
+	private MethodKey _findByContactId_VideoUserIdMethodKey18;
+	private MethodKey _countByContactId_VideoUserIdMethodKey19;
+	private MethodKey _removeByContactId_VideoUserIdMethodKey20;
 }

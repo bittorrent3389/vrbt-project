@@ -234,4 +234,42 @@ public interface VideoGroupEntryLocalService extends PersistedModelLocalService 
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	/**
+	* Returns all the video group entries where videoGroupName = &#63;.
+	*
+	* @param videoGroupName the video group name
+	* @return the matching video group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.VideoGroupEntry> findByGroupName(
+		java.lang.String videoGroupName)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the video group entries where videoGroupName = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoGroupName the video group name
+	* @param start the lower bound of the range of video group entries
+	* @param end the upper bound of the range of video group entries (not inclusive)
+	* @return the range of matching video group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.VideoGroupEntry> findByGroupName(
+		java.lang.String videoGroupName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of video group entries where videoGroupName = &#63;.
+	*
+	* @param videoGroupName the video group name
+	* @return the number of matching video group entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByGroupName(java.lang.String videoGroupName)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

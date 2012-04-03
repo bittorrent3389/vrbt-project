@@ -261,6 +261,65 @@ public class VideoUserEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* Returns all the video user entries where userId = &#63; and videoId = &#63;.
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @return the matching video user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoUserEntry> findByUserId_VideoId(
+		long userId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByUserId_VideoId(userId, videoId);
+	}
+
+	/**
+	* Returns a range of all the video user entries where userId = &#63; and videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @param start the lower bound of the range of video user entries
+	* @param end the upper bound of the range of video user entries (not inclusive)
+	* @return the range of matching video user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoUserEntry> findByUserId_VideoId(
+		long userId, long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByUserId_VideoId(userId, videoId, start, end);
+	}
+
+	/**
+	* Removes all the video user entries where userId = &#63; and videoId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByUserId_VideoId(long userId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().removeByUserId_VideoId(userId, videoId);
+	}
+
+	/**
+	* Returns the number of video user entries where userId = &#63; and videoId = &#63;.
+	*
+	* @param userId the user ID
+	* @param videoId the video ID
+	* @return the number of matching video user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUserId_VideoId(long userId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUserId_VideoId(userId, videoId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

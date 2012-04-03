@@ -260,6 +260,130 @@ public class VideoEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	/**
+	* Returns all the video entries where date_ = &#63;.
+	*
+	* @param date_ the date_
+	* @return the matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoEntry> findByDateUpload(
+		java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByDateUpload(date_);
+	}
+
+	/**
+	* Returns a range of all the video entries where date_ = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param date_ the date_
+	* @param start the lower bound of the range of video entries
+	* @param end the upper bound of the range of video entries (not inclusive)
+	* @return the range of matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoEntry> findByDateUpload(
+		java.util.Date date_, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByDateUpload(date_, start, end);
+	}
+
+	/**
+	* Returns the number of video entries where date_ = &#63;.
+	*
+	* @param date_ the date_
+	* @return the number of matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByDateUpload(java.util.Date date_)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByDateUpload(date_);
+	}
+
+	/**
+	* Returns all the video entries where uploaderId = &#63;.
+	*
+	* @param uploaderId the uploader ID
+	* @return the matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId(
+		long uploaderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByUploaderId(uploaderId);
+	}
+
+	/**
+	* Returns a range of all the video entries where uploaderId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param uploaderId the uploader ID
+	* @param start the lower bound of the range of video entries
+	* @param end the upper bound of the range of video entries (not inclusive)
+	* @return the range of matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId(
+		long uploaderId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByUploaderId(uploaderId, start, end);
+	}
+
+	/**
+	* Returns all the video entries where uploaderId = &#63; and folderId = &#63;.
+	*
+	* @param uploaderId the uploader ID
+	* @param folderId the folder ID
+	* @return the matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId_Folder(
+		long uploaderId, long folderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByUploaderId_Folder(uploaderId, folderId);
+	}
+
+	/**
+	* Returns a range of all the video entries where uploaderId = &#63; and folderId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param uploaderId the uploader ID
+	* @param folderId the folder ID
+	* @param start the lower bound of the range of video entries
+	* @param end the upper bound of the range of video entries (not inclusive)
+	* @return the range of matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.VideoEntry> findByUploaderId_Folder(
+		long uploaderId, long folderId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByUploaderId_Folder(uploaderId, folderId, start, end);
+	}
+
+	/**
+	* Returns the number of video entries where uploaderId = &#63; and folderId = &#63;.
+	*
+	* @param uploaderId the uploader ID
+	* @param folderId the folder ID
+	* @return the number of matching video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUploaderId_Folder(long uploaderId, long folderId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUploaderId_Folder(uploaderId, folderId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

@@ -260,6 +260,102 @@ public class ViolationVideoEntryLocalServiceWrapper
 	}
 
 	/**
+	* Returns all the violation video entries where videoId = &#63; and userId = &#63;.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @return the matching violation video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ViolationVideoEntry> findByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _violationVideoEntryLocalService.findByVideoId_UserId(videoId,
+			userId);
+	}
+
+	/**
+	* Returns a range of all the violation video entries where videoId = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param start the lower bound of the range of violation video entries
+	* @param end the upper bound of the range of violation video entries (not inclusive)
+	* @return the range of matching violation video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.ViolationVideoEntry> findByVideoId_UserId(
+		long videoId, long userId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _violationVideoEntryLocalService.findByVideoId_UserId(videoId,
+			userId, start, end);
+	}
+
+	/**
+	* Returns the number of violation video entries where videoId = &#63; and userId = &#63;.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @return the number of matching violation video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByVideoId_UserId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _violationVideoEntryLocalService.countByVideoId_UserId(videoId,
+			userId);
+	}
+
+	/**
+	* Removes all the violation video entries where videoId = &#63; and userId = &#63; from the database.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByVideoId_UserId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_violationVideoEntryLocalService.removeByVideoId_UserId(videoId, userId);
+	}
+
+	/**
+	* Returns the violation video entry where videoId = &#63; and userId = &#63; and violationId = &#63; or throws a {@link vn.com.fis.portal.NoSuchViolationVideoEntryException} if it could not be found.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param violationId the violation ID
+	* @return the matching violation video entry
+	* @throws vn.com.fis.portal.NoSuchViolationVideoEntryException if a matching violation video entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.ViolationVideoEntry findByVideo_User_Violation(
+		long videoId, long userId, long violationId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchViolationVideoEntryException {
+		return _violationVideoEntryLocalService.findByVideo_User_Violation(videoId,
+			userId, violationId);
+	}
+
+	/**
+	* Returns the number of violation video entries where videoId = &#63; and userId = &#63; and violationId = &#63;.
+	*
+	* @param videoId the video ID
+	* @param userId the user ID
+	* @param violationId the violation ID
+	* @return the number of matching violation video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByVideo_User_Violation(long videoId, long userId,
+		long violationId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _violationVideoEntryLocalService.countByVideo_User_Violation(videoId,
+			userId, violationId);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public ViolationVideoEntryLocalService getWrappedViolationVideoEntryLocalService() {

@@ -14,7 +14,14 @@
 
 package vn.com.fis.portal.service.impl;
 
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
+
+import vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException;
+import vn.com.fis.portal.model.VideoUserVideoGroupEntry;
 import vn.com.fis.portal.service.base.VideoUserVideoGroupEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.VideoUserVideoGroupEntryUtil;
 
 /**
  * The implementation of the video user video group entry local service.
@@ -37,4 +44,43 @@ public class VideoUserVideoGroupEntryLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link vn.com.fis.portal.service.VideoUserVideoGroupEntryLocalServiceUtil} to access the video user video group entry local service.
 	 */
+	
+	/**
+	 * Returns the video user video group entry where videoUserId = &#63; and videoGroupId = &#63; or throws a {@link vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException} if it could not be found.
+	 *
+	 * @param videoUserId the video user ID
+	 * @param videoGroupId the video group ID
+	 * @return the matching video user video group entry
+	 * @throws vn.com.fis.portal.NoSuchVideoUserVideoGroupEntryException if a matching video user video group entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public VideoUserVideoGroupEntry findByVideoUser_VideoGroup(
+		long videoUserId, long videoGroupId)
+		throws NoSuchVideoUserVideoGroupEntryException, SystemException {
+		return VideoUserVideoGroupEntryUtil.findByVideoUser_VideoGroup(videoUserId, videoGroupId);
+	}
+
+	/**
+	 * Removes the video user video group entry where videoUserId = &#63; and videoGroupId = &#63; from the database.
+	 *
+	 * @param videoUserId the video user ID
+	 * @param videoGroupId the video group ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByVideoUser_VideoGroup(long videoUserId, long videoGroupId)
+		throws NoSuchVideoUserVideoGroupEntryException, SystemException {
+		VideoUserVideoGroupEntryUtil.removeByVideoUser_VideoGroup(videoUserId, videoGroupId);
+	}
+	/**
+	 * Returns the number of video user video group entries where videoUserId = &#63; and videoGroupId = &#63;.
+	 *
+	 * @param videoUserId the video user ID
+	 * @param videoGroupId the video group ID
+	 * @return the number of matching video user video group entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByVideoUser_VideoGroup(long videoUserId, long videoGroupId)
+		throws SystemException {
+		return VideoUserVideoGroupEntryUtil.countByVideoUser_VideoGroup(videoUserId, videoGroupId);
+	}
 }

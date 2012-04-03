@@ -87,6 +87,15 @@ public class VideoGroupEntryLocalServiceClp
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByGroupNameMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByGroupName", java.lang.String.class);
+
+		_findByGroupNameMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByGroupName", java.lang.String.class, int.class, int.class);
+
+		_countByGroupNameMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByGroupName", java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.VideoGroupEntry addVideoGroupEntry(
@@ -553,6 +562,89 @@ public class VideoGroupEntryLocalServiceClp
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.VideoGroupEntry> findByGroupName(
+		java.lang.String videoGroupName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByGroupNameMethodKey17,
+				ClpSerializer.translateInput(videoGroupName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoGroupEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoGroupEntry> findByGroupName(
+		java.lang.String videoGroupName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByGroupNameMethodKey18,
+				ClpSerializer.translateInput(videoGroupName), start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.VideoGroupEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByGroupName(java.lang.String videoGroupName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByGroupNameMethodKey19,
+				ClpSerializer.translateInput(videoGroupName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -575,4 +667,7 @@ public class VideoGroupEntryLocalServiceClp
 	private MethodKey _updateVideoGroupEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByGroupNameMethodKey17;
+	private MethodKey _findByGroupNameMethodKey18;
+	private MethodKey _countByGroupNameMethodKey19;
 }
