@@ -468,12 +468,13 @@
 			<finder-column name="serviceId" />
 			<finder-column name="servicePackageId" />
 		</finder>
-		<finder name="serviceId_status" return-type="Collection">
-			<finder-column name="serviceId" />
+		<finder name="UserId_serviceStatus" return-type="Collection">
+			<finder-column name="userId" />
 			<finder-column name="serviceStatus" />
 		</finder>
-		<finder name="servicePackageId" return-type="Collection">
-			<finder-column name="servicePackageId" />
+		
+		<finder name="userId" return-type="Collection">
+			<finder-column name="userId" />
 		</finder>
 	</entity>
 	<entity name="ContactEntry"  table="TBL_CONTACT" local-service="true" remote-service="true">
@@ -554,6 +555,7 @@
 		<column name="serviceId" type="long" />
 		<column name="serviceStatus" type="int" />
 		<column name="serviceStartDate" type="Date" />
+		<column name="serviceStopDate" type="Date" />
 		<column name="serviceEndDate" type="Date" />
 		
 		<column name="servicePackageId" type="long" />
