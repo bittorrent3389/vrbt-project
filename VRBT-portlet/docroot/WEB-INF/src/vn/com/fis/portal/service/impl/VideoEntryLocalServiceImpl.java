@@ -21,8 +21,10 @@ import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 
 import vn.com.fis.portal.model.VideoEntry;
+import vn.com.fis.portal.model.VideoUserEntry;
 import vn.com.fis.portal.service.base.VideoEntryLocalServiceBaseImpl;
 import vn.com.fis.portal.service.persistence.VideoEntryUtil;
+import vn.com.fis.portal.service.persistence.VideoUserEntryUtil;
 
 /**
  * The implementation of the video entry local service.

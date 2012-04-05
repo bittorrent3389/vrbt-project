@@ -14,6 +14,8 @@
 
 package vn.com.fis.portal.service.impl;
 
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.SystemException;
 
 import vn.com.fis.portal.NoSuchUserServiceEntryException;
@@ -144,5 +146,14 @@ public class UserServiceEntryLocalServiceImpl
 		long servicePackageId)
 		throws NoSuchUserServiceEntryException, SystemException {
 		UserServiceEntryUtil.removeByUserId_ServiceId_PackageId(userId, serviceId, servicePackageId);
+	}
+	
+	public List<UserServiceEntry> findByUserId_serviceStatus(long userId, 
+			int serviceStatus) throws SystemException, NoSuchUserServiceEntryException {
+		return UserServiceEntryUtil.findByUserId_serviceStatus(userId, serviceStatus);
+	}
+	
+	public List<UserServiceEntry> findByuserId(long userId) throws SystemException{
+		return UserServiceEntryUtil.findByuserId(userId);
 	}
 }

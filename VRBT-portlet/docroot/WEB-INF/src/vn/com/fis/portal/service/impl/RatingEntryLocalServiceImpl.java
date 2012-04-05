@@ -208,6 +208,11 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 		throws NoSuchRatingEntryException, SystemException {
 		return RatingEntryUtil.findByUser_Video_Code(userId, videoId, code);
 	}
+	
+	public RatingEntry fetchByUser_Video_Code(long userId, long videoId,
+			int code) throws SystemException {
+		return RatingEntryUtil.fetchByUser_Video_Code(userId, videoId, code);
+	}
 	/**
 	 * Returns the number of rating entries where userId = &#63; and videoId = &#63; and code = &#63;.
 	 *
@@ -233,6 +238,18 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 		throws NoSuchRatingEntryException, SystemException {
 		RatingEntryUtil.removeByUser_Video_Code(userId, videoId, code);
 	}
-
+	
+	public RatingEntry findByVideoId_UserId(long videoId, long userId)
+			throws NoSuchRatingEntryException, SystemException {
+		return RatingEntryUtil.findByVideoId_UserId(videoId, userId);
+	}
+	
+	public RatingEntry fetchByVideoId_UserId(long videoId, long userId) throws SystemException{
+		return RatingEntryUtil.fetchByVideoId_UserId(videoId, userId);
+	}
+	
+	public List<RatingEntry> findByVideoId_Code(long videoId, int code) throws SystemException{
+		return RatingEntryUtil.findByVideoId_Code(videoId, code);
+	}
 	
 }
