@@ -88,6 +88,7 @@
 		<field name="serviceId" type="long" />
 		<field name="serviceStatus" type="int" />
 		<field name="serviceStartDate" type="Date" />
+		<field name="serviceStopDate" type="Date" />
 		<field name="serviceEndDate" type="Date" />
 		<field name="servicePackageId" type="long" />
 		<field name="packageDate" type="Date" />

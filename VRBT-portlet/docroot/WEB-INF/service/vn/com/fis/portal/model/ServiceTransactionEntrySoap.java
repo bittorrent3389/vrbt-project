@@ -39,6 +39,7 @@ public class ServiceTransactionEntrySoap implements Serializable {
 		soapModel.setServiceId(model.getServiceId());
 		soapModel.setServiceStatus(model.getServiceStatus());
 		soapModel.setServiceStartDate(model.getServiceStartDate());
+		soapModel.setServiceStopDate(model.getServiceStopDate());
 		soapModel.setServiceEndDate(model.getServiceEndDate());
 		soapModel.setServicePackageId(model.getServicePackageId());
 		soapModel.setPackageDate(model.getPackageDate());
@@ -153,6 +154,14 @@ public class ServiceTransactionEntrySoap implements Serializable {
 		_serviceStartDate = serviceStartDate;
 	}
 
+	public Date getServiceStopDate() {
+		return _serviceStopDate;
+	}
+
+	public void setServiceStopDate(Date serviceStopDate) {
+		_serviceStopDate = serviceStopDate;
+	}
+
 	public Date getServiceEndDate() {
 		return _serviceEndDate;
 	}
@@ -184,6 +193,7 @@ public class ServiceTransactionEntrySoap implements Serializable {
 	private long _serviceId;
 	private int _serviceStatus;
 	private Date _serviceStartDate;
+	private Date _serviceStopDate;
 	private Date _serviceEndDate;
 	private long _servicePackageId;
 	private Date _packageDate;

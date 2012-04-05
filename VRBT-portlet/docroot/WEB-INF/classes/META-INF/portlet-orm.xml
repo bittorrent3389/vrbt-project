@@ -165,6 +165,9 @@
 			<basic name="serviceStartDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
+			<basic name="serviceStopDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
 			<basic name="serviceEndDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>

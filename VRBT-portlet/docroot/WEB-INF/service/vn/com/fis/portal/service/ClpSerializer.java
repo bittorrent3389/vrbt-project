@@ -1014,26 +1014,33 @@ public class ClpSerializer {
 
 				method6.invoke(newModel, value6);
 
-				Method method7 = newModelClass.getMethod("setServiceEndDate",
+				Method method7 = newModelClass.getMethod("setServiceStopDate",
 						new Class[] { Date.class });
 
-				Date value7 = oldCplModel.getServiceEndDate();
+				Date value7 = oldCplModel.getServiceStopDate();
 
 				method7.invoke(newModel, value7);
 
-				Method method8 = newModelClass.getMethod("setServicePackageId",
-						new Class[] { Long.TYPE });
+				Method method8 = newModelClass.getMethod("setServiceEndDate",
+						new Class[] { Date.class });
 
-				Long value8 = new Long(oldCplModel.getServicePackageId());
+				Date value8 = oldCplModel.getServiceEndDate();
 
 				method8.invoke(newModel, value8);
 
-				Method method9 = newModelClass.getMethod("setPackageDate",
-						new Class[] { Date.class });
+				Method method9 = newModelClass.getMethod("setServicePackageId",
+						new Class[] { Long.TYPE });
 
-				Date value9 = oldCplModel.getPackageDate();
+				Long value9 = new Long(oldCplModel.getServicePackageId());
 
 				method9.invoke(newModel, value9);
+
+				Method method10 = newModelClass.getMethod("setPackageDate",
+						new Class[] { Date.class });
+
+				Date value10 = oldCplModel.getPackageDate();
+
+				method10.invoke(newModel, value10);
 
 				return newModel;
 			}
@@ -2652,23 +2659,29 @@ public class ClpSerializer {
 
 				newModel.setServiceStartDate(value6);
 
-				Method method7 = oldModelClass.getMethod("getServiceEndDate");
+				Method method7 = oldModelClass.getMethod("getServiceStopDate");
 
 				Date value7 = (Date)method7.invoke(oldModel, (Object[])null);
 
-				newModel.setServiceEndDate(value7);
+				newModel.setServiceStopDate(value7);
 
-				Method method8 = oldModelClass.getMethod("getServicePackageId");
+				Method method8 = oldModelClass.getMethod("getServiceEndDate");
 
-				Long value8 = (Long)method8.invoke(oldModel, (Object[])null);
+				Date value8 = (Date)method8.invoke(oldModel, (Object[])null);
 
-				newModel.setServicePackageId(value8);
+				newModel.setServiceEndDate(value8);
 
-				Method method9 = oldModelClass.getMethod("getPackageDate");
+				Method method9 = oldModelClass.getMethod("getServicePackageId");
 
-				Date value9 = (Date)method9.invoke(oldModel, (Object[])null);
+				Long value9 = (Long)method9.invoke(oldModel, (Object[])null);
 
-				newModel.setPackageDate(value9);
+				newModel.setServicePackageId(value9);
+
+				Method method10 = oldModelClass.getMethod("getPackageDate");
+
+				Date value10 = (Date)method10.invoke(oldModel, (Object[])null);
+
+				newModel.setPackageDate(value10);
 
 				return newModel;
 			}

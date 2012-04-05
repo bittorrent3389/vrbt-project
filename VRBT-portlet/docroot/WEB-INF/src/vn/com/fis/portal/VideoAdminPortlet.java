@@ -166,7 +166,7 @@ public class VideoAdminPortlet extends MVCPortlet {
 			folderEntry = FolderEntryLocalServiceUtil.createFolderEntry(CounterLocalServiceUtil.increment(FolderEntry.class.getName()));
 			folderEntry.setUserId(userId);
 			folderEntry.setFolderName(folderName);
-			folderEntry.setFolderParentId(currFolderId);
+			folderEntry.setFolderIdParent(currFolderId);
 			folderEntry.setCreateDate(Calendar.getInstance().getTime());
 			folderEntry.setModifiedDate(Calendar.getInstance().getTime());
 			FolderEntryLocalServiceUtil.updateFolderEntry(folderEntry);

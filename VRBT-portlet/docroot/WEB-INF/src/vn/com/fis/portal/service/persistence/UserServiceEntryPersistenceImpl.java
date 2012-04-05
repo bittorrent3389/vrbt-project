@@ -120,53 +120,52 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 			new String[] {
 				Long.class.getName(), Long.class.getName(), Long.class.getName()
 			});
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEID_STATUS =
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID_SERVICESTATUS =
 		new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class, FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
-			"findByserviceId_status",
+			"findByUserId_serviceStatus",
 			new String[] {
 				Long.class.getName(), Integer.class.getName(),
 				
 			"java.lang.Integer", "java.lang.Integer",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS =
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID_SERVICESTATUS =
 		new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"findByserviceId_status",
+			"findByUserId_serviceStatus",
 			new String[] { Long.class.getName(), Integer.class.getName() },
-			UserServiceEntryModelImpl.SERVICEID_COLUMN_BITMASK |
+			UserServiceEntryModelImpl.USERID_COLUMN_BITMASK |
 			UserServiceEntryModelImpl.SERVICESTATUS_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_SERVICEID_STATUS = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_COUNT_BY_USERID_SERVICESTATUS = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"countByserviceId_status",
+			"countByUserId_serviceStatus",
 			new String[] { Long.class.getName(), Integer.class.getName() });
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEPACKAGEID =
-		new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class, FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
-			"findByservicePackageId",
+			"findByuserId",
 			new String[] {
 				Long.class.getName(),
 				
 			"java.lang.Integer", "java.lang.Integer",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEPACKAGEID =
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID =
 		new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"findByservicePackageId", new String[] { Long.class.getName() },
-			UserServiceEntryModelImpl.SERVICEPACKAGEID_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_SERVICEPACKAGEID = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByuserId",
+			new String[] { Long.class.getName() },
+			UserServiceEntryModelImpl.USERID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_USERID = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"countByservicePackageId", new String[] { Long.class.getName() });
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByuserId",
+			new String[] { Long.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class,
@@ -429,46 +428,44 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		else {
 			if ((userServiceEntryModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS.getColumnBitmask()) != 0) {
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID_SERVICESTATUS.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
-						Long.valueOf(userServiceEntryModelImpl.getOriginalServiceId()),
+						Long.valueOf(userServiceEntryModelImpl.getOriginalUserId()),
 						Integer.valueOf(userServiceEntryModelImpl.getOriginalServiceStatus())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID_SERVICESTATUS,
 					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID_SERVICESTATUS,
 					args);
 
 				args = new Object[] {
-						Long.valueOf(userServiceEntryModelImpl.getServiceId()),
+						Long.valueOf(userServiceEntryModelImpl.getUserId()),
 						Integer.valueOf(userServiceEntryModelImpl.getServiceStatus())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID_SERVICESTATUS,
 					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID_SERVICESTATUS,
 					args);
 			}
 
 			if ((userServiceEntryModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEPACKAGEID.getColumnBitmask()) != 0) {
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
-						Long.valueOf(userServiceEntryModelImpl.getOriginalServicePackageId())
+						Long.valueOf(userServiceEntryModelImpl.getOriginalUserId())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEPACKAGEID,
-					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEPACKAGEID,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
 					args);
 
 				args = new Object[] {
-						Long.valueOf(userServiceEntryModelImpl.getServicePackageId())
+						Long.valueOf(userServiceEntryModelImpl.getUserId())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEPACKAGEID,
-					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEPACKAGEID,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERID, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID,
 					args);
 			}
 		}
@@ -1127,46 +1124,47 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns all the user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns all the user service entries where userId = &#63; and serviceStatus = &#63;.
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @return the matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByserviceId_status(long serviceId,
+	public List<UserServiceEntry> findByUserId_serviceStatus(long userId,
 		int serviceStatus) throws SystemException {
-		return findByserviceId_status(serviceId, serviceStatus,
+		return findByUserId_serviceStatus(userId, serviceStatus,
 			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns a range of all the user service entries where userId = &#63; and serviceStatus = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @param start the lower bound of the range of user service entries
 	 * @param end the upper bound of the range of user service entries (not inclusive)
 	 * @return the range of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByserviceId_status(long serviceId,
+	public List<UserServiceEntry> findByUserId_serviceStatus(long userId,
 		int serviceStatus, int start, int end) throws SystemException {
-		return findByserviceId_status(serviceId, serviceStatus, start, end, null);
+		return findByUserId_serviceStatus(userId, serviceStatus, start, end,
+			null);
 	}
 
 	/**
-	 * Returns an ordered range of all the user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns an ordered range of all the user service entries where userId = &#63; and serviceStatus = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @param start the lower bound of the range of user service entries
 	 * @param end the upper bound of the range of user service entries (not inclusive)
@@ -1174,7 +1172,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @return the ordered range of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByserviceId_status(long serviceId,
+	public List<UserServiceEntry> findByUserId_serviceStatus(long userId,
 		int serviceStatus, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		FinderPath finderPath = null;
@@ -1182,13 +1180,13 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
 				(orderByComparator == null)) {
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS;
-			finderArgs = new Object[] { serviceId, serviceStatus };
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID_SERVICESTATUS;
+			finderArgs = new Object[] { userId, serviceStatus };
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEID_STATUS;
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID_SERVICESTATUS;
 			finderArgs = new Object[] {
-					serviceId, serviceStatus,
+					userId, serviceStatus,
 					
 					start, end, orderByComparator
 				};
@@ -1210,9 +1208,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			query.append(_SQL_SELECT_USERSERVICEENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2);
+			query.append(_FINDER_COLUMN_USERID_SERVICESTATUS_USERID_2);
 
-			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2);
+			query.append(_FINDER_COLUMN_USERID_SERVICESTATUS_SERVICESTATUS_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -1234,7 +1232,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				qPos.add(serviceId);
+				qPos.add(userId);
 
 				qPos.add(serviceStatus);
 
@@ -1262,23 +1260,23 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the first user service entry in the ordered set where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns the first user service entry in the ordered set where userId = &#63; and serviceStatus = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching user service entry
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry findByserviceId_status_First(long serviceId,
+	public UserServiceEntry findByUserId_serviceStatus_First(long userId,
 		int serviceStatus, OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
-		List<UserServiceEntry> list = findByserviceId_status(serviceId,
+		List<UserServiceEntry> list = findByUserId_serviceStatus(userId,
 				serviceStatus, 0, 1, orderByComparator);
 
 		if (list.isEmpty()) {
@@ -1286,8 +1284,8 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-			msg.append("serviceId=");
-			msg.append(serviceId);
+			msg.append("userId=");
+			msg.append(userId);
 
 			msg.append(", serviceStatus=");
 			msg.append(serviceStatus);
@@ -1302,25 +1300,25 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the last user service entry in the ordered set where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns the last user service entry in the ordered set where userId = &#63; and serviceStatus = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching user service entry
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry findByserviceId_status_Last(long serviceId,
+	public UserServiceEntry findByUserId_serviceStatus_Last(long userId,
 		int serviceStatus, OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
-		int count = countByserviceId_status(serviceId, serviceStatus);
+		int count = countByUserId_serviceStatus(userId, serviceStatus);
 
-		List<UserServiceEntry> list = findByserviceId_status(serviceId,
+		List<UserServiceEntry> list = findByUserId_serviceStatus(userId,
 				serviceStatus, count - 1, count, orderByComparator);
 
 		if (list.isEmpty()) {
@@ -1328,8 +1326,8 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-			msg.append("serviceId=");
-			msg.append(serviceId);
+			msg.append("userId=");
+			msg.append(userId);
 
 			msg.append(", serviceStatus=");
 			msg.append(serviceStatus);
@@ -1344,22 +1342,22 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the user service entries before and after the current user service entry in the ordered set where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns the user service entries before and after the current user service entry in the ordered set where userId = &#63; and serviceStatus = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
 	 * @param userServiceId the primary key of the current user service entry
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next user service entry
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a user service entry with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry[] findByserviceId_status_PrevAndNext(
-		long userServiceId, long serviceId, int serviceStatus,
+	public UserServiceEntry[] findByUserId_serviceStatus_PrevAndNext(
+		long userServiceId, long userId, int serviceStatus,
 		OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
 		UserServiceEntry userServiceEntry = findByPrimaryKey(userServiceId);
@@ -1371,15 +1369,15 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			UserServiceEntry[] array = new UserServiceEntryImpl[3];
 
-			array[0] = getByserviceId_status_PrevAndNext(session,
-					userServiceEntry, serviceId, serviceStatus,
-					orderByComparator, true);
+			array[0] = getByUserId_serviceStatus_PrevAndNext(session,
+					userServiceEntry, userId, serviceStatus, orderByComparator,
+					true);
 
 			array[1] = userServiceEntry;
 
-			array[2] = getByserviceId_status_PrevAndNext(session,
-					userServiceEntry, serviceId, serviceStatus,
-					orderByComparator, false);
+			array[2] = getByUserId_serviceStatus_PrevAndNext(session,
+					userServiceEntry, userId, serviceStatus, orderByComparator,
+					false);
 
 			return array;
 		}
@@ -1391,8 +1389,8 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 		}
 	}
 
-	protected UserServiceEntry getByserviceId_status_PrevAndNext(
-		Session session, UserServiceEntry userServiceEntry, long serviceId,
+	protected UserServiceEntry getByUserId_serviceStatus_PrevAndNext(
+		Session session, UserServiceEntry userServiceEntry, long userId,
 		int serviceStatus, OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
@@ -1406,9 +1404,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		query.append(_SQL_SELECT_USERSERVICEENTRY_WHERE);
 
-		query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2);
+		query.append(_FINDER_COLUMN_USERID_SERVICESTATUS_USERID_2);
 
-		query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2);
+		query.append(_FINDER_COLUMN_USERID_SERVICESTATUS_SERVICESTATUS_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -1479,7 +1477,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		QueryPos qPos = QueryPos.getInstance(q);
 
-		qPos.add(serviceId);
+		qPos.add(userId);
 
 		qPos.add(serviceStatus);
 
@@ -1502,68 +1500,62 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns all the user service entries where servicePackageId = &#63;.
+	 * Returns all the user service entries where userId = &#63;.
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @return the matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByservicePackageId(long servicePackageId)
+	public List<UserServiceEntry> findByuserId(long userId)
 		throws SystemException {
-		return findByservicePackageId(servicePackageId, QueryUtil.ALL_POS,
-			QueryUtil.ALL_POS, null);
+		return findByuserId(userId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
-	 * Returns a range of all the user service entries where servicePackageId = &#63;.
+	 * Returns a range of all the user service entries where userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @param start the lower bound of the range of user service entries
 	 * @param end the upper bound of the range of user service entries (not inclusive)
 	 * @return the range of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByservicePackageId(
-		long servicePackageId, int start, int end) throws SystemException {
-		return findByservicePackageId(servicePackageId, start, end, null);
+	public List<UserServiceEntry> findByuserId(long userId, int start, int end)
+		throws SystemException {
+		return findByuserId(userId, start, end, null);
 	}
 
 	/**
-	 * Returns an ordered range of all the user service entries where servicePackageId = &#63;.
+	 * Returns an ordered range of all the user service entries where userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @param start the lower bound of the range of user service entries
 	 * @param end the upper bound of the range of user service entries (not inclusive)
 	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByservicePackageId(
-		long servicePackageId, int start, int end,
+	public List<UserServiceEntry> findByuserId(long userId, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
 				(orderByComparator == null)) {
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEPACKAGEID;
-			finderArgs = new Object[] { servicePackageId };
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID;
+			finderArgs = new Object[] { userId };
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEPACKAGEID;
-			finderArgs = new Object[] {
-					servicePackageId,
-					
-					start, end, orderByComparator
-				};
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID;
+			finderArgs = new Object[] { userId, start, end, orderByComparator };
 		}
 
 		List<UserServiceEntry> list = (List<UserServiceEntry>)FinderCacheUtil.getResult(finderPath,
@@ -1582,7 +1574,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			query.append(_SQL_SELECT_USERSERVICEENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_SERVICEPACKAGEID_SERVICEPACKAGEID_2);
+			query.append(_FINDER_COLUMN_USERID_USERID_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -1604,7 +1596,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				qPos.add(servicePackageId);
+				qPos.add(userId);
 
 				list = (List<UserServiceEntry>)QueryUtil.list(q, getDialect(),
 						start, end);
@@ -1630,31 +1622,31 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the first user service entry in the ordered set where servicePackageId = &#63;.
+	 * Returns the first user service entry in the ordered set where userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the first matching user service entry
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry findByservicePackageId_First(
-		long servicePackageId, OrderByComparator orderByComparator)
+	public UserServiceEntry findByuserId_First(long userId,
+		OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
-		List<UserServiceEntry> list = findByservicePackageId(servicePackageId,
-				0, 1, orderByComparator);
+		List<UserServiceEntry> list = findByuserId(userId, 0, 1,
+				orderByComparator);
 
 		if (list.isEmpty()) {
 			StringBundler msg = new StringBundler(4);
 
 			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-			msg.append("servicePackageId=");
-			msg.append(servicePackageId);
+			msg.append("userId=");
+			msg.append(userId);
 
 			msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -1666,33 +1658,33 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the last user service entry in the ordered set where servicePackageId = &#63;.
+	 * Returns the last user service entry in the ordered set where userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the last matching user service entry
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry findByservicePackageId_Last(long servicePackageId,
+	public UserServiceEntry findByuserId_Last(long userId,
 		OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
-		int count = countByservicePackageId(servicePackageId);
+		int count = countByuserId(userId);
 
-		List<UserServiceEntry> list = findByservicePackageId(servicePackageId,
-				count - 1, count, orderByComparator);
+		List<UserServiceEntry> list = findByuserId(userId, count - 1, count,
+				orderByComparator);
 
 		if (list.isEmpty()) {
 			StringBundler msg = new StringBundler(4);
 
 			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
-			msg.append("servicePackageId=");
-			msg.append(servicePackageId);
+			msg.append("userId=");
+			msg.append(userId);
 
 			msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -1704,22 +1696,21 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the user service entries before and after the current user service entry in the ordered set where servicePackageId = &#63;.
+	 * Returns the user service entries before and after the current user service entry in the ordered set where userId = &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	 * </p>
 	 *
 	 * @param userServiceId the primary key of the current user service entry
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	 * @return the previous, current, and next user service entry
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a user service entry with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry[] findByservicePackageId_PrevAndNext(
-		long userServiceId, long servicePackageId,
-		OrderByComparator orderByComparator)
+	public UserServiceEntry[] findByuserId_PrevAndNext(long userServiceId,
+		long userId, OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
 		UserServiceEntry userServiceEntry = findByPrimaryKey(userServiceId);
 
@@ -1730,13 +1721,13 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			UserServiceEntry[] array = new UserServiceEntryImpl[3];
 
-			array[0] = getByservicePackageId_PrevAndNext(session,
-					userServiceEntry, servicePackageId, orderByComparator, true);
+			array[0] = getByuserId_PrevAndNext(session, userServiceEntry,
+					userId, orderByComparator, true);
 
 			array[1] = userServiceEntry;
 
-			array[2] = getByservicePackageId_PrevAndNext(session,
-					userServiceEntry, servicePackageId, orderByComparator, false);
+			array[2] = getByuserId_PrevAndNext(session, userServiceEntry,
+					userId, orderByComparator, false);
 
 			return array;
 		}
@@ -1748,10 +1739,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 		}
 	}
 
-	protected UserServiceEntry getByservicePackageId_PrevAndNext(
-		Session session, UserServiceEntry userServiceEntry,
-		long servicePackageId, OrderByComparator orderByComparator,
-		boolean previous) {
+	protected UserServiceEntry getByuserId_PrevAndNext(Session session,
+		UserServiceEntry userServiceEntry, long userId,
+		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
 
 		if (orderByComparator != null) {
@@ -1764,7 +1754,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		query.append(_SQL_SELECT_USERSERVICEENTRY_WHERE);
 
-		query.append(_FINDER_COLUMN_SERVICEPACKAGEID_SERVICEPACKAGEID_2);
+		query.append(_FINDER_COLUMN_USERID_USERID_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -1835,7 +1825,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		QueryPos qPos = QueryPos.getInstance(q);
 
-		qPos.add(servicePackageId);
+		qPos.add(userId);
 
 		if (orderByComparator != null) {
 			Object[] values = orderByComparator.getOrderByConditionValues(userServiceEntry);
@@ -2019,30 +2009,28 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Removes all the user service entries where serviceId = &#63; and serviceStatus = &#63; from the database.
+	 * Removes all the user service entries where userId = &#63; and serviceStatus = &#63; from the database.
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByserviceId_status(long serviceId, int serviceStatus)
+	public void removeByUserId_serviceStatus(long userId, int serviceStatus)
 		throws SystemException {
-		for (UserServiceEntry userServiceEntry : findByserviceId_status(
-				serviceId, serviceStatus)) {
+		for (UserServiceEntry userServiceEntry : findByUserId_serviceStatus(
+				userId, serviceStatus)) {
 			remove(userServiceEntry);
 		}
 	}
 
 	/**
-	 * Removes all the user service entries where servicePackageId = &#63; from the database.
+	 * Removes all the user service entries where userId = &#63; from the database.
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByservicePackageId(long servicePackageId)
-		throws SystemException {
-		for (UserServiceEntry userServiceEntry : findByservicePackageId(
-				servicePackageId)) {
+	public void removeByuserId(long userId) throws SystemException {
+		for (UserServiceEntry userServiceEntry : findByuserId(userId)) {
 			remove(userServiceEntry);
 		}
 	}
@@ -2241,18 +2229,18 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the number of user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	 * Returns the number of user service entries where userId = &#63; and serviceStatus = &#63;.
 	 *
-	 * @param serviceId the service ID
+	 * @param userId the user ID
 	 * @param serviceStatus the service status
 	 * @return the number of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByserviceId_status(long serviceId, int serviceStatus)
+	public int countByUserId_serviceStatus(long userId, int serviceStatus)
 		throws SystemException {
-		Object[] finderArgs = new Object[] { serviceId, serviceStatus };
+		Object[] finderArgs = new Object[] { userId, serviceStatus };
 
-		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_USERID_SERVICESTATUS,
 				finderArgs, this);
 
 		if (count == null) {
@@ -2260,9 +2248,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			query.append(_SQL_COUNT_USERSERVICEENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2);
+			query.append(_FINDER_COLUMN_USERID_SERVICESTATUS_USERID_2);
 
-			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2);
+			query.append(_FINDER_COLUMN_USERID_SERVICESTATUS_SERVICESTATUS_2);
 
 			String sql = query.toString();
 
@@ -2275,7 +2263,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				qPos.add(serviceId);
+				qPos.add(userId);
 
 				qPos.add(serviceStatus);
 
@@ -2289,7 +2277,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 					count = Long.valueOf(0);
 				}
 
-				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_USERID_SERVICESTATUS,
 					finderArgs, count);
 
 				closeSession(session);
@@ -2300,17 +2288,16 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	}
 
 	/**
-	 * Returns the number of user service entries where servicePackageId = &#63;.
+	 * Returns the number of user service entries where userId = &#63;.
 	 *
-	 * @param servicePackageId the service package ID
+	 * @param userId the user ID
 	 * @return the number of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByservicePackageId(long servicePackageId)
-		throws SystemException {
-		Object[] finderArgs = new Object[] { servicePackageId };
+	public int countByuserId(long userId) throws SystemException {
+		Object[] finderArgs = new Object[] { userId };
 
-		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_SERVICEPACKAGEID,
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_USERID,
 				finderArgs, this);
 
 		if (count == null) {
@@ -2318,7 +2305,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			query.append(_SQL_COUNT_USERSERVICEENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_SERVICEPACKAGEID_SERVICEPACKAGEID_2);
+			query.append(_FINDER_COLUMN_USERID_USERID_2);
 
 			String sql = query.toString();
 
@@ -2331,7 +2318,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 				QueryPos qPos = QueryPos.getInstance(q);
 
-				qPos.add(servicePackageId);
+				qPos.add(userId);
 
 				count = (Long)q.uniqueResult();
 			}
@@ -2343,7 +2330,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 					count = Long.valueOf(0);
 				}
 
-				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_SERVICEPACKAGEID,
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_USERID,
 					finderArgs, count);
 
 				closeSession(session);
@@ -2485,10 +2472,10 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 		"userServiceEntry.serviceId = ? AND ";
 	private static final String _FINDER_COLUMN_USERID_SERVICEID_PACKAGEID_SERVICEPACKAGEID_2 =
 		"userServiceEntry.servicePackageId = ?";
-	private static final String _FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2 = "userServiceEntry.serviceId = ? AND ";
-	private static final String _FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2 = "userServiceEntry.serviceStatus = ?";
-	private static final String _FINDER_COLUMN_SERVICEPACKAGEID_SERVICEPACKAGEID_2 =
-		"userServiceEntry.servicePackageId = ?";
+	private static final String _FINDER_COLUMN_USERID_SERVICESTATUS_USERID_2 = "userServiceEntry.userId = ? AND ";
+	private static final String _FINDER_COLUMN_USERID_SERVICESTATUS_SERVICESTATUS_2 =
+		"userServiceEntry.serviceStatus = ?";
+	private static final String _FINDER_COLUMN_USERID_USERID_2 = "userServiceEntry.userId = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "userServiceEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No UserServiceEntry exists with the primary key ";
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No UserServiceEntry exists with the key {";

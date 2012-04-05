@@ -125,6 +125,14 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 		_serviceStartDate = serviceStartDate;
 	}
 
+	public Date getServiceStopDate() {
+		return _serviceStopDate;
+	}
+
+	public void setServiceStopDate(Date serviceStopDate) {
+		_serviceStopDate = serviceStopDate;
+	}
+
 	public Date getServiceEndDate() {
 		return _serviceEndDate;
 	}
@@ -176,6 +184,7 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 		clone.setServiceId(getServiceId());
 		clone.setServiceStatus(getServiceStatus());
 		clone.setServiceStartDate(getServiceStartDate());
+		clone.setServiceStopDate(getServiceStopDate());
 		clone.setServiceEndDate(getServiceEndDate());
 		clone.setServicePackageId(getServicePackageId());
 		clone.setPackageDate(getPackageDate());
@@ -228,7 +237,7 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(21);
+		StringBundler sb = new StringBundler(23);
 
 		sb.append("{transactionId=");
 		sb.append(getTransactionId());
@@ -244,6 +253,8 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 		sb.append(getServiceStatus());
 		sb.append(", serviceStartDate=");
 		sb.append(getServiceStartDate());
+		sb.append(", serviceStopDate=");
+		sb.append(getServiceStopDate());
 		sb.append(", serviceEndDate=");
 		sb.append(getServiceEndDate());
 		sb.append(", servicePackageId=");
@@ -256,7 +267,7 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(34);
+		StringBundler sb = new StringBundler(37);
 
 		sb.append("<model><model-name>");
 		sb.append("vn.com.fis.portal.model.ServiceTransactionEntry");
@@ -291,6 +302,10 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 		sb.append(getServiceStartDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
+			"<column><column-name>serviceStopDate</column-name><column-value><![CDATA[");
+		sb.append(getServiceStopDate());
+		sb.append("]]></column-value></column>");
+		sb.append(
 			"<column><column-name>serviceEndDate</column-name><column-value><![CDATA[");
 		sb.append(getServiceEndDate());
 		sb.append("]]></column-value></column>");
@@ -316,6 +331,7 @@ public class ServiceTransactionEntryClp extends BaseModelImpl<ServiceTransaction
 	private long _serviceId;
 	private int _serviceStatus;
 	private Date _serviceStartDate;
+	private Date _serviceStopDate;
 	private Date _serviceEndDate;
 	private long _servicePackageId;
 	private Date _packageDate;

@@ -223,43 +223,43 @@ public interface UserServiceEntryPersistence extends BasePersistence<UserService
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns all the user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns all the user service entries where userId = &#63; and serviceStatus = &#63;.
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @return the matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_status(
-		long serviceId, int serviceStatus)
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
+		long userId, int serviceStatus)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns a range of all the user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns a range of all the user service entries where userId = &#63; and serviceStatus = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @param start the lower bound of the range of user service entries
 	* @param end the upper bound of the range of user service entries (not inclusive)
 	* @return the range of matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_status(
-		long serviceId, int serviceStatus, int start, int end)
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
+		long userId, int serviceStatus, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns an ordered range of all the user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns an ordered range of all the user service entries where userId = &#63; and serviceStatus = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @param start the lower bound of the range of user service entries
 	* @param end the upper bound of the range of user service entries (not inclusive)
@@ -267,173 +267,172 @@ public interface UserServiceEntryPersistence extends BasePersistence<UserService
 	* @return the ordered range of matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_status(
-		long serviceId, int serviceStatus, int start, int end,
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
+		long userId, int serviceStatus, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the first user service entry in the ordered set where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns the first user service entry in the ordered set where userId = &#63; and serviceStatus = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching user service entry
 	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserServiceEntry findByserviceId_status_First(
-		long serviceId, int serviceStatus,
+	public vn.com.fis.portal.model.UserServiceEntry findByUserId_serviceStatus_First(
+		long userId, int serviceStatus,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
 
 	/**
-	* Returns the last user service entry in the ordered set where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns the last user service entry in the ordered set where userId = &#63; and serviceStatus = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching user service entry
 	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserServiceEntry findByserviceId_status_Last(
-		long serviceId, int serviceStatus,
+	public vn.com.fis.portal.model.UserServiceEntry findByUserId_serviceStatus_Last(
+		long userId, int serviceStatus,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
 
 	/**
-	* Returns the user service entries before and after the current user service entry in the ordered set where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns the user service entries before and after the current user service entry in the ordered set where userId = &#63; and serviceStatus = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
 	* @param userServiceId the primary key of the current user service entry
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next user service entry
 	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a user service entry with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserServiceEntry[] findByserviceId_status_PrevAndNext(
-		long userServiceId, long serviceId, int serviceStatus,
+	public vn.com.fis.portal.model.UserServiceEntry[] findByUserId_serviceStatus_PrevAndNext(
+		long userServiceId, long userId, int serviceStatus,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
 
 	/**
-	* Returns all the user service entries where servicePackageId = &#63;.
+	* Returns all the user service entries where userId = &#63;.
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @return the matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByservicePackageId(
-		long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException;
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns a range of all the user service entries where servicePackageId = &#63;.
+	* Returns a range of all the user service entries where userId = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @param start the lower bound of the range of user service entries
 	* @param end the upper bound of the range of user service entries (not inclusive)
 	* @return the range of matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByservicePackageId(
-		long servicePackageId, int start, int end)
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
+		long userId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns an ordered range of all the user service entries where servicePackageId = &#63;.
+	* Returns an ordered range of all the user service entries where userId = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @param start the lower bound of the range of user service entries
 	* @param end the upper bound of the range of user service entries (not inclusive)
 	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	* @return the ordered range of matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByservicePackageId(
-		long servicePackageId, int start, int end,
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
+		long userId, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the first user service entry in the ordered set where servicePackageId = &#63;.
+	* Returns the first user service entry in the ordered set where userId = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the first matching user service entry
 	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserServiceEntry findByservicePackageId_First(
-		long servicePackageId,
+	public vn.com.fis.portal.model.UserServiceEntry findByuserId_First(
+		long userId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
 
 	/**
-	* Returns the last user service entry in the ordered set where servicePackageId = &#63;.
+	* Returns the last user service entry in the ordered set where userId = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the last matching user service entry
 	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserServiceEntry findByservicePackageId_Last(
-		long servicePackageId,
+	public vn.com.fis.portal.model.UserServiceEntry findByuserId_Last(
+		long userId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
 
 	/**
-	* Returns the user service entries before and after the current user service entry in the ordered set where servicePackageId = &#63;.
+	* Returns the user service entries before and after the current user service entry in the ordered set where userId = &#63;.
 	*
 	* <p>
 	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
 	* </p>
 	*
 	* @param userServiceId the primary key of the current user service entry
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
 	* @return the previous, current, and next user service entry
 	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a user service entry with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserServiceEntry[] findByservicePackageId_PrevAndNext(
-		long userServiceId, long servicePackageId,
+	public vn.com.fis.portal.model.UserServiceEntry[] findByuserId_PrevAndNext(
+		long userServiceId, long userId,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
@@ -518,22 +517,22 @@ public interface UserServiceEntryPersistence extends BasePersistence<UserService
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
 
 	/**
-	* Removes all the user service entries where serviceId = &#63; and serviceStatus = &#63; from the database.
+	* Removes all the user service entries where userId = &#63; and serviceStatus = &#63; from the database.
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByserviceId_status(long serviceId, int serviceStatus)
+	public void removeByUserId_serviceStatus(long userId, int serviceStatus)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Removes all the user service entries where servicePackageId = &#63; from the database.
+	* Removes all the user service entries where userId = &#63; from the database.
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByservicePackageId(long servicePackageId)
+	public void removeByuserId(long userId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -580,24 +579,24 @@ public interface UserServiceEntryPersistence extends BasePersistence<UserService
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the number of user service entries where serviceId = &#63; and serviceStatus = &#63;.
+	* Returns the number of user service entries where userId = &#63; and serviceStatus = &#63;.
 	*
-	* @param serviceId the service ID
+	* @param userId the user ID
 	* @param serviceStatus the service status
 	* @return the number of matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByserviceId_status(long serviceId, int serviceStatus)
+	public int countByUserId_serviceStatus(long userId, int serviceStatus)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
-	* Returns the number of user service entries where servicePackageId = &#63;.
+	* Returns the number of user service entries where userId = &#63;.
 	*
-	* @param servicePackageId the service package ID
+	* @param userId the user ID
 	* @return the number of matching user service entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByservicePackageId(long servicePackageId)
+	public int countByuserId(long userId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

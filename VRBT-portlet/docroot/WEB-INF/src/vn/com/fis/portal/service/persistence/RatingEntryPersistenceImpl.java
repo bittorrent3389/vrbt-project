@@ -138,7 +138,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID_USERID =
 		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId_userId",
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId_UserId",
 			new String[] {
 				Long.class.getName(), Long.class.getName(),
 				
@@ -148,18 +148,18 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_USERID =
 		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId_userId",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId_UserId",
 			new String[] { Long.class.getName(), Long.class.getName() },
 			RatingEntryModelImpl.VIDEOID_COLUMN_BITMASK |
 			RatingEntryModelImpl.USERID_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_VIDEOID_USERID = new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId_userId",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId_UserId",
 			new String[] { Long.class.getName(), Long.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID_CODE =
 		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId_code",
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId_Code",
 			new String[] {
 				Long.class.getName(), Integer.class.getName(),
 				
@@ -169,13 +169,13 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID_CODE =
 		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, RatingEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId_code",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId_Code",
 			new String[] { Long.class.getName(), Integer.class.getName() },
 			RatingEntryModelImpl.VIDEOID_COLUMN_BITMASK |
 			RatingEntryModelImpl.CODE_COLUMN_BITMASK);
 	public static final FinderPath FINDER_PATH_COUNT_BY_VIDEOID_CODE = new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
 			RatingEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId_code",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId_Code",
 			new String[] { Long.class.getName(), Integer.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_RATINGCODE =
 		new FinderPath(RatingEntryModelImpl.ENTITY_CACHE_ENABLED,
@@ -1782,9 +1782,9 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByVideoId_userId(long videoId, long userId)
+	public List<RatingEntry> findByVideoId_UserId(long videoId, long userId)
 		throws SystemException {
-		return findByVideoId_userId(videoId, userId, QueryUtil.ALL_POS,
+		return findByVideoId_UserId(videoId, userId, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 	}
 
@@ -1802,9 +1802,9 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the range of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByVideoId_userId(long videoId, long userId,
+	public List<RatingEntry> findByVideoId_UserId(long videoId, long userId,
 		int start, int end) throws SystemException {
-		return findByVideoId_userId(videoId, userId, start, end, null);
+		return findByVideoId_UserId(videoId, userId, start, end, null);
 	}
 
 	/**
@@ -1822,7 +1822,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the ordered range of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByVideoId_userId(long videoId, long userId,
+	public List<RatingEntry> findByVideoId_UserId(long videoId, long userId,
 		int start, int end, OrderByComparator orderByComparator)
 		throws SystemException {
 		FinderPath finderPath = null;
@@ -1923,10 +1923,10 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public RatingEntry findByVideoId_userId_First(long videoId, long userId,
+	public RatingEntry findByVideoId_UserId_First(long videoId, long userId,
 		OrderByComparator orderByComparator)
 		throws NoSuchRatingEntryException, SystemException {
-		List<RatingEntry> list = findByVideoId_userId(videoId, userId, 0, 1,
+		List<RatingEntry> list = findByVideoId_UserId(videoId, userId, 0, 1,
 				orderByComparator);
 
 		if (list.isEmpty()) {
@@ -1963,12 +1963,12 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public RatingEntry findByVideoId_userId_Last(long videoId, long userId,
+	public RatingEntry findByVideoId_UserId_Last(long videoId, long userId,
 		OrderByComparator orderByComparator)
 		throws NoSuchRatingEntryException, SystemException {
-		int count = countByVideoId_userId(videoId, userId);
+		int count = countByVideoId_UserId(videoId, userId);
 
-		List<RatingEntry> list = findByVideoId_userId(videoId, userId,
+		List<RatingEntry> list = findByVideoId_UserId(videoId, userId,
 				count - 1, count, orderByComparator);
 
 		if (list.isEmpty()) {
@@ -2006,7 +2006,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public RatingEntry[] findByVideoId_userId_PrevAndNext(long ratingId,
+	public RatingEntry[] findByVideoId_UserId_PrevAndNext(long ratingId,
 		long videoId, long userId, OrderByComparator orderByComparator)
 		throws NoSuchRatingEntryException, SystemException {
 		RatingEntry ratingEntry = findByPrimaryKey(ratingId);
@@ -2018,12 +2018,12 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 
 			RatingEntry[] array = new RatingEntryImpl[3];
 
-			array[0] = getByVideoId_userId_PrevAndNext(session, ratingEntry,
+			array[0] = getByVideoId_UserId_PrevAndNext(session, ratingEntry,
 					videoId, userId, orderByComparator, true);
 
 			array[1] = ratingEntry;
 
-			array[2] = getByVideoId_userId_PrevAndNext(session, ratingEntry,
+			array[2] = getByVideoId_UserId_PrevAndNext(session, ratingEntry,
 					videoId, userId, orderByComparator, false);
 
 			return array;
@@ -2036,7 +2036,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 		}
 	}
 
-	protected RatingEntry getByVideoId_userId_PrevAndNext(Session session,
+	protected RatingEntry getByVideoId_UserId_PrevAndNext(Session session,
 		RatingEntry ratingEntry, long videoId, long userId,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
@@ -2154,9 +2154,9 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByVideoId_code(long videoId, int code)
+	public List<RatingEntry> findByVideoId_Code(long videoId, int code)
 		throws SystemException {
-		return findByVideoId_code(videoId, code, QueryUtil.ALL_POS,
+		return findByVideoId_Code(videoId, code, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS, null);
 	}
 
@@ -2174,9 +2174,9 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the range of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByVideoId_code(long videoId, int code,
+	public List<RatingEntry> findByVideoId_Code(long videoId, int code,
 		int start, int end) throws SystemException {
-		return findByVideoId_code(videoId, code, start, end, null);
+		return findByVideoId_Code(videoId, code, start, end, null);
 	}
 
 	/**
@@ -2194,7 +2194,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the ordered range of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<RatingEntry> findByVideoId_code(long videoId, int code,
+	public List<RatingEntry> findByVideoId_Code(long videoId, int code,
 		int start, int end, OrderByComparator orderByComparator)
 		throws SystemException {
 		FinderPath finderPath = null;
@@ -2295,10 +2295,10 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public RatingEntry findByVideoId_code_First(long videoId, int code,
+	public RatingEntry findByVideoId_Code_First(long videoId, int code,
 		OrderByComparator orderByComparator)
 		throws NoSuchRatingEntryException, SystemException {
-		List<RatingEntry> list = findByVideoId_code(videoId, code, 0, 1,
+		List<RatingEntry> list = findByVideoId_Code(videoId, code, 0, 1,
 				orderByComparator);
 
 		if (list.isEmpty()) {
@@ -2335,12 +2335,12 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a matching rating entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public RatingEntry findByVideoId_code_Last(long videoId, int code,
+	public RatingEntry findByVideoId_Code_Last(long videoId, int code,
 		OrderByComparator orderByComparator)
 		throws NoSuchRatingEntryException, SystemException {
-		int count = countByVideoId_code(videoId, code);
+		int count = countByVideoId_Code(videoId, code);
 
-		List<RatingEntry> list = findByVideoId_code(videoId, code, count - 1,
+		List<RatingEntry> list = findByVideoId_Code(videoId, code, count - 1,
 				count, orderByComparator);
 
 		if (list.isEmpty()) {
@@ -2378,7 +2378,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @throws vn.com.fis.portal.NoSuchRatingEntryException if a rating entry with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public RatingEntry[] findByVideoId_code_PrevAndNext(long ratingId,
+	public RatingEntry[] findByVideoId_Code_PrevAndNext(long ratingId,
 		long videoId, int code, OrderByComparator orderByComparator)
 		throws NoSuchRatingEntryException, SystemException {
 		RatingEntry ratingEntry = findByPrimaryKey(ratingId);
@@ -2390,12 +2390,12 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 
 			RatingEntry[] array = new RatingEntryImpl[3];
 
-			array[0] = getByVideoId_code_PrevAndNext(session, ratingEntry,
+			array[0] = getByVideoId_Code_PrevAndNext(session, ratingEntry,
 					videoId, code, orderByComparator, true);
 
 			array[1] = ratingEntry;
 
-			array[2] = getByVideoId_code_PrevAndNext(session, ratingEntry,
+			array[2] = getByVideoId_Code_PrevAndNext(session, ratingEntry,
 					videoId, code, orderByComparator, false);
 
 			return array;
@@ -2408,7 +2408,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 		}
 	}
 
-	protected RatingEntry getByVideoId_code_PrevAndNext(Session session,
+	protected RatingEntry getByVideoId_Code_PrevAndNext(Session session,
 		RatingEntry ratingEntry, long videoId, int code,
 		OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
@@ -3173,9 +3173,9 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @param userId the user ID
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByVideoId_userId(long videoId, long userId)
+	public void removeByVideoId_UserId(long videoId, long userId)
 		throws SystemException {
-		for (RatingEntry ratingEntry : findByVideoId_userId(videoId, userId)) {
+		for (RatingEntry ratingEntry : findByVideoId_UserId(videoId, userId)) {
 			remove(ratingEntry);
 		}
 	}
@@ -3187,9 +3187,9 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @param code the code
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByVideoId_code(long videoId, int code)
+	public void removeByVideoId_Code(long videoId, int code)
 		throws SystemException {
-		for (RatingEntry ratingEntry : findByVideoId_code(videoId, code)) {
+		for (RatingEntry ratingEntry : findByVideoId_Code(videoId, code)) {
 			remove(ratingEntry);
 		}
 	}
@@ -3406,7 +3406,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the number of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByVideoId_userId(long videoId, long userId)
+	public int countByVideoId_UserId(long videoId, long userId)
 		throws SystemException {
 		Object[] finderArgs = new Object[] { videoId, userId };
 
@@ -3465,7 +3465,7 @@ public class RatingEntryPersistenceImpl extends BasePersistenceImpl<RatingEntry>
 	 * @return the number of matching rating entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByVideoId_code(long videoId, int code)
+	public int countByVideoId_Code(long videoId, int code)
 		throws SystemException {
 		Object[] finderArgs = new Object[] { videoId, code };
 
