@@ -82,7 +82,8 @@ public class ViolationEntryModelImpl extends BaseModelImpl<ViolationEntry>
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.column.bitmask.enabled.vn.com.fis.portal.model.ViolationEntry"),
 			true);
-	public static long VIOLATIONTITLE_COLUMN_BITMASK = 1L;
+	public static long STATUS_COLUMN_BITMASK = 1L;
+	public static long VIOLATIONTITLE_COLUMN_BITMASK = 2L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -200,7 +201,19 @@ public class ViolationEntryModelImpl extends BaseModelImpl<ViolationEntry>
 	}
 
 	public void setStatus(int status) {
+		_columnBitmask |= STATUS_COLUMN_BITMASK;
+
+		if (!_setOriginalStatus) {
+			_setOriginalStatus = true;
+
+			_originalStatus = _status;
+		}
+
 		_status = status;
+	}
+
+	public int getOriginalStatus() {
+		return _originalStatus;
 	}
 
 	public long getColumnBitmask() {
@@ -295,6 +308,10 @@ public class ViolationEntryModelImpl extends BaseModelImpl<ViolationEntry>
 
 		violationEntryModelImpl._originalViolationTitle = violationEntryModelImpl._violationTitle;
 
+		violationEntryModelImpl._originalStatus = violationEntryModelImpl._status;
+
+		violationEntryModelImpl._setOriginalStatus = false;
+
 		violationEntryModelImpl._columnBitmask = 0;
 	}
 
@@ -380,6 +397,8 @@ public class ViolationEntryModelImpl extends BaseModelImpl<ViolationEntry>
 	private String _originalViolationTitle;
 	private String _description;
 	private int _status;
+	private int _originalStatus;
+	private boolean _setOriginalStatus;
 	private transient ExpandoBridge _expandoBridge;
 	private long _columnBitmask;
 	private ViolationEntry _escapedModelProxy;

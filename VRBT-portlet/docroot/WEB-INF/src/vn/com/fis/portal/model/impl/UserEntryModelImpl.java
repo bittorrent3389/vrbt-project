@@ -89,8 +89,9 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 				"value.object.column.bitmask.enabled.vn.com.fis.portal.model.UserEntry"),
 			true);
 	public static long MOBILENUMBER_COLUMN_BITMASK = 1L;
-	public static long USERID_COLUMN_BITMASK = 2L;
-	public static long USERNAME_COLUMN_BITMASK = 4L;
+	public static long STATUS_COLUMN_BITMASK = 2L;
+	public static long USERID_COLUMN_BITMASK = 4L;
+	public static long USERNAME_COLUMN_BITMASK = 8L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -268,7 +269,19 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 	}
 
 	public void setStatus(int status) {
+		_columnBitmask |= STATUS_COLUMN_BITMASK;
+
+		if (!_setOriginalStatus) {
+			_setOriginalStatus = true;
+
+			_originalStatus = _status;
+		}
+
 		_status = status;
+	}
+
+	public int getOriginalStatus() {
+		return _originalStatus;
 	}
 
 	public long getColumnBitmask() {
@@ -377,6 +390,10 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 		userEntryModelImpl._originalUserName = userEntryModelImpl._userName;
 
 		userEntryModelImpl._originalMobileNumber = userEntryModelImpl._mobileNumber;
+
+		userEntryModelImpl._originalStatus = userEntryModelImpl._status;
+
+		userEntryModelImpl._setOriginalStatus = false;
 
 		userEntryModelImpl._columnBitmask = 0;
 	}
@@ -508,6 +525,8 @@ public class UserEntryModelImpl extends BaseModelImpl<UserEntry>
 	private Date _createDate;
 	private Date _modifiedDate;
 	private int _status;
+	private int _originalStatus;
+	private boolean _setOriginalStatus;
 	private transient ExpandoBridge _expandoBridge;
 	private long _columnBitmask;
 	private UserEntry _escapedModelProxy;

@@ -14,7 +14,13 @@
 
 package vn.com.fis.portal.service.impl;
 
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.SystemException;
+
+import vn.com.fis.portal.model.ViolationEntry;
 import vn.com.fis.portal.service.base.ViolationEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.ViolationEntryUtil;
 
 /**
  * The implementation of the violation entry local service.
@@ -37,4 +43,8 @@ public class ViolationEntryLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link vn.com.fis.portal.service.ViolationEntryLocalServiceUtil} to access the violation entry local service.
 	 */
+	
+	public List<ViolationEntry> findByStatus(int status) throws SystemException{
+		return ViolationEntryUtil.findByStatus(status);
+	}
 }

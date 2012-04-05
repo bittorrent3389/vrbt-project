@@ -156,4 +156,24 @@ public class UserServiceEntryLocalServiceImpl
 	public List<UserServiceEntry> findByuserId(long userId) throws SystemException{
 		return UserServiceEntryUtil.findByuserId(userId);
 	}
+	
+	public List<UserServiceEntry> findByservicePackageId(long servicePackageId)
+			throws SystemException {
+		return UserServiceEntryUtil.findByservicePackageId(servicePackageId);
+	}
+	
+	public List<UserServiceEntry> findByserviceId_ServiceStatus(
+			long serviceId, int serviceStatus) throws SystemException {
+		return UserServiceEntryUtil.findByserviceId_ServiceStatus(serviceId, serviceStatus);
+	}
+	
+	public int countByservicePackageId(long servicePackageId)
+			throws SystemException {
+		return UserServiceEntryUtil.countByservicePackageId(servicePackageId);
+	}
+	
+	public int countByserviceId_ServiceStatus(long serviceId, int serviceStatus)
+			throws SystemException {
+		return UserServiceEntryUtil.countByserviceId_ServiceStatus(serviceId, serviceStatus);
+	}
 }

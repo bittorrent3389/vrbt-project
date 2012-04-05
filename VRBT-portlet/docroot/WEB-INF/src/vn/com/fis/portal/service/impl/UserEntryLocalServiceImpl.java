@@ -14,6 +14,8 @@
 
 package vn.com.fis.portal.service.impl;
 
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.SystemException;
 
 import vn.com.fis.portal.NoSuchUserEntryException;
@@ -141,5 +143,16 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 		throws NoSuchUserEntryException, SystemException {
 		 UserEntryUtil.removeByUserId(userId);
 	}
+	
+	public int countByStatus(int status) throws SystemException {
+		return UserEntryUtil.countByStatus(status);
+	}
+	
+	public int countAll() throws SystemException {
+		return UserEntryUtil.countAll();
+	}
 
+	public List<UserEntry> findByStatus(int status) throws SystemException {
+		return UserEntryUtil.findByStatus(status);
+	}
 }

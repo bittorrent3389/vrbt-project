@@ -45,4 +45,36 @@
             (TBL_SERVICE_PACKAGE.status LIKE  ? [$AND_OR_NULL_CHECK$])
 		]]>
 	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchAll">
+		<![CDATA[
+			SELECT tbl_service_transaction.* 
+			FROM tbl_service_transaction
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchCountAll">
+		<![CDATA[
+		 SELECT  COUNT(*) AS COUNT_VALUE
+		 FROM tbl_service_transaction
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.search">
+		<![CDATA[
+			SELECT tbl_service_transaction.* 
+			FROM tbl_service_transaction
+			WHERE 
+				tbl_service_transaction.transactioncode = ?
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchCount">
+		<![CDATA[
+		 SELECT  COUNT(*) AS COUNT_VALUE
+		 FROM tbl_service_transaction
+		 WHERE
+		 	tbl_service_transaction.transactioncode = ?
+		]]>
+	</sql>
 </custom-sql>

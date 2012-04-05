@@ -14,14 +14,21 @@
 
 package vn.com.fis.portal.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.dao.orm.SQLQuery;
+import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.util.dao.orm.CustomSQLUtil;
 
 import vn.com.fis.portal.model.ServiceTransactionEntry;
+import vn.com.fis.portal.model.impl.ServiceTransactionEntryImpl;
 import vn.com.fis.portal.service.base.ServiceTransactionEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderUtil;
 import vn.com.fis.portal.service.persistence.ServiceTransactionEntryUtil;
 
 /**
@@ -159,5 +166,14 @@ public class ServiceTransactionEntryLocalServiceImpl
 	public int countByUserId_TransactionCode_Date(long userId,
 		int transactionCode, Date date_) throws SystemException {
 		return ServiceTransactionEntryUtil.countByUserId_TransactionCode_Date(userId, transactionCode, date_);
+	}
+	
+	public List<ServiceTransactionEntry> search(long transactionCode, long serviceId, long servicePackageId, int start, int end, int searchTypeFlag) 
+			throws SystemException {
+		return ServiceTransactionEntryFinderUtil.search(transactionCode, serviceId, servicePackageId, start, end, searchTypeFlag);
+	}
+	
+	public int searchCount(long transactionCode, long serviceId, long servicePackageId, int searchTypeFlag) throws SystemException {
+		return ServiceTransactionEntryFinderUtil.searchCount(transactionCode, serviceId, servicePackageId, searchTypeFlag);
 	}
 }

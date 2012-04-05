@@ -104,6 +104,25 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserId",
 			new String[] { Long.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
+			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByStatus",
+			new String[] {
+				Integer.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS =
+		new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
+			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByStatus",
+			new String[] { Integer.class.getName() },
+			UserEntryModelImpl.STATUS_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_STATUS = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
+			UserEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByStatus",
+			new String[] { Integer.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findAll", new String[0]);
@@ -337,6 +356,27 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 		if (isNew || !UserEntryModelImpl.COLUMN_BITMASK_ENABLED) {
 			FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+		}
+
+		else {
+			if ((userEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Integer.valueOf(userEntryModelImpl.getOriginalStatus())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS,
+					args);
+
+				args = new Object[] {
+						Integer.valueOf(userEntryModelImpl.getStatus())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS,
+					args);
+			}
 		}
 
 		EntityCacheUtil.putResult(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
@@ -933,6 +973,350 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	}
 
 	/**
+	 * Returns all the user entries where status = &#63;.
+	 *
+	 * @param status the status
+	 * @return the matching user entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<UserEntry> findByStatus(int status) throws SystemException {
+		return findByStatus(status, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the user entries where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param start the lower bound of the range of user entries
+	 * @param end the upper bound of the range of user entries (not inclusive)
+	 * @return the range of matching user entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<UserEntry> findByStatus(int status, int start, int end)
+		throws SystemException {
+		return findByStatus(status, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the user entries where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param start the lower bound of the range of user entries
+	 * @param end the upper bound of the range of user entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching user entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<UserEntry> findByStatus(int status, int start, int end,
+		OrderByComparator orderByComparator) throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS;
+			finderArgs = new Object[] { status };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS;
+			finderArgs = new Object[] { status, start, end, orderByComparator };
+		}
+
+		List<UserEntry> list = (List<UserEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_USERENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_STATUS_STATUS_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(UserEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(status);
+
+				list = (List<UserEntry>)QueryUtil.list(q, getDialect(), start,
+						end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first user entry in the ordered set where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching user entry
+	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public UserEntry findByStatus_First(int status,
+		OrderByComparator orderByComparator)
+		throws NoSuchUserEntryException, SystemException {
+		List<UserEntry> list = findByStatus(status, 0, 1, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("status=");
+			msg.append(status);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchUserEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last user entry in the ordered set where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching user entry
+	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public UserEntry findByStatus_Last(int status,
+		OrderByComparator orderByComparator)
+		throws NoSuchUserEntryException, SystemException {
+		int count = countByStatus(status);
+
+		List<UserEntry> list = findByStatus(status, count - 1, count,
+				orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("status=");
+			msg.append(status);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchUserEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the user entries before and after the current user entry in the ordered set where status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param userId the primary key of the current user entry
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next user entry
+	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a user entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public UserEntry[] findByStatus_PrevAndNext(long userId, int status,
+		OrderByComparator orderByComparator)
+		throws NoSuchUserEntryException, SystemException {
+		UserEntry userEntry = findByPrimaryKey(userId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			UserEntry[] array = new UserEntryImpl[3];
+
+			array[0] = getByStatus_PrevAndNext(session, userEntry, status,
+					orderByComparator, true);
+
+			array[1] = userEntry;
+
+			array[2] = getByStatus_PrevAndNext(session, userEntry, status,
+					orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected UserEntry getByStatus_PrevAndNext(Session session,
+		UserEntry userEntry, int status, OrderByComparator orderByComparator,
+		boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_USERENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_STATUS_STATUS_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(UserEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(status);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(userEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<UserEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
 	 * Returns all the user entries.
 	 *
 	 * @return the user entries
@@ -1084,6 +1468,18 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 		UserEntry userEntry = findByUserId(userId);
 
 		remove(userEntry);
+	}
+
+	/**
+	 * Removes all the user entries where status = &#63; from the database.
+	 *
+	 * @param status the status
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByStatus(int status) throws SystemException {
+		for (UserEntry userEntry : findByStatus(status)) {
+			remove(userEntry);
+		}
 	}
 
 	/**
@@ -1282,6 +1678,59 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	}
 
 	/**
+	 * Returns the number of user entries where status = &#63;.
+	 *
+	 * @param status the status
+	 * @return the number of matching user entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByStatus(int status) throws SystemException {
+		Object[] finderArgs = new Object[] { status };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_STATUS,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_USERENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_STATUS_STATUS_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(status);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUS,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
 	 * Returns the number of user entries.
 	 *
 	 * @return the number of user entries
@@ -1409,6 +1858,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2 = "userEntry.mobileNumber = ?";
 	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_3 = "(userEntry.mobileNumber IS NULL OR userEntry.mobileNumber = ?)";
 	private static final String _FINDER_COLUMN_USERID_USERID_2 = "userEntry.userId = ?";
+	private static final String _FINDER_COLUMN_STATUS_STATUS_2 = "userEntry.status = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "userEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No UserEntry exists with the primary key ";
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No UserEntry exists with the key {";
