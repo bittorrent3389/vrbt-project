@@ -1,21 +1,40 @@
-<%--
-/**
-* Copyright (c) 2000-2010 Liferay, Inc. All rights reserved.
-*
-* This library is free software; you can redistribute it and/or modify it under
-* the terms of the GNU Lesser General Public License as published by the Free
-* Software Foundation; either version 2.1 of the License, or (at your option)
-* any later version.
-*
-* This library is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-* FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
-* details.
-*/
---%>
+<%@ include file="/html/init.jsp" %>
+<% 
+	long userId = 0;
+	boolean isAllow = false;
+	
+	long companyId = 0;
+	long roleId = 0;
+	
+	try{
+		userId = permissionChecker.getUserId();
+	
+		companyId = PortalUtil.getCompanyId(renderRequest);
+		
+		roleId = RoleLocalServiceUtil.getRole(companyId, "Subscriber").getRoleId();
+	
+		if(UserLocalServiceUtil.hasRoleUser(roleId, userId))
+			isAllow = true;
+		
+	}catch(Exception e)
+	{
+		e.printStackTrace();
+		isAllow = false;
+	}
+%>
 
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-
-<portlet:defineObjects />
-
-This is the <b>Subscriber_ServiceMng</b> portlet in View mode.
+<liferay-ui:tabs names="My Service" refresh="false">
+	<c:if test="<%= !isAllow %>">
+		<fieldset>
+			<liferay-ui:message key="portlet-message-deniedPermission"/>
+		</fieldset>
+		<br/>
+		<br/>	
+	</c:if>
+	
+	<c:if test="<%= isAllow %>">
+		<liferay-ui:section>
+		<%@ include file="/html/subscriber_ServiceMng/subscriber_service_view_form.jsp" %>
+	</liferay-ui:section>
+	</c:if>
+</liferay-ui:tabs>

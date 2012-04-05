@@ -1,21 +1,52 @@
-<%--
-/**
-* Copyright (c) 2000-2010 Liferay, Inc. All rights reserved.
-*
-* This library is free software; you can redistribute it and/or modify it under
-* the terms of the GNU Lesser General Public License as published by the Free
-* Software Foundation; either version 2.1 of the License, or (at your option)
-* any later version.
-*
-* This library is distributed in the hope that it will be useful, but WITHOUT
-* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-* FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
-* details.
-*/
---%>
+<%@ include file="/html/init.jsp" %>
 
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<% 
+	long userId = 0;
+	boolean isAllow = false;
+	
+	long companyId = 0;
+	long roleId =0;
+	
+	try{
+		userId = permissionChecker.getUserId();
+	
+		companyId = PortalUtil.getCompanyId(renderRequest);
+		
+		roleId = RoleLocalServiceUtil.getRole(companyId, "Network-Operator").getRoleId();
+	
+		if(UserLocalServiceUtil.hasRoleUser(roleId, userId))
+			isAllow = true;
+		
+	}catch(Exception e)
+	{
+		e.printStackTrace();
+		isAllow = false;
+	}
+%>
 
-<portlet:defineObjects />
+<c:if test="<%= !isAllow %>">
+	<fieldset>
+		<liferay-ui:message key="portlet-message-deniedPermission"/>	
+	</fieldset>
 
-This is the <b>ServicePackageAdmin</b> portlet in View mode.
+	<br/>
+</c:if>
+
+<c:if test="<%= isAllow %>">
+	<div>
+		<liferay-ui:error key="error-message" message="portlet-servicePackage-view-error-message-errorServicePackageFormMessage"/>
+		<liferay-ui:error  key="error-add-servicePackage-message" message="portlet-servicePackage-view-error-message-errorAddServicePackageMessage"/>
+		<liferay-ui:error  key="error-edit-servicePackage-message" message="portlet-servicePackage-view-error-message-errorEditServicePackageMessage"/>
+		<liferay-ui:error  key="error-delete-servicePackage-message" message="portlet-servicePackage-view-error-message-errorDeleteServicePackageMessage"/>
+	</div>
+
+	<liferay-ui:tabs names="View Services Package,Add Service Package" refresh="false">
+		<liferay-ui:section>
+			<%@ include file="/html/servicePackageAdmin/view_search.jsp" %>
+		</liferay-ui:section>
+	
+		<liferay-ui:section>
+			<%@ include file="/html/servicePackageAdmin/ser_pac_add_form.jsp" %>
+		</liferay-ui:section>
+	</liferay-ui:tabs>
+</c:if>
