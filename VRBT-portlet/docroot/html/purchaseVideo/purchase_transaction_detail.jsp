@@ -14,7 +14,7 @@
 <fieldset>
 	<liferay-ui:message key="Transaction."/>
 	<br/>
-	<liferay-ui:message key="Video Name : "/> <%= VideoExtLocalServiceUtil.getVideoExt(videoId).getVideoName() %>
+	<liferay-ui:message key="Video Name : "/> <%= VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName() %>
 	<br/>
 	<liferay-ui:message key="Total: 0.99$"/>
 	<br/>

@@ -4,7 +4,7 @@
 	String userId = ParamUtil.getString(renderRequest, "userId");
 	String redirect = ParamUtil.getString(renderRequest, "redirect");
 	
-	List<ViolationExt> listViolation = ViolationExtLocalServiceUtil.findBystatus(1);
+	List<ViolationEntry> listViolation = ViolationEntryLocalServiceUtil.findByStatus(1);
 %>
 
 <portlet:actionURL var="videoReportToAdminURL" name="videoReportToAdmin">
@@ -16,8 +16,8 @@
 <fieldset>
 	<aui:form method="post" name="videoReportToAdminForm" action="<%= videoReportToAdminURL %>">
 		<aui:select name="violationId">
-			<% for(ViolationExt violation : listViolation) { %>
-				<aui:option label="<%= violation.getTitle() %>" value="<%= violation.getViolationId() %>"/>
+			<% for(ViolationEntry violation : listViolation) { %>
+				<aui:option label="<%= violation.getViolationTitle() %>" value="<%= violation.getViolationId() %>"/>
 			<% } %>
 		</aui:select>
 		

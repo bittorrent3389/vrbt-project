@@ -19,10 +19,10 @@
 		<aui:validator name="rangeLength">[0,300]</aui:validator>	
 	</aui:input>
 	
-	<% List<ServiceExt> list = ServiceExtLocalServiceUtil.findBystatus(1);	%>
+	<% List<ServiceEntry> list = ServiceEntryLocalServiceUtil.findBystatus(1);	%>
 	
 	<aui:select name="service" label="portlet-servicePackage-ser_pac_add_form-addServicePackageForm-input-service">
-		<% for(ServiceExt serviceExt : list) { %>
+		<% for(ServiceEntry serviceExt : list) { %>
 			<aui:option value="<%= serviceExt.getServiceId() %>">
 				<liferay-ui:message key='<%= serviceExt.getServiceCode()+" - "+serviceExt.getServiceName() %>'/>
 			</aui:option>

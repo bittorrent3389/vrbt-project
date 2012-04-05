@@ -1,6 +1,6 @@
 <%@ include file="/html/init.jsp" %>
+
 <%
-	//long videoId = ParamUtil.getLong(renderRequest, "videoId");
 	long videoId = ParamUtil.getLong(renderRequest, "video-Id", 0);
 %>
 
@@ -32,15 +32,19 @@
 	
 		try {
 			UserEntry userEntry = UserEntryLocalServiceUtil.getUserEntry(userId);
-			List<RatingEntry> listRate = RatingEntryLocalServiceUtil.findByvideoId_userId_status(videoId, userEntry.getUserId(), 1);
+			RatingEntry userRate = null;
 			
-			if(listRate.size() > 0){
-				RatingEntry ratingExt = listRate.get(0);
-		
-				if(ratingExt.getRatingCode() == 1)
+			try{
+				userRate = RatingEntryLocalServiceUtil.findByVideoId_UserId(videoId, userEntry.getUserId());
+			}catch(Exception e){
+				userRate = null;
+			}
+			
+			if(userRate != null){		
+				if(userRate.getCode() == 1)
 					isLike = true;
 				else
-					if(ratingExt.getRatingCode() == 2)
+					if(userRate.getCode() == 2)
 						isUnlike = true;
 			}
 		}catch(Exception e){
@@ -48,34 +52,29 @@
 			isUnlike = false;
 		}
 	
-		List<RatingEntry> listLike = RatingEntryLocalServiceUtil.findByvideoId_ratingCode_status(videoId, 1, 1);
-		List<RatingEntry> listUnlike = RatingEntryLocalServiceUtil.findByvideoId_ratingCode_status(videoId, 2, 1);
-	
 		long totalLike = 0;
-		if(listLike.size() > 0)
-			totalLike = listLike.size();
+		totalLike = RatingEntryLocalServiceUtil.countByVideoId_Code(videoId, 1);
 	
 		long totalUnlike = 0;
-		if(listUnlike.size() > 0)
-			totalUnlike = listUnlike.size();
+		totalUnlike = RatingEntryLocalServiceUtil.countByVideoId_Code(videoId, 2);
 	
 		long totalRate = 0;
 		if(totalLike != 0 ||totalUnlike != 0)
-			totalRate = ((totalLike/(totalLike + totalUnlike)) * 100) / 20;
+			totalRate = ((totalLike/RatingEntryLocalServiceUtil.countByVideoId(videoId)) * 100) / 20;
 		totalRate = Math.round(totalRate);
 		
 		PortletURL redirectURL = PortletURLUtil.getCurrent(renderRequest, renderResponse);
 	%>
 
 	<portlet:renderURL var="videoTransactionURL">
-		<portlet:param name="jspPage" value="/html/vrbt_purchase/purchase_transaction_detail.jsp"/>
+		<portlet:param name="jspPage" value="/html/purchaseVideo/purchase_transaction_detail.jsp"/>
 		<portlet:param name="videoId" value="<%= String.valueOf(videoId)  %>"/>
 		<portlet:param name="userId" value="<%= String.valueOf(userId) %>"/>
 		<portlet:param name="redirect" value="<%= redirectURL.toString() %>"/>
 	</portlet:renderURL>
 
 	<portlet:renderURL var="videoReportURL">
-		<portlet:param name="jspPage" value="/html/vrbt_purchase/video_notifiaction.jsp"/>
+		<portlet:param name="jspPage" value="/html/purchaseVideo/video_notifiaction.jsp"/>
 		<portlet:param name="videoId" value="<%= String.valueOf(videoId)  %>"/>
 		<portlet:param name="userId" value="<%= String.valueOf(userId) %>"/>
 		<portlet:param name="redirect" value="<%= redirectURL.toString() %>"/>
@@ -99,17 +98,20 @@
 
 	<fieldset>
 		<liferay-ui:panel-container >
-		<liferay-ui:panel title="More" >
-			<!-- video infor-->
-			<aui:fieldset>
-			 	<aui:column>
-					<h4><%= videoExt.getVideoName() %>" </h4>
-					<br/>
-					<div>Size <%= String.valueOf(videoExt.getSize()) %>" </div>
-					<div><%=   videoExt.getDescription() %>" </div>
-				</aui:column>
-			</aui:fieldset>
-		</liferay-ui:panel>
+			<liferay-ui:panel title="More" >
+				<!-- video infor-->
+				<aui:fieldset>
+				 	<aui:column>
+						<h4><%= videoExt.getVideoName() %>" </h4>
+						<br/>
+						<div>Uploader: <%= UserEntryLocalServiceUtil.getUserEntry(videoExt.getUploaderId()).getUserName() %> </div>
+						<br/>
+						<div>Total view: <%= String.valueOf(videoExt.getViewCount()) %> </div>
+						<br/>
+						<div>Description: <%=   videoExt.getDescription() %> </div>
+					</aui:column>
+				</aui:fieldset>
+			</liferay-ui:panel>
 		</liferay-ui:panel-container>
 		
 		<hr/>

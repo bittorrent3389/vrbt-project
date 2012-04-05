@@ -70,15 +70,15 @@
 	String serviceCode_servicePackageChart = "";
 
 	//Get data for service drop down list and get data for service which has service package
-	List<ServiceExt> listService = ServiceExtLocalServiceUtil.findBystatus(1);
-	List<ServiceExt> listServiceChart = new ArrayList<ServiceExt>();
-	List<ServiceExt> listServicePackageChart = new ArrayList<ServiceExt>();
+	List<ServiceEntry> listService = ServiceEntryLocalServiceUtil.findBystatus(1);
+	List<ServiceEntry> listServiceChart = new ArrayList<ServiceEntry>();
+	List<ServiceEntry> listServicePackageChart = new ArrayList<ServiceEntry>();
 	
 	if(listService.size() > 0){
-		for(ServiceExt serviceExt : listService){
-			List<Service_PackageExt> listPackage = null;
+		for(ServiceEntry serviceExt : listService){
+			List<ServicePackageEntry> listPackage = null;
 			
-			listPackage = Service_PackageExtLocalServiceUtil.findByserviceId_And_Status(serviceExt.getServiceId(), 1);
+			listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(serviceExt.getServiceId(), 1);
 			
 			if(listPackage == null || listPackage.size() <= 0)
 				listServiceChart.add(serviceExt);
@@ -94,66 +94,55 @@
 	}
 	
 	//Get data about total user in using service
-	List<ServiceExt> listViewService = null;
+	ServiceEntry viewService = null;
 	
 	if(serviceId_ServiceChart == 0)	
-		listViewService = ServiceExtLocalServiceUtil.findByserviceCode(ServiceExtLocalServiceUtil.getStartServiceCode());
+		viewService = ServiceEntryLocalServiceUtil.findByserviceCode(ServiceEntryLocalServiceUtil.getStartServiceCode());
 	else
-		listViewService = ServiceExtLocalServiceUtil.findByserviceCode(serviceCode_ServiceChart);
-	
-	ServiceExt viewService = null;
-	
-
-	if(listViewService != null && listViewService.size() > 0){
-		viewService = listViewService.get(0);
+		viewService = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode_ServiceChart);
 		
-		if(viewService.getStatus() == 0)
-			viewService = null;
-		else
-			serviceCode_ServiceChart = viewService.getServiceCode();
-	}
-	
+	if(viewService.getStatus() == 0)
+		viewService = null;
+	else
+		serviceCode_ServiceChart = viewService.getServiceCode();
+		
 	//Get data about services which have package
-	List<ServiceExt> listViewServicePac = null;
+	ServiceEntry viewServicePac = null;
 	
 	if(serviceId_servicePackageChart == 0)
-		listViewServicePac = ServiceExtLocalServiceUtil.findByserviceCode(ServiceExtLocalServiceUtil.getUploadServicePackageCode());
+		viewServicePac = ServiceEntryLocalServiceUtil.findByserviceCode(ServiceEntryLocalServiceUtil.getUploadServicePackageCode());
 	else
-		listViewServicePac = ServiceExtLocalServiceUtil.findByserviceCode(serviceCode_servicePackageChart);
+		viewServicePac = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode_servicePackageChart);
 	
-	ServiceExt viewServicePac = null;
-	List<Service_PackageExt> listPackage = null;
+	List<ServicePackageEntry> listPackage = null;
 	String packageName = "";
 	String packageTotal = "";
-
-	if(listViewServicePac != null && listViewServicePac.size() > 0){
-		viewServicePac = listViewServicePac.get(0);
 		
-		if(viewServicePac.getStatus() == 0)
-			viewServicePac = null;
-		
-		listPackage = Service_PackageExtLocalServiceUtil.findByserviceId_And_Status(viewServicePac.getServiceId(), 1);
+	if(viewServicePac.getStatus() == 0)
+		viewServicePac = null;
+	else{
+		listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(viewServicePac.getServiceId(), 1);
 		
 		if(listPackage != null && listPackage.size() >0){
 			boolean isUse = false;
-			for(Service_PackageExt packageExt : listPackage){
+			for(ServicePackageEntry packageExt : listPackage){
 				packageName += packageExt.getServicePackageName() + " - " + packageExt.getServicePackageName() + "#";
-				
-				long total = UserExtLocalServiceUtil.getServicePackageCount_ByTotalUser(packageExt.getServicePackageId());
+					
+				long total = UserServiceEntryLocalServiceUtil.countByservicePackageId(packageExt.getServicePackageId());
 				packageTotal += String.valueOf(total) + "#";
-				
+					
 				if(total > 0)
 					isUse = true;
 			}
-			
+				
 			serviceCode_servicePackageChart = viewServicePac.getServiceCode();
-			
+				
 			if(!isUse){
 				packageName = "Don't use#";
 				packageTotal = "1#";
 			}
 		} else
-			listPackage = null;
+			listPackage = null;		
 	}
 %>
 
@@ -170,7 +159,7 @@
 						<aui:select name="cbServiceChart" prefix="Select service to report: " label="" onChange="<%= viewChartURL %>">
 							<aui:option label="Select service..." value="0" selected="true"/>
 				
-							<%for (ServiceExt serviceExt : listServiceChart) { %>
+							<%for (ServiceEntry serviceExt : listServiceChart) { %>
 								<aui:option label='<%= serviceExt.getServiceCode() + " - " + serviceExt.getServiceName() %>' 
 									value="<%= serviceExt.getServiceId() %>"
 									selected="<%= serviceExt.getServiceCode().equals(serviceCode_ServiceChart) %>"/>
@@ -190,8 +179,8 @@
 				</c:if>
 
 				<c:if test="<%= viewService != null %>">
-					<span id="usingService_Chart" ><%= UserExtLocalServiceUtil.getServiceCount_ByTotalUser(viewService.getServiceId()) %>
-						#<%= UserExtLocalServiceUtil.findBystatus(1).size() -  UserExtLocalServiceUtil.getServiceCount_ByTotalUser(viewService.getServiceId()) %>
+					<span id="usingService_Chart" ><%= UserServiceEntryLocalServiceUtil.countByserviceId_ServiceStatus(viewService.getServiceId(), 1) %>
+						#<%= UserEntryLocalServiceUtil.countByStatus(1) -  UserServiceEntryLocalServiceUtil.countByserviceId_ServiceStatus(viewService.getServiceId(), 1) %>
 					</span>
 	
 					<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -216,7 +205,7 @@
 							<aui:select name="cbServicePackageChart" prefix="Select service to report: " label="" onChange="<%= viewChartURL %>">
 							<aui:option label="Select service..." value="0" selected="true"/>
 				
-							<%for (ServiceExt servicePacExt : listServicePackageChart) { %>
+							<%for (ServiceEntry servicePacExt : listServicePackageChart) { %>
 								<aui:option label='<%= servicePacExt.getServiceCode() + " - " + servicePacExt.getServiceName() %>' 
 									value="<%= servicePacExt.getServiceId() %>"
 									selected="<%= servicePacExt.getServiceCode().equals(serviceCode_servicePackageChart) %>"/>
