@@ -205,7 +205,7 @@
 		<finder name="UserId" return-type="Collection">
 			<finder-column name="userId" />
 		</finder>
-		<finder name="VideoId_UserId" return-type="Collection">
+		<finder name="VideoId_UserId" return-type="RatingEntry">
 			<finder-column name="videoId" />
 			<finder-column name="userId" />
 		</finder>
@@ -297,6 +297,12 @@
 		<finder name="UserId_VideoId" return-type="Collection">
 			<finder-column name="userId" />
 			<finder-column name="videoId" />
+		</finder>
+		
+		<finder name="UserId_VideoId_Status" return-type="Collection">
+			<finder-column name="userId" />
+			<finder-column name="videoId" />
+			<finder-column name="status" />
 		</finder>
 	</entity>
 	<entity name="UserEntry"  table="TBL_USER" local-service="true" remote-service="true">
