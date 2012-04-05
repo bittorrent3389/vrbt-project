@@ -106,6 +106,9 @@
 		<finder name="Title" return-type="Collection">
 			<finder-column name="violationTitle" />
 		</finder>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status" />
+		</finder>
 	</entity>
 	<entity name="ViolationVideoEntry"  table="TBL_VIOLATION_VIDEO" local-service="true" remote-service="true">
 
@@ -339,6 +342,9 @@
 		<finder name="UserId" return-type="UserEntry">
 			<finder-column name="userId" />
 		</finder>
+		<finder name="Status" return-type="Collection">
+			<finder-column name="status" />
+		</finder>
 	</entity>
 	<entity name="VideoUserContactEntry"  table="TBL_VIDEO_USER_CONTACT" local-service="true" remote-service="true">
 
@@ -481,6 +487,13 @@
 		
 		<finder name="userId" return-type="Collection">
 			<finder-column name="userId" />
+		</finder>
+		<finder name="servicePackageId" return-type="Collection">
+			<finder-column name="servicePackageId" />
+		</finder>
+		<finder name="serviceId_ServiceStatus" return-type="Collection">
+			<finder-column name="serviceId" />
+			<finder-column name="serviceStatus" />
 		</finder>
 	</entity>
 	<entity name="ContactEntry"  table="TBL_CONTACT" local-service="true" remote-service="true">
