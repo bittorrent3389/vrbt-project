@@ -256,6 +256,11 @@ public class ViolationEntryLocalServiceWrapper
 		_violationEntryLocalService.setBeanIdentifier(beanIdentifier);
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ViolationEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return _violationEntryLocalService.findByStatus(status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

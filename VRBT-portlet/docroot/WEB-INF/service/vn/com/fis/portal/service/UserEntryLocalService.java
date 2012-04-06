@@ -328,4 +328,13 @@ public interface UserEntryLocalService extends PersistedModelLocalService {
 	public void removeByUserId(long userId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
+
+	public int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countAll()
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException;
 }

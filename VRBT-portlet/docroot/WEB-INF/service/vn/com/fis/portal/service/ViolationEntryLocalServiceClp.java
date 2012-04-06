@@ -86,6 +86,9 @@ public class ViolationEntryLocalServiceClp implements ViolationEntryLocalService
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByStatusMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByStatus", int.class);
 	}
 
 	public vn.com.fis.portal.model.ViolationEntry addViolationEntry(
@@ -552,6 +555,33 @@ public class ViolationEntryLocalServiceClp implements ViolationEntryLocalService
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ViolationEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByStatusMethodKey17,
+				status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ViolationEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -574,4 +604,5 @@ public class ViolationEntryLocalServiceClp implements ViolationEntryLocalService
 	private MethodKey _updateViolationEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByStatusMethodKey17;
 }

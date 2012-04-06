@@ -234,4 +234,7 @@ public interface ViolationEntryLocalService extends PersistedModelLocalService {
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	public java.util.List<vn.com.fis.portal.model.ViolationEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException;
 }

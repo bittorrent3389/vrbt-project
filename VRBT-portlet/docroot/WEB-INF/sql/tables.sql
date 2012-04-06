@@ -96,6 +96,7 @@ create table TBL_SERVICE_TRANSACTION (
 	serviceId LONG,
 	serviceStatus INTEGER,
 	serviceStartDate DATE null,
+	serviceStopDate DATE null,
 	serviceEndDate DATE null,
 	servicePackageId LONG,
 	packageDate DATE null

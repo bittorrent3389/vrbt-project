@@ -205,6 +205,108 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Returns all the user entries where status = &#63;.
+	*
+	* @param status the status
+	* @return the matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the user entries where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of user entries
+	* @param end the upper bound of the range of user entries (not inclusive)
+	* @return the range of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the user entries where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param start the lower bound of the range of user entries
+	* @param end the upper bound of the range of user entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first user entry in the ordered set where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.UserEntry findByStatus_First(int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
+	/**
+	* Returns the last user entry in the ordered set where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.UserEntry findByStatus_Last(int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
+	/**
+	* Returns the user entries before and after the current user entry in the ordered set where status = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param userId the primary key of the current user entry
+	* @param status the status
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a user entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.UserEntry[] findByStatus_PrevAndNext(
+		long userId, int status,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
+	/**
 	* Returns all the user entries.
 	*
 	* @return the user entries
@@ -278,6 +380,15 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 			vn.com.fis.portal.NoSuchUserEntryException;
 
 	/**
+	* Removes all the user entries where status = &#63; from the database.
+	*
+	* @param status the status
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Removes all the user entries from the database.
 	*
 	* @throws SystemException if a system exception occurred
@@ -313,6 +424,16 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws SystemException if a system exception occurred
 	*/
 	public int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of user entries where status = &#63;.
+	*
+	* @param status the status
+	* @return the number of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

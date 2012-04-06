@@ -396,6 +396,23 @@ public class ServiceTransactionEntryLocalServiceUtil {
 			date_);
 	}
 
+	public static java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> search(
+		long transactionCode, long serviceId, long servicePackageId, int start,
+		int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .search(transactionCode, serviceId, servicePackageId, start,
+			end, searchTypeFlag);
+	}
+
+	public static int searchCount(long transactionCode, long serviceId,
+		long servicePackageId, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .searchCount(transactionCode, serviceId, servicePackageId,
+			searchTypeFlag);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

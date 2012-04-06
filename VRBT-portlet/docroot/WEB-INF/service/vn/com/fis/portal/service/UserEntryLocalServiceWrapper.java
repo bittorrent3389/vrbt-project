@@ -366,6 +366,21 @@ public class UserEntryLocalServiceWrapper implements UserEntryLocalService,
 		_userEntryLocalService.removeByUserId(userId);
 	}
 
+	public int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userEntryLocalService.countByStatus(status);
+	}
+
+	public int countAll()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userEntryLocalService.countAll();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return _userEntryLocalService.findByStatus(status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

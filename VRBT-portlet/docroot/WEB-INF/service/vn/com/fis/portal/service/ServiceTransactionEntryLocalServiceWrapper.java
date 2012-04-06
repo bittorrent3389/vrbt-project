@@ -389,6 +389,21 @@ public class ServiceTransactionEntryLocalServiceWrapper
 			transactionCode, date_);
 	}
 
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> search(
+		long transactionCode, long serviceId, long servicePackageId, int start,
+		int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.search(transactionCode,
+			serviceId, servicePackageId, start, end, searchTypeFlag);
+	}
+
+	public int searchCount(long transactionCode, long serviceId,
+		long servicePackageId, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.searchCount(transactionCode,
+			serviceId, servicePackageId, searchTypeFlag);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

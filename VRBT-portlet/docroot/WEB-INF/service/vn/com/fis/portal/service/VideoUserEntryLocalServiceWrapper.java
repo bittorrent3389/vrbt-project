@@ -316,6 +316,13 @@ public class VideoUserEntryLocalServiceWrapper
 		return _videoUserEntryLocalService.countByUserId_VideoId(userId, videoId);
 	}
 
+	public java.util.List<vn.com.fis.portal.model.VideoUserEntry> findByUserId_VideoId_Status(
+		long userId, long videoId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoUserEntryLocalService.findByUserId_VideoId_Status(userId,
+			videoId, status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

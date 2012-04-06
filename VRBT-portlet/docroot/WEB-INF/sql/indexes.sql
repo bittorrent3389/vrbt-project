@@ -46,14 +46,17 @@ create index IX_99AF5833 on TBL_SERVICE_TRANSACTION (userId);
 create index IX_DE48F59 on TBL_SERVICE_TRANSACTION (userId, transactionCode, date_);
 
 create index IX_CE6E8ED1 on TBL_USER (mobileNumber);
+create index IX_B51EB978 on TBL_USER (status);
 create index IX_569DD2CC on TBL_USER (userId);
 create index IX_2EF1D07C on TBL_USER (userName);
 
 create index IX_56C125FF on TBL_USER_SERVICE (serviceId, serviceStatus);
 create index IX_B851E128 on TBL_USER_SERVICE (servicePackageId);
+create index IX_729A0CA2 on TBL_USER_SERVICE (userId);
 create index IX_8427CC7E on TBL_USER_SERVICE (userId, serviceId);
 create index IX_F00677BE on TBL_USER_SERVICE (userId, serviceId, servicePackageId);
 create index IX_6A5E76E2 on TBL_USER_SERVICE (userId, servicePackageId);
+create index IX_1A6A5515 on TBL_USER_SERVICE (userId, serviceStatus);
 
 create index IX_28846B21 on TBL_VIDEO (date_);
 create index IX_C50521D on TBL_VIDEO (uploaderId);
@@ -62,6 +65,7 @@ create index IX_391008BA on TBL_VIDEO (uploaderId, folderId);
 create index IX_5FAADCC3 on TBL_VIDEO_GROUP (videoGroupName);
 
 create index IX_6398C436 on TBL_VIDEO_USER (userId, videoId);
+create index IX_7F426D1C on TBL_VIDEO_USER (userId, videoId, status);
 
 create index IX_796EA3DD on TBL_VIDEO_USER_CONTACT (contactId, videoUserId);
 
@@ -74,6 +78,7 @@ create index IX_F06842D1 on TBL_VIDEO_USER_TRANSACTION (videoId);
 
 create index IX_40D30DD2 on TBL_VIDEO_USER_VIDEO_GROUP (videoUserId, videoGroupId);
 
+create index IX_6A9A2150 on TBL_VIOLATION (status);
 create index IX_E9F21951 on TBL_VIOLATION (violationTitle);
 
 create index IX_57291DA on TBL_VIOLATION_VIDEO (videoId, userId);

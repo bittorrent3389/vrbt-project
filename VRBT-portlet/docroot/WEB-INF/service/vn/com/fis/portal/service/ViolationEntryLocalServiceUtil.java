@@ -261,6 +261,11 @@ public class ViolationEntryLocalServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	public static java.util.List<vn.com.fis.portal.model.ViolationEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByStatus(status);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

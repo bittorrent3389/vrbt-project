@@ -359,6 +359,11 @@ public interface RatingEntryLocalService extends PersistedModelLocalService {
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public vn.com.fis.portal.model.RatingEntry fetchByUser_Video_Code(
+		long userId, long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	/**
 	* Returns the number of rating entries where userId = &#63; and videoId = &#63; and code = &#63;.
 	*
@@ -382,4 +387,21 @@ public interface RatingEntryLocalService extends PersistedModelLocalService {
 	public void removeByUser_Video_Code(long userId, long videoId, int code)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException;
+
+	public vn.com.fis.portal.model.RatingEntry findByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public vn.com.fis.portal.model.RatingEntry fetchByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_Code(
+		long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByVideoId_Code(long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

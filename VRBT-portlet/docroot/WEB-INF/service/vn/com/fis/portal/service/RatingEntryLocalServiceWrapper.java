@@ -399,6 +399,13 @@ public class RatingEntryLocalServiceWrapper implements RatingEntryLocalService,
 			code);
 	}
 
+	public vn.com.fis.portal.model.RatingEntry fetchByUser_Video_Code(
+		long userId, long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.fetchByUser_Video_Code(userId, videoId,
+			code);
+	}
+
 	/**
 	* Returns the number of rating entries where userId = &#63; and videoId = &#63; and code = &#63;.
 	*
@@ -426,6 +433,30 @@ public class RatingEntryLocalServiceWrapper implements RatingEntryLocalService,
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException {
 		_ratingEntryLocalService.removeByUser_Video_Code(userId, videoId, code);
+	}
+
+	public vn.com.fis.portal.model.RatingEntry findByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		return _ratingEntryLocalService.findByVideoId_UserId(videoId, userId);
+	}
+
+	public vn.com.fis.portal.model.RatingEntry fetchByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.fetchByVideoId_UserId(videoId, userId);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_Code(
+		long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.findByVideoId_Code(videoId, code);
+	}
+
+	public int countByVideoId_Code(long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByVideoId_Code(videoId, code);
 	}
 
 	/**

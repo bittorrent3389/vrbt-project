@@ -344,4 +344,15 @@ public interface ServiceTransactionEntryLocalService
 	public int countByUserId_TransactionCode_Date(long userId,
 		int transactionCode, java.util.Date date_)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> search(
+		long transactionCode, long serviceId, long servicePackageId, int start,
+		int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public int searchCount(long transactionCode, long serviceId,
+		long servicePackageId, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

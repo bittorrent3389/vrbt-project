@@ -114,11 +114,26 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 		_findByUser_Video_CodeMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByUser_Video_Code", long.class, long.class, int.class);
 
-		_countByUser_Video_CodeMethodKey27 = new MethodKey(_classLoaderProxy.getClassName(),
+		_fetchByUser_Video_CodeMethodKey27 = new MethodKey(_classLoaderProxy.getClassName(),
+				"fetchByUser_Video_Code", long.class, long.class, int.class);
+
+		_countByUser_Video_CodeMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByUser_Video_Code", long.class, long.class, int.class);
 
-		_removeByUser_Video_CodeMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
+		_removeByUser_Video_CodeMethodKey29 = new MethodKey(_classLoaderProxy.getClassName(),
 				"removeByUser_Video_Code", long.class, long.class, int.class);
+
+		_findByVideoId_UserIdMethodKey30 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByVideoId_UserId", long.class, long.class);
+
+		_fetchByVideoId_UserIdMethodKey31 = new MethodKey(_classLoaderProxy.getClassName(),
+				"fetchByVideoId_UserId", long.class, long.class);
+
+		_findByVideoId_CodeMethodKey32 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByVideoId_Code", long.class, int.class);
+
+		_countByVideoId_CodeMethodKey33 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByVideoId_Code", long.class, int.class);
 	}
 
 	public vn.com.fis.portal.model.RatingEntry addRatingEntry(
@@ -862,11 +877,39 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 		return (vn.com.fis.portal.model.RatingEntry)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public vn.com.fis.portal.model.RatingEntry fetchByUser_Video_Code(
+		long userId, long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_fetchByUser_Video_CodeMethodKey27,
+				userId, videoId, code);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.RatingEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public int countByUser_Video_Code(long userId, long videoId, int code)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_countByUser_Video_CodeMethodKey27,
+		MethodHandler methodHandler = new MethodHandler(_countByUser_Video_CodeMethodKey28,
 				userId, videoId, code);
 
 		try {
@@ -892,7 +935,7 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 	public void removeByUser_Video_Code(long userId, long videoId, int code)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException {
-		MethodHandler methodHandler = new MethodHandler(_removeByUser_Video_CodeMethodKey28,
+		MethodHandler methodHandler = new MethodHandler(_removeByUser_Video_CodeMethodKey29,
 				userId, videoId, code);
 
 		try {
@@ -915,6 +958,122 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 					" is not a valid exception");
 			}
 		}
+	}
+
+	public vn.com.fis.portal.model.RatingEntry findByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchRatingEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByVideoId_UserIdMethodKey30,
+				videoId, userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchRatingEntryException) {
+				throw (vn.com.fis.portal.NoSuchRatingEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.RatingEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public vn.com.fis.portal.model.RatingEntry fetchByVideoId_UserId(
+		long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_fetchByVideoId_UserIdMethodKey31,
+				videoId, userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.RatingEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_Code(
+		long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByVideoId_CodeMethodKey32,
+				videoId, code);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.RatingEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByVideoId_Code(long videoId, int code)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByVideoId_CodeMethodKey33,
+				videoId, code);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
 	}
 
 	public ClassLoaderProxy getClassLoaderProxy() {
@@ -949,6 +1108,11 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 	private MethodKey _findByRatingCodeMethodKey24;
 	private MethodKey _countByRatingCodeMethodKey25;
 	private MethodKey _findByUser_Video_CodeMethodKey26;
-	private MethodKey _countByUser_Video_CodeMethodKey27;
-	private MethodKey _removeByUser_Video_CodeMethodKey28;
+	private MethodKey _fetchByUser_Video_CodeMethodKey27;
+	private MethodKey _countByUser_Video_CodeMethodKey28;
+	private MethodKey _removeByUser_Video_CodeMethodKey29;
+	private MethodKey _findByVideoId_UserIdMethodKey30;
+	private MethodKey _fetchByVideoId_UserIdMethodKey31;
+	private MethodKey _findByVideoId_CodeMethodKey32;
+	private MethodKey _countByVideoId_CodeMethodKey33;
 }

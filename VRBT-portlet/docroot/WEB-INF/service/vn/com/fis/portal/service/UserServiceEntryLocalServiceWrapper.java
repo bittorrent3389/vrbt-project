@@ -383,6 +383,43 @@ public class UserServiceEntryLocalServiceWrapper
 			serviceId, servicePackageId);
 	}
 
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
+		long userId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		return _userServiceEntryLocalService.findByUserId_serviceStatus(userId,
+			serviceStatus);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _userServiceEntryLocalService.findByuserId(userId);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByservicePackageId(
+		long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userServiceEntryLocalService.findByservicePackageId(servicePackageId);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_ServiceStatus(
+		long serviceId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userServiceEntryLocalService.findByserviceId_ServiceStatus(serviceId,
+			serviceStatus);
+	}
+
+	public int countByservicePackageId(long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userServiceEntryLocalService.countByservicePackageId(servicePackageId);
+	}
+
+	public int countByserviceId_ServiceStatus(long serviceId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userServiceEntryLocalService.countByserviceId_ServiceStatus(serviceId,
+			serviceStatus);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

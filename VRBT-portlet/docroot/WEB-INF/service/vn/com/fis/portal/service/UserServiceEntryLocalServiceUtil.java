@@ -387,6 +387,43 @@ public class UserServiceEntryLocalServiceUtil {
 			servicePackageId);
 	}
 
+	public static java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
+		long userId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserServiceEntryException {
+		return getService().findByUserId_serviceStatus(userId, serviceStatus);
+	}
+
+	public static java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByuserId(userId);
+	}
+
+	public static java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByservicePackageId(
+		long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByservicePackageId(servicePackageId);
+	}
+
+	public static java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_ServiceStatus(
+		long serviceId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .findByserviceId_ServiceStatus(serviceId, serviceStatus);
+	}
+
+	public static int countByservicePackageId(long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByservicePackageId(servicePackageId);
+	}
+
+	public static int countByserviceId_ServiceStatus(long serviceId,
+		int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .countByserviceId_ServiceStatus(serviceId, serviceStatus);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}
