@@ -122,6 +122,7 @@
 		<property name="service" ref="vn.com.fis.portal.service.UserEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.UserEntryPersistence" class="vn.com.fis.portal.service.persistence.UserEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.UserEntryFinder" class="vn.com.fis.portal.service.persistence.UserEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.UserServiceEntryLocalService" class="vn.com.fis.portal.service.impl.UserServiceEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.UserServiceEntryLocalServiceUtil" class="vn.com.fis.portal.service.UserServiceEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.UserServiceEntryLocalService" />
@@ -177,6 +178,7 @@
 		<property name="service" ref="vn.com.fis.portal.service.VideoUserTransactionEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryPersistence" class="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinder" class="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.VideoUserVideoGroupEntryLocalService" class="vn.com.fis.portal.service.impl.VideoUserVideoGroupEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.VideoUserVideoGroupEntryLocalServiceUtil" class="vn.com.fis.portal.service.VideoUserVideoGroupEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.VideoUserVideoGroupEntryLocalService" />

@@ -389,6 +389,11 @@ public class UserEntryLocalServiceUtil {
 		return getService().findByStatus(status);
 	}
 
+	public static vn.com.fis.portal.model.UserEntry getUserEntryByUserName(
+		java.lang.String userName) {
+		return getService().getUserEntryByUserName(userName);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

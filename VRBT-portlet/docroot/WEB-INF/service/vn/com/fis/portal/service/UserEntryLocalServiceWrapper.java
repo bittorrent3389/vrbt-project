@@ -381,6 +381,11 @@ public class UserEntryLocalServiceWrapper implements UserEntryLocalService,
 		return _userEntryLocalService.findByStatus(status);
 	}
 
+	public vn.com.fis.portal.model.UserEntry getUserEntryByUserName(
+		java.lang.String userName) {
+		return _userEntryLocalService.getUserEntryByUserName(userName);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

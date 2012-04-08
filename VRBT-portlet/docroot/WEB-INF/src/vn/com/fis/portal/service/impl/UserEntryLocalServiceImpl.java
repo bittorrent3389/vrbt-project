@@ -22,6 +22,7 @@ import vn.com.fis.portal.NoSuchUserEntryException;
 
 import vn.com.fis.portal.model.UserEntry;
 import vn.com.fis.portal.service.base.UserEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.UserEntryFinderUtil;
 import vn.com.fis.portal.service.persistence.UserEntryUtil;
 
 /**
@@ -154,5 +155,10 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 
 	public List<UserEntry> findByStatus(int status) throws SystemException {
 		return UserEntryUtil.findByStatus(status);
+	}
+	
+	public UserEntry getUserEntryByUserName(String userName)
+	{
+		return UserEntryFinderUtil.getUserEntryByUserName(userName);
 	}
 }

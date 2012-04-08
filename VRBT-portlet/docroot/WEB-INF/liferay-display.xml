@@ -12,5 +12,10 @@
 		<portlet id="categoryadmin"></portlet>
 		<portlet id="subscriber_servicemng"></portlet>
 		<portlet id="service_transaction_history"></portlet>
+		<portlet id="billingsubcribertransaction"></portlet>
+		<portlet id="billingthirdpartytransaction"></portlet>
+		<portlet id="billingthirdpartyupload"></portlet>
+		<portlet id="managerbillingsubcribertransaction"></portlet>
+		<portlet id="managerthirdpartytransaction"></portlet>
 	</category>
 </display>

@@ -77,4 +77,78 @@
 		 	tbl_service_transaction.transactioncode = ?
 		]]>
 	</sql>
+	
+	<!-- quangh -->
+	<!-- data chart -->
+	<sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_Destinct_Tbl_Video_User_Transaction_By_TransactionCode">
+   		 <![CDATA[
+   		 select count(DISTINCT(videoid)) from tbl_video_user_transaction tvut where tvut.videoid in (select tv.videoid from tbl_video tv)and tvut.transactioncode=?
+          ]]>  
+    </sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date">
+   		 <![CDATA[
+   		 select count(DISTINCT(tvut.videoid)) from tbl_video_user_transaction tvut where tvut.videoid in (select tv.videoid from tbl_video tv)and tvut.transactioncode=? and tvut.date_>=to_date(?,'dd/MM/YYYY') and tvut.date_<to_date(?,'dd/MM/YYYY')
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode">
+   		 <![CDATA[
+   		 select count(DISTINCT(videoid)) from tbl_video_user_transaction tvut where tvut.videoid in (select tv.videoid from tbl_video tv where tv.uploaderid=?)and tvut.transactioncode=?
+          ]]>  
+    </sql>
+	<sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date">
+   		 <![CDATA[
+   		 select count(DISTINCT(tvut.videoid)) from tbl_video_user_transaction tvut where tvut.videoid in (select tv.videoid from tbl_video tv where tv.uploaderid=?)and tvut.transactioncode=? and tvut.date_>=to_date(?,'dd/MM/YYYY') and tvut.date_<to_date(?,'dd/MM/YYYY')
+          ]]>  
+    </sql>
+	<!-- end data chart -->
+	<sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_VideoUserTransaction_By_TransactionCode">
+   		 <![CDATA[
+   		 SELECT count(*) FROM tbl_video_user_transaction a where a.transactioncode=?
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getVideoUserTransaction_By_TransactionCode">
+   		 <![CDATA[
+   		 SELECT * FROM tbl_video_user_transaction a where a.transactioncode=?
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_VideoUserTransaction_By_transactionCode_And_Date">
+   		 <![CDATA[
+   		 SELECT count(*) FROM tbl_video_user_transaction a where a.transactioncode=? and a.date_>=to_date(?,'dd/MM/YYYY') and a.date_<to_date(?,'dd/MM/YYYY')
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_VideoUserTransaction_By_UserId_And_TransactionCode">
+   		 <![CDATA[
+   		 SELECT count(*) FROM tbl_video_user_transaction a where a.userid=? and a.transactioncode=?
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getVideoUserTransaction_By_UserId_And_TransactionCode">
+   		 <![CDATA[
+   		 SELECT * FROM tbl_video_user_transaction a where a.userid=? and a.transactioncode=?
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_VideoUserTransaction_By_UserId_And_transactionCode_And_Date">
+   		 <![CDATA[
+   		 SELECT count(*) FROM tbl_video_user_transaction a where a.userid=? and a.transactioncode=? and a.date_>=to_date(?,'dd/MM/YYYY') and a.date_<to_date(?,'dd/MM/YYYY')
+          ]]>  
+    </sql>
+   
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getVideoUserTransaction_By_UploaderId_And_TransactionCode">
+   		 <![CDATA[
+   		 select tvut.* from tbl_video_user_transaction tvut where tvut.videoid in (select tv.videoid from tbl_video tv where tv.uploaderid=?)and tvut.transactioncode=? 
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.VideoUserTransactionEntryFinderImpl.getCount_VideoUserTransaction_By_UploaderId_And_TransactionCode">
+   		 <![CDATA[
+   		 select count(*) from tbl_video_user_transaction tvut where tvut.videoid in (select tv.videoid from tbl_video tv where tv.uploaderid=?)and tvut.transactioncode=?
+          ]]>  
+    </sql>
+    <!-- UserEntry -->
+    <sql id="vn.com.fis.portal.service.persistence.UserEntryFinderImpl.getUserEntryByUserName">
+   		 <![CDATA[
+   		 SELECT * FROM TBL_USER WHERE username = ?
+          ]]>  
+    </sql>
+    <!-- End UserEntry -->
+	<!-- end quangh -->
+	
 </custom-sql>

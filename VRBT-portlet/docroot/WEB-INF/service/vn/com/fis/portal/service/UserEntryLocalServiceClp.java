@@ -119,6 +119,9 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 
 		_findByStatusMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByStatus", int.class);
+
+		_getUserEntryByUserNameMethodKey29 = new MethodKey(_classLoaderProxy.getClassName(),
+				"getUserEntryByUserName", java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.UserEntry addUserEntry(
@@ -924,6 +927,29 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		return (java.util.List<vn.com.fis.portal.model.UserEntry>)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public vn.com.fis.portal.model.UserEntry getUserEntryByUserName(
+		java.lang.String userName) {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_getUserEntryByUserNameMethodKey29,
+				ClpSerializer.translateInput(userName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -958,4 +984,5 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 	private MethodKey _countByStatusMethodKey26;
 	private MethodKey _countAllMethodKey27;
 	private MethodKey _findByStatusMethodKey28;
+	private MethodKey _getUserEntryByUserNameMethodKey29;
 }
