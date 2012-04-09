@@ -22,7 +22,7 @@
 		]]>
 	</sql>
 	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.ServicePackageEntryFinderImpl.search">
+	<sql id="vn.com.fis.portal.service.persistence.ServicePackageEntryFinderImpl.search">
 		<![CDATA[
 		 SELECT TBL_SERVICE_PACKAGE.* 
    		 FROM  TBL_SERVICE_PACKAGE 
@@ -34,7 +34,7 @@
 		]]>
 	</sql>
 	
-	<sql id="vn.com.fis.portal.portlet.util.service.persistence.ServicePackageEntryFinderImpl.searchCount">
+	<sql id="vn.com.fis.portal.service.persistence.ServicePackageEntryFinderImpl.searchCount">
 		<![CDATA[
 		 SELECT  COUNT(*) AS COUNT_VALUE
 		 FROM  TBL_SERVICE_PACKAGE 

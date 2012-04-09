@@ -51,7 +51,7 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
  */
 public class VideoAdminPortlet extends MVCPortlet {
 	
-	private static  Log _log = LogFactory.getLog(VideoAdminPortlet.class);
+/*	private static  Log _log = LogFactory.getLog(VideoAdminPortlet.class);
 	
 	
 	public static final String VIDEO_DIR = "videos";
@@ -217,8 +217,8 @@ public class VideoAdminPortlet extends MVCPortlet {
 					 if(role){ // is a Subscriber then check file size 
 						   statusCode = VideoAdminPortletUtil.checkPackageSize(userId,PortalUtil.getCompanyId(actionRequest), bytes.length);
 						 switch (statusCode) {
-						 	/*case -1: SessionErrors.add(actionRequest, "do-not-service-or-stopped-service");
-						 	break;*/
+						 	case -1: SessionErrors.add(actionRequest, "do-not-service-or-stopped-service");
+						 	break;
 						 	case 0: SessionErrors.add(actionRequest, "do-not-register-service-package");
 						 	break;
 						 	case 1: SessionErrors.add(actionRequest, "file-size-more-than-package-size");
@@ -462,5 +462,5 @@ public class VideoAdminPortlet extends MVCPortlet {
 			actionResponse.sendRedirect(redirectCurr);
 			return;
 		}
-	}
+	}*/
 }

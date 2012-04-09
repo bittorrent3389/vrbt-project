@@ -8,16 +8,6 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 
 import vn.com.fis.portal.portlet.util.System_Notification;
-import vn.com.fis.portal.portlet.util.model.RatingExt;
-import vn.com.fis.portal.portlet.util.model.UserExt;
-import vn.com.fis.portal.portlet.util.model.Video_UserExt;
-import vn.com.fis.portal.portlet.util.model.Violation_VideoExt;
-import vn.com.fis.portal.portlet.util.service.RatingExtLocalServiceUtil;
-import vn.com.fis.portal.portlet.util.service.UserExtLocalServiceUtil;
-import vn.com.fis.portal.portlet.util.service.VideoExtLocalServiceUtil;
-import vn.com.fis.portal.portlet.util.service.Video_UserExtLocalServiceUtil;
-import vn.com.fis.portal.portlet.util.service.ViolationExtLocalServiceUtil;
-import vn.com.fis.portal.portlet.util.service.Violation_VideoExtLocalServiceUtil;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -29,7 +19,7 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
  * Portlet implementation class VideoListDisplay
  */
 public class VideoListDisplay extends MVCPortlet {
-	public void buyVideo(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, IOException {
+	/*public void buyVideo(ActionRequest actionRequest, ActionResponse actionResponse) throws SystemException, IOException {
 		long videoId = ParamUtil.getLong(actionRequest, "videoId");
 		long userId = ParamUtil.getLong(actionRequest, "userId");
 		
@@ -132,5 +122,5 @@ public class VideoListDisplay extends MVCPortlet {
 			SessionErrors.add(actionRequest, "error-report-message");
 		}
 	}
-
+*/
 }
