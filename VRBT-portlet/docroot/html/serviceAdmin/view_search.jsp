@@ -32,7 +32,7 @@
 			total="<%= ServiceEntryLocalServiceUtil.searchCount(serviceCode, serviceName, status, searchType) %>"
 			/>
 				
-		<liferay-ui:search-container-row className="vn.com.fis.portal.model.ServiceExt" keyProperty="serviceId" modelVar="serviceVar">
+		<liferay-ui:search-container-row className="vn.com.fis.portal.model.ServiceEntry" keyProperty="serviceId" modelVar="serviceVar">
 		
 			<% String modifiedDate = "";
 			
@@ -52,7 +52,7 @@
 				value="<%= dateFormat.format(serviceVar.getCreateDate()) %>"/>
 			<liferay-ui:search-container-column-text name="portlet-service-view_search-search-container-column-text-modifiedDate" 
 				value="<%= modifiedDate %>"/>
-			<liferay-ui:search-container-column-jsp path="/html/service/service_action_menu.jsp"/>
+			<liferay-ui:search-container-column-jsp path="/html/serviceAdmin/service_action_menu.jsp"/>
 		</liferay-ui:search-container-row>
 		
 		<liferay-ui:search-iterator/>

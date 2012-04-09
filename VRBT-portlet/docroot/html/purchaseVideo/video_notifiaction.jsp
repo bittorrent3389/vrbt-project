@@ -4,7 +4,14 @@
 	String userId = ParamUtil.getString(renderRequest, "userId");
 	String redirect = ParamUtil.getString(renderRequest, "redirect");
 	
-	List<ViolationEntry> listViolation = ViolationEntryLocalServiceUtil.findByStatus(1);
+	List<ViolationEntry> listViolation = null;
+	
+	try{
+		listViolation = ViolationEntryLocalServiceUtil.findByStatus(1);
+		
+	} catch(Exception e){
+		listViolation = null;
+	}
 %>
 
 <portlet:actionURL var="videoReportToAdminURL" name="videoReportToAdmin">

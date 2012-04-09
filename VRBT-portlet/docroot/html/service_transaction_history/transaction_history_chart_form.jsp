@@ -74,6 +74,9 @@
 	List<ServiceEntry> listServiceChart = new ArrayList<ServiceEntry>();
 	List<ServiceEntry> listServicePackageChart = new ArrayList<ServiceEntry>();
 	
+	listServiceChart = null;
+	listServicePackageChart = null;
+	
 	if(listService.size() > 0){
 		for(ServiceEntry serviceExt : listService){
 			List<ServicePackageEntry> listPackage = null;
@@ -128,7 +131,13 @@
 			for(ServicePackageEntry packageExt : listPackage){
 				packageName += packageExt.getServicePackageName() + " - " + packageExt.getServicePackageName() + "#";
 					
-				long total = UserServiceEntryLocalServiceUtil.countByservicePackageId(packageExt.getServicePackageId());
+				long total = 0;
+				try{
+					total = UserServiceEntryLocalServiceUtil.countByservicePackageId(packageExt.getServicePackageId());
+				}catch(Exception e){
+					total = 0;
+				}
+				
 				packageTotal += String.valueOf(total) + "#";
 					
 				if(total > 0)

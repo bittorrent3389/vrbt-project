@@ -1,3 +1,7 @@
+<%@page import="java.util.logging.Level"%>
+<%@page import="java.util.logging.Logger"%>
+<%@page import="com.liferay.portal.kernel.log.Log"%>
+<%@page import="com.sun.net.ssl.internal.ssl.Debug"%>
 <%@ include file="/html/init.jsp" %>
 
 <% 
@@ -18,8 +22,8 @@
 			isAllow = true;
 		
 	}catch(Exception e)
-	{
-		e.printStackTrace();
+	{	
+		System.out.println("Network-Operator role does not exist.");
 		isAllow = false;
 	}
 %>

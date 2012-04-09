@@ -22,10 +22,10 @@
 <%@ page import="vn.com.fis.portal.service.http.*"%>
 <%@ page import="vn.com.fis.portal.service.impl.*"%>
 <%@ page import="vn.com.fis.portal.service.messaging.*"%>
-<%@ page import="vn.com.fis.portal.service.persistence.*"%>\
+<%@ page import="vn.com.fis.portal.service.persistence.*"%>
 
 <%@ page import="vn.com.fis.portal.portlet.serviceMng.*"%>
-<%@ page import="vn.com.fis.portal.portlet.servicePackageAdmin.*"%>
+<%@ page import="vn.com.fis.portal.portlet.servicePackageAdmin1.*"%>
 
 <%@page import="com.liferay.portal.kernel.util.ParamUtil"%>
 <%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>

@@ -30,7 +30,7 @@
 	
 	}catch(Exception e)
 	{
-		e.printStackTrace();
+		System.out.println("Network-Operator role does not exist");
 		isAllow = false;
 	}
 %>
@@ -43,7 +43,7 @@
 	<br/>
 </c:if>
 
-<c:if test="<%= !isAllow %>">
+<c:if test="<%= isAllow %>">
 	<%-- Tao action URL --%>
 
 	<portlet:actionURL var="editServiceURL" name="editService">
