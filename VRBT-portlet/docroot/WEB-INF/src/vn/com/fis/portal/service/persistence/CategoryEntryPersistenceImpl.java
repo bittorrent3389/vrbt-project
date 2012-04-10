@@ -98,6 +98,17 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 			CategoryEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCategoryName",
 			new String[] { String.class.getName() });
+	public static final FinderPath FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE = new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryEntryImpl.class, FINDER_CLASS_NAME_ENTITY,
+			"fetchByCategoryNameAbsolute",
+			new String[] { String.class.getName() },
+			CategoryEntryModelImpl.CATEGORYNAME_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_CATEGORYNAMEABSOLUTE = new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"countByCategoryNameAbsolute",
+			new String[] { String.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS = new FinderPath(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
 			CategoryEntryModelImpl.FINDER_CACHE_ENABLED,
 			CategoryEntryImpl.class, FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
@@ -139,6 +150,9 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 		EntityCacheUtil.putResult(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
 			CategoryEntryImpl.class, categoryEntry.getPrimaryKey(),
 			categoryEntry);
+
+		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+			new Object[] { categoryEntry.getCategoryName() }, categoryEntry);
 
 		categoryEntry.resetOriginalValues();
 	}
@@ -195,6 +209,8 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+		clearUniqueFindersCache(categoryEntry);
 	}
 
 	@Override
@@ -205,7 +221,14 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 		for (CategoryEntry categoryEntry : categoryEntries) {
 			EntityCacheUtil.removeResult(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
 				CategoryEntryImpl.class, categoryEntry.getPrimaryKey());
+
+			clearUniqueFindersCache(categoryEntry);
 		}
+	}
+
+	protected void clearUniqueFindersCache(CategoryEntry categoryEntry) {
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+			new Object[] { categoryEntry.getCategoryName() });
 	}
 
 	/**
@@ -376,6 +399,28 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 		EntityCacheUtil.putResult(CategoryEntryModelImpl.ENTITY_CACHE_ENABLED,
 			CategoryEntryImpl.class, categoryEntry.getPrimaryKey(),
 			categoryEntry);
+
+		if (isNew) {
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+				new Object[] { categoryEntry.getCategoryName() }, categoryEntry);
+		}
+		else {
+			if ((categoryEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						categoryEntryModelImpl.getOriginalCategoryName()
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CATEGORYNAMEABSOLUTE,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+					args);
+
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+					new Object[] { categoryEntry.getCategoryName() },
+					categoryEntry);
+			}
+		}
 
 		return categoryEntry;
 	}
@@ -874,6 +919,149 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
+	 * Returns the category entry where categoryName = &#63; or throws a {@link vn.com.fis.portal.NoSuchCategoryEntryException} if it could not be found.
+	 *
+	 * @param categoryName the category name
+	 * @return the matching category entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryEntryException if a matching category entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry findByCategoryNameAbsolute(String categoryName)
+		throws NoSuchCategoryEntryException, SystemException {
+		CategoryEntry categoryEntry = fetchByCategoryNameAbsolute(categoryName);
+
+		if (categoryEntry == null) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("categoryName=");
+			msg.append(categoryName);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			if (_log.isWarnEnabled()) {
+				_log.warn(msg.toString());
+			}
+
+			throw new NoSuchCategoryEntryException(msg.toString());
+		}
+
+		return categoryEntry;
+	}
+
+	/**
+	 * Returns the category entry where categoryName = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param categoryName the category name
+	 * @return the matching category entry, or <code>null</code> if a matching category entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry fetchByCategoryNameAbsolute(String categoryName)
+		throws SystemException {
+		return fetchByCategoryNameAbsolute(categoryName, true);
+	}
+
+	/**
+	 * Returns the category entry where categoryName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param categoryName the category name
+	 * @param retrieveFromCache whether to use the finder cache
+	 * @return the matching category entry, or <code>null</code> if a matching category entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry fetchByCategoryNameAbsolute(String categoryName,
+		boolean retrieveFromCache) throws SystemException {
+		Object[] finderArgs = new Object[] { categoryName };
+
+		Object result = null;
+
+		if (retrieveFromCache) {
+			result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+					finderArgs, this);
+		}
+
+		if (result == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_SELECT_CATEGORYENTRY_WHERE);
+
+			if (categoryName == null) {
+				query.append(_FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_1);
+			}
+			else {
+				if (categoryName.equals(StringPool.BLANK)) {
+					query.append(_FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_3);
+				}
+				else {
+					query.append(_FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_2);
+				}
+			}
+
+			query.append(CategoryEntryModelImpl.ORDER_BY_JPQL);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (categoryName != null) {
+					qPos.add(categoryName);
+				}
+
+				List<CategoryEntry> list = q.list();
+
+				result = list;
+
+				CategoryEntry categoryEntry = null;
+
+				if (list.isEmpty()) {
+					FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+						finderArgs, list);
+				}
+				else {
+					categoryEntry = list.get(0);
+
+					cacheResult(categoryEntry);
+
+					if ((categoryEntry.getCategoryName() == null) ||
+							!categoryEntry.getCategoryName().equals(categoryName)) {
+						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+							finderArgs, categoryEntry);
+					}
+				}
+
+				return categoryEntry;
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (result == null) {
+					FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_CATEGORYNAMEABSOLUTE,
+						finderArgs);
+				}
+
+				closeSession(session);
+			}
+		}
+		else {
+			if (result instanceof List<?>) {
+				return null;
+			}
+			else {
+				return (CategoryEntry)result;
+			}
+		}
+	}
+
+	/**
 	 * Returns all the category entries where status = &#63;.
 	 *
 	 * @param status the status
@@ -1347,6 +1535,19 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
+	 * Removes the category entry where categoryName = &#63; from the database.
+	 *
+	 * @param categoryName the category name
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByCategoryNameAbsolute(String categoryName)
+		throws NoSuchCategoryEntryException, SystemException {
+		CategoryEntry categoryEntry = findByCategoryNameAbsolute(categoryName);
+
+		remove(categoryEntry);
+	}
+
+	/**
 	 * Removes all the category entries where status = &#63; from the database.
 	 *
 	 * @param status the status
@@ -1426,6 +1627,72 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 				}
 
 				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_CATEGORYNAME,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
+	 * Returns the number of category entries where categoryName = &#63;.
+	 *
+	 * @param categoryName the category name
+	 * @return the number of matching category entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByCategoryNameAbsolute(String categoryName)
+		throws SystemException {
+		Object[] finderArgs = new Object[] { categoryName };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_CATEGORYNAMEABSOLUTE,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_CATEGORYENTRY_WHERE);
+
+			if (categoryName == null) {
+				query.append(_FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_1);
+			}
+			else {
+				if (categoryName.equals(StringPool.BLANK)) {
+					query.append(_FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_3);
+				}
+				else {
+					query.append(_FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_2);
+				}
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (categoryName != null) {
+					qPos.add(categoryName);
+				}
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_CATEGORYNAMEABSOLUTE,
 					finderArgs, count);
 
 				closeSession(session);
@@ -1610,8 +1877,14 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	private static final String _SQL_COUNT_CATEGORYENTRY = "SELECT COUNT(categoryEntry) FROM CategoryEntry categoryEntry";
 	private static final String _SQL_COUNT_CATEGORYENTRY_WHERE = "SELECT COUNT(categoryEntry) FROM CategoryEntry categoryEntry WHERE ";
 	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_1 = "categoryEntry.categoryName IS NULL";
-	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_2 = "categoryEntry.categoryName = ?";
-	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_3 = "(categoryEntry.categoryName IS NULL OR categoryEntry.categoryName = ?)";
+	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_2 = "lower(categoryEntry.categoryName) = lower(CAST_TEXT(?))";
+	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_3 = "(categoryEntry.categoryName IS NULL OR lower(categoryEntry.categoryName) = lower(CAST_TEXT(?)))";
+	private static final String _FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_1 =
+		"categoryEntry.categoryName IS NULL";
+	private static final String _FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_2 =
+		"lower(categoryEntry.categoryName) = lower(CAST_TEXT(?))";
+	private static final String _FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_3 =
+		"(categoryEntry.categoryName IS NULL OR lower(categoryEntry.categoryName) = lower(CAST_TEXT(?)))";
 	private static final String _FINDER_COLUMN_STATUS_STATUS_2 = "categoryEntry.status = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "categoryEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No CategoryEntry exists with the primary key ";

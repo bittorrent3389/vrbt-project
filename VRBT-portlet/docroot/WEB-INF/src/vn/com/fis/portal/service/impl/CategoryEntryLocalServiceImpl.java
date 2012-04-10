@@ -18,6 +18,7 @@ import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
 
+import vn.com.fis.portal.NoSuchCategoryEntryException;
 import vn.com.fis.portal.model.CategoryEntry;
 import vn.com.fis.portal.service.base.CategoryEntryLocalServiceBaseImpl;
 import vn.com.fis.portal.service.persistence.CategoryEntryUtil;
@@ -85,5 +86,42 @@ public class CategoryEntryLocalServiceImpl
 	public int countByCategoryName(String categoryName)
 		throws SystemException {
 		return CategoryEntryUtil.countByCategoryName(categoryName);
+	}
+	
+
+	/**
+	 * Returns the category entry where categoryName = &#63; or throws a {@link vn.com.fis.portal.NoSuchCategoryEntryException} if it could not be found.
+	 *
+	 * @param categoryName the category name
+	 * @return the matching category entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryEntryException if a matching category entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryEntry findByCategoryNameAbsolute(String categoryName)
+		throws NoSuchCategoryEntryException, SystemException {
+		return CategoryEntryUtil.findByCategoryNameAbsolute(categoryName);
+	}
+	 
+	/**
+	 * Returns the number of category entries where categoryName = &#63;.
+	 *
+	 * @param categoryName the category name
+	 * @return the number of matching category entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByCategoryNameAbsolute(String categoryName)
+		throws SystemException {
+		return CategoryEntryUtil.countByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
+	 * Removes the category entry where categoryName = &#63; from the database.
+	 *
+	 * @param categoryName the category name
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByCategoryNameAbsolute(String categoryName)
+		throws NoSuchCategoryEntryException, SystemException {
+		CategoryEntryUtil.removeByCategoryNameAbsolute(categoryName);
 	}
 }

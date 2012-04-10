@@ -20,9 +20,10 @@ import vn.com.fis.portal.service.UserEntryLocalServiceUtil;
 import vn.com.fis.portal.service.persistence.FolderEntryPersistenceImpl;
 
 public class VideoAdminPortletUtil {
-	/*
+	
 	private static com.liferay.portal.kernel.log.Log _log = LogFactoryUtil.getLog(VideoAdminPortletUtil.class);	
-	*//**
+	
+	/**
 	 * @author loind
 	 * @param userId 
 	 * @param fileSize
@@ -31,12 +32,12 @@ public class VideoAdminPortletUtil {
 	 *  0 : don't  regiter package 
 	 *  1 : fileSize > size of package
 	 *  2 ok  
-	 * *//*
+	 * */
 	public static  int checkPackageSize(long userId, long companyId,long fileSize) throws Exception {
 		int statusCode =-1;
 		UserEntry userEntry=null;
 		
-		try {
+	/*	try {
 			userEntry = UserEntryLocalServiceUtil.getUserEntry(userId);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -68,7 +69,7 @@ public class VideoAdminPortletUtil {
 					}
 				//}
 			}
-		}
+		}*/
 		return statusCode; 
 	}
 	
@@ -87,6 +88,6 @@ public class VideoAdminPortletUtil {
 			return false;
 		}
 	}
-	*/
+	
 	
 }
