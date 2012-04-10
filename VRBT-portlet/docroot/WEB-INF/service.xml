@@ -84,6 +84,14 @@
 			<finder-column name="categoryId" />
 			<finder-column name="videoId" />
 		</finder>
+		
+		<finder name="VideoId" return-type="Collection">
+			<finder-column name="videoId" />
+		</finder>
+		
+		<finder name="CategoryId" return-type="Collection">
+			<finder-column name="categoryId" />
+		</finder>
 	</entity>
 	<entity name="ViolationEntry"  table="TBL_VIOLATION" local-service="true" remote-service="true">
 
