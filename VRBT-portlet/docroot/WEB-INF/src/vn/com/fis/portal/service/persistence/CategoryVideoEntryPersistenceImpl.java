@@ -98,6 +98,49 @@ public class CategoryVideoEntryPersistenceImpl extends BasePersistenceImpl<Categ
 			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByC_V",
 			new String[] { Long.class.getName(), Long.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID = new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryVideoEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByVideoId",
+			new String[] {
+				Long.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID =
+		new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryVideoEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByVideoId",
+			new String[] { Long.class.getName() },
+			CategoryVideoEntryModelImpl.VIDEOID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_VIDEOID = new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByVideoId",
+			new String[] { Long.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_CATEGORYID =
+		new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryVideoEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByCategoryId",
+			new String[] {
+				Long.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CATEGORYID =
+		new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED,
+			CategoryVideoEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByCategoryId",
+			new String[] { Long.class.getName() },
+			CategoryVideoEntryModelImpl.CATEGORYID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_CATEGORYID = new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
+			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByCategoryId",
+			new String[] { Long.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(CategoryVideoEntryModelImpl.ENTITY_CACHE_ENABLED,
 			CategoryVideoEntryModelImpl.FINDER_CACHE_ENABLED,
 			CategoryVideoEntryImpl.class,
@@ -333,6 +376,46 @@ public class CategoryVideoEntryPersistenceImpl extends BasePersistenceImpl<Categ
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_V, args);
 				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_C_V,
+					args);
+			}
+
+			if ((categoryVideoEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Long.valueOf(categoryVideoEntryModelImpl.getOriginalVideoId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_VIDEOID, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID,
+					args);
+
+				args = new Object[] {
+						Long.valueOf(categoryVideoEntryModelImpl.getVideoId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_VIDEOID, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID,
+					args);
+			}
+
+			if ((categoryVideoEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CATEGORYID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Long.valueOf(categoryVideoEntryModelImpl.getOriginalCategoryId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CATEGORYID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CATEGORYID,
+					args);
+
+				args = new Object[] {
+						Long.valueOf(categoryVideoEntryModelImpl.getCategoryId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_CATEGORYID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CATEGORYID,
 					args);
 			}
 		}
@@ -835,6 +918,701 @@ public class CategoryVideoEntryPersistenceImpl extends BasePersistenceImpl<Categ
 	}
 
 	/**
+	 * Returns all the category video entries where videoId = &#63;.
+	 *
+	 * @param videoId the video ID
+	 * @return the matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryVideoEntry> findByVideoId(long videoId)
+		throws SystemException {
+		return findByVideoId(videoId, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the category video entries where videoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param start the lower bound of the range of category video entries
+	 * @param end the upper bound of the range of category video entries (not inclusive)
+	 * @return the range of matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryVideoEntry> findByVideoId(long videoId, int start,
+		int end) throws SystemException {
+		return findByVideoId(videoId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the category video entries where videoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param start the lower bound of the range of category video entries
+	 * @param end the upper bound of the range of category video entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryVideoEntry> findByVideoId(long videoId, int start,
+		int end, OrderByComparator orderByComparator) throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_VIDEOID;
+			finderArgs = new Object[] { videoId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_VIDEOID;
+			finderArgs = new Object[] { videoId, start, end, orderByComparator };
+		}
+
+		List<CategoryVideoEntry> list = (List<CategoryVideoEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_CATEGORYVIDEOENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_VIDEOID_VIDEOID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(CategoryVideoEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(videoId);
+
+				list = (List<CategoryVideoEntry>)QueryUtil.list(q,
+						getDialect(), start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first category video entry in the ordered set where videoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching category video entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryVideoEntry findByVideoId_First(long videoId,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryVideoEntryException, SystemException {
+		List<CategoryVideoEntry> list = findByVideoId(videoId, 0, 1,
+				orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("videoId=");
+			msg.append(videoId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchCategoryVideoEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last category video entry in the ordered set where videoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param videoId the video ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching category video entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryVideoEntry findByVideoId_Last(long videoId,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryVideoEntryException, SystemException {
+		int count = countByVideoId(videoId);
+
+		List<CategoryVideoEntry> list = findByVideoId(videoId, count - 1,
+				count, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("videoId=");
+			msg.append(videoId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchCategoryVideoEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the category video entries before and after the current category video entry in the ordered set where videoId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryViceoId the primary key of the current category video entry
+	 * @param videoId the video ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next category video entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a category video entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryVideoEntry[] findByVideoId_PrevAndNext(
+		long categoryViceoId, long videoId, OrderByComparator orderByComparator)
+		throws NoSuchCategoryVideoEntryException, SystemException {
+		CategoryVideoEntry categoryVideoEntry = findByPrimaryKey(categoryViceoId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			CategoryVideoEntry[] array = new CategoryVideoEntryImpl[3];
+
+			array[0] = getByVideoId_PrevAndNext(session, categoryVideoEntry,
+					videoId, orderByComparator, true);
+
+			array[1] = categoryVideoEntry;
+
+			array[2] = getByVideoId_PrevAndNext(session, categoryVideoEntry,
+					videoId, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected CategoryVideoEntry getByVideoId_PrevAndNext(Session session,
+		CategoryVideoEntry categoryVideoEntry, long videoId,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_CATEGORYVIDEOENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_VIDEOID_VIDEOID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(CategoryVideoEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(videoId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(categoryVideoEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<CategoryVideoEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Returns all the category video entries where categoryId = &#63;.
+	 *
+	 * @param categoryId the category ID
+	 * @return the matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryVideoEntry> findByCategoryId(long categoryId)
+		throws SystemException {
+		return findByCategoryId(categoryId, QueryUtil.ALL_POS,
+			QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the category video entries where categoryId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryId the category ID
+	 * @param start the lower bound of the range of category video entries
+	 * @param end the upper bound of the range of category video entries (not inclusive)
+	 * @return the range of matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryVideoEntry> findByCategoryId(long categoryId,
+		int start, int end) throws SystemException {
+		return findByCategoryId(categoryId, start, end, null);
+	}
+
+	/**
+	 * Returns an ordered range of all the category video entries where categoryId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryId the category ID
+	 * @param start the lower bound of the range of category video entries
+	 * @param end the upper bound of the range of category video entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<CategoryVideoEntry> findByCategoryId(long categoryId,
+		int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_CATEGORYID;
+			finderArgs = new Object[] { categoryId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_CATEGORYID;
+			finderArgs = new Object[] { categoryId, start, end, orderByComparator };
+		}
+
+		List<CategoryVideoEntry> list = (List<CategoryVideoEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(3 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(3);
+			}
+
+			query.append(_SQL_SELECT_CATEGORYVIDEOENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_CATEGORYID_CATEGORYID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(CategoryVideoEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(categoryId);
+
+				list = (List<CategoryVideoEntry>)QueryUtil.list(q,
+						getDialect(), start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first category video entry in the ordered set where categoryId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryId the category ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching category video entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryVideoEntry findByCategoryId_First(long categoryId,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryVideoEntryException, SystemException {
+		List<CategoryVideoEntry> list = findByCategoryId(categoryId, 0, 1,
+				orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("categoryId=");
+			msg.append(categoryId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchCategoryVideoEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last category video entry in the ordered set where categoryId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryId the category ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching category video entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryVideoEntry findByCategoryId_Last(long categoryId,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryVideoEntryException, SystemException {
+		int count = countByCategoryId(categoryId);
+
+		List<CategoryVideoEntry> list = findByCategoryId(categoryId, count - 1,
+				count, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(4);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("categoryId=");
+			msg.append(categoryId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchCategoryVideoEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the category video entries before and after the current category video entry in the ordered set where categoryId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param categoryViceoId the primary key of the current category video entry
+	 * @param categoryId the category ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next category video entry
+	 * @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a category video entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public CategoryVideoEntry[] findByCategoryId_PrevAndNext(
+		long categoryViceoId, long categoryId,
+		OrderByComparator orderByComparator)
+		throws NoSuchCategoryVideoEntryException, SystemException {
+		CategoryVideoEntry categoryVideoEntry = findByPrimaryKey(categoryViceoId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			CategoryVideoEntry[] array = new CategoryVideoEntryImpl[3];
+
+			array[0] = getByCategoryId_PrevAndNext(session, categoryVideoEntry,
+					categoryId, orderByComparator, true);
+
+			array[1] = categoryVideoEntry;
+
+			array[2] = getByCategoryId_PrevAndNext(session, categoryVideoEntry,
+					categoryId, orderByComparator, false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected CategoryVideoEntry getByCategoryId_PrevAndNext(Session session,
+		CategoryVideoEntry categoryVideoEntry, long categoryId,
+		OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_CATEGORYVIDEOENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_CATEGORYID_CATEGORYID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(CategoryVideoEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(categoryId);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(categoryVideoEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<CategoryVideoEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
 	 * Returns all the category video entries.
 	 *
 	 * @return the category video entries
@@ -965,6 +1743,31 @@ public class CategoryVideoEntryPersistenceImpl extends BasePersistenceImpl<Categ
 	}
 
 	/**
+	 * Removes all the category video entries where videoId = &#63; from the database.
+	 *
+	 * @param videoId the video ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByVideoId(long videoId) throws SystemException {
+		for (CategoryVideoEntry categoryVideoEntry : findByVideoId(videoId)) {
+			remove(categoryVideoEntry);
+		}
+	}
+
+	/**
+	 * Removes all the category video entries where categoryId = &#63; from the database.
+	 *
+	 * @param categoryId the category ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByCategoryId(long categoryId) throws SystemException {
+		for (CategoryVideoEntry categoryVideoEntry : findByCategoryId(
+				categoryId)) {
+			remove(categoryVideoEntry);
+		}
+	}
+
+	/**
 	 * Removes all the category video entries from the database.
 	 *
 	 * @throws SystemException if a system exception occurred
@@ -1026,6 +1829,112 @@ public class CategoryVideoEntryPersistenceImpl extends BasePersistenceImpl<Categ
 
 				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_C_V, finderArgs,
 					count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
+	 * Returns the number of category video entries where videoId = &#63;.
+	 *
+	 * @param videoId the video ID
+	 * @return the number of matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByVideoId(long videoId) throws SystemException {
+		Object[] finderArgs = new Object[] { videoId };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_VIDEOID,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_CATEGORYVIDEOENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_VIDEOID_VIDEOID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(videoId);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_VIDEOID,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
+	 * Returns the number of category video entries where categoryId = &#63;.
+	 *
+	 * @param categoryId the category ID
+	 * @return the number of matching category video entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByCategoryId(long categoryId) throws SystemException {
+		Object[] finderArgs = new Object[] { categoryId };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_CATEGORYID,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(2);
+
+			query.append(_SQL_COUNT_CATEGORYVIDEOENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_CATEGORYID_CATEGORYID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(categoryId);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_CATEGORYID,
+					finderArgs, count);
 
 				closeSession(session);
 			}
@@ -1157,6 +2066,8 @@ public class CategoryVideoEntryPersistenceImpl extends BasePersistenceImpl<Categ
 	private static final String _SQL_COUNT_CATEGORYVIDEOENTRY_WHERE = "SELECT COUNT(categoryVideoEntry) FROM CategoryVideoEntry categoryVideoEntry WHERE ";
 	private static final String _FINDER_COLUMN_C_V_CATEGORYID_2 = "categoryVideoEntry.categoryId = ? AND ";
 	private static final String _FINDER_COLUMN_C_V_VIDEOID_2 = "categoryVideoEntry.videoId = ?";
+	private static final String _FINDER_COLUMN_VIDEOID_VIDEOID_2 = "categoryVideoEntry.videoId = ?";
+	private static final String _FINDER_COLUMN_CATEGORYID_CATEGORYID_2 = "categoryVideoEntry.categoryId = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "categoryVideoEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No CategoryVideoEntry exists with the primary key ";
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No CategoryVideoEntry exists with the key {";
