@@ -166,9 +166,6 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 		long packageId = ParamUtil.getLong(actionRequest, "packageId", 0);
 	
 		try {
-			if(packageId == 0)
-				packageId = ParamUtil.getLong(actionRequest, ServiceEntryLocalServiceUtil.getServiceEntry(serviceId).getServiceName(), 0);
-			
 			UserServiceEntry userService = null;
 			userService = UserServiceEntryLocalServiceUtil.findByUserId_ServiceId_PackageId(userId, serviceId, packageId);
 			

@@ -52,6 +52,16 @@
 </c:if>
 
 <c:if test="<%= isAllow %>">
+	<%
+		long packageId = 0;
+		boolean isUse = false;
+	
+		if(UserServiceEntryLocalServiceUtil.countByUserId_ServiceId(userId, serviceId) > 0){
+			isUse = true;
+			UserServiceEntry userServiceEntry = UserServiceEntryLocalServiceUtil.findByUserId_ServiceId(userId, serviceId);
+			packageId = userServiceEntry.getServicePackageId();
+		}
+	%>
 	<portlet:renderURL var="subscriber_Service_currentFormURL">
 		<portlet:param name="jspPage" value="/html/subscriber_serviceMng/subscriber_servicePackage_edit_form.jsp"/>
 		<portlet:param name="serviceId" value="<%= String.valueOf(serviceId) %>"/>
@@ -79,6 +89,7 @@
 						<portlet:actionURL var="removeServicePackageURL" name="removeServicePackage">
 							<portlet:param name="userId" value="<%= String.valueOf(userExt.getUserId()) %>"/>
 							<portlet:param name="serviceId" value="<%= String.valueOf(serviceEntry.getServiceId()) %>"/>
+							<portlet:param name="packageId" value="<%= String.valueOf(packageId) %>"/>
 							<portlet:param name="redirect" value="<%= curRedirect %>"/>
 						</portlet:actionURL>
 					
@@ -89,11 +100,7 @@
 						<aui:form action="<%= registrationServicePackageURL %>" method="POST" name="registrationServicePackageForm">
 							<aui:field-wrapper name="<%= serviceEntry.getServiceName() %>" label="">
 								<% for(ServicePackageEntry packageExt :listPackage) { 
-									boolean isUse = false;
-									
-									if(UserServiceEntryLocalServiceUtil.countByUserId_ServicePackageId(userExt.getUserId(), packageExt.getServicePackageId()) > 0)
-										isUse = true;
-								%>
+									%>
 																		
 									<aui:input type="radio" name="<%= serviceEntry.getServiceName() %>" value="<%= packageExt.getServicePackageId() %>"
 										checked="<%= isUse %>"	
