@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import vn.com.fis.portal.model.VideoEntry;
 import vn.com.fis.portal.model.VideoUserEntry;
 import vn.com.fis.portal.service.base.VideoEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.VideoEntryFinderUtil;
 import vn.com.fis.portal.service.persistence.VideoEntryUtil;
 import vn.com.fis.portal.service.persistence.VideoUserEntryUtil;
 
@@ -156,5 +157,45 @@ public class VideoEntryLocalServiceImpl extends VideoEntryLocalServiceBaseImpl {
 	public int countByUploaderId_Folder(long uploaderId, long folderId)
 		throws SystemException {
 		return VideoEntryUtil.countByUploaderId_Folder(uploaderId, folderId);
+	}
+	public List<VideoEntry> searchVideoByCategory(long categoryId ,int start , int end)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByCategory(categoryId, start, end);
+	}
+	public int searchVideoByCategoryCount(long categoryId )throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByCategoryCount(categoryId);
+	}
+	
+	public List<VideoEntry> searchVideoByCategory_User(long categoryId, long userId ,int start , int end,boolean andOperator)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByCategory_User(categoryId, userId, start, end, andOperator);
+	}
+			
+	
+	public int searchVideoByCategory_User_Count(long categoryId,long userId,boolean andOperator )throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByCategory_User_Count(categoryId, userId, andOperator);
+	}
+	public List<VideoEntry> searchVideoByCategory_OtherUser(long categoryId, long userId ,int start , int end,boolean andOperator)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByCategory_OtherUser(categoryId, userId, start, end, andOperator);
+	}
+	public int searchVideoByCategory_OtherUser_Count(long categoryId,long userId,boolean andOperator )throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByCategory_OtherUser_Count(categoryId, userId, andOperator);
+	}
+	public List<VideoEntry> searchVideoByUser(long userId ,int start , int end,boolean andOperator)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByUser(userId, start, end, andOperator);
+	}
+	public int searchVideoByUserCount(long userId,boolean andOperator )throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByUserCount(userId, andOperator);
+	}
+	public List<VideoEntry> searchVideoByVideoName_Folder_User(String videoName, long folderId,long userId ,int start , int end)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByVideoName_Folder_User(videoName, folderId, userId, start, end);
+	}
+	public int searchVideoByVideoName_Folder_User_Count(String videoName, long folderId,long userId  )throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByVideoName_Folder_User_Count(videoName, folderId, userId);
+	}
+	public List<VideoEntry> searchVideoByVideoName_OriginCode_ServiceActive(String videoName,int originCode, int serviceActive,long userId ,int start , int end)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByVideoName_OriginCode_ServiceActive(videoName, originCode, serviceActive, userId, start, end);
+	}
+	
+	public int searchVideoByVideoName_OriginCode_ServiceActive_Count(String videoName,int originCode, int serviceActive,long userId)throws SystemException{
+		return VideoEntryFinderUtil.searchVideoByVideoName_OriginCode_ServiceActive_Count(videoName, originCode, serviceActive, userId);
 	}
 }
