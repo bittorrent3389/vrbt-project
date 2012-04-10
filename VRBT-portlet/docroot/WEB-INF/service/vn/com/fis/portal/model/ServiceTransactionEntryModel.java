@@ -187,20 +187,6 @@ public interface ServiceTransactionEntryModel extends BaseModel<ServiceTransacti
 	public void setServiceStopDate(Date serviceStopDate);
 
 	/**
-	 * Returns the service end date of this service transaction entry.
-	 *
-	 * @return the service end date of this service transaction entry
-	 */
-	public Date getServiceEndDate();
-
-	/**
-	 * Sets the service end date of this service transaction entry.
-	 *
-	 * @param serviceEndDate the service end date of this service transaction entry
-	 */
-	public void setServiceEndDate(Date serviceEndDate);
-
-	/**
 	 * Returns the service package ID of this service transaction entry.
 	 *
 	 * @return the service package ID of this service transaction entry

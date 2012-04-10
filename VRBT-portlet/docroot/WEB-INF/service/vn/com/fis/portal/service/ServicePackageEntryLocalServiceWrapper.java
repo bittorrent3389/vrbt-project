@@ -307,6 +307,12 @@ public class ServicePackageEntryLocalServiceWrapper
 		return _servicePackageEntryLocalService.findByservicePackageName(servicePackageName);
 	}
 
+	public int countByserviceId_status(long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _servicePackageEntryLocalService.countByserviceId_status(serviceId,
+			status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

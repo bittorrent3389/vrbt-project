@@ -13,7 +13,7 @@
 	long roleId = 0;
 	boolean isAllow = false;
 
-	List<UserServiceEntry> userPackage = null;
+	List<UserServiceEntry> userPackage = new ArrayList<UserServiceEntry>();
 	
 	try{
 		
@@ -25,7 +25,8 @@
 			userEntry = UserEntryLocalServiceUtil.getUserEntry(userId);
 			isAllow = true;
 			
-			userPackage = UserServiceEntryLocalServiceUtil.findByuserId(userId);
+			if(UserServiceEntryLocalServiceUtil.countByuserId(userId) > 0)
+				userPackage = UserServiceEntryLocalServiceUtil.findByuserId(userId);
 			
 			for(UserServiceEntry userServiceEntry : userPackage){
 				if(userServiceEntry.getServicePackageId() <= 0)

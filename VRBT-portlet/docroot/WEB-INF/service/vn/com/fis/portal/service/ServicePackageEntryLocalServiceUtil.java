@@ -311,6 +311,11 @@ public class ServicePackageEntryLocalServiceUtil {
 		return getService().findByservicePackageName(servicePackageName);
 	}
 
+	public static int countByserviceId_status(long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByserviceId_status(serviceId, status);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

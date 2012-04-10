@@ -168,9 +168,6 @@
 			<basic name="serviceStopDate">
 				<temporal>TIMESTAMP</temporal>
 			</basic>
-			<basic name="serviceEndDate">
-				<temporal>TIMESTAMP</temporal>
-			</basic>
 			<basic name="servicePackageId" />
 			<basic name="packageDate">
 				<temporal>TIMESTAMP</temporal>

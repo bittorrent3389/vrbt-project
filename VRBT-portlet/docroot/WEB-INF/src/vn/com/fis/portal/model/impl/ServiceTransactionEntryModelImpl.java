@@ -72,11 +72,10 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 			{ "serviceStatus", Types.INTEGER },
 			{ "serviceStartDate", Types.TIMESTAMP },
 			{ "serviceStopDate", Types.TIMESTAMP },
-			{ "serviceEndDate", Types.TIMESTAMP },
 			{ "servicePackageId", Types.BIGINT },
 			{ "packageDate", Types.TIMESTAMP }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TBL_SERVICE_TRANSACTION (transactionId LONG not null primary key,transactionCode INTEGER,date_ DATE null,userId LONG,serviceId LONG,serviceStatus INTEGER,serviceStartDate DATE null,serviceStopDate DATE null,serviceEndDate DATE null,servicePackageId LONG,packageDate DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table TBL_SERVICE_TRANSACTION (transactionId LONG not null primary key,transactionCode INTEGER,date_ DATE null,userId LONG,serviceId LONG,serviceStatus INTEGER,serviceStartDate DATE null,serviceStopDate DATE null,servicePackageId LONG,packageDate DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table TBL_SERVICE_TRANSACTION";
 	public static final String ORDER_BY_JPQL = " ORDER BY serviceTransactionEntry.date_ ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TBL_SERVICE_TRANSACTION.date_ ASC";
@@ -114,7 +113,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 		model.setServiceStatus(soapModel.getServiceStatus());
 		model.setServiceStartDate(soapModel.getServiceStartDate());
 		model.setServiceStopDate(soapModel.getServiceStopDate());
-		model.setServiceEndDate(soapModel.getServiceEndDate());
 		model.setServicePackageId(soapModel.getServicePackageId());
 		model.setPackageDate(soapModel.getPackageDate());
 
@@ -283,15 +281,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 	}
 
 	@JSON
-	public Date getServiceEndDate() {
-		return _serviceEndDate;
-	}
-
-	public void setServiceEndDate(Date serviceEndDate) {
-		_serviceEndDate = serviceEndDate;
-	}
-
-	@JSON
 	public long getServicePackageId() {
 		return _servicePackageId;
 	}
@@ -351,7 +340,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 		serviceTransactionEntryImpl.setServiceStatus(getServiceStatus());
 		serviceTransactionEntryImpl.setServiceStartDate(getServiceStartDate());
 		serviceTransactionEntryImpl.setServiceStopDate(getServiceStopDate());
-		serviceTransactionEntryImpl.setServiceEndDate(getServiceEndDate());
 		serviceTransactionEntryImpl.setServicePackageId(getServicePackageId());
 		serviceTransactionEntryImpl.setPackageDate(getPackageDate());
 
@@ -461,15 +449,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 			serviceTransactionEntryCacheModel.serviceStopDate = Long.MIN_VALUE;
 		}
 
-		Date serviceEndDate = getServiceEndDate();
-
-		if (serviceEndDate != null) {
-			serviceTransactionEntryCacheModel.serviceEndDate = serviceEndDate.getTime();
-		}
-		else {
-			serviceTransactionEntryCacheModel.serviceEndDate = Long.MIN_VALUE;
-		}
-
 		serviceTransactionEntryCacheModel.servicePackageId = getServicePackageId();
 
 		Date packageDate = getPackageDate();
@@ -486,7 +465,7 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{transactionId=");
 		sb.append(getTransactionId());
@@ -504,8 +483,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 		sb.append(getServiceStartDate());
 		sb.append(", serviceStopDate=");
 		sb.append(getServiceStopDate());
-		sb.append(", serviceEndDate=");
-		sb.append(getServiceEndDate());
 		sb.append(", servicePackageId=");
 		sb.append(getServicePackageId());
 		sb.append(", packageDate=");
@@ -516,7 +493,7 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(34);
 
 		sb.append("<model><model-name>");
 		sb.append("vn.com.fis.portal.model.ServiceTransactionEntry");
@@ -555,10 +532,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 		sb.append(getServiceStopDate());
 		sb.append("]]></column-value></column>");
 		sb.append(
-			"<column><column-name>serviceEndDate</column-name><column-value><![CDATA[");
-		sb.append(getServiceEndDate());
-		sb.append("]]></column-value></column>");
-		sb.append(
 			"<column><column-name>servicePackageId</column-name><column-value><![CDATA[");
 		sb.append(getServicePackageId());
 		sb.append("]]></column-value></column>");
@@ -590,7 +563,6 @@ public class ServiceTransactionEntryModelImpl extends BaseModelImpl<ServiceTrans
 	private int _serviceStatus;
 	private Date _serviceStartDate;
 	private Date _serviceStopDate;
-	private Date _serviceEndDate;
 	private long _servicePackageId;
 	private Date _packageDate;
 	private transient ExpandoBridge _expandoBridge;

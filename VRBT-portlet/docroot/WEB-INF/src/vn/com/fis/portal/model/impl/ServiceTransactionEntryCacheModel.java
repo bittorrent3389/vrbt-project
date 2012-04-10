@@ -34,7 +34,7 @@ public class ServiceTransactionEntryCacheModel implements CacheModel<ServiceTran
 	Serializable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(21);
 
 		sb.append("{transactionId=");
 		sb.append(transactionId);
@@ -52,8 +52,6 @@ public class ServiceTransactionEntryCacheModel implements CacheModel<ServiceTran
 		sb.append(serviceStartDate);
 		sb.append(", serviceStopDate=");
 		sb.append(serviceStopDate);
-		sb.append(", serviceEndDate=");
-		sb.append(serviceEndDate);
 		sb.append(", servicePackageId=");
 		sb.append(servicePackageId);
 		sb.append(", packageDate=");
@@ -96,14 +94,6 @@ public class ServiceTransactionEntryCacheModel implements CacheModel<ServiceTran
 					serviceStopDate));
 		}
 
-		if (serviceEndDate == Long.MIN_VALUE) {
-			serviceTransactionEntryImpl.setServiceEndDate(null);
-		}
-		else {
-			serviceTransactionEntryImpl.setServiceEndDate(new Date(
-					serviceEndDate));
-		}
-
 		serviceTransactionEntryImpl.setServicePackageId(servicePackageId);
 
 		if (packageDate == Long.MIN_VALUE) {
@@ -126,7 +116,6 @@ public class ServiceTransactionEntryCacheModel implements CacheModel<ServiceTran
 	public int serviceStatus;
 	public long serviceStartDate;
 	public long serviceStopDate;
-	public long serviceEndDate;
 	public long servicePackageId;
 	public long packageDate;
 }

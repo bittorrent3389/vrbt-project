@@ -223,24 +223,6 @@ public class ServiceTransactionEntryWrapper implements ServiceTransactionEntry,
 	}
 
 	/**
-	* Returns the service end date of this service transaction entry.
-	*
-	* @return the service end date of this service transaction entry
-	*/
-	public java.util.Date getServiceEndDate() {
-		return _serviceTransactionEntry.getServiceEndDate();
-	}
-
-	/**
-	* Sets the service end date of this service transaction entry.
-	*
-	* @param serviceEndDate the service end date of this service transaction entry
-	*/
-	public void setServiceEndDate(java.util.Date serviceEndDate) {
-		_serviceTransactionEntry.setServiceEndDate(serviceEndDate);
-	}
-
-	/**
 	* Returns the service package ID of this service transaction entry.
 	*
 	* @return the service package ID of this service transaction entry

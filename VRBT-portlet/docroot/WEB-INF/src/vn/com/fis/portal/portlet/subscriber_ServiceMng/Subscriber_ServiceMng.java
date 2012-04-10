@@ -122,6 +122,10 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 					userService.setServicePackageId(packageId);
 					userService.setPackageDate(Calendar.getInstance().getTime());
 					
+					Calendar c = Calendar.getInstance();
+					c.add(Calendar.DAY_OF_YEAR, 90);
+					userService.setServiceStopDate(c.getTime());
+					
 					UserServiceEntryLocalServiceUtil.addUserServiceEntry(userService);
 				}
 				

@@ -85,6 +85,25 @@ public class CategoryEntryLocalServiceClp implements CategoryEntryLocalService {
 
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
+
+		_findByCategoryNameMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByCategoryName", java.lang.String.class);
+
+		_findByCategoryNameMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByCategoryName", java.lang.String.class, int.class,
+				int.class);
+
+		_countByCategoryNameMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByCategoryName", java.lang.String.class);
+
+		_findByCategoryNameAbsoluteMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByCategoryNameAbsolute", java.lang.String.class);
+
+		_countByCategoryNameAbsoluteMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByCategoryNameAbsolute", java.lang.String.class);
+
+		_removeByCategoryNameAbsoluteMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByCategoryNameAbsolute", java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.CategoryEntry addCategoryEntry(
@@ -551,6 +570,177 @@ public class CategoryEntryLocalServiceClp implements CategoryEntryLocalService {
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.CategoryEntry> findByCategoryName(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByCategoryNameMethodKey17,
+				ClpSerializer.translateInput(categoryName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.CategoryEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.CategoryEntry> findByCategoryName(
+		java.lang.String categoryName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByCategoryNameMethodKey18,
+				ClpSerializer.translateInput(categoryName), start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.CategoryEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByCategoryName(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByCategoryNameMethodKey19,
+				ClpSerializer.translateInput(categoryName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public vn.com.fis.portal.model.CategoryEntry findByCategoryNameAbsolute(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByCategoryNameAbsoluteMethodKey20,
+				ClpSerializer.translateInput(categoryName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchCategoryEntryException) {
+				throw (vn.com.fis.portal.NoSuchCategoryEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.CategoryEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByCategoryNameAbsolute(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByCategoryNameAbsoluteMethodKey21,
+				ClpSerializer.translateInput(categoryName));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByCategoryNameAbsolute(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByCategoryNameAbsoluteMethodKey22,
+				ClpSerializer.translateInput(categoryName));
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchCategoryEntryException) {
+				throw (vn.com.fis.portal.NoSuchCategoryEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -573,4 +763,10 @@ public class CategoryEntryLocalServiceClp implements CategoryEntryLocalService {
 	private MethodKey _updateCategoryEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
+	private MethodKey _findByCategoryNameMethodKey17;
+	private MethodKey _findByCategoryNameMethodKey18;
+	private MethodKey _countByCategoryNameMethodKey19;
+	private MethodKey _findByCategoryNameAbsoluteMethodKey20;
+	private MethodKey _countByCategoryNameAbsoluteMethodKey21;
+	private MethodKey _removeByCategoryNameAbsoluteMethodKey22;
 }

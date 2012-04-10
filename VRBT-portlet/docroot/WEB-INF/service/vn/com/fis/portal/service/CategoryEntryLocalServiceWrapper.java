@@ -257,6 +257,90 @@ public class CategoryEntryLocalServiceWrapper
 	}
 
 	/**
+	* Returns all the category entries where categoryName = &#63;.
+	*
+	* @param categoryName the category name
+	* @return the matching category entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryEntry> findByCategoryName(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntryLocalService.findByCategoryName(categoryName);
+	}
+
+	/**
+	* Returns a range of all the category enties where categoryName = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryName the category name
+	* @param start the lower bound of the range of category enties
+	* @param end the upper bound of the range of category enties (not inclusive)
+	* @return the range of matching category enties
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryEntry> findByCategoryName(
+		java.lang.String categoryName, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntryLocalService.findByCategoryName(categoryName,
+			start, end);
+	}
+
+	/**
+	* Returns the number of category enties where categoryName = &#63;.
+	*
+	* @param categoryName the category name
+	* @return the number of matching category enties
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByCategoryName(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntryLocalService.countByCategoryName(categoryName);
+	}
+
+	/**
+	* Returns the category entry where categoryName = &#63; or throws a {@link vn.com.fis.portal.NoSuchCategoryEntryException} if it could not be found.
+	*
+	* @param categoryName the category name
+	* @return the matching category entry
+	* @throws vn.com.fis.portal.NoSuchCategoryEntryException if a matching category entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryEntry findByCategoryNameAbsolute(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryEntryException {
+		return _categoryEntryLocalService.findByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
+	* Returns the number of category entries where categoryName = &#63;.
+	*
+	* @param categoryName the category name
+	* @return the number of matching category entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByCategoryNameAbsolute(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _categoryEntryLocalService.countByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
+	* Removes the category entry where categoryName = &#63; from the database.
+	*
+	* @param categoryName the category name
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByCategoryNameAbsolute(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryEntryException {
+		_categoryEntryLocalService.removeByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
 	public CategoryEntryLocalService getWrappedCategoryEntryLocalService() {

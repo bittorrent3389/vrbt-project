@@ -561,7 +561,6 @@ public class ServiceTransactionEntryPersistenceImpl extends BasePersistenceImpl<
 		serviceTransactionEntryImpl.setServiceStatus(serviceTransactionEntry.getServiceStatus());
 		serviceTransactionEntryImpl.setServiceStartDate(serviceTransactionEntry.getServiceStartDate());
 		serviceTransactionEntryImpl.setServiceStopDate(serviceTransactionEntry.getServiceStopDate());
-		serviceTransactionEntryImpl.setServiceEndDate(serviceTransactionEntry.getServiceEndDate());
 		serviceTransactionEntryImpl.setServicePackageId(serviceTransactionEntry.getServicePackageId());
 		serviceTransactionEntryImpl.setPackageDate(serviceTransactionEntry.getPackageDate());
 

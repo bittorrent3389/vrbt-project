@@ -148,7 +148,6 @@
 		<property name="serviceStatus" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="serviceStartDate" type="org.hibernate.type.TimestampType" />
 		<property name="serviceStopDate" type="org.hibernate.type.TimestampType" />
-		<property name="serviceEndDate" type="org.hibernate.type.TimestampType" />
 		<property name="servicePackageId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="packageDate" type="org.hibernate.type.TimestampType" />
 	</class>

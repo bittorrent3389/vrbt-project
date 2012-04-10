@@ -74,4 +74,8 @@ public class ServicePackageEntryLocalServiceImpl
 	public ServicePackageEntry findByservicePackageName(String servicePackageName) throws NoSuchServicePackageEntryException, SystemException{
 		return ServicePackageEntryUtil.findByservicePackageName(servicePackageName);
 	}
+	
+	public int countByserviceId_status(long serviceId, int status) throws SystemException {
+		return ServicePackageEntryUtil.countByserviceId_status(serviceId, status);
+	}
 }

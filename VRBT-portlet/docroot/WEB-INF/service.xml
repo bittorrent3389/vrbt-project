@@ -586,7 +586,6 @@
 		<column name="serviceStatus" type="int" />
 		<column name="serviceStartDate" type="Date" />
 		<column name="serviceStopDate" type="Date" />
-		<column name="serviceEndDate" type="Date" />
 		
 		<column name="servicePackageId" type="long" />
 		<column name="packageDate" type="Date" />

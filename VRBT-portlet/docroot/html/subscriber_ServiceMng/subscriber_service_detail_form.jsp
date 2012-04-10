@@ -46,7 +46,7 @@
 
 <c:if test="<%= isAllow %>">
 	<portlet:renderURL var="registerServiceURL">
-		<portlet:param name="jspPage" value="/html/subscriber_ServiceMng/subscriber_servicePackage_detail_form.jsp"/>
+		<portlet:param name="jspPage" value="/html/subscriber_ServiceMng/subscriber_service_edit_form.jsp"/>
 		<portlet:param name="redirect" value="<%= curRedirect %>"/>
 	</portlet:renderURL>
 	

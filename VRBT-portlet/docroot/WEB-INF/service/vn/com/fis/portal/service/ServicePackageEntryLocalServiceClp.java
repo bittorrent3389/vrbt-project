@@ -110,6 +110,9 @@ public class ServicePackageEntryLocalServiceClp
 
 		_findByservicePackageNameMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByservicePackageName", java.lang.String.class);
+
+		_countByserviceId_statusMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByserviceId_status", long.class, int.class);
 	}
 
 	public vn.com.fis.portal.model.ServicePackageEntry addServicePackageEntry(
@@ -788,6 +791,33 @@ public class ServicePackageEntryLocalServiceClp
 		return (vn.com.fis.portal.model.ServicePackageEntry)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public int countByserviceId_status(long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByserviceId_statusMethodKey24,
+				serviceId, status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -817,4 +847,5 @@ public class ServicePackageEntryLocalServiceClp
 	private MethodKey _findByserviceId_StatusMethodKey21;
 	private MethodKey _findByservicePackageCodeMethodKey22;
 	private MethodKey _findByservicePackageNameMethodKey23;
+	private MethodKey _countByserviceId_statusMethodKey24;
 }

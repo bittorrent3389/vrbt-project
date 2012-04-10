@@ -269,4 +269,7 @@ public interface ServicePackageEntryLocalService
 		java.lang.String servicePackageName)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchServicePackageEntryException;
+
+	public int countByserviceId_status(long serviceId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

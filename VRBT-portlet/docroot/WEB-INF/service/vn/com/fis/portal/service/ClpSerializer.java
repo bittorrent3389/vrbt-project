@@ -1021,26 +1021,19 @@ public class ClpSerializer {
 
 				method7.invoke(newModel, value7);
 
-				Method method8 = newModelClass.getMethod("setServiceEndDate",
-						new Class[] { Date.class });
+				Method method8 = newModelClass.getMethod("setServicePackageId",
+						new Class[] { Long.TYPE });
 
-				Date value8 = oldCplModel.getServiceEndDate();
+				Long value8 = new Long(oldCplModel.getServicePackageId());
 
 				method8.invoke(newModel, value8);
 
-				Method method9 = newModelClass.getMethod("setServicePackageId",
-						new Class[] { Long.TYPE });
-
-				Long value9 = new Long(oldCplModel.getServicePackageId());
-
-				method9.invoke(newModel, value9);
-
-				Method method10 = newModelClass.getMethod("setPackageDate",
+				Method method9 = newModelClass.getMethod("setPackageDate",
 						new Class[] { Date.class });
 
-				Date value10 = oldCplModel.getPackageDate();
+				Date value9 = oldCplModel.getPackageDate();
 
-				method10.invoke(newModel, value10);
+				method9.invoke(newModel, value9);
 
 				return newModel;
 			}
@@ -2665,23 +2658,17 @@ public class ClpSerializer {
 
 				newModel.setServiceStopDate(value7);
 
-				Method method8 = oldModelClass.getMethod("getServiceEndDate");
+				Method method8 = oldModelClass.getMethod("getServicePackageId");
 
-				Date value8 = (Date)method8.invoke(oldModel, (Object[])null);
+				Long value8 = (Long)method8.invoke(oldModel, (Object[])null);
 
-				newModel.setServiceEndDate(value8);
+				newModel.setServicePackageId(value8);
 
-				Method method9 = oldModelClass.getMethod("getServicePackageId");
+				Method method9 = oldModelClass.getMethod("getPackageDate");
 
-				Long value9 = (Long)method9.invoke(oldModel, (Object[])null);
+				Date value9 = (Date)method9.invoke(oldModel, (Object[])null);
 
-				newModel.setServicePackageId(value9);
-
-				Method method10 = oldModelClass.getMethod("getPackageDate");
-
-				Date value10 = (Date)method10.invoke(oldModel, (Object[])null);
-
-				newModel.setPackageDate(value10);
+				newModel.setPackageDate(value9);
 
 				return newModel;
 			}

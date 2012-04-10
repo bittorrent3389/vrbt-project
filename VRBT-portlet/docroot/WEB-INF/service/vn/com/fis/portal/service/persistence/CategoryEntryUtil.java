@@ -312,6 +312,49 @@ public class CategoryEntryUtil {
 	}
 
 	/**
+	* Returns the category entry where categoryName = &#63; or throws a {@link vn.com.fis.portal.NoSuchCategoryEntryException} if it could not be found.
+	*
+	* @param categoryName the category name
+	* @return the matching category entry
+	* @throws vn.com.fis.portal.NoSuchCategoryEntryException if a matching category entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.CategoryEntry findByCategoryNameAbsolute(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryEntryException {
+		return getPersistence().findByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
+	* Returns the category entry where categoryName = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param categoryName the category name
+	* @return the matching category entry, or <code>null</code> if a matching category entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.CategoryEntry fetchByCategoryNameAbsolute(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
+	* Returns the category entry where categoryName = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param categoryName the category name
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching category entry, or <code>null</code> if a matching category entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static vn.com.fis.portal.model.CategoryEntry fetchByCategoryNameAbsolute(
+		java.lang.String categoryName, boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByCategoryNameAbsolute(categoryName, retrieveFromCache);
+	}
+
+	/**
 	* Returns all the category entries where status = &#63;.
 	*
 	* @param status the status
@@ -491,6 +534,19 @@ public class CategoryEntryUtil {
 	}
 
 	/**
+	* Removes the category entry where categoryName = &#63; from the database.
+	*
+	* @param categoryName the category name
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByCategoryNameAbsolute(
+		java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryEntryException {
+		getPersistence().removeByCategoryNameAbsolute(categoryName);
+	}
+
+	/**
 	* Removes all the category entries where status = &#63; from the database.
 	*
 	* @param status the status
@@ -521,6 +577,18 @@ public class CategoryEntryUtil {
 	public static int countByCategoryName(java.lang.String categoryName)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByCategoryName(categoryName);
+	}
+
+	/**
+	* Returns the number of category entries where categoryName = &#63;.
+	*
+	* @param categoryName the category name
+	* @return the number of matching category entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByCategoryNameAbsolute(java.lang.String categoryName)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByCategoryNameAbsolute(categoryName);
 	}
 
 	/**
