@@ -1,6 +1,6 @@
 <%@ include file="/html/init.jsp" %>
 <%@page import="com.liferay.portal.service.RoleLocalServiceUtil"%>
-<%@page import="vn.com.fis.portal.portlet.util.model.CategoryExt"%>
+
 
 
 
@@ -13,7 +13,7 @@
 	
 	long categoryId=0;
 	String redirect="";
-	CategoryExt category =null;
+	CategoryEntry category =null;
 	try{
 		userId = permissionChecker.getUserId();
 
@@ -25,7 +25,7 @@
 			isAllow = true;
 			
 			categoryId = ParamUtil.getLong(renderRequest, "categoryId");
-			 category = CategoryExtLocalServiceUtil.getCategoryExt(categoryId);
+			 category = CategoryEntryLocalServiceUtil.getCategoryEntry(categoryId);
 			
 			redirect = ParamUtil.getString(request, "redirect");
 		}

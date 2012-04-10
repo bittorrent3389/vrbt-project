@@ -26,19 +26,19 @@
 	<liferay-ui:search-container delta="5" emptyResultsMessage="portlet-category-view_search-search-container-emptyResultsMessage" 
 		iteratorURL="<%= searchRenderURL %>" rowChecker="<%= rowChecker %>">
 		<liferay-ui:search-container-results
-			results="<%= CategoryExtLocalServiceUtil.search(categoryName, status, searchContainer.getStart(), searchContainer.getEnd(), searchType) %>"
-			total="<%= CategoryExtLocalServiceUtil.searchCount(categoryName, status, searchType) %>"
+			results="<%= CategoryEntryLocalServiceUtil.findByCategoryName(categoryName, searchContainer.getStart(), searchContainer.getEnd())%>"
+			total="<%= CategoryEntryLocalServiceUtil.countByCategoryName(categoryName)%>"
 			/>
 				
-		<liferay-ui:search-container-row className="vn.com.fis.portal.portlet.util.model.CategoryExt" keyProperty="categoryId" modelVar="categoryVar">
+				
+		<liferay-ui:search-container-row className="vn.com.fis.portal.model.CategoryEntry" keyProperty="categoryId" modelVar="categoryVar">
 			
 			<liferay-ui:search-container-column-text name="portlet-category-view_search-search-container-column-text-categoryName" 
 				value="<%= categoryVar.getCategoryName() %>"/>
-			<liferay-ui:search-container-column-text name="portlet-category-view_search-search-container-column-text-status" 
-				value="<%= String.valueOf(categoryVar.getStatus()) %>"/>
+			<liferay-ui:search-container-column-text name="portlet-category-view_search-search-container-column-text-description" 
+				value="<%= categoryVar.getDescription() %>"/>
 			<liferay-ui:search-container-column-jsp path="/html/category/category_action_menu.jsp"/>
 		</liferay-ui:search-container-row>
-		
 		<liferay-ui:search-iterator/>
 	</liferay-ui:search-container>
 	
