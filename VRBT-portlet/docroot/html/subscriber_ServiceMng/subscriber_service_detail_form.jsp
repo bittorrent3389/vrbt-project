@@ -45,8 +45,8 @@
 </c:if>
 
 <c:if test="<%= isAllow %>">
-	<portlet:renderURL var="registerServicePackageURL">
-		<portlet:param name="jspPage" value="/html/subscriber_ServiceMng/subscriber_service_edit_form.jsp"/>
+	<portlet:renderURL var="registerServiceURL">
+		<portlet:param name="jspPage" value="/html/subscriber_ServiceMng/subscriber_servicePackage_detail_form.jsp"/>
 		<portlet:param name="redirect" value="<%= curRedirect %>"/>
 	</portlet:renderURL>
 	
@@ -76,14 +76,14 @@
 				<hr/>
 			<% } %>
 			
-			<aui:a label="Click to register new service." href="<%= registerServicePackageURL %>"/>
+			<aui:a label="Click to register new service." onClick="<%= registerServiceURL %>" href="<%= registerServiceURL %>"/>
 			<br/>
 		</c:if>
 		
 		<c:if test='<%= userService.size() <= 0 || userService == null %>'>
 			<liferay-ui:message key='No service in use.'/>
 			<hr/>
-			<aui:a label="Click to register new service." href="<%= registerServicePackageURL %>"/>
+			<aui:a label="Click to register new service." onClick="<%= registerServiceURL %>" href="<%= registerServiceURL %>"/>
 		</c:if>
 	</fieldset>
 	<br/>
