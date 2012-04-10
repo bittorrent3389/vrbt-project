@@ -127,10 +127,13 @@ public class UserServiceEntryLocalServiceClp
 		_findByserviceId_ServiceStatusMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByserviceId_ServiceStatus", long.class, int.class);
 
-		_countByservicePackageIdMethodKey29 = new MethodKey(_classLoaderProxy.getClassName(),
+		_countByuserIdMethodKey29 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByuserId", long.class);
+
+		_countByservicePackageIdMethodKey30 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByservicePackageId", long.class);
 
-		_countByserviceId_ServiceStatusMethodKey30 = new MethodKey(_classLoaderProxy.getClassName(),
+		_countByserviceId_ServiceStatusMethodKey31 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByserviceId_ServiceStatus", long.class, int.class);
 	}
 
@@ -954,11 +957,38 @@ public class UserServiceEntryLocalServiceClp
 		return (java.util.List<vn.com.fis.portal.model.UserServiceEntry>)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public int countByuserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByuserIdMethodKey29,
+				userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public int countByservicePackageId(long servicePackageId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_countByservicePackageIdMethodKey29,
+		MethodHandler methodHandler = new MethodHandler(_countByservicePackageIdMethodKey30,
 				servicePackageId);
 
 		try {
@@ -985,7 +1015,7 @@ public class UserServiceEntryLocalServiceClp
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_countByserviceId_ServiceStatusMethodKey30,
+		MethodHandler methodHandler = new MethodHandler(_countByserviceId_ServiceStatusMethodKey31,
 				serviceId, serviceStatus);
 
 		try {
@@ -1042,6 +1072,7 @@ public class UserServiceEntryLocalServiceClp
 	private MethodKey _findByuserIdMethodKey26;
 	private MethodKey _findByservicePackageIdMethodKey27;
 	private MethodKey _findByserviceId_ServiceStatusMethodKey28;
-	private MethodKey _countByservicePackageIdMethodKey29;
-	private MethodKey _countByserviceId_ServiceStatusMethodKey30;
+	private MethodKey _countByuserIdMethodKey29;
+	private MethodKey _countByservicePackageIdMethodKey30;
+	private MethodKey _countByserviceId_ServiceStatusMethodKey31;
 }

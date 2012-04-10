@@ -17,5 +17,6 @@
 		<portlet id="billingthirdpartyupload"></portlet>
 		<portlet id="managerbillingsubcribertransaction"></portlet>
 		<portlet id="managerthirdpartytransaction"></portlet>
+		<portlet id="servicepackageadmin"></portlet>
 	</category>
 </display>

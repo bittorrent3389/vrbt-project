@@ -3,34 +3,22 @@
 <%
 	UserEntry curUser = UserEntryLocalServiceUtil.getUserEntry(permissionChecker.getUserId()); 
 
-	List<UserServiceEntry> usingService = null;
-	List<UserServiceEntry> usingPackageService = null;
+	List<UserServiceEntry> usingService = new ArrayList<UserServiceEntry>();
+	List<UserServiceEntry> usingPackageService = new ArrayList<UserServiceEntry>();
+	List<UserServiceEntry> listService = new ArrayList<UserServiceEntry>();
 	
-	try{
-		List<UserServiceEntry> listService = UserServiceEntryLocalServiceUtil.findByuserId(curUser.getUserId());
+	System.out.print("CurUser = "+curUser.getUserId());
+		
+	if(UserServiceEntryLocalServiceUtil.countByuserId(curUser.getUserId()) > 0)
+		listService = UserServiceEntryLocalServiceUtil.findByuserId(curUser.getUserId());
 	
-		for(UserServiceEntry serviceEntry : listService){
-			if(serviceEntry.getServiceId() > 0 && serviceEntry.getServiceStatus() == 1)
-				usingService.add(serviceEntry);
-			else
-				if(serviceEntry.getServicePackageId() > 0);
-		}
+	for(UserServiceEntry serviceEntry : listService){
+		if(serviceEntry.getServiceId() > 0 && serviceEntry.getServiceStatus() == 1)
+			usingService.add(serviceEntry);
+		else
+			if(serviceEntry.getServicePackageId() > 0)
+				usingPackageService.add(serviceEntry);
 	}
-	catch(Exception e){	
-		usingService = null;
-		usingPackageService = null;
-	}
-	
-	/* ///
-	String userService = "";
-	
-	
-	if(curUser.getServiceId()>0 && curUser.getServiceStatus()==1)
-		userService=curUser.getServiceName();
-	
-	String userServicePackage = "";
-	if(curUser.getServicePackageName()!=null)
-		userServicePackage = curUser.getServicePackageName(); */
 	
 	PortletURL redirectURL = PortletURLUtil.getCurrent(renderRequest, renderResponse);
 	String redirect = redirectURL.toString();

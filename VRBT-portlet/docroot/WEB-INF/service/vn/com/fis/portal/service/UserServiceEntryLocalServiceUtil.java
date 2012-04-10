@@ -412,6 +412,11 @@ public class UserServiceEntryLocalServiceUtil {
 				   .findByserviceId_ServiceStatus(serviceId, serviceStatus);
 	}
 
+	public static int countByuserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByuserId(userId);
+	}
+
 	public static int countByservicePackageId(long servicePackageId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().countByservicePackageId(servicePackageId);

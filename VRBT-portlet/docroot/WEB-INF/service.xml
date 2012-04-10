@@ -498,6 +498,7 @@
 			<finder-column name="serviceStatus" />
 		</finder>
 	</entity>
+	
 	<entity name="ContactEntry"  table="TBL_CONTACT" local-service="true" remote-service="true">
 		<!-- PK fields -->
 

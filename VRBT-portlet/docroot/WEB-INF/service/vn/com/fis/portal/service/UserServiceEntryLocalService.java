@@ -354,6 +354,9 @@ public interface UserServiceEntryLocalService extends PersistedModelLocalService
 		long serviceId, int serviceStatus)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	public int countByuserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	public int countByservicePackageId(long servicePackageId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 

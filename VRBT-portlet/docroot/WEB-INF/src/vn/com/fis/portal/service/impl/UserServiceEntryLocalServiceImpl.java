@@ -167,6 +167,10 @@ public class UserServiceEntryLocalServiceImpl
 		return UserServiceEntryUtil.findByserviceId_ServiceStatus(serviceId, serviceStatus);
 	}
 	
+	public int countByuserId(long userId) throws SystemException {
+		return UserServiceEntryUtil.countByuserId(userId);
+	}
+	
 	public int countByservicePackageId(long servicePackageId)
 			throws SystemException {
 		return UserServiceEntryUtil.countByservicePackageId(servicePackageId);

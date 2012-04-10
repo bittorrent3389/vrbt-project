@@ -35,6 +35,7 @@
 		
 	}catch(Exception e){
 		e.printStackTrace();
+		System.out.print("Subscriber role does not exist");
 		isAllow = false;
 	}
 %>
