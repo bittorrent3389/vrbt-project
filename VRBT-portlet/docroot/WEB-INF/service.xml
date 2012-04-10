@@ -55,9 +55,11 @@
 		</order>
 		<!-- Finder methods -->
 		<finder name="CategoryName" return-type="Collection">
-			<finder-column name="categoryName" />
+			<finder-column name="categoryName" case-sensitive=""/>
 		</finder>
-		
+		<finder name="CategoryNameAbsolute" return-type="CategoryEntry">
+			<finder-column name="categoryName" case-sensitive="false" comparator="="/>
+		</finder>
 		<finder name="status" return-type="Collection">
 			<finder-column name="status" />
 		</finder>
