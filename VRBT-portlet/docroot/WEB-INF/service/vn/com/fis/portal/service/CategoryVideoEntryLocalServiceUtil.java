@@ -321,6 +321,116 @@ public class CategoryVideoEntryLocalServiceUtil {
 		getService().removeByC_V(categoryId, videoId);
 	}
 
+	/**
+	* Returns all the category video entries where videoId = &#63;.
+	*
+	* @param videoId the video ID
+	* @return the matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByVideoId(videoId);
+	}
+
+	/**
+	* Returns a range of all the category video entries where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param start the lower bound of the range of category video entries
+	* @param end the upper bound of the range of category video entries (not inclusive)
+	* @return the range of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByVideoId(videoId, start, end);
+	}
+
+	/**
+	* Returns the number of category video entries where videoId = &#63;.
+	*
+	* @param videoId the video ID
+	* @return the number of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByVideoId(videoId);
+	}
+
+	/**
+	* Removes all the category video entries where videoId = &#63; from the database.
+	*
+	* @param videoId the video ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().removeByVideoId(videoId);
+	}
+
+	/**
+	* Returns all the category video entries where categoryId = &#63;.
+	*
+	* @param categoryId the category ID
+	* @return the matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByCategoryId(categoryId);
+	}
+
+	/**
+	* Returns a range of all the category video entries where categoryId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryId the category ID
+	* @param start the lower bound of the range of category video entries
+	* @param end the upper bound of the range of category video entries (not inclusive)
+	* @return the range of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByCategoryId(categoryId, start, end);
+	}
+
+	/**
+	* Returns the number of category video entries where categoryId = &#63;.
+	*
+	* @param categoryId the category ID
+	* @return the number of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByCategoryId(long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByCategoryId(categoryId);
+	}
+
+	/**
+	* Removes all the category video entries where categoryId = &#63; from the database.
+	*
+	* @param categoryId the category ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByCategoryId(long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getService().removeByCategoryId(categoryId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

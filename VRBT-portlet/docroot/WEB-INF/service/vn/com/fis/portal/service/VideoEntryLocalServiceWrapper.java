@@ -376,6 +376,88 @@ public class VideoEntryLocalServiceWrapper implements VideoEntryLocalService,
 			folderId);
 	}
 
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> searchVideoByCategory(
+		long categoryId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByCategory(categoryId, start,
+			end);
+	}
+
+	public int searchVideoByCategoryCount(long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByCategoryCount(categoryId);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> searchVideoByCategory_User(
+		long categoryId, long userId, int start, int end, boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByCategory_User(categoryId,
+			userId, start, end, andOperator);
+	}
+
+	public int searchVideoByCategory_User_Count(long categoryId, long userId,
+		boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByCategory_User_Count(categoryId,
+			userId, andOperator);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> searchVideoByCategory_OtherUser(
+		long categoryId, long userId, int start, int end, boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByCategory_OtherUser(categoryId,
+			userId, start, end, andOperator);
+	}
+
+	public int searchVideoByCategory_OtherUser_Count(long categoryId,
+		long userId, boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByCategory_OtherUser_Count(categoryId,
+			userId, andOperator);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> searchVideoByUser(
+		long userId, int start, int end, boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByUser(userId, start, end,
+			andOperator);
+	}
+
+	public int searchVideoByUserCount(long userId, boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByUserCount(userId,
+			andOperator);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> searchVideoByVideoName_Folder_User(
+		java.lang.String videoName, long folderId, long userId, int start,
+		int end) throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByVideoName_Folder_User(videoName,
+			folderId, userId, start, end);
+	}
+
+	public int searchVideoByVideoName_Folder_User_Count(
+		java.lang.String videoName, long folderId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByVideoName_Folder_User_Count(videoName,
+			folderId, userId);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.VideoEntry> searchVideoByVideoName_OriginCode_ServiceActive(
+		java.lang.String videoName, int originCode, int serviceActive,
+		long userId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByVideoName_OriginCode_ServiceActive(videoName,
+			originCode, serviceActive, userId, start, end);
+	}
+
+	public int searchVideoByVideoName_OriginCode_ServiceActive_Count(
+		java.lang.String videoName, int originCode, int serviceActive,
+		long userId) throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoEntryLocalService.searchVideoByVideoName_OriginCode_ServiceActive_Count(videoName,
+			originCode, serviceActive, userId);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

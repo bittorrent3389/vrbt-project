@@ -180,4 +180,9 @@ public class UserServiceEntryLocalServiceImpl
 			throws SystemException {
 		return UserServiceEntryUtil.countByserviceId_ServiceStatus(serviceId, serviceStatus);
 	}
+	
+	public int countByUserId_ServicePackageId(long userId, long servicePackageId)
+			throws SystemException {
+		return UserServiceEntryUtil.countByUserId_ServicePackageId(userId, servicePackageId);
+	}
 }

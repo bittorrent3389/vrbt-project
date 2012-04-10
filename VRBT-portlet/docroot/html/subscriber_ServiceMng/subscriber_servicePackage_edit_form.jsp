@@ -30,10 +30,8 @@
 			if(serviceId > 0){
 				serviceEntry = ServiceEntryLocalServiceUtil.getServiceEntry(serviceId);
 				
-				listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(serviceId, 1);
-				
-				if(listPackage.size()<=0)
-					listPackage = null;
+				if(ServicePackageEntryLocalServiceUtil.countByserviceId_status(serviceId, 1) > 0)
+					listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(serviceId, 1);
 			}	
 		}
 			
@@ -70,7 +68,7 @@
 	
 			<aui:column columnWidth="600" >
 				<c:if test="<%= serviceId > 0 %>">	
-					<c:if test="<%= listPackage != null %>">	
+					<c:if test="<%= listPackage.size() > 0 %>">	
 						<portlet:actionURL var="registrationServicePackageURL" name="registrationServicePackage">
 							<portlet:param name="serviceId" value="<%= String.valueOf(serviceEntry.getServiceId()) %>"/>
 							<portlet:param name="userId" value="<%= String.valueOf(userExt.getUserId()) %>"/>
@@ -90,11 +88,15 @@
 				
 						<aui:form action="<%= registrationServicePackageURL %>" method="POST" name="registrationServicePackageForm">
 							<aui:field-wrapper name="<%= serviceEntry.getServiceName() %>" label="">
-								<% for(ServicePackageEntry packageExt :listPackage) { %>
-							
+								<% for(ServicePackageEntry packageExt :listPackage) { 
+									boolean isUse = false;
+									
+									if(UserServiceEntryLocalServiceUtil.countByUserId_ServicePackageId(userExt.getUserId(), packageExt.getServicePackageId()) > 0)
+										isUse = true;
+								%>
+																		
 									<aui:input type="radio" name="<%= serviceEntry.getServiceName() %>" value="<%= packageExt.getServicePackageId() %>"
-										checked='<%= UserServiceEntryLocalServiceUtil.findByUserId_ServiceId(userExt.getUserId(), 
-												serviceEntry.getServiceId()).getServicePackageId() == packageExt.getServicePackageId() %>'	
+										checked="<%= isUse %>"	
 										showRequiredLabel="true" label="<%= packageExt.getServicePackageName() %>"/>
 								<% } %> 
 							</aui:field-wrapper>

@@ -13,7 +13,7 @@
 
 %>
 	<portlet:renderURL var="selectServiceURL">
-		<portlet:param name="jspPage" value="/html/subscriber_serviceMng/subscriber_servicePackage_edit_form.jsp"/>
+		<portlet:param name="jspPage" value="/html/subscriber_ServiceMng/subscriber_servicePackage_edit_form.jsp"/>
 		<portlet:param name="userId" value="<%= String.valueOf(permissionChecker.getUserId()) %>"/>
 		<portlet:param name="serviceId" value="<%= String.valueOf(service.getServiceId()) %>"/>
 		<portlet:param name="redirect" value="<%= editDirect %>"></portlet:param>

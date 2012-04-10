@@ -20,17 +20,19 @@
 		companyId = PortalUtil.getCompanyId(renderRequest);
 		
 		roleId = RoleLocalServiceUtil.getRole(companyId, "Subscriber").getRoleId();
-	
+		System.out.println("ROLE ID");
 		if(UserLocalServiceUtil.hasRoleUser(roleId, userId)){
 			userEntry = UserEntryLocalServiceUtil.getUserEntry(userId);
 			isAllow = true;
 			
-			if(UserServiceEntryLocalServiceUtil.countByuserId(userId) > 0)
-				userPackage = UserServiceEntryLocalServiceUtil.findByuserId(userId);
+			List<UserServiceEntry> listService = new ArrayList<UserServiceEntry>();
 			
-			for(UserServiceEntry userServiceEntry : userPackage){
-				if(userServiceEntry.getServicePackageId() <= 0)
-					userPackage.remove(userServiceEntry);
+			if(UserServiceEntryLocalServiceUtil.countByuserId(userId) > 0)
+				listService = UserServiceEntryLocalServiceUtil.findByuserId(userId);
+			
+			for(UserServiceEntry userServiceEntry : listService){
+				if(userServiceEntry.getServicePackageId() > 0)
+					userPackage.add(userServiceEntry);
 			}
 		}
 		

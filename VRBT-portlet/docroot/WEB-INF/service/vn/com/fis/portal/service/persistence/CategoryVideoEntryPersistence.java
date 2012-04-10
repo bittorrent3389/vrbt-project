@@ -216,6 +216,216 @@ public interface CategoryVideoEntryPersistence extends BasePersistence<CategoryV
 			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
 
 	/**
+	* Returns all the category video entries where videoId = &#63;.
+	*
+	* @param videoId the video ID
+	* @return the matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the category video entries where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param start the lower bound of the range of category video entries
+	* @param end the upper bound of the range of category video entries (not inclusive)
+	* @return the range of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the category video entries where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param start the lower bound of the range of category video entries
+	* @param end the upper bound of the range of category video entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first category video entry in the ordered set where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching category video entry
+	* @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryVideoEntry findByVideoId_First(
+		long videoId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
+
+	/**
+	* Returns the last category video entry in the ordered set where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param videoId the video ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching category video entry
+	* @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryVideoEntry findByVideoId_Last(
+		long videoId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
+
+	/**
+	* Returns the category video entries before and after the current category video entry in the ordered set where videoId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryViceoId the primary key of the current category video entry
+	* @param videoId the video ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next category video entry
+	* @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a category video entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryVideoEntry[] findByVideoId_PrevAndNext(
+		long categoryViceoId, long videoId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
+
+	/**
+	* Returns all the category video entries where categoryId = &#63;.
+	*
+	* @param categoryId the category ID
+	* @return the matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the category video entries where categoryId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryId the category ID
+	* @param start the lower bound of the range of category video entries
+	* @param end the upper bound of the range of category video entries (not inclusive)
+	* @return the range of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns an ordered range of all the category video entries where categoryId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryId the category ID
+	* @param start the lower bound of the range of category video entries
+	* @param end the upper bound of the range of category video entries (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the first category video entry in the ordered set where categoryId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryId the category ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching category video entry
+	* @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryVideoEntry findByCategoryId_First(
+		long categoryId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
+
+	/**
+	* Returns the last category video entry in the ordered set where categoryId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryId the category ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching category video entry
+	* @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a matching category video entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryVideoEntry findByCategoryId_Last(
+		long categoryId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
+
+	/**
+	* Returns the category video entries before and after the current category video entry in the ordered set where categoryId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param categoryViceoId the primary key of the current category video entry
+	* @param categoryId the category ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next category video entry
+	* @throws vn.com.fis.portal.NoSuchCategoryVideoEntryException if a category video entry with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.CategoryVideoEntry[] findByCategoryId_PrevAndNext(
+		long categoryViceoId, long categoryId,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchCategoryVideoEntryException;
+
+	/**
 	* Returns all the category video entries.
 	*
 	* @return the category video entries
@@ -269,6 +479,24 @@ public interface CategoryVideoEntryPersistence extends BasePersistence<CategoryV
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Removes all the category video entries where videoId = &#63; from the database.
+	*
+	* @param videoId the video ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Removes all the category video entries where categoryId = &#63; from the database.
+	*
+	* @param categoryId the category ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByCategoryId(long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Removes all the category video entries from the database.
 	*
 	* @throws SystemException if a system exception occurred
@@ -285,6 +513,26 @@ public interface CategoryVideoEntryPersistence extends BasePersistence<CategoryV
 	* @throws SystemException if a system exception occurred
 	*/
 	public int countByC_V(long categoryId, long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of category video entries where videoId = &#63;.
+	*
+	* @param videoId the video ID
+	* @return the number of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of category video entries where categoryId = &#63;.
+	*
+	* @param categoryId the category ID
+	* @return the number of matching category video entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByCategoryId(long categoryId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

@@ -1,7 +1,9 @@
 create index IX_1E5C022 on TBL_CATEGORY (categoryName);
 create index IX_1EBA966B on TBL_CATEGORY (status);
 
+create index IX_55BEF70E on TBL_CATEGORY_VIDEO (categoryId);
 create index IX_C2884D58 on TBL_CATEGORY_VIDEO (categoryId, videoId);
+create index IX_CCFA8025 on TBL_CATEGORY_VIDEO (videoId);
 
 create index IX_9A1B2F1E on TBL_CONTACT (userId, mobileNumber);
 

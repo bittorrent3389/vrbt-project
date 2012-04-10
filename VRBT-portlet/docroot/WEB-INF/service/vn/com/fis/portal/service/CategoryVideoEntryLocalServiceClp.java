@@ -99,6 +99,30 @@ public class CategoryVideoEntryLocalServiceClp
 
 		_removeByC_VMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
 				"removeByC_V", long.class, long.class);
+
+		_findByVideoIdMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByVideoId", long.class);
+
+		_findByVideoIdMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByVideoId", long.class, int.class, int.class);
+
+		_countByVideoIdMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByVideoId", long.class);
+
+		_removeByVideoIdMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByVideoId", long.class);
+
+		_findByCategoryIdMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByCategoryId", long.class);
+
+		_findByCategoryIdMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByCategoryId", long.class, int.class, int.class);
+
+		_countByCategoryIdMethodKey27 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByCategoryId", long.class);
+
+		_removeByCategoryIdMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByCategoryId", long.class);
 	}
 
 	public vn.com.fis.portal.model.CategoryVideoEntry addCategoryVideoEntry(
@@ -672,6 +696,218 @@ public class CategoryVideoEntryLocalServiceClp
 		}
 	}
 
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByVideoIdMethodKey21,
+				videoId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.CategoryVideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByVideoId(
+		long videoId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByVideoIdMethodKey22,
+				videoId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.CategoryVideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByVideoIdMethodKey23,
+				videoId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByVideoId(long videoId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_removeByVideoIdMethodKey24,
+				videoId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByCategoryIdMethodKey25,
+				categoryId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.CategoryVideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.CategoryVideoEntry> findByCategoryId(
+		long categoryId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByCategoryIdMethodKey26,
+				categoryId, start, end);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.CategoryVideoEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int countByCategoryId(long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByCategoryIdMethodKey27,
+				categoryId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByCategoryId(long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		MethodHandler methodHandler = new MethodHandler(_removeByCategoryIdMethodKey28,
+				categoryId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -698,4 +934,12 @@ public class CategoryVideoEntryLocalServiceClp
 	private MethodKey _findByC_VMethodKey18;
 	private MethodKey _countByC_VMethodKey19;
 	private MethodKey _removeByC_VMethodKey20;
+	private MethodKey _findByVideoIdMethodKey21;
+	private MethodKey _findByVideoIdMethodKey22;
+	private MethodKey _countByVideoIdMethodKey23;
+	private MethodKey _removeByVideoIdMethodKey24;
+	private MethodKey _findByCategoryIdMethodKey25;
+	private MethodKey _findByCategoryIdMethodKey26;
+	private MethodKey _countByCategoryIdMethodKey27;
+	private MethodKey _removeByCategoryIdMethodKey28;
 }

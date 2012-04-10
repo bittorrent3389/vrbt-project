@@ -425,6 +425,12 @@ public class UserServiceEntryLocalServiceWrapper
 			serviceStatus);
 	}
 
+	public int countByUserId_ServicePackageId(long userId, long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userServiceEntryLocalService.countByUserId_ServicePackageId(userId,
+			servicePackageId);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */
