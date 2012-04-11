@@ -18,5 +18,6 @@
 		<portlet id="managerbillingsubcribertransaction"></portlet>
 		<portlet id="managerthirdpartytransaction"></portlet>
 		<portlet id="servicepackageadmin"></portlet>
+		<portlet id="purchasevideo"></portlet>
 	</category>
 </display>

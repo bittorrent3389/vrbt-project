@@ -318,6 +318,7 @@
 			<finder-column name="status" />
 		</finder>
 	</entity>
+	
 	<entity name="UserEntry"  table="TBL_USER" local-service="true" remote-service="true">
 
 		<!-- PK fields -->

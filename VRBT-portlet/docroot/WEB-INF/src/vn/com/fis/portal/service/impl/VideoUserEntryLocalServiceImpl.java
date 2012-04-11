@@ -104,4 +104,9 @@ public class VideoUserEntryLocalServiceImpl
 	public List<VideoUserEntry> findByUserId_VideoId_Status(long userId,long videoId, int status) throws SystemException {
 		return VideoUserEntryUtil.findByUserId_VideoId_Status(userId, videoId, status);
 	}
+	
+	public int countByUserId_VideoId_Status(long userId, long videoId,
+			int status) throws SystemException {
+		return VideoUserEntryUtil.countByUserId_VideoId_Status(userId, videoId, status);
+	}
 }

@@ -323,6 +323,12 @@ public class VideoUserEntryLocalServiceWrapper
 			videoId, status);
 	}
 
+	public int countByUserId_VideoId_Status(long userId, long videoId,
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return _videoUserEntryLocalService.countByUserId_VideoId_Status(userId,
+			videoId, status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

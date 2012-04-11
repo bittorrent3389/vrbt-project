@@ -459,6 +459,11 @@ public class RatingEntryLocalServiceWrapper implements RatingEntryLocalService,
 		return _ratingEntryLocalService.countByVideoId_Code(videoId, code);
 	}
 
+	public int countByVideoId_UserId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _ratingEntryLocalService.countByVideoId_UserId(videoId, userId);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

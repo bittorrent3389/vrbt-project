@@ -134,6 +134,9 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 
 		_countByVideoId_CodeMethodKey33 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByVideoId_Code", long.class, int.class);
+
+		_countByVideoId_UserIdMethodKey34 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByVideoId_UserId", long.class, long.class);
 	}
 
 	public vn.com.fis.portal.model.RatingEntry addRatingEntry(
@@ -1076,6 +1079,33 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 		return ((Integer)returnObj).intValue();
 	}
 
+	public int countByVideoId_UserId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByVideoId_UserIdMethodKey34,
+				videoId, userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -1115,4 +1145,5 @@ public class RatingEntryLocalServiceClp implements RatingEntryLocalService {
 	private MethodKey _fetchByVideoId_UserIdMethodKey31;
 	private MethodKey _findByVideoId_CodeMethodKey32;
 	private MethodKey _countByVideoId_CodeMethodKey33;
+	private MethodKey _countByVideoId_UserIdMethodKey34;
 }

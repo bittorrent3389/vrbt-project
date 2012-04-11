@@ -289,4 +289,7 @@ public interface VideoUserEntryLocalService extends PersistedModelLocalService {
 	public java.util.List<vn.com.fis.portal.model.VideoUserEntry> findByUserId_VideoId_Status(
 		long userId, long videoId, int status)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByUserId_VideoId_Status(long userId, long videoId,
+		int status) throws com.liferay.portal.kernel.exception.SystemException;
 }

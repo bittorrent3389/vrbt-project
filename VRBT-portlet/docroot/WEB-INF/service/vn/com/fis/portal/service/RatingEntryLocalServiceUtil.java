@@ -467,6 +467,11 @@ public class RatingEntryLocalServiceUtil {
 		return getService().countByVideoId_Code(videoId, code);
 	}
 
+	public static int countByVideoId_UserId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByVideoId_UserId(videoId, userId);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

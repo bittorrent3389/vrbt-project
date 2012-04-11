@@ -404,4 +404,7 @@ public interface RatingEntryLocalService extends PersistedModelLocalService {
 
 	public int countByVideoId_Code(long videoId, int code)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByVideoId_UserId(long videoId, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

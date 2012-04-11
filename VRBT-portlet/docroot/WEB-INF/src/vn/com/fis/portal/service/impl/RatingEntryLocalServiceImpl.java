@@ -255,4 +255,9 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 	public int countByVideoId_Code(long videoId, int code) throws SystemException{
 		return RatingEntryUtil.countByVideoId_Code(videoId, code);
 	}
+	
+	public int countByVideoId_UserId(long videoId, long userId)
+			throws SystemException {
+		return RatingEntryUtil.countByVideoId_UserId(videoId, userId);
+	}
 }

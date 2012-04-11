@@ -326,6 +326,11 @@ public class VideoUserEntryLocalServiceUtil {
 		return getService().findByUserId_VideoId_Status(userId, videoId, status);
 	}
 
+	public static int countByUserId_VideoId_Status(long userId, long videoId,
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByUserId_VideoId_Status(userId, videoId, status);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

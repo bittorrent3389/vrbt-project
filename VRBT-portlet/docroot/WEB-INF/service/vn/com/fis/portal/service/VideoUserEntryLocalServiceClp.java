@@ -102,6 +102,10 @@ public class VideoUserEntryLocalServiceClp implements VideoUserEntryLocalService
 
 		_findByUserId_VideoId_StatusMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByUserId_VideoId_Status", long.class, long.class, int.class);
+
+		_countByUserId_VideoId_StatusMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserId_VideoId_Status", long.class, long.class,
+				int.class);
 	}
 
 	public vn.com.fis.portal.model.VideoUserEntry addVideoUserEntry(
@@ -702,6 +706,33 @@ public class VideoUserEntryLocalServiceClp implements VideoUserEntryLocalService
 		return (java.util.List<vn.com.fis.portal.model.VideoUserEntry>)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public int countByUserId_VideoId_Status(long userId, long videoId,
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserId_VideoId_StatusMethodKey22,
+				userId, videoId, status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -729,4 +760,5 @@ public class VideoUserEntryLocalServiceClp implements VideoUserEntryLocalService
 	private MethodKey _removeByUserId_VideoIdMethodKey19;
 	private MethodKey _countByUserId_VideoIdMethodKey20;
 	private MethodKey _findByUserId_VideoId_StatusMethodKey21;
+	private MethodKey _countByUserId_VideoId_StatusMethodKey22;
 }
