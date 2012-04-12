@@ -253,6 +253,13 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 	}
 	
 	public int countByVideoId_Code(long videoId, int code) throws SystemException{
+		/*System.out.println("OKI");
+		try {
+			return RatingEntryUtil.countByVideoId_Code(videoId, code);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}*/
 		return RatingEntryUtil.countByVideoId_Code(videoId, code);
 	}
 	

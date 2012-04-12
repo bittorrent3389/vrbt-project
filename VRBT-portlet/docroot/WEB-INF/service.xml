@@ -200,7 +200,7 @@
 		<!-- Audit fields -->
 		<column name="videoId" type="long" />
 		<column name="userId" type="long" />
-		<column name="code" type="int" />
+		<column name="code" db-name="code" type="int" />
 		<column name="date_" type="Date" />
 		<!-- Order -->
 		
