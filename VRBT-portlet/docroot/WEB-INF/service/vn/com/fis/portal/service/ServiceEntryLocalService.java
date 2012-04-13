@@ -266,4 +266,10 @@ public interface ServiceEntryLocalService extends PersistedModelLocalService {
 		java.lang.String serviceName)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchServiceEntryException;
+
+	public int countByserviceCode(java.lang.String serviceCode)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countBystatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

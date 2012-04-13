@@ -299,6 +299,16 @@ public class ServiceEntryLocalServiceWrapper implements ServiceEntryLocalService
 		return _serviceEntryLocalService.findByserviceName(serviceName);
 	}
 
+	public int countByserviceCode(java.lang.String serviceCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceEntryLocalService.countByserviceCode(serviceCode);
+	}
+
+	public int countBystatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceEntryLocalService.countBystatus(status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

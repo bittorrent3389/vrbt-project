@@ -308,6 +308,16 @@ public class ServiceEntryLocalServiceUtil {
 		return getService().findByserviceName(serviceName);
 	}
 
+	public static int countByserviceCode(java.lang.String serviceCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByserviceCode(serviceCode);
+	}
+
+	public static int countBystatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countBystatus(status);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

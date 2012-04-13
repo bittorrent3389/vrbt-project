@@ -109,6 +109,12 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 
 		_findByserviceNameMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByserviceName", java.lang.String.class);
+
+		_countByserviceCodeMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByserviceCode", java.lang.String.class);
+
+		_countBystatusMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countBystatus", int.class);
 	}
 
 	public vn.com.fis.portal.model.ServiceEntry addServiceEntry(
@@ -792,6 +798,60 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 		return (vn.com.fis.portal.model.ServiceEntry)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public int countByserviceCode(java.lang.String serviceCode)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByserviceCodeMethodKey25,
+				ClpSerializer.translateInput(serviceCode));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public int countBystatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countBystatusMethodKey26,
+				status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -822,4 +882,6 @@ public class ServiceEntryLocalServiceClp implements ServiceEntryLocalService {
 	private MethodKey _findBystatusMethodKey22;
 	private MethodKey _findByserviceCodeMethodKey23;
 	private MethodKey _findByserviceNameMethodKey24;
+	private MethodKey _countByserviceCodeMethodKey25;
+	private MethodKey _countBystatusMethodKey26;
 }

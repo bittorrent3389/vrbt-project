@@ -62,6 +62,7 @@
 				}
 </aui:script>
 
+<% boolean hasService = false; %>
 
 <% 
 	long serviceId_ServiceChart = ParamUtil.getLong(renderRequest, "cbServiceChart", 0);
@@ -70,20 +71,20 @@
 	String serviceCode_servicePackageChart = "";
 
 	//Get data for service drop down list and get data for service which has service package
-	List<ServiceEntry> listService = ServiceEntryLocalServiceUtil.findBystatus(1);
+	List<ServiceEntry> listService = new ArrayList<ServiceEntry>();
 	List<ServiceEntry> listServiceChart = new ArrayList<ServiceEntry>();
 	List<ServiceEntry> listServicePackageChart = new ArrayList<ServiceEntry>();
 	
-	listServiceChart = null;
-	listServicePackageChart = null;
+	listService = ServiceEntryLocalServiceUtil.findBystatus(1);
 	
 	if(listService.size() > 0){
 		for(ServiceEntry serviceExt : listService){
-			List<ServicePackageEntry> listPackage = null;
+			List<ServicePackageEntry> listPackage = new ArrayList<ServicePackageEntry>();
 			
-			listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(serviceExt.getServiceId(), 1);
+			if(ServicePackageEntryLocalServiceUtil.countByserviceId_status(serviceExt.getServiceId(), 1) > 0)
+				listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(serviceExt.getServiceId(), 1);
 			
-			if(listPackage == null || listPackage.size() <= 0)
+			if(listPackage.size() <= 0)
 				listServiceChart.add(serviceExt);
 			else
 				listServicePackageChart.add(serviceExt);
@@ -99,12 +100,16 @@
 	//Get data about total user in using service
 	ServiceEntry viewService = null;
 	
-	if(serviceId_ServiceChart == 0)	
-		viewService = ServiceEntryLocalServiceUtil.findByserviceCode(ServiceEntryLocalServiceUtil.getStartServiceCode());
-	else
-		viewService = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode_ServiceChart);
+	if(serviceId_ServiceChart == 0){	
+		if(ServiceEntryLocalServiceUtil.countByserviceCode(ServiceEntryLocalServiceUtil.getStartServiceCode()) > 0)
+			viewService = ServiceEntryLocalServiceUtil.findByserviceCode(ServiceEntryLocalServiceUtil.getStartServiceCode());
+	}
+	else{
+		if(ServiceEntryLocalServiceUtil.countByserviceCode(serviceCode_ServiceChart) > 0)
+			viewService = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode_ServiceChart);
+	}
 		
-	if(viewService.getStatus() == 0)
+	if(viewService != null && viewService.getStatus() == 0)
 		viewService = null;
 	else
 		serviceCode_ServiceChart = viewService.getServiceCode();
@@ -112,47 +117,53 @@
 	//Get data about services which have package
 	ServiceEntry viewServicePac = null;
 	
-	if(serviceId_servicePackageChart == 0)
-		viewServicePac = ServiceEntryLocalServiceUtil.findByserviceCode(ServiceEntryLocalServiceUtil.getUploadServicePackageCode());
-	else
-		viewServicePac = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode_servicePackageChart);
+	if(serviceId_servicePackageChart == 0){
+		if(ServiceEntryLocalServiceUtil.countByserviceCode(ServiceEntryLocalServiceUtil.getUploadServicePackageCode()) > 0)
+			viewServicePac = ServiceEntryLocalServiceUtil.findByserviceCode(ServiceEntryLocalServiceUtil.getUploadServicePackageCode());
+	}
+	else{
+		if(ServiceEntryLocalServiceUtil.countByserviceCode(serviceCode_servicePackageChart) > 0)
+			viewServicePac = ServiceEntryLocalServiceUtil.findByserviceCode(serviceCode_servicePackageChart);
+	}
 	
-	List<ServicePackageEntry> listPackage = null;
+	List<ServicePackageEntry> listPackage = new ArrayList<ServicePackageEntry>();
 	String packageName = "";
 	String packageTotal = "";
 		
-	if(viewServicePac.getStatus() == 0)
+	if(viewServicePac != null && viewServicePac.getStatus() == 0)
 		viewServicePac = null;
-	else{
-		listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(viewServicePac.getServiceId(), 1);
+	else 
+		if(viewServicePac != null && viewServicePac.getStatus() == 1){
+			if(ServicePackageEntryLocalServiceUtil.countByserviceId_status(viewServicePac.getServiceId(), 1) > 0)
+				listPackage = ServicePackageEntryLocalServiceUtil.findByserviceId_Status(viewServicePac.getServiceId(), 1);
 		
-		if(listPackage != null && listPackage.size() >0){
-			boolean isUse = false;
-			for(ServicePackageEntry packageExt : listPackage){
-				packageName += packageExt.getServicePackageName() + " - " + packageExt.getServicePackageName() + "#";
+			if(listPackage != null && listPackage.size() >0){
+				boolean isUse = false;
+				for(ServicePackageEntry packageExt : listPackage){
+					packageName += packageExt.getServicePackageName() + " - " + packageExt.getServicePackageName() + "#";
 					
-				long total = 0;
-				try{
-					total = UserServiceEntryLocalServiceUtil.countByservicePackageId(packageExt.getServicePackageId());
-				}catch(Exception e){
-					total = 0;
+					long total = 0;
+					try{
+						total = UserServiceEntryLocalServiceUtil.countByservicePackageId(packageExt.getServicePackageId());
+					}catch(Exception e){
+						total = 0;
+					}
+				
+					packageTotal += String.valueOf(total) + "#";
+					
+					if(total > 0)
+						isUse = true;
 				}
 				
-				packageTotal += String.valueOf(total) + "#";
-					
-				if(total > 0)
-					isUse = true;
-			}
+				serviceCode_servicePackageChart = viewServicePac.getServiceCode();
 				
-			serviceCode_servicePackageChart = viewServicePac.getServiceCode();
-				
-			if(!isUse){
-				packageName = "Don't use#";
-				packageTotal = "1#";
-			}
-		} else
-			listPackage = null;		
-	}
+				if(!isUse){
+					packageName = "Don't use#";
+					packageTotal = "1#";
+				}
+			} else
+				listPackage = null;		
+		}
 %>
 
 <portlet:actionURL var="viewChartURL" name="viewChart">

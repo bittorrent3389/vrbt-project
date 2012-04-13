@@ -86,4 +86,12 @@ public class ServiceEntryLocalServiceImpl
 	public ServiceEntry findByserviceName(String serviceName) throws NoSuchServiceEntryException, SystemException {
 		return ServiceEntryUtil.findByserviceName(serviceName);
 	}
+	
+	public int countByserviceCode(String serviceCode) throws SystemException {
+		return ServiceEntryUtil.countByserviceCode(serviceCode);
+	}
+	
+	public int countBystatus(int status) throws SystemException {
+		return ServiceEntryUtil.countBystatus(status);
+	}
 }
