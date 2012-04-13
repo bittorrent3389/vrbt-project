@@ -443,17 +443,10 @@ public class RatingEntryLocalServiceUtil {
 		getService().removeByUser_Video_Code(userId, videoId, code);
 	}
 
-	public static vn.com.fis.portal.model.RatingEntry findByVideoId_UserId(
-		long videoId, long userId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchRatingEntryException {
-		return getService().findByVideoId_UserId(videoId, userId);
-	}
-
-	public static vn.com.fis.portal.model.RatingEntry fetchByVideoId_UserId(
+	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_UserId(
 		long videoId, long userId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().fetchByVideoId_UserId(videoId, userId);
+		return getService().findByVideoId_UserId(videoId, userId);
 	}
 
 	public static java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_Code(

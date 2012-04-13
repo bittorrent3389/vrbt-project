@@ -266,6 +266,28 @@ public class ViolationEntryLocalServiceUtil {
 		return getService().findByStatus(status);
 	}
 
+	/**
+	* Returns the number of violation entries where status = &#63;.
+	*
+	* @param status the status
+	* @return the number of matching violation entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByStatus(status);
+	}
+
+	public static java.util.List<vn.com.fis.portal.model.ViolationEntry> findAll()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findAll();
+	}
+
+	public static int countAll()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countAll();
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

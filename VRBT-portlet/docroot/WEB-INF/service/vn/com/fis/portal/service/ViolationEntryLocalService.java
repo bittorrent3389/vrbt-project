@@ -237,4 +237,20 @@ public interface ViolationEntryLocalService extends PersistedModelLocalService {
 
 	public java.util.List<vn.com.fis.portal.model.ViolationEntry> findByStatus(
 		int status) throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of violation entries where status = &#63;.
+	*
+	* @param status the status
+	* @return the number of matching violation entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.ViolationEntry> findAll()
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countAll()
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

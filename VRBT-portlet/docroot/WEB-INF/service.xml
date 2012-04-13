@@ -218,7 +218,7 @@
 		<finder name="UserId" return-type="Collection">
 			<finder-column name="userId" />
 		</finder>
-		<finder name="VideoId_UserId" return-type="RatingEntry">
+		<finder name="VideoId_UserId" return-type="Collection">
 			<finder-column name="videoId" />
 			<finder-column name="userId" />
 		</finder>

@@ -435,17 +435,10 @@ public class RatingEntryLocalServiceWrapper implements RatingEntryLocalService,
 		_ratingEntryLocalService.removeByUser_Video_Code(userId, videoId, code);
 	}
 
-	public vn.com.fis.portal.model.RatingEntry findByVideoId_UserId(
-		long videoId, long userId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchRatingEntryException {
-		return _ratingEntryLocalService.findByVideoId_UserId(videoId, userId);
-	}
-
-	public vn.com.fis.portal.model.RatingEntry fetchByVideoId_UserId(
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_UserId(
 		long videoId, long userId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _ratingEntryLocalService.fetchByVideoId_UserId(videoId, userId);
+		return _ratingEntryLocalService.findByVideoId_UserId(videoId, userId);
 	}
 
 	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_Code(

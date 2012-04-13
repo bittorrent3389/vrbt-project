@@ -54,15 +54,15 @@ public class PurchaseVideo extends MVCPortlet {
 			VideoUserEntryLocalServiceUtil.addVideoUserEntry(videoUserEntry);
 			
 			//Send notification to admin (TEST Account)
-			String subject = "New purchase transaction from " + UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() + "account";
-			String messageToAdmin = "User ID: "+ userId 
-								+"; Username: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
-								+"; Mobile: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getMobileNumber() 
-								+"; VRBT ID: "+ videoId 
-								+"; VRBT Name: "+ VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+".";
-			String messageToUser = "You bought '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+"' vrbt.";
-			
-			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+//			String subject = "New purchase transaction from " + UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() + "account";
+//			String messageToAdmin = "User ID: "+ userId 
+//								+"; Username: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
+//								+"; Mobile: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getMobileNumber() 
+//								+"; VRBT ID: "+ videoId 
+//								+"; VRBT Name: "+ VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+".";
+//			String messageToUser = "You bought '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+"' vrbt.";
+//			
+//			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
 			
 		} catch (Exception e) {
 			SessionErrors.add(actionRequest, "error-message");
@@ -87,7 +87,7 @@ public class PurchaseVideo extends MVCPortlet {
 			violation_Video.setDate_(Calendar.getInstance().getTime());
 			
 			ViolationVideoEntryLocalServiceUtil.addViolationVideoEntry(violation_Video);
-			
+			/*
 			//Send notification to admin (TEST Account)
 			String subject = "A report about '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName() + "' VRBT";
 			String messageToAdmin = "User ID: "+ userId 
@@ -98,7 +98,7 @@ public class PurchaseVideo extends MVCPortlet {
 			String messageToUser = "You reported to admin about '"+ VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()
 					+"' vrbt. Reason: " + ViolationEntryLocalServiceUtil.getViolationEntry(violationId).getViolationTitle();
 			
-			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
 		} 
 		catch (Exception e) {
 			SessionErrors.add(actionRequest, "error-report-message");
@@ -116,13 +116,8 @@ public class PurchaseVideo extends MVCPortlet {
 				
 		RatingEntry userRating = null;
 		
-		try {
-			if(RatingEntryLocalServiceUtil.countByVideoId_UserId(videoId, userId) >0)
-				userRating = RatingEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId);
-		
-		} catch (NoSuchRatingEntryException e1) {
-			userRating = null;
-		}
+			if(RatingEntryLocalServiceUtil.countByVideoId_UserId(videoId, userId) == 1)
+				userRating = RatingEntryLocalServiceUtil.findByVideoId_UserId(videoId, userId).get(0);
 				
 		try {
 			if (userRating == null) {

@@ -16,6 +16,7 @@ package vn.com.fis.portal.service.impl;
 
 import java.util.List;
 
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 
 import vn.com.fis.portal.model.ViolationEntry;
@@ -46,5 +47,23 @@ public class ViolationEntryLocalServiceImpl
 	
 	public List<ViolationEntry> findByStatus(int status) throws SystemException{
 		return ViolationEntryUtil.findByStatus(status);
+	}
+	/**
+	 * Returns the number of violation entries where status = &#63;.
+	 *
+	 * @param status the status
+	 * @return the number of matching violation entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByStatus(int status) throws SystemException {
+		return ViolationEntryUtil.countByStatus(status);
+	}
+	
+	public List<ViolationEntry> findAll() throws SystemException {
+		return ViolationEntryUtil.findAll();
+	}
+	
+	public int countAll() throws SystemException {
+		return ViolationEntryUtil.countAll();
 	}
 }

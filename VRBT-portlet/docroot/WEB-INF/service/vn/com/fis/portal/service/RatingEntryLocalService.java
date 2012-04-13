@@ -388,13 +388,7 @@ public interface RatingEntryLocalService extends PersistedModelLocalService {
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchRatingEntryException;
 
-	public vn.com.fis.portal.model.RatingEntry findByVideoId_UserId(
-		long videoId, long userId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchRatingEntryException;
-
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public vn.com.fis.portal.model.RatingEntry fetchByVideoId_UserId(
+	public java.util.List<vn.com.fis.portal.model.RatingEntry> findByVideoId_UserId(
 		long videoId, long userId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 

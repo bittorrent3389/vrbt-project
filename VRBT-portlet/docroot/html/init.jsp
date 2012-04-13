@@ -45,4 +45,3 @@
 
 <%@page import="com.liferay.portal.service.UserLocalServiceUtil"%>
 <%@page import="com.liferay.portal.service.RoleLocalServiceUtil"%>
-<%@page import="com.liferay.portlet.ratings.service.RatingsEntryLocalServiceUtil"%>

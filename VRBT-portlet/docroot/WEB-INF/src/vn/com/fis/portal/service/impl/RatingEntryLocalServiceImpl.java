@@ -239,13 +239,9 @@ public class RatingEntryLocalServiceImpl extends RatingEntryLocalServiceBaseImpl
 		RatingEntryUtil.removeByUser_Video_Code(userId, videoId, code);
 	}
 	
-	public RatingEntry findByVideoId_UserId(long videoId, long userId)
-			throws NoSuchRatingEntryException, SystemException {
+	public List<RatingEntry> findByVideoId_UserId(long videoId, long userId)
+			throws SystemException {
 		return RatingEntryUtil.findByVideoId_UserId(videoId, userId);
-	}
-	
-	public RatingEntry fetchByVideoId_UserId(long videoId, long userId) throws SystemException{
-		return RatingEntryUtil.fetchByVideoId_UserId(videoId, userId);
 	}
 	
 	public List<RatingEntry> findByVideoId_Code(long videoId, int code) throws SystemException{

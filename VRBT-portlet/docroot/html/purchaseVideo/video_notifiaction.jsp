@@ -4,13 +4,14 @@
 	String userId = ParamUtil.getString(renderRequest, "userId");
 	String redirect = ParamUtil.getString(renderRequest, "redirect");
 	
-	List<ViolationEntry> listViolation = null;
+	List<ViolationEntry> listViolation = new ArrayList<ViolationEntry>();
 	
 	try{
-		listViolation = ViolationEntryLocalServiceUtil.findByStatus(1);
-		
-	} catch(Exception e){
-		listViolation = null;
+	
+	if(ViolationEntryLocalServiceUtil.countAll() > 0)
+		listViolation = ViolationEntryLocalServiceUtil.findAll();
+	}catch(Exception e){
+		e.printStackTrace();
 	}
 %>
 
@@ -23,9 +24,10 @@
 <fieldset>
 	<aui:form method="post" name="videoReportToAdminForm" action="<%= videoReportToAdminURL %>">
 		<aui:select name="violationId">
-			<% for(ViolationEntry violation : listViolation) { %>
-				<aui:option label="<%= violation.getViolationTitle() %>" value="<%= violation.getViolationId() %>"/>
-			<% } %>
+			<% for(ViolationEntry violation : listViolation) { 
+				if(violation.getStatus() == 1){	%>
+					<aui:option label="<%= violation.getViolationTitle() %>" value="<%= violation.getViolationId() %>"/>
+			<% }} %>
 		</aui:select>
 		
 		<aui:button-row>

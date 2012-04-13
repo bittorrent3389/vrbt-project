@@ -1,7 +1,7 @@
 <%@ include file="/html/init.jsp" %>
 
 <%
-	long videoId = ParamUtil.getLong(renderRequest, "video-Id", 1);
+	long videoId = ParamUtil.getLong(renderRequest, "video-Id", 2);
 %>
 
 <c:if test="<%= videoId != 0 %>">
@@ -23,6 +23,7 @@
 				isAllow = true;
 			
 		}catch(Exception e){
+			System.out.println("Subscriber does not exist.");
 			isAllow = false;
 		}
 		
@@ -39,7 +40,7 @@
 			RatingEntry userRate = null;
 			
 			if(RatingEntryLocalServiceUtil.countByVideoId_UserId(videoId, userEntry.getUserId()) > 0)
-				userRate = RatingEntryLocalServiceUtil.findByVideoId_UserId(videoId, userEntry.getUserId());
+				userRate = RatingEntryLocalServiceUtil.findByVideoId_UserId(videoId, userEntry.getUserId()).get(0);
 			
 			if(userRate != null){		
 				if(userRate.getCode() == 1)

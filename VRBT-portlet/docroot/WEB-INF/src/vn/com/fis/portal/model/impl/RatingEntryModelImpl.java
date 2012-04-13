@@ -67,10 +67,10 @@ public class RatingEntryModelImpl extends BaseModelImpl<RatingEntry>
 			{ "ratingId", Types.BIGINT },
 			{ "videoId", Types.BIGINT },
 			{ "userId", Types.BIGINT },
-			{ "code_", Types.INTEGER },
+			{ "code", Types.INTEGER },
 			{ "date_", Types.TIMESTAMP }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TBL_RATING (ratingId LONG not null primary key,videoId LONG,userId LONG,code_ INTEGER,date_ DATE null)";
+	public static final String TABLE_SQL_CREATE = "create table TBL_RATING (ratingId LONG not null primary key,videoId LONG,userId LONG,code INTEGER,date_ DATE null)";
 	public static final String TABLE_SQL_DROP = "drop table TBL_RATING";
 	public static final String ORDER_BY_JPQL = " ORDER BY ratingEntry.date_ ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TBL_RATING.date_ ASC";

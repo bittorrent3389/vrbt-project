@@ -42,7 +42,7 @@
 			total="<%= ServiceTransactionEntryLocalServiceUtil.searchCount(transactionCodeNumber, 0, 0, 1) %>"
 		/>
 	
-		<liferay-ui:search-container-row className="vn.com.fis.portal.portlet.util.model.Service_Transaction_HistoryExt" 
+		<liferay-ui:search-container-row className="vn.com.fis.portal.model.ServiceTransactionEntry" 
 			keyProperty="serviceTransactionHistoryId" modelVar="tran_history">
 		
 			<% String transactionCode = "";
@@ -70,8 +70,8 @@
 				if(tran_history.getServiceStopDate() != null)
 					serviceStartDate = dateFormat.format(tran_history.getServiceStopDate());
 			
-				if(tran_history.getServicePackageStartDate() != null)
-					servicePackageStartDate = dateFormat.format(tran_history.getServicePackageStartDate());
+				if(tran_history.getPackageDate() != null)
+					servicePackageStartDate = dateFormat.format(tran_history.getPackageDate());
 			
 				UserEntry userEntry = UserEntryLocalServiceUtil.getUserEntry(tran_history.getUserId());
 			
@@ -93,7 +93,7 @@
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-transactionCode"
 				value="<%= transactionCode %>"/>		
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-transactionDate"
-				value="<%= dateFormat.format(tran_history.getTransactionDate()) %>"/>		
+				value="<%= dateFormat.format(tran_history.getPackageDate()) %>"/>		
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-userId"
 				value="<%= String.valueOf(tran_history.getUserId()) %>"/>		
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-userName"
