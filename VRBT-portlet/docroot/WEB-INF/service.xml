@@ -353,7 +353,7 @@
 		<finder name="UserId" return-type="UserEntry">
 			<finder-column name="userId" />
 		</finder>
-		<finder name="Status" return-type="Collection">
+		<finder name="UserStatus" return-type="Collection">
 			<finder-column name="status" />
 		</finder>
 	</entity>
@@ -502,7 +502,7 @@
 		<finder name="servicePackageId" return-type="Collection">
 			<finder-column name="servicePackageId" />
 		</finder>
-		<finder name="serviceId_ServiceStatus" return-type="Collection">
+		<finder name="serviceId_Status" return-type="Collection">
 			<finder-column name="serviceId" />
 			<finder-column name="serviceStatus" />
 		</finder>

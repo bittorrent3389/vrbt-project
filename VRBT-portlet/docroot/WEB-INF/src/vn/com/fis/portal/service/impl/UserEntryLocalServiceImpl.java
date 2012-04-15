@@ -146,7 +146,7 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	}
 	
 	public int countByStatus(int status) throws SystemException {
-		return UserEntryUtil.countByStatus(status);
+		return UserEntryUtil.countByUserStatus(status);
 	}
 	
 	public int countAll() throws SystemException {
@@ -154,7 +154,7 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	}
 
 	public List<UserEntry> findByStatus(int status) throws SystemException {
-		return UserEntryUtil.findByStatus(status);
+		return UserEntryUtil.findByUserStatus(status);
 	}
 	
 	public UserEntry getUserEntryByUserName(String userName)

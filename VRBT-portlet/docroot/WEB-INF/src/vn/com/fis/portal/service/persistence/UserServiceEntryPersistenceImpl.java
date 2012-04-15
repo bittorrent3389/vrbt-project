@@ -188,30 +188,30 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
 			"countByservicePackageId", new String[] { Long.class.getName() });
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS =
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEID_STATUS =
 		new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class, FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
-			"findByserviceId_ServiceStatus",
+			"findByserviceId_Status",
 			new String[] {
 				Long.class.getName(), Integer.class.getName(),
 				
 			"java.lang.Integer", "java.lang.Integer",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS =
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS =
 		new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
 			UserServiceEntryImpl.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"findByserviceId_ServiceStatus",
+			"findByserviceId_Status",
 			new String[] { Long.class.getName(), Integer.class.getName() },
 			UserServiceEntryModelImpl.SERVICEID_COLUMN_BITMASK |
 			UserServiceEntryModelImpl.SERVICESTATUS_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_SERVICEID_SERVICESTATUS = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_COUNT_BY_SERVICEID_STATUS = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
-			"countByserviceId_ServiceStatus",
+			"countByserviceId_Status",
 			new String[] { Long.class.getName(), Integer.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(UserServiceEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserServiceEntryModelImpl.FINDER_CACHE_ENABLED,
@@ -538,15 +538,15 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 			}
 
 			if ((userServiceEntryModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS.getColumnBitmask()) != 0) {
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
 						Long.valueOf(userServiceEntryModelImpl.getOriginalServiceId()),
 						Integer.valueOf(userServiceEntryModelImpl.getOriginalServiceStatus())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEID_SERVICESTATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
 					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS,
 					args);
 
 				args = new Object[] {
@@ -554,9 +554,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 						Integer.valueOf(userServiceEntryModelImpl.getServiceStatus())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEID_SERVICESTATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
 					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS,
 					args);
 			}
 		}
@@ -2298,9 +2298,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @return the matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByserviceId_ServiceStatus(
-		long serviceId, int serviceStatus) throws SystemException {
-		return findByserviceId_ServiceStatus(serviceId, serviceStatus,
+	public List<UserServiceEntry> findByserviceId_Status(long serviceId,
+		int serviceStatus) throws SystemException {
+		return findByserviceId_Status(serviceId, serviceStatus,
 			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
@@ -2318,11 +2318,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @return the range of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByserviceId_ServiceStatus(
-		long serviceId, int serviceStatus, int start, int end)
-		throws SystemException {
-		return findByserviceId_ServiceStatus(serviceId, serviceStatus, start,
-			end, null);
+	public List<UserServiceEntry> findByserviceId_Status(long serviceId,
+		int serviceStatus, int start, int end) throws SystemException {
+		return findByserviceId_Status(serviceId, serviceStatus, start, end, null);
 	}
 
 	/**
@@ -2340,19 +2338,19 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @return the ordered range of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserServiceEntry> findByserviceId_ServiceStatus(
-		long serviceId, int serviceStatus, int start, int end,
+	public List<UserServiceEntry> findByserviceId_Status(long serviceId,
+		int serviceStatus, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
 				(orderByComparator == null)) {
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_SERVICEID_STATUS;
 			finderArgs = new Object[] { serviceId, serviceStatus };
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEID_SERVICESTATUS;
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_SERVICEID_STATUS;
 			finderArgs = new Object[] {
 					serviceId, serviceStatus,
 					
@@ -2376,9 +2374,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			query.append(_SQL_SELECT_USERSERVICEENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICEID_2);
+			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2);
 
-			query.append(_FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICESTATUS_2);
+			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -2441,10 +2439,10 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry findByserviceId_ServiceStatus_First(
-		long serviceId, int serviceStatus, OrderByComparator orderByComparator)
+	public UserServiceEntry findByserviceId_Status_First(long serviceId,
+		int serviceStatus, OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
-		List<UserServiceEntry> list = findByserviceId_ServiceStatus(serviceId,
+		List<UserServiceEntry> list = findByserviceId_Status(serviceId,
 				serviceStatus, 0, 1, orderByComparator);
 
 		if (list.isEmpty()) {
@@ -2481,12 +2479,12 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry findByserviceId_ServiceStatus_Last(long serviceId,
+	public UserServiceEntry findByserviceId_Status_Last(long serviceId,
 		int serviceStatus, OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
-		int count = countByserviceId_ServiceStatus(serviceId, serviceStatus);
+		int count = countByserviceId_Status(serviceId, serviceStatus);
 
-		List<UserServiceEntry> list = findByserviceId_ServiceStatus(serviceId,
+		List<UserServiceEntry> list = findByserviceId_Status(serviceId,
 				serviceStatus, count - 1, count, orderByComparator);
 
 		if (list.isEmpty()) {
@@ -2524,7 +2522,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a user service entry with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserServiceEntry[] findByserviceId_ServiceStatus_PrevAndNext(
+	public UserServiceEntry[] findByserviceId_Status_PrevAndNext(
 		long userServiceId, long serviceId, int serviceStatus,
 		OrderByComparator orderByComparator)
 		throws NoSuchUserServiceEntryException, SystemException {
@@ -2537,13 +2535,13 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			UserServiceEntry[] array = new UserServiceEntryImpl[3];
 
-			array[0] = getByserviceId_ServiceStatus_PrevAndNext(session,
+			array[0] = getByserviceId_Status_PrevAndNext(session,
 					userServiceEntry, serviceId, serviceStatus,
 					orderByComparator, true);
 
 			array[1] = userServiceEntry;
 
-			array[2] = getByserviceId_ServiceStatus_PrevAndNext(session,
+			array[2] = getByserviceId_Status_PrevAndNext(session,
 					userServiceEntry, serviceId, serviceStatus,
 					orderByComparator, false);
 
@@ -2557,7 +2555,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 		}
 	}
 
-	protected UserServiceEntry getByserviceId_ServiceStatus_PrevAndNext(
+	protected UserServiceEntry getByserviceId_Status_PrevAndNext(
 		Session session, UserServiceEntry userServiceEntry, long serviceId,
 		int serviceStatus, OrderByComparator orderByComparator, boolean previous) {
 		StringBundler query = null;
@@ -2572,9 +2570,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 		query.append(_SQL_SELECT_USERSERVICEENTRY_WHERE);
 
-		query.append(_FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICEID_2);
+		query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2);
 
-		query.append(_FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICESTATUS_2);
+		query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -2878,9 +2876,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @param serviceStatus the service status
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByserviceId_ServiceStatus(long serviceId,
-		int serviceStatus) throws SystemException {
-		for (UserServiceEntry userServiceEntry : findByserviceId_ServiceStatus(
+	public void removeByserviceId_Status(long serviceId, int serviceStatus)
+		throws SystemException {
+		for (UserServiceEntry userServiceEntry : findByserviceId_Status(
 				serviceId, serviceStatus)) {
 			remove(userServiceEntry);
 		}
@@ -3253,11 +3251,11 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	 * @return the number of matching user service entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByserviceId_ServiceStatus(long serviceId, int serviceStatus)
+	public int countByserviceId_Status(long serviceId, int serviceStatus)
 		throws SystemException {
 		Object[] finderArgs = new Object[] { serviceId, serviceStatus };
 
-		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_SERVICEID_SERVICESTATUS,
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
 				finderArgs, this);
 
 		if (count == null) {
@@ -3265,9 +3263,9 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 
 			query.append(_SQL_COUNT_USERSERVICEENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICEID_2);
+			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2);
 
-			query.append(_FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICESTATUS_2);
+			query.append(_FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2);
 
 			String sql = query.toString();
 
@@ -3294,7 +3292,7 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 					count = Long.valueOf(0);
 				}
 
-				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_SERVICEID_SERVICESTATUS,
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_SERVICEID_STATUS,
 					finderArgs, count);
 
 				closeSession(session);
@@ -3442,10 +3440,8 @@ public class UserServiceEntryPersistenceImpl extends BasePersistenceImpl<UserSer
 	private static final String _FINDER_COLUMN_USERID_USERID_2 = "userServiceEntry.userId = ?";
 	private static final String _FINDER_COLUMN_SERVICEPACKAGEID_SERVICEPACKAGEID_2 =
 		"userServiceEntry.servicePackageId = ?";
-	private static final String _FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICEID_2 =
-		"userServiceEntry.serviceId = ? AND ";
-	private static final String _FINDER_COLUMN_SERVICEID_SERVICESTATUS_SERVICESTATUS_2 =
-		"userServiceEntry.serviceStatus = ?";
+	private static final String _FINDER_COLUMN_SERVICEID_STATUS_SERVICEID_2 = "userServiceEntry.serviceId = ? AND ";
+	private static final String _FINDER_COLUMN_SERVICEID_STATUS_SERVICESTATUS_2 = "userServiceEntry.serviceStatus = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "userServiceEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No UserServiceEntry exists with the primary key ";
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No UserServiceEntry exists with the key {";
