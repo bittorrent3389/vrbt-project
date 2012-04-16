@@ -41,7 +41,7 @@
 
 <% 
 PortletURL	videoIteratorURL  =  renderResponse.createRenderURL();
-
+//VideoEntryLocalServiceUtil.search
 %>
  
 <liferay-ui:search-container 
@@ -71,7 +71,7 @@ PortletURL	videoIteratorURL  =  renderResponse.createRenderURL();
 						<div> <h4><%= videoEntry.getVideoName() %> </h4></div>
 						<div><%= videoEntry.getDescription()%> </div>
 						<div>  <span> 0 views</span></div>
-						<div><%= String.valueOf(videoEntry.getUserId()) %>  <span>uploaded</span></div>
+						<div><%= String.valueOf(videoEntry.getUploaderId()) %>  <span>uploaded</span></div>
 					</span>
 		</liferay-ui:search-container-column-text>
 		<liferay-ui:search-container-column-jsp path="/html/videoadminportlet/video_actions.jsp" />

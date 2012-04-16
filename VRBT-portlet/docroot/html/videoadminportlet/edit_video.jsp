@@ -1,5 +1,6 @@
-<%@page import="vn.com.fis.portal.model.CateVideoEntry"%>
-<%@page import="vn.com.fis.portal.service.CateVideoEntryLocalServiceUtil"%>
+
+<%@page import="vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil"%>
+<%@page import="vn.com.fis.portal.model.CategoryVideoEntry"%>
 <%@page import="vn.com.fis.portal.model.CategoryEntry"%>
 <%@page import="vn.com.fis.portal.service.CategoryEntryLocalServiceUtil"%>
 <%@page import="com.liferay.portlet.PortletURLUtil"%>
@@ -72,7 +73,8 @@ PortletURL	videoIteratorURL  =  renderResponse.createRenderURL();
 		  
 		  <% 
 //		  		CateVideoEntryLocalServiceUtil.
-				List<CateVideoEntry> lis = CateVideoEntryLocalServiceUtil.findByVideoId(videoId);
+				List<CategoryVideoEntry> lis = CategoryVideoEntryLocalServiceUtil.findByVideoId(videoId);
+				
 		  %>
 		  
 		<aui:select name="categoryIds"  multiple="true" label="Category">

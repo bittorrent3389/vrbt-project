@@ -30,11 +30,11 @@
 	}catch(Exception e){e.printStackTrace();}
 	
 	try{
-		folderEntries = FolderEntryLocalServiceUtil.findByFolderParentId_UserId(currFolderId, userId);
+		//folderEntries = FolderEntryLocalServiceUtil.findByFolderParentId_UserId(currFolderId, userId);
+		folderEntries = FolderEntryLocalServiceUtil.findByFolderIdParent_UserId(currFolderId, userId);
 		
 	}catch(Exception e){e.printStackTrace();}
-	
-	
+ 	
 	
 %>
 
@@ -50,7 +50,7 @@
 			<% if(  folderEntry !=null ){ %>
 			<li  style="background-color: #00A2EA;cursor: pointer;overflow: auto;margin-bottom: 2px;">
 				<portlet:renderURL  var="upToParentFolderURL">
-					<portlet:param name="currFolderId" value="<%= String.valueOf(folderEntry.getFolderParentId()) %>" />
+					<portlet:param name="currFolderId" value="<%= String.valueOf(folderEntry.getFolderIdParent()) %>" />
 				</portlet:renderURL>
 				 <a href="<%= upToParentFolderURL %>" style="text-decoration: none;"  >  
 				 	<span style="color: white;font-weight: bold;" ><img class="icon" alt="Up" src="/html/themes/control_panel/images/arrows/01_up.png" style="margin: 5px 10px;"> Up</span> 
