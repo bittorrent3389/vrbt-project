@@ -14,7 +14,7 @@
 	long categoryId=0;
 	String redirect="";
 	CategoryEntry category =null;
-	try{
+/* 	try{
 		userId = permissionChecker.getUserId();
 
 		companyId = PortalUtil.getCompanyId(renderRequest);
@@ -34,7 +34,15 @@
 	{
 		e.printStackTrace();
 		isAllow = false;
-	}
+	} */
+	
+	try{
+		categoryId = ParamUtil.getLong(renderRequest, "categoryId");
+		category = CategoryEntryLocalServiceUtil.getCategoryEntry(categoryId);
+		redirect = ParamUtil.getString(request, "redirect");
+	}catch(Exception e){e.printStackTrace();}
+	// add 
+	isAllow= true;
 %>
 
 <c:if test="<%= !isAllow %>">
@@ -45,7 +53,7 @@
 	<br/>
 </c:if>
 
-<c:if test="<%= isAllow %>">
+<c:if test="<%= category!=null %>">
 	<%-- Tao action URL --%>
 
 	<portlet:actionURL var="editCategoryURL" name="editCategory">
@@ -66,7 +74,12 @@
 			<aui:validator name="required"/>
 			<aui:validator name="rangeLength">[0,300]</aui:validator>
 		</aui:input>
-	
+		
+		<aui:input name="description" size="30" type="text" value="<%= category.getDescription() %>" 
+			label="portlet-category-category_edit_form-editCategoryForm-input-description">
+			<aui:validator name="required"/>
+			<aui:validator name="rangeLength">[0,300]</aui:validator>
+		</aui:input>
 		<aui:select name="status" label="portlet-category-category_edit_form-editCategoryForm-select-status">
 			<aui:option label="portlet-category-category_edit_form-editCategoryForm-select-option-type-1" 
 				value="1" selected="<%= category.getStatus() == 1 %>"/>

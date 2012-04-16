@@ -19,9 +19,10 @@
 		
 	}catch(Exception e)
 	{
-		e.printStackTrace();
+		//e.printStackTrace();
 		isAllow = false;
 	}
+	isAllow= true;
 %>
 
 <c:if test="<%= !isAllow %>">

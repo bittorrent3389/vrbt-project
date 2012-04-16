@@ -1,9 +1,9 @@
-<%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
 <%@ include file="/html/init.jsp" %>
+
 <%
 	
 	ResultRow row = (ResultRow) request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
-	CategoryEnty categoryEntry= (CategoryEnty) row.getObject();
+	CategoryEntry categoryEntry= (CategoryEntry) row.getObject();
 	
 	PortletURL redirectURL = PortletURLUtil.getCurrent(renderRequest, renderResponse);
 	String redirect = redirectURL.toString();
