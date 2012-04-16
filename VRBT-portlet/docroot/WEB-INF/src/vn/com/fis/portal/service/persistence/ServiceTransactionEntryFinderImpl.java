@@ -44,7 +44,7 @@ public class ServiceTransactionEntryFinderImpl extends BasePersistenceImpl imple
 					//sql = CustomSQLUtil.replaceAndOperator(sql, replaceFlag);
 					SQLQuery query = session.createSQLQuery(sql);
 				
-					query.addEntity("Service_Transaction_HistoryExt", ServiceTransactionEntryImpl.class);
+					query.addEntity("TBL_SERVICE_TRANSACTION", ServiceTransactionEntryImpl.class);
 
 					list = ((List<ServiceTransactionEntry>) QueryUtil.list(query, getDialect(), start, end));
 					
@@ -57,7 +57,7 @@ public class ServiceTransactionEntryFinderImpl extends BasePersistenceImpl imple
 					
 					pos.add(transactionCode);
 				
-					query.addEntity("Service_Transaction_HistoryExt", ServiceTransactionEntryImpl.class);
+					query.addEntity("TBL_SERVICE_TRANSACTION", ServiceTransactionEntryImpl.class);
 
 					list = ((List<ServiceTransactionEntry>) QueryUtil.list(query, getDialect(), start, end));
 				}
