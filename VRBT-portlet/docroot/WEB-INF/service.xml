@@ -54,11 +54,11 @@
 			<order-column name="categoryName" />
 		</order>
 		<!-- Finder methods -->
-		<finder name="CategoryName" return-type="Collection">
-			<finder-column name="categoryName" case-sensitive=""/>
+		<finder name="CategoryName" return-type="Collection" >
+			<finder-column name="categoryName"  case-sensitive="false" comparator="LIKE"/>
 		</finder>
 		<finder name="CategoryNameAbsolute" return-type="CategoryEntry">
-			<finder-column name="categoryName" case-sensitive="false" comparator="="/>
+			<finder-column name="categoryName" case-sensitive="true" />
 		</finder>
 		<finder name="status" return-type="Collection">
 			<finder-column name="status" />
@@ -258,8 +258,16 @@
 		<finder name="FolderName" return-type="Collection">
 			<finder-column name="folderName" />
 		</finder>
+		<finder name="FolderNameAbsolute_UserId" return-type="FolderEntry">
+			<finder-column name="folderName" />
+			<finder-column name="userId" />
+		</finder>
 		<finder name="FolderIdParent" return-type="Collection">
 			<finder-column name="folderIdParent" />
+		</finder>
+		<finder name="FolderIdParent_UserId" return-type="Collection">
+			<finder-column name="folderIdParent" />
+			<finder-column name="userId" />
 		</finder>
 	 	<finder name="UserId" return-type="Collection">
 			<finder-column name="userId" />
