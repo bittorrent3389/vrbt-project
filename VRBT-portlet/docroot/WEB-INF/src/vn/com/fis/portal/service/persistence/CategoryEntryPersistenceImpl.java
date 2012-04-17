@@ -543,7 +543,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns all the category entries where categoryName = &#63;.
+	 * Returns all the category entries where categoryName LIKE &#63;.
 	 *
 	 * @param categoryName the category name
 	 * @return the matching category entries
@@ -556,7 +556,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns a range of all the category entries where categoryName = &#63;.
+	 * Returns a range of all the category entries where categoryName LIKE &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
@@ -574,7 +574,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns an ordered range of all the category entries where categoryName = &#63;.
+	 * Returns an ordered range of all the category entries where categoryName LIKE &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
@@ -683,7 +683,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns the first category entry in the ordered set where categoryName = &#63;.
+	 * Returns the first category entry in the ordered set where categoryName LIKE &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
@@ -719,7 +719,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns the last category entry in the ordered set where categoryName = &#63;.
+	 * Returns the last category entry in the ordered set where categoryName LIKE &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
@@ -757,7 +757,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns the category entries before and after the current category entry in the ordered set where categoryName = &#63;.
+	 * Returns the category entries before and after the current category entry in the ordered set where categoryName LIKE &#63;.
 	 *
 	 * <p>
 	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
@@ -1522,7 +1522,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Removes all the category entries where categoryName = &#63; from the database.
+	 * Removes all the category entries where categoryName LIKE &#63; from the database.
 	 *
 	 * @param categoryName the category name
 	 * @throws SystemException if a system exception occurred
@@ -1571,7 +1571,7 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	}
 
 	/**
-	 * Returns the number of category entries where categoryName = &#63;.
+	 * Returns the number of category entries where categoryName LIKE &#63;.
 	 *
 	 * @param categoryName the category name
 	 * @return the number of matching category entries
@@ -1876,15 +1876,15 @@ public class CategoryEntryPersistenceImpl extends BasePersistenceImpl<CategoryEn
 	private static final String _SQL_SELECT_CATEGORYENTRY_WHERE = "SELECT categoryEntry FROM CategoryEntry categoryEntry WHERE ";
 	private static final String _SQL_COUNT_CATEGORYENTRY = "SELECT COUNT(categoryEntry) FROM CategoryEntry categoryEntry";
 	private static final String _SQL_COUNT_CATEGORYENTRY_WHERE = "SELECT COUNT(categoryEntry) FROM CategoryEntry categoryEntry WHERE ";
-	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_1 = "categoryEntry.categoryName IS NULL";
-	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_2 = "lower(categoryEntry.categoryName) = lower(CAST_TEXT(?))";
-	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_3 = "(categoryEntry.categoryName IS NULL OR lower(categoryEntry.categoryName) = lower(CAST_TEXT(?)))";
+	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_1 = "categoryEntry.categoryName LIKE NULL";
+	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_2 = "lower(categoryEntry.categoryName) LIKE lower(CAST_TEXT(?))";
+	private static final String _FINDER_COLUMN_CATEGORYNAME_CATEGORYNAME_3 = "(categoryEntry.categoryName IS NULL OR lower(categoryEntry.categoryName) LIKE lower(CAST_TEXT(?)))";
 	private static final String _FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_1 =
 		"categoryEntry.categoryName IS NULL";
 	private static final String _FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_2 =
-		"lower(categoryEntry.categoryName) = lower(CAST_TEXT(?))";
+		"categoryEntry.categoryName = ?";
 	private static final String _FINDER_COLUMN_CATEGORYNAMEABSOLUTE_CATEGORYNAME_3 =
-		"(categoryEntry.categoryName IS NULL OR lower(categoryEntry.categoryName) = lower(CAST_TEXT(?)))";
+		"(categoryEntry.categoryName IS NULL OR categoryEntry.categoryName = ?)";
 	private static final String _FINDER_COLUMN_STATUS_STATUS_2 = "categoryEntry.status = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "categoryEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No CategoryEntry exists with the primary key ";

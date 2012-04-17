@@ -43,7 +43,7 @@
 		/>
 	
 		<liferay-ui:search-container-row className="vn.com.fis.portal.model.ServiceTransactionEntry" 
-			keyProperty="serviceTransactionHistoryId" modelVar="tran_history">
+			keyProperty="transactionId" modelVar="tran_history">
 		
 			<% String transactionCode = "";
 				if(tran_history.getTransactionCode() == 1)
@@ -93,7 +93,7 @@
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-transactionCode"
 				value="<%= transactionCode %>"/>		
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-transactionDate"
-				value="<%= dateFormat.format(tran_history.getPackageDate()) %>"/>		
+				value="<%= dateFormat.format(tran_history.getDate_()) %>"/>		
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-userId"
 				value="<%= String.valueOf(tran_history.getUserId()) %>"/>		
 			<liferay-ui:search-container-column-text name="portlet-service_transaction_history-view-search-container-column-text-userName"

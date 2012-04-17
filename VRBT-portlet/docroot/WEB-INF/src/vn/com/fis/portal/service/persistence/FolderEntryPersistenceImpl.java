@@ -97,6 +97,19 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 			FolderEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFolderName",
 			new String[] { String.class.getName() });
+	public static final FinderPath FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID =
+		new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
+			FolderEntryModelImpl.FINDER_CACHE_ENABLED, FolderEntryImpl.class,
+			FINDER_CLASS_NAME_ENTITY, "fetchByFolderNameAbsolute_UserId",
+			new String[] { String.class.getName(), Long.class.getName() },
+			FolderEntryModelImpl.FOLDERNAME_COLUMN_BITMASK |
+			FolderEntryModelImpl.USERID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_FOLDERNAMEABSOLUTE_USERID =
+		new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
+			FolderEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"countByFolderNameAbsolute_UserId",
+			new String[] { String.class.getName(), Long.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FOLDERIDPARENT =
 		new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
 			FolderEntryModelImpl.FINDER_CACHE_ENABLED, FolderEntryImpl.class,
@@ -117,6 +130,30 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 			FolderEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFolderIdParent",
 			new String[] { Long.class.getName() });
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID =
+		new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
+			FolderEntryModelImpl.FINDER_CACHE_ENABLED, FolderEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
+			"findByFolderIdParent_UserId",
+			new String[] {
+				Long.class.getName(), Long.class.getName(),
+				
+			"java.lang.Integer", "java.lang.Integer",
+				"com.liferay.portal.kernel.util.OrderByComparator"
+			});
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID =
+		new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
+			FolderEntryModelImpl.FINDER_CACHE_ENABLED, FolderEntryImpl.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"findByFolderIdParent_UserId",
+			new String[] { Long.class.getName(), Long.class.getName() },
+			FolderEntryModelImpl.FOLDERIDPARENT_COLUMN_BITMASK |
+			FolderEntryModelImpl.USERID_COLUMN_BITMASK);
+	public static final FinderPath FINDER_PATH_COUNT_BY_FOLDERIDPARENT_USERID = new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
+			FolderEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+			"countByFolderIdParent_UserId",
+			new String[] { Long.class.getName(), Long.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_USERID = new FinderPath(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
 			FolderEntryModelImpl.FINDER_CACHE_ENABLED, FolderEntryImpl.class,
 			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUserId",
@@ -154,6 +191,12 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 	public void cacheResult(FolderEntry folderEntry) {
 		EntityCacheUtil.putResult(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
 			FolderEntryImpl.class, folderEntry.getPrimaryKey(), folderEntry);
+
+		FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+			new Object[] {
+				folderEntry.getFolderName(),
+				Long.valueOf(folderEntry.getUserId())
+			}, folderEntry);
 
 		folderEntry.resetOriginalValues();
 	}
@@ -210,6 +253,8 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 		FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+		clearUniqueFindersCache(folderEntry);
 	}
 
 	@Override
@@ -220,7 +265,17 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 		for (FolderEntry folderEntry : folderEntries) {
 			EntityCacheUtil.removeResult(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
 				FolderEntryImpl.class, folderEntry.getPrimaryKey());
+
+			clearUniqueFindersCache(folderEntry);
 		}
+	}
+
+	protected void clearUniqueFindersCache(FolderEntry folderEntry) {
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+			new Object[] {
+				folderEntry.getFolderName(),
+				Long.valueOf(folderEntry.getUserId())
+			});
 	}
 
 	/**
@@ -390,6 +445,29 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 			}
 
 			if ((folderEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Long.valueOf(folderEntryModelImpl.getOriginalFolderIdParent()),
+						Long.valueOf(folderEntryModelImpl.getOriginalUserId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FOLDERIDPARENT_USERID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID,
+					args);
+
+				args = new Object[] {
+						Long.valueOf(folderEntryModelImpl.getFolderIdParent()),
+						Long.valueOf(folderEntryModelImpl.getUserId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FOLDERIDPARENT_USERID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID,
+					args);
+			}
+
+			if ((folderEntryModelImpl.getColumnBitmask() &
 					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERID.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
 						Long.valueOf(folderEntryModelImpl.getOriginalUserId())
@@ -411,6 +489,34 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 
 		EntityCacheUtil.putResult(FolderEntryModelImpl.ENTITY_CACHE_ENABLED,
 			FolderEntryImpl.class, folderEntry.getPrimaryKey(), folderEntry);
+
+		if (isNew) {
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+				new Object[] {
+					folderEntry.getFolderName(),
+					Long.valueOf(folderEntry.getUserId())
+				}, folderEntry);
+		}
+		else {
+			if ((folderEntryModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						folderEntryModelImpl.getOriginalFolderName(),
+						Long.valueOf(folderEntryModelImpl.getOriginalUserId())
+					};
+
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FOLDERNAMEABSOLUTE_USERID,
+					args);
+				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+					args);
+
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+					new Object[] {
+						folderEntry.getFolderName(),
+						Long.valueOf(folderEntry.getUserId())
+					}, folderEntry);
+			}
+		}
 
 		return folderEntry;
 	}
@@ -907,6 +1013,161 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 	}
 
 	/**
+	 * Returns the folder entry where folderName = &#63; and userId = &#63; or throws a {@link vn.com.fis.portal.NoSuchFolderEntryException} if it could not be found.
+	 *
+	 * @param folderName the folder name
+	 * @param userId the user ID
+	 * @return the matching folder entry
+	 * @throws vn.com.fis.portal.NoSuchFolderEntryException if a matching folder entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public FolderEntry findByFolderNameAbsolute_UserId(String folderName,
+		long userId) throws NoSuchFolderEntryException, SystemException {
+		FolderEntry folderEntry = fetchByFolderNameAbsolute_UserId(folderName,
+				userId);
+
+		if (folderEntry == null) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("folderName=");
+			msg.append(folderName);
+
+			msg.append(", userId=");
+			msg.append(userId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			if (_log.isWarnEnabled()) {
+				_log.warn(msg.toString());
+			}
+
+			throw new NoSuchFolderEntryException(msg.toString());
+		}
+
+		return folderEntry;
+	}
+
+	/**
+	 * Returns the folder entry where folderName = &#63; and userId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	 *
+	 * @param folderName the folder name
+	 * @param userId the user ID
+	 * @return the matching folder entry, or <code>null</code> if a matching folder entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public FolderEntry fetchByFolderNameAbsolute_UserId(String folderName,
+		long userId) throws SystemException {
+		return fetchByFolderNameAbsolute_UserId(folderName, userId, true);
+	}
+
+	/**
+	 * Returns the folder entry where folderName = &#63; and userId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	 *
+	 * @param folderName the folder name
+	 * @param userId the user ID
+	 * @param retrieveFromCache whether to use the finder cache
+	 * @return the matching folder entry, or <code>null</code> if a matching folder entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public FolderEntry fetchByFolderNameAbsolute_UserId(String folderName,
+		long userId, boolean retrieveFromCache) throws SystemException {
+		Object[] finderArgs = new Object[] { folderName, userId };
+
+		Object result = null;
+
+		if (retrieveFromCache) {
+			result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+					finderArgs, this);
+		}
+
+		if (result == null) {
+			StringBundler query = new StringBundler(4);
+
+			query.append(_SQL_SELECT_FOLDERENTRY_WHERE);
+
+			if (folderName == null) {
+				query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_1);
+			}
+			else {
+				if (folderName.equals(StringPool.BLANK)) {
+					query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_3);
+				}
+				else {
+					query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_2);
+				}
+			}
+
+			query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_USERID_2);
+
+			query.append(FolderEntryModelImpl.ORDER_BY_JPQL);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (folderName != null) {
+					qPos.add(folderName);
+				}
+
+				qPos.add(userId);
+
+				List<FolderEntry> list = q.list();
+
+				result = list;
+
+				FolderEntry folderEntry = null;
+
+				if (list.isEmpty()) {
+					FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+						finderArgs, list);
+				}
+				else {
+					folderEntry = list.get(0);
+
+					cacheResult(folderEntry);
+
+					if ((folderEntry.getFolderName() == null) ||
+							!folderEntry.getFolderName().equals(folderName) ||
+							(folderEntry.getUserId() != userId)) {
+						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+							finderArgs, folderEntry);
+					}
+				}
+
+				return folderEntry;
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (result == null) {
+					FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_FOLDERNAMEABSOLUTE_USERID,
+						finderArgs);
+				}
+
+				closeSession(session);
+			}
+		}
+		else {
+			if (result instanceof List<?>) {
+				return null;
+			}
+			else {
+				return (FolderEntry)result;
+			}
+		}
+	}
+
+	/**
 	 * Returns all the folder entries where folderIdParent = &#63;.
 	 *
 	 * @param folderIdParent the folder ID parent
@@ -1239,6 +1500,381 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 		QueryPos qPos = QueryPos.getInstance(q);
 
 		qPos.add(folderIdParent);
+
+		if (orderByComparator != null) {
+			Object[] values = orderByComparator.getOrderByConditionValues(folderEntry);
+
+			for (Object value : values) {
+				qPos.add(value);
+			}
+		}
+
+		List<FolderEntry> list = q.list();
+
+		if (list.size() == 2) {
+			return list.get(1);
+		}
+		else {
+			return null;
+		}
+	}
+
+	/**
+	 * Returns all the folder entries where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @return the matching folder entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<FolderEntry> findByFolderIdParent_UserId(long folderIdParent,
+		long userId) throws SystemException {
+		return findByFolderIdParent_UserId(folderIdParent, userId,
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
+	}
+
+	/**
+	 * Returns a range of all the folder entries where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of folder entries
+	 * @param end the upper bound of the range of folder entries (not inclusive)
+	 * @return the range of matching folder entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<FolderEntry> findByFolderIdParent_UserId(long folderIdParent,
+		long userId, int start, int end) throws SystemException {
+		return findByFolderIdParent_UserId(folderIdParent, userId, start, end,
+			null);
+	}
+
+	/**
+	 * Returns an ordered range of all the folder entries where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of folder entries
+	 * @param end the upper bound of the range of folder entries (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching folder entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public List<FolderEntry> findByFolderIdParent_UserId(long folderIdParent,
+		long userId, int start, int end, OrderByComparator orderByComparator)
+		throws SystemException {
+		FinderPath finderPath = null;
+		Object[] finderArgs = null;
+
+		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+				(orderByComparator == null)) {
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID;
+			finderArgs = new Object[] { folderIdParent, userId };
+		}
+		else {
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_FOLDERIDPARENT_USERID;
+			finderArgs = new Object[] {
+					folderIdParent, userId,
+					
+					start, end, orderByComparator
+				};
+		}
+
+		List<FolderEntry> list = (List<FolderEntry>)FinderCacheUtil.getResult(finderPath,
+				finderArgs, this);
+
+		if (list == null) {
+			StringBundler query = null;
+
+			if (orderByComparator != null) {
+				query = new StringBundler(4 +
+						(orderByComparator.getOrderByFields().length * 3));
+			}
+			else {
+				query = new StringBundler(4);
+			}
+
+			query.append(_SQL_SELECT_FOLDERENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_FOLDERIDPARENT_USERID_FOLDERIDPARENT_2);
+
+			query.append(_FINDER_COLUMN_FOLDERIDPARENT_USERID_USERID_2);
+
+			if (orderByComparator != null) {
+				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+					orderByComparator);
+			}
+
+			else {
+				query.append(FolderEntryModelImpl.ORDER_BY_JPQL);
+			}
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(folderIdParent);
+
+				qPos.add(userId);
+
+				list = (List<FolderEntry>)QueryUtil.list(q, getDialect(),
+						start, end);
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (list == null) {
+					FinderCacheUtil.removeResult(finderPath, finderArgs);
+				}
+				else {
+					cacheResult(list);
+
+					FinderCacheUtil.putResult(finderPath, finderArgs, list);
+				}
+
+				closeSession(session);
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * Returns the first folder entry in the ordered set where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching folder entry
+	 * @throws vn.com.fis.portal.NoSuchFolderEntryException if a matching folder entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public FolderEntry findByFolderIdParent_UserId_First(long folderIdParent,
+		long userId, OrderByComparator orderByComparator)
+		throws NoSuchFolderEntryException, SystemException {
+		List<FolderEntry> list = findByFolderIdParent_UserId(folderIdParent,
+				userId, 0, 1, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("folderIdParent=");
+			msg.append(folderIdParent);
+
+			msg.append(", userId=");
+			msg.append(userId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchFolderEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the last folder entry in the ordered set where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching folder entry
+	 * @throws vn.com.fis.portal.NoSuchFolderEntryException if a matching folder entry could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public FolderEntry findByFolderIdParent_UserId_Last(long folderIdParent,
+		long userId, OrderByComparator orderByComparator)
+		throws NoSuchFolderEntryException, SystemException {
+		int count = countByFolderIdParent_UserId(folderIdParent, userId);
+
+		List<FolderEntry> list = findByFolderIdParent_UserId(folderIdParent,
+				userId, count - 1, count, orderByComparator);
+
+		if (list.isEmpty()) {
+			StringBundler msg = new StringBundler(6);
+
+			msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+			msg.append("folderIdParent=");
+			msg.append(folderIdParent);
+
+			msg.append(", userId=");
+			msg.append(userId);
+
+			msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+			throw new NoSuchFolderEntryException(msg.toString());
+		}
+		else {
+			return list.get(0);
+		}
+	}
+
+	/**
+	 * Returns the folder entries before and after the current folder entry in the ordered set where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	 * </p>
+	 *
+	 * @param folderId the primary key of the current folder entry
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next folder entry
+	 * @throws vn.com.fis.portal.NoSuchFolderEntryException if a folder entry with the primary key could not be found
+	 * @throws SystemException if a system exception occurred
+	 */
+	public FolderEntry[] findByFolderIdParent_UserId_PrevAndNext(
+		long folderId, long folderIdParent, long userId,
+		OrderByComparator orderByComparator)
+		throws NoSuchFolderEntryException, SystemException {
+		FolderEntry folderEntry = findByPrimaryKey(folderId);
+
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			FolderEntry[] array = new FolderEntryImpl[3];
+
+			array[0] = getByFolderIdParent_UserId_PrevAndNext(session,
+					folderEntry, folderIdParent, userId, orderByComparator, true);
+
+			array[1] = folderEntry;
+
+			array[2] = getByFolderIdParent_UserId_PrevAndNext(session,
+					folderEntry, folderIdParent, userId, orderByComparator,
+					false);
+
+			return array;
+		}
+		catch (Exception e) {
+			throw processException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	protected FolderEntry getByFolderIdParent_UserId_PrevAndNext(
+		Session session, FolderEntry folderEntry, long folderIdParent,
+		long userId, OrderByComparator orderByComparator, boolean previous) {
+		StringBundler query = null;
+
+		if (orderByComparator != null) {
+			query = new StringBundler(6 +
+					(orderByComparator.getOrderByFields().length * 6));
+		}
+		else {
+			query = new StringBundler(3);
+		}
+
+		query.append(_SQL_SELECT_FOLDERENTRY_WHERE);
+
+		query.append(_FINDER_COLUMN_FOLDERIDPARENT_USERID_FOLDERIDPARENT_2);
+
+		query.append(_FINDER_COLUMN_FOLDERIDPARENT_USERID_USERID_2);
+
+		if (orderByComparator != null) {
+			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+			if (orderByConditionFields.length > 0) {
+				query.append(WHERE_AND);
+			}
+
+			for (int i = 0; i < orderByConditionFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByConditionFields[i]);
+
+				if ((i + 1) < orderByConditionFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN_HAS_NEXT);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(WHERE_GREATER_THAN);
+					}
+					else {
+						query.append(WHERE_LESSER_THAN);
+					}
+				}
+			}
+
+			query.append(ORDER_BY_CLAUSE);
+
+			String[] orderByFields = orderByComparator.getOrderByFields();
+
+			for (int i = 0; i < orderByFields.length; i++) {
+				query.append(_ORDER_BY_ENTITY_ALIAS);
+				query.append(orderByFields[i]);
+
+				if ((i + 1) < orderByFields.length) {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC_HAS_NEXT);
+					}
+					else {
+						query.append(ORDER_BY_DESC_HAS_NEXT);
+					}
+				}
+				else {
+					if (orderByComparator.isAscending() ^ previous) {
+						query.append(ORDER_BY_ASC);
+					}
+					else {
+						query.append(ORDER_BY_DESC);
+					}
+				}
+			}
+		}
+
+		else {
+			query.append(FolderEntryModelImpl.ORDER_BY_JPQL);
+		}
+
+		String sql = query.toString();
+
+		Query q = session.createQuery(sql);
+
+		q.setFirstResult(0);
+		q.setMaxResults(2);
+
+		QueryPos qPos = QueryPos.getInstance(q);
+
+		qPos.add(folderIdParent);
+
+		qPos.add(userId);
 
 		if (orderByComparator != null) {
 			Object[] values = orderByComparator.getOrderByConditionValues(folderEntry);
@@ -1731,6 +2367,21 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 	}
 
 	/**
+	 * Removes the folder entry where folderName = &#63; and userId = &#63; from the database.
+	 *
+	 * @param folderName the folder name
+	 * @param userId the user ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByFolderNameAbsolute_UserId(String folderName, long userId)
+		throws NoSuchFolderEntryException, SystemException {
+		FolderEntry folderEntry = findByFolderNameAbsolute_UserId(folderName,
+				userId);
+
+		remove(folderEntry);
+	}
+
+	/**
 	 * Removes all the folder entries where folderIdParent = &#63; from the database.
 	 *
 	 * @param folderIdParent the folder ID parent
@@ -1739,6 +2390,21 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 	public void removeByFolderIdParent(long folderIdParent)
 		throws SystemException {
 		for (FolderEntry folderEntry : findByFolderIdParent(folderIdParent)) {
+			remove(folderEntry);
+		}
+	}
+
+	/**
+	 * Removes all the folder entries where folderIdParent = &#63; and userId = &#63; from the database.
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @throws SystemException if a system exception occurred
+	 */
+	public void removeByFolderIdParent_UserId(long folderIdParent, long userId)
+		throws SystemException {
+		for (FolderEntry folderEntry : findByFolderIdParent_UserId(
+				folderIdParent, userId)) {
 			remove(folderEntry);
 		}
 	}
@@ -1832,6 +2498,77 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 	}
 
 	/**
+	 * Returns the number of folder entries where folderName = &#63; and userId = &#63;.
+	 *
+	 * @param folderName the folder name
+	 * @param userId the user ID
+	 * @return the number of matching folder entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByFolderNameAbsolute_UserId(String folderName, long userId)
+		throws SystemException {
+		Object[] finderArgs = new Object[] { folderName, userId };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_FOLDERNAMEABSOLUTE_USERID,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_FOLDERENTRY_WHERE);
+
+			if (folderName == null) {
+				query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_1);
+			}
+			else {
+				if (folderName.equals(StringPool.BLANK)) {
+					query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_3);
+				}
+				else {
+					query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_2);
+				}
+			}
+
+			query.append(_FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_USERID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				if (folderName != null) {
+					qPos.add(folderName);
+				}
+
+				qPos.add(userId);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_FOLDERNAMEABSOLUTE_USERID,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
 	 * Returns the number of folder entries where folderIdParent = &#63;.
 	 *
 	 * @param folderIdParent the folder ID parent
@@ -1876,6 +2613,65 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 				}
 
 				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_FOLDERIDPARENT,
+					finderArgs, count);
+
+				closeSession(session);
+			}
+		}
+
+		return count.intValue();
+	}
+
+	/**
+	 * Returns the number of folder entries where folderIdParent = &#63; and userId = &#63;.
+	 *
+	 * @param folderIdParent the folder ID parent
+	 * @param userId the user ID
+	 * @return the number of matching folder entries
+	 * @throws SystemException if a system exception occurred
+	 */
+	public int countByFolderIdParent_UserId(long folderIdParent, long userId)
+		throws SystemException {
+		Object[] finderArgs = new Object[] { folderIdParent, userId };
+
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_FOLDERIDPARENT_USERID,
+				finderArgs, this);
+
+		if (count == null) {
+			StringBundler query = new StringBundler(3);
+
+			query.append(_SQL_COUNT_FOLDERENTRY_WHERE);
+
+			query.append(_FINDER_COLUMN_FOLDERIDPARENT_USERID_FOLDERIDPARENT_2);
+
+			query.append(_FINDER_COLUMN_FOLDERIDPARENT_USERID_USERID_2);
+
+			String sql = query.toString();
+
+			Session session = null;
+
+			try {
+				session = openSession();
+
+				Query q = session.createQuery(sql);
+
+				QueryPos qPos = QueryPos.getInstance(q);
+
+				qPos.add(folderIdParent);
+
+				qPos.add(userId);
+
+				count = (Long)q.uniqueResult();
+			}
+			catch (Exception e) {
+				throw processException(e);
+			}
+			finally {
+				if (count == null) {
+					count = Long.valueOf(0);
+				}
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_FOLDERIDPARENT_USERID,
 					finderArgs, count);
 
 				closeSession(session);
@@ -2062,7 +2858,18 @@ public class FolderEntryPersistenceImpl extends BasePersistenceImpl<FolderEntry>
 	private static final String _FINDER_COLUMN_FOLDERNAME_FOLDERNAME_1 = "folderEntry.folderName IS NULL";
 	private static final String _FINDER_COLUMN_FOLDERNAME_FOLDERNAME_2 = "folderEntry.folderName = ?";
 	private static final String _FINDER_COLUMN_FOLDERNAME_FOLDERNAME_3 = "(folderEntry.folderName IS NULL OR folderEntry.folderName = ?)";
+	private static final String _FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_1 =
+		"folderEntry.folderName IS NULL AND ";
+	private static final String _FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_2 =
+		"folderEntry.folderName = ? AND ";
+	private static final String _FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_FOLDERNAME_3 =
+		"(folderEntry.folderName IS NULL OR folderEntry.folderName = ?) AND ";
+	private static final String _FINDER_COLUMN_FOLDERNAMEABSOLUTE_USERID_USERID_2 =
+		"folderEntry.userId = ?";
 	private static final String _FINDER_COLUMN_FOLDERIDPARENT_FOLDERIDPARENT_2 = "folderEntry.folderIdParent = ?";
+	private static final String _FINDER_COLUMN_FOLDERIDPARENT_USERID_FOLDERIDPARENT_2 =
+		"folderEntry.folderIdParent = ? AND ";
+	private static final String _FINDER_COLUMN_FOLDERIDPARENT_USERID_USERID_2 = "folderEntry.userId = ?";
 	private static final String _FINDER_COLUMN_USERID_USERID_2 = "folderEntry.userId = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "folderEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No FolderEntry exists with the primary key ";

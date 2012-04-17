@@ -49,7 +49,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 						Calendar.getInstance().getTime(), userId, serviceId, 2, null, userService.getServiceStopDate(), 0, null);
 				
 				//Send notification to admin (TEST Account)
-				String subject = user.getUserName()
+				/*String subject = user.getUserName()
 									+ " stoped to use '"
 									+  service.getServiceName() +"' service";
 				String messageToAdmin = "User ID: "+ userId 
@@ -57,7 +57,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 									+"; Service stoped: "+ service.getServiceName() +"' service.";
 				String messageToUser = " Stoped "+ service.getServiceName() +"' service.";
 				
-				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
 				
 			}else if (isUse.equalsIgnoreCase("0")) {
 				UserServiceEntry userService = 
@@ -74,7 +74,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 						Calendar.getInstance().getTime(), userId, serviceId, 1, userService.getServiceStartDate(), null, 0, null);
 				
 				//Send notification to admin (TEST Account)
-				String subject = user.getUserName()
+				/*String subject = user.getUserName()
 									+ " started to use '"
 									+  service.getServiceName() +"' service";
 				String messageToAdmin = "User ID: "+ userId 
@@ -82,7 +82,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 									+"; Service started to use: "+ service.getServiceName() +"' service.";
 				String messageToUser = "Started "+ service.getServiceName() +"' service.";
 				
-				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,7 +144,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 						Calendar.getInstance().getTime(), userId, 0, 0, null, null, packageId, userService.getPackageDate());
 					
 					//Send notification to admin (TEST Account)
-					String subject = UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
+					/*String subject = UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
 										+ " started to use '"
 										+  packageExt.getServicePackageName()+"' service Package";
 					String messageToAdmin = "User ID: "+ userId 
@@ -152,7 +152,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 										+"; Service Package started to use: "+ packageExt.getServicePackageName()+"' service Package";
 					String messageToUser = "Started "+ packageExt.getServicePackageName()+"' service Package";
 				
-					new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+					new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -179,7 +179,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 						Calendar.getInstance().getTime(), userId, 0, 0, null, null, packageId, null);
 				
 				//Send notification to admin (TEST Account)
-				String subject = UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
+				/*String subject = UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
 									+ " stoped to use '"
 									+  ServicePackageEntryLocalServiceUtil.getServicePackageEntry(packageId).getServicePackageName() +"' service Package";
 				String messageToAdmin = "User ID: "+ userId 
@@ -189,7 +189,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 				String messageToUser = "Stoped '"+ ServicePackageEntryLocalServiceUtil.getServicePackageEntry(packageId).getServicePackageName() 
 						+"' service Package";
 				
-				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
 			}
 			
 		} catch (Exception e) {

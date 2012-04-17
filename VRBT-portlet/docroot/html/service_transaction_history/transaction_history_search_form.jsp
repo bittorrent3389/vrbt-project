@@ -1,5 +1,5 @@
 <%@ include file="/html/init.jsp" %>
-<portlet:actionURL var="searchTransactionHistoryURL" name="searchTransactionHistory">
+<portlet:actionURL var="searchTransactionHistoryURL" name="searchTransaction_History">
 	<portlet:param name="cbServiceChart" value='<%= ParamUtil.getString(renderRequest, "cbServiceChart", "0") %>'/>
 	<portlet:param name="cbServicePackageChart" value='<%= ParamUtil.getString(renderRequest, "cbServicePackageChart", "0") %>'/>
 </portlet:actionURL>
