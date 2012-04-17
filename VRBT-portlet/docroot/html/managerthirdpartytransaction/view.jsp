@@ -1,15 +1,20 @@
+<%@page import="java.util.Date"%>
+<%@page import="vn.com.fis.portal.VRBTLibrary"%>
 <%@ include file="/html/init.jsp" %>
 <%
 	//-----------------------khai bao-------------------------
 	int transactionCode=2;
-	String userId=user.getUserId()+"";
-	if(userId.equals("null")||userId.equals("")||userId.equals("10158"))
-	{
-		//userId="0";
-		out.println("please login");
-		return;
-	}
-	//--------------------------------------------------------
+	long userId=permissionChecker.getUserId();
+	VRBTLibrary vrbtLibrary = new VRBTLibrary();
+	Date date = new Date();
+	String year = vrbtLibrary.convertDateToString(date, "yyyy");
+	//--------------------------check login and permission------------------------------
+		if(!vrbtLibrary.checkLogin(userId,renderRequest, "Third-party").equals("Success"))
+		{
+			out.println(vrbtLibrary.checkLogin(userId,renderRequest, "Third-party"));
+			return;
+		}
+		//----------------------------------------------------------------------------------
 	String pageRecord=renderRequest.getParameter("delta")+"";
 	if(pageRecord.equals("null")||pageRecord.equals(""))
 	{
@@ -46,8 +51,9 @@
 		for(int i = 1;i<12;i++)
 			{
 				int moth=i+1;
-				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(1, "1/"+i+"/2012","1/"+moth+"/2012")-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, "1/"+i+"/2012","1/"+moth+"/2012")+"#";
-				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, "1/"+i+"/2012","1/"+moth+"/2012")+"$";
+				
+				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(1, "1/"+i+"/"+year,"1/"+moth+"/"+year)-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"#";
+				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"$";
 				
 			}
 		
@@ -55,22 +61,22 @@
 	else
 	{
 		//System.out.println("userName: "+userName+" transaction: "+transaction+" videoName: "+videoName);
-		userId = UserEntryLocalServiceUtil.getUserEntryByUserName(userName).getUserId()+"";
-		listVideoUserTransactionEntry = VideoUserTransactionEntryLocalServiceUtil.seachThirdPartyVideoUserTransactionEntryByCondition(Integer.parseInt(transaction), Integer.parseInt(userId), videoName,endRow - Integer.parseInt(pageRecord), endRow);
-		countListVideoUserTransactionEntry = VideoUserTransactionEntryLocalServiceUtil.countSeachThirdPartyVideoUserTransactionEntryByCondition(Integer.parseInt(transaction), Integer.parseInt(userId), videoName);
+		userId = UserEntryLocalServiceUtil.getUserEntryByUserName(userName).getUserId();
+		listVideoUserTransactionEntry = VideoUserTransactionEntryLocalServiceUtil.seachThirdPartyVideoUserTransactionEntryByCondition(Integer.parseInt(transaction),userId, videoName,endRow - Integer.parseInt(pageRecord), endRow);
+		countListVideoUserTransactionEntry = VideoUserTransactionEntryLocalServiceUtil.countSeachThirdPartyVideoUserTransactionEntryByCondition(Integer.parseInt(transaction),userId, videoName);
 		//data chart
-		purchase = VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode(Integer.parseInt(userId),2);
-		nopurchase= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode(Integer.parseInt(userId),1)-purchase;
+		purchase = VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode(userId,2);
+		nopurchase= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode(userId,1)-purchase;
 		for(int i = 1;i<12;i++)
 		{
 			int moth=i+1;
-			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(Integer.parseInt(userId),1, "1/"+i+"/2012","1/"+moth+"/2012")-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(Integer.parseInt(userId),2, "1/"+i+"/2012","1/"+moth+"/2012")+"#";
-			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(Integer.parseInt(userId),2, "1/"+i+"/2012","1/"+moth+"/2012")+"$";
+			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,1, "1/"+i+"/"+year,"1/"+moth+"/"+year)-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"#";
+			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"$";
 		}
 		
 	}
 	
-	UserEntry userEntry = UserEntryLocalServiceUtil.getUserEntry(Integer.parseInt(userId));
+	UserEntry userEntry = UserEntryLocalServiceUtil.getUserEntry(userId);
 	
 	PortletURL searchRenderURL = PortletURLUtil.getCurrent(renderRequest, renderResponse);
 	
@@ -158,40 +164,12 @@
 	
 	
 	<div>
-	
 		<liferay-ui:search-container-row className="vn.com.fis.portal.model.VideoUserTransactionEntry" keyProperty="transactionId" modelVar="videoTransactionHistoryEntry">
-		
-			<%
-				String transactionCodeName= "";
-				if(String.valueOf(videoTransactionHistoryEntry.getTransactionCode()).equals("1"))
-				{
-					transactionCodeName ="upload";
-				}
-				else if(String.valueOf(videoTransactionHistoryEntry.getTransactionCode()).equals("2"))
-				{
-					transactionCodeName = "purchase";
-				}
-				else if(String.valueOf(videoTransactionHistoryEntry.getTransactionCode()).equals("3"))
-				{
-					transactionCodeName = "send";
-				}
-				else
-				{
-					transactionCodeName = "receive";
-				}
-				
-				String receiver ="";
-				if(!String.valueOf(videoTransactionHistoryEntry.getReceiverId()).equals("0"))
-				{
-					receiver = UserEntryLocalServiceUtil.getUserEntry(videoTransactionHistoryEntry.getReceiverId()).getUserName();
-				}
-			%>
-		
-			<liferay-ui:search-container-column-text name="transaction_Code" value="<%= transactionCodeName %>"/>
-			<liferay-ui:search-container-column-text name="video_Name" value="<%= VideoEntryLocalServiceUtil.getVideoEntry(videoTransactionHistoryEntry.getVideoId()).getVideoName() %>"/>
-			<liferay-ui:search-container-column-text name="user_Name" value="<%= UserEntryLocalServiceUtil.getUserEntry(videoTransactionHistoryEntry.getUserId()).getUserName() %>"/>
-			<liferay-ui:search-container-column-text name="receiver_User" value="<%= String.valueOf(receiver) %>"/>
-			<liferay-ui:search-container-column-text name="receiver_User" value="<%= String.valueOf(videoTransactionHistoryEntry.getDate_()) %>"/>
+			<liferay-ui:search-container-column-text name="transaction_Code" value="<%= vrbtLibrary.returnTransactionCode(videoTransactionHistoryEntry.getTransactionCode()) %>"/>
+			<liferay-ui:search-container-column-text name="video_Name" value="<%= VideoEntryLocalServiceUtil.getVideoEntry(videoTransactionHistoryEntry.getVideoId()).getVideoName()%>"/>
+			<liferay-ui:search-container-column-text name="user_Name" value="<%= vrbtLibrary.returnUserName(videoTransactionHistoryEntry.getUserId())%>"/>
+			<liferay-ui:search-container-column-text name="receiver_User" value="<%= vrbtLibrary.returnUserName(videoTransactionHistoryEntry.getReceiverId()) %>"/>
+			<liferay-ui:search-container-column-text name="Transaction_Date" value="<%= String.valueOf(videoTransactionHistoryEntry.getDate_()) %>"/>
 		</liferay-ui:search-container-row>
 		<liferay-ui:search-iterator/>
 	</div>

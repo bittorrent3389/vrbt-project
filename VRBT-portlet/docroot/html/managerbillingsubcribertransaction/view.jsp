@@ -1,15 +1,17 @@
+<%@page import="vn.com.fis.portal.VRBTLibrary"%>
 <%@ include file="/html/init.jsp" %>
 <%
 	//-----------------------khai bao-------------------------
 	int transactionCode=2;
-	String userId=user.getUserId()+"";
-	if(userId.equals("null")||userId.equals("")||userId.equals("10158"))
+	long userId=permissionChecker.getUserId();
+	VRBTLibrary vrbtLibrary = new VRBTLibrary();
+	//--------------------------check login and permission------------------------------
+	if(!vrbtLibrary.checkLogin(userId,renderRequest, "Third-party").equals("Success"))
 	{
-		//userId="0";
-		out.println("please login");
+		out.println(vrbtLibrary.checkLogin(userId,renderRequest, "Third-party"));
 		return;
 	}
-	//--------------------------------------------------------
+	//----------------------------------------------------------------------------------
 	String pageRecord=renderRequest.getParameter("delta")+"";
 	if(pageRecord.equals("null")||pageRecord.equals(""))
 	{
@@ -42,7 +44,7 @@
 		
 	}
 	
-	UserEntry userEntry = UserEntryLocalServiceUtil.getUserEntry(Integer.parseInt(userId));
+	UserEntry userEntry = UserEntryLocalServiceUtil.getUserEntry(userId);
 	
 	PortletURL searchRenderURL = PortletURLUtil.getCurrent(renderRequest, renderResponse);
 	
@@ -102,36 +104,12 @@
 		<portlet:param name="jspPage" value="/html/vrbtsubcriberpaymentportlet/ViewBilling.jsp" />
 	</portlet:renderURL>
 	<div>
-	
 		<liferay-ui:search-container-row className="vn.com.fis.portal.model.VideoUserTransactionEntry" keyProperty="transactionId" modelVar="videoTransactionHistoryEntry">
-		
-			<%
-				String transactionCodeName= "";
-				if(String.valueOf(videoTransactionHistoryEntry.getTransactionCode()).equals("1"))
-				{
-					transactionCodeName ="upload";
-				}
-				else if(String.valueOf(videoTransactionHistoryEntry.getTransactionCode()).equals("2"))
-				{
-					transactionCodeName = "purchase";
-				}
-				else
-				{
-					transactionCodeName = "receive";
-				}
-				
-				String receiver ="";
-				if(!String.valueOf(videoTransactionHistoryEntry.getReceiverId()).equals("0"))
-				{
-					receiver = UserEntryLocalServiceUtil.getUserEntry(videoTransactionHistoryEntry.getReceiverId()).getUserName();
-				}
-			%>
-		
-			<liferay-ui:search-container-column-text name="transaction_Code" value="<%= transactionCodeName %>"/>
-			<liferay-ui:search-container-column-text name="video_Name" value="<%= VideoEntryLocalServiceUtil.getVideoEntry(videoTransactionHistoryEntry.getVideoId()).getVideoName() %>"/>
-			<liferay-ui:search-container-column-text name="user_Name" value="<%= UserEntryLocalServiceUtil.getUserEntry(videoTransactionHistoryEntry.getUserId()).getUserName() %>"/>
-			<liferay-ui:search-container-column-text name="receiver_User" value="<%= String.valueOf(receiver) %>"/>
-			<liferay-ui:search-container-column-text name="receiver_User" value="<%= String.valueOf(videoTransactionHistoryEntry.getDate_()) %>"/>
+			<liferay-ui:search-container-column-text name="transaction_Code" value="<%= vrbtLibrary.returnTransactionCode(videoTransactionHistoryEntry.getTransactionCode()) %>"/>
+			<liferay-ui:search-container-column-text name="video_Name" value="<%= VideoEntryLocalServiceUtil.getVideoEntry(videoTransactionHistoryEntry.getVideoId()).getVideoName()%>"/>
+			<liferay-ui:search-container-column-text name="user_Name" value="<%= vrbtLibrary.returnUserName(videoTransactionHistoryEntry.getUserId())%>"/>
+			<liferay-ui:search-container-column-text name="receiver_User" value="<%= vrbtLibrary.returnUserName(videoTransactionHistoryEntry.getReceiverId()) %>"/>
+			<liferay-ui:search-container-column-text name="Transaction_Date" value="<%= String.valueOf(videoTransactionHistoryEntry.getDate_()) %>"/>
 		</liferay-ui:search-container-row>
 		<liferay-ui:search-iterator/>
 	</div>
