@@ -19,5 +19,7 @@
 		<portlet id="managerthirdpartytransaction"></portlet>
 		<portlet id="servicepackageadmin"></portlet>
 		<portlet id="purchasevideo"></portlet>
+		<portlet id="notificationportlet"></portlet>
+		<portlet id="managernotificationportlet"></portlet>
 	</category>
 </display>
