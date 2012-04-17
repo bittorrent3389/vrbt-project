@@ -88,15 +88,13 @@ public class NotificationEntryLocalServiceClp
 		_setBeanIdentifierMethodKey16 = new MethodKey(_classLoaderProxy.getClassName(),
 				"setBeanIdentifier", java.lang.String.class);
 
-		_findByUserIdFrom_UserIdToMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findByUserIdFrom_UserIdTo", long.class, long.class);
+		_getNotificationEntryByUserIdMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
+				"getNotificationEntryByUserId", long.class,
+				java.lang.String.class, int.class, int.class);
 
-		_findByUserIdFrom_UserIdToMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
-				"findByUserIdFrom_UserIdTo", long.class, long.class, int.class,
-				int.class);
-
-		_countByUserIdFrom_UserIdToMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
-				"countByUserIdFrom_UserIdTo", long.class, long.class);
+		_getNotificationEntryByUserIdCountMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"getNotificationEntryByUserIdCount", long.class,
+				java.lang.String.class);
 	}
 
 	public vn.com.fis.portal.model.NotificationEntry addNotificationEntry(
@@ -564,13 +562,14 @@ public class NotificationEntryLocalServiceClp
 		}
 	}
 
-	public java.util.List<vn.com.fis.portal.model.NotificationEntry> findByUserIdFrom_UserIdTo(
-		long userIdFrom, long userIdTo)
+	public java.util.List<vn.com.fis.portal.model.NotificationEntry> getNotificationEntryByUserId(
+		long usreId, java.lang.String typeNotification, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_findByUserIdFrom_UserIdToMethodKey17,
-				userIdFrom, userIdTo);
+		MethodHandler methodHandler = new MethodHandler(_getNotificationEntryByUserIdMethodKey17,
+				usreId, ClpSerializer.translateInput(typeNotification), start,
+				end);
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -592,40 +591,13 @@ public class NotificationEntryLocalServiceClp
 		return (java.util.List<vn.com.fis.portal.model.NotificationEntry>)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public java.util.List<vn.com.fis.portal.model.NotificationEntry> findByUserIdFrom_UserIdTo(
-		long userIdFrom, long userIdTo, int start, int end)
+	public int getNotificationEntryByUserIdCount(long usreId,
+		java.lang.String typeNotification)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_findByUserIdFrom_UserIdToMethodKey18,
-				userIdFrom, userIdTo, start, end);
-
-		try {
-			returnObj = _classLoaderProxy.invoke(methodHandler);
-		}
-		catch (Throwable t) {
-			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
-				throw (com.liferay.portal.kernel.exception.SystemException)t;
-			}
-
-			if (t instanceof RuntimeException) {
-				throw (RuntimeException)t;
-			}
-			else {
-				throw new RuntimeException(t.getClass().getName() +
-					" is not a valid exception");
-			}
-		}
-
-		return (java.util.List<vn.com.fis.portal.model.NotificationEntry>)ClpSerializer.translateOutput(returnObj);
-	}
-
-	public int countByUserIdFrom_UserIdTo(long userIdFrom, long userIdTo)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		Object returnObj = null;
-
-		MethodHandler methodHandler = new MethodHandler(_countByUserIdFrom_UserIdToMethodKey19,
-				userIdFrom, userIdTo);
+		MethodHandler methodHandler = new MethodHandler(_getNotificationEntryByUserIdCountMethodKey18,
+				usreId, ClpSerializer.translateInput(typeNotification));
 
 		try {
 			returnObj = _classLoaderProxy.invoke(methodHandler);
@@ -669,7 +641,6 @@ public class NotificationEntryLocalServiceClp
 	private MethodKey _updateNotificationEntryMethodKey14;
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
-	private MethodKey _findByUserIdFrom_UserIdToMethodKey17;
-	private MethodKey _findByUserIdFrom_UserIdToMethodKey18;
-	private MethodKey _countByUserIdFrom_UserIdToMethodKey19;
+	private MethodKey _getNotificationEntryByUserIdMethodKey17;
+	private MethodKey _getNotificationEntryByUserIdCountMethodKey18;
 }

@@ -14,7 +14,12 @@
 
 package vn.com.fis.portal.service.impl;
 
+import com.liferay.portal.kernel.exception.SystemException;
+
+import vn.com.fis.portal.NoSuchUserServiceEntryException;
+import vn.com.fis.portal.model.UserServiceEntry;
 import vn.com.fis.portal.service.base.UserServiceEntryLocalServiceBaseImpl;
+import vn.com.fis.portal.service.persistence.UserServiceEntryUtil;
 
 /**
  * The implementation of the user service entry local service.
@@ -37,4 +42,14 @@ public class UserServiceEntryLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link vn.com.fis.portal.service.UserServiceEntryLocalServiceUtil} to access the user service entry local service.
 	 */
+	
+	public UserServiceEntry findByUserId_ServiceId_PackageId(long userId,
+			long serviceId, long servicePackageId) throws NoSuchUserServiceEntryException, SystemException{
+		return UserServiceEntryUtil.findByUserId_ServiceId_PackageId(userId, serviceId, servicePackageId);
+	}
+	
+	public UserServiceEntry findByUserId_ServiceId(long userId, long serviceId)
+			throws NoSuchUserServiceEntryException, SystemException {
+		return UserServiceEntryUtil.findByUserId_ServiceId(userId, serviceId);
+	}
 }

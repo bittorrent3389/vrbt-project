@@ -73,6 +73,7 @@
 		<property name="service" ref="vn.com.fis.portal.service.NotificationEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.NotificationEntryPersistence" class="vn.com.fis.portal.service.persistence.NotificationEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.NotificationEntryFinder" class="vn.com.fis.portal.service.persistence.NotificationEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.RatingEntryLocalService" class="vn.com.fis.portal.service.impl.RatingEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.RatingEntryLocalServiceUtil" class="vn.com.fis.portal.service.RatingEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.RatingEntryLocalService" />
@@ -91,7 +92,6 @@
 		<property name="service" ref="vn.com.fis.portal.service.ServiceEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.ServiceEntryPersistence" class="vn.com.fis.portal.service.persistence.ServiceEntryPersistenceImpl" parent="basePersistence" />
-	<bean id="vn.com.fis.portal.service.persistence.ServiceEntryFinder" class="vn.com.fis.portal.service.persistence.ServiceEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.ServicePackageEntryLocalService" class="vn.com.fis.portal.service.impl.ServicePackageEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.ServicePackageEntryLocalServiceUtil" class="vn.com.fis.portal.service.ServicePackageEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.ServicePackageEntryLocalService" />
@@ -140,7 +140,6 @@
 		<property name="service" ref="vn.com.fis.portal.service.VideoEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.VideoEntryPersistence" class="vn.com.fis.portal.service.persistence.VideoEntryPersistenceImpl" parent="basePersistence" />
-	<bean id="vn.com.fis.portal.service.persistence.VideoEntryFinder" class="vn.com.fis.portal.service.persistence.VideoEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.VideoGroupEntryLocalService" class="vn.com.fis.portal.service.impl.VideoGroupEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.VideoGroupEntryLocalServiceUtil" class="vn.com.fis.portal.service.VideoGroupEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.VideoGroupEntryLocalService" />

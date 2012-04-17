@@ -21,5 +21,7 @@
 		<portlet id="purchasevideo"></portlet>
 		<portlet id="notificationportlet"></portlet>
 		<portlet id="managernotificationportlet"></portlet>
+		<portlet id="servicetransactionchartreport"></portlet>
+		<portlet id="servicepackagetransactionchartreport"></portlet>
 	</category>
 </display>

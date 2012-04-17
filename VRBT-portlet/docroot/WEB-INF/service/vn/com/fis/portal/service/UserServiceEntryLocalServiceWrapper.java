@@ -257,92 +257,6 @@ public class UserServiceEntryLocalServiceWrapper
 		_userServiceEntryLocalService.setBeanIdentifier(beanIdentifier);
 	}
 
-	/**
-	* returns the user service entry where userId = &#63; and serviceId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserServiceEntryException} if it could not be found.
-	*
-	* @param userId the user ID
-	* @param serviceId the service ID
-	* @return the matching user service entry
-	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public vn.com.fis.portal.model.UserServiceEntry findByUserId_ServiceId(
-		long userId, long serviceId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchUserServiceEntryException {
-		return _userServiceEntryLocalService.findByUserId_ServiceId(userId,
-			serviceId);
-	}
-
-	/**
-	* Removes the user service entry where userId = &#63; and serviceId = &#63; from the database.
-	*
-	* @param userId the user ID
-	* @param serviceId the service ID
-	* @throws SystemException if a system exception occurred
-	*/
-	public void removeByUserId_ServiceId(long userId, long serviceId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchUserServiceEntryException {
-		_userServiceEntryLocalService.removeByUserId_ServiceId(userId, serviceId);
-	}
-
-	/**
-	* Returns the number of user service entries where userId = &#63; and serviceId = &#63;.
-	*
-	* @param userId the user ID
-	* @param serviceId the service ID
-	* @return the number of matching user service entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public int countByUserId_ServiceId(long userId, long serviceId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.countByUserId_ServiceId(userId,
-			serviceId);
-	}
-
-	/**
-	* Returns the user service entry where userId = &#63; and servicePackageId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserServiceEntryException} if it could not be found.
-	*
-	* @param userId the user ID
-	* @param servicePackageId the service package ID
-	* @return the matching user service entry
-	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public vn.com.fis.portal.model.UserServiceEntry findByUserId_ServicePackageId(
-		long userId, long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchUserServiceEntryException {
-		return _userServiceEntryLocalService.findByUserId_ServicePackageId(userId,
-			servicePackageId);
-	}
-
-	/**
-	* Removes the user service entry where userId = &#63; and servicePackageId = &#63; from the database.
-	*
-	* @param userId the user ID
-	* @param servicePackageId the service package ID
-	* @throws SystemException if a system exception occurred
-	*/
-	public void removeByUserId_ServicePackageId(long userId,
-		long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchUserServiceEntryException {
-		_userServiceEntryLocalService.removeByUserId_ServicePackageId(userId,
-			servicePackageId);
-	}
-
-	/**
-	* Returns the user service entry where userId = &#63; and serviceId = &#63; and servicePackageId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserServiceEntryException} if it could not be found.
-	*
-	* @param userId the user ID
-	* @param serviceId the service ID
-	* @param servicePackageId the service package ID
-	* @return the matching user service entry
-	* @throws vn.com.fis.portal.NoSuchUserServiceEntryException if a matching user service entry could not be found
-	* @throws SystemException if a system exception occurred
-	*/
 	public vn.com.fis.portal.model.UserServiceEntry findByUserId_ServiceId_PackageId(
 		long userId, long serviceId, long servicePackageId)
 		throws com.liferay.portal.kernel.exception.SystemException,
@@ -351,84 +265,12 @@ public class UserServiceEntryLocalServiceWrapper
 			serviceId, servicePackageId);
 	}
 
-	/**
-	* Returns the number of user service entries where userId = &#63; and serviceId = &#63; and servicePackageId = &#63;.
-	*
-	* @param userId the user ID
-	* @param serviceId the service ID
-	* @param servicePackageId the service package ID
-	* @return the number of matching user service entries
-	* @throws SystemException if a system exception occurred
-	*/
-	public int countByUserId_ServiceId_PackageId(long userId, long serviceId,
-		long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.countByUserId_ServiceId_PackageId(userId,
-			serviceId, servicePackageId);
-	}
-
-	/**
-	* Removes the user service entry where userId = &#63; and serviceId = &#63; and servicePackageId = &#63; from the database.
-	*
-	* @param userId the user ID
-	* @param serviceId the service ID
-	* @param servicePackageId the service package ID
-	* @throws SystemException if a system exception occurred
-	*/
-	public void removeByUserId_ServiceId_PackageId(long userId, long serviceId,
-		long servicePackageId)
+	public vn.com.fis.portal.model.UserServiceEntry findByUserId_ServiceId(
+		long userId, long serviceId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException {
-		_userServiceEntryLocalService.removeByUserId_ServiceId_PackageId(userId,
-			serviceId, servicePackageId);
-	}
-
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
-		long userId, int serviceStatus)
-		throws com.liferay.portal.kernel.exception.SystemException,
-			vn.com.fis.portal.NoSuchUserServiceEntryException {
-		return _userServiceEntryLocalService.findByUserId_serviceStatus(userId,
-			serviceStatus);
-	}
-
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
-		long userId) throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.findByuserId(userId);
-	}
-
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByservicePackageId(
-		long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.findByservicePackageId(servicePackageId);
-	}
-
-	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_ServiceStatus(
-		long serviceId, int serviceStatus)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.findByserviceId_ServiceStatus(serviceId,
-			serviceStatus);
-	}
-
-	public int countByuserId(long userId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.countByuserId(userId);
-	}
-
-	public int countByservicePackageId(long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.countByservicePackageId(servicePackageId);
-	}
-
-	public int countByserviceId_ServiceStatus(long serviceId, int serviceStatus)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.countByserviceId_ServiceStatus(serviceId,
-			serviceStatus);
-	}
-
-	public int countByUserId_ServicePackageId(long userId, long servicePackageId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return _userServiceEntryLocalService.countByUserId_ServicePackageId(userId,
-			servicePackageId);
+		return _userServiceEntryLocalService.findByUserId_ServiceId(userId,
+			serviceId);
 	}
 
 	/**

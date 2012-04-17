@@ -197,6 +197,32 @@
 			managernotificationportlet-portlet
 		</css-class-wrapper>
 	</portlet>
+	<portlet>
+		<portlet-name>servicetransactionchartreport</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			servicetransactionchartreport-portlet
+		</css-class-wrapper>
+	</portlet>
+	<portlet>
+		<portlet-name>
+			servicepackagetransactionchartreport
+		</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			servicepackagetransactionchartreport-portlet
+		</css-class-wrapper>
+	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>
