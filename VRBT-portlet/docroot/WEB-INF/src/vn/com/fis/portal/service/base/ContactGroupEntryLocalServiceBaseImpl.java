@@ -90,9 +90,9 @@ import vn.com.fis.portal.service.persistence.ContactGroupContactEntryPersistence
 import vn.com.fis.portal.service.persistence.ContactGroupEntryPersistence;
 import vn.com.fis.portal.service.persistence.ContactGroupVideoGroupEntryPersistence;
 import vn.com.fis.portal.service.persistence.FolderEntryPersistence;
+import vn.com.fis.portal.service.persistence.NotificationEntryFinder;
 import vn.com.fis.portal.service.persistence.NotificationEntryPersistence;
 import vn.com.fis.portal.service.persistence.RatingEntryPersistence;
-import vn.com.fis.portal.service.persistence.ServiceEntryFinder;
 import vn.com.fis.portal.service.persistence.ServiceEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServicePackageEntryFinder;
 import vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence;
@@ -101,7 +101,6 @@ import vn.com.fis.portal.service.persistence.ServiceTransactionEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserEntryFinder;
 import vn.com.fis.portal.service.persistence.UserEntryPersistence;
 import vn.com.fis.portal.service.persistence.UserServiceEntryPersistence;
-import vn.com.fis.portal.service.persistence.VideoEntryFinder;
 import vn.com.fis.portal.service.persistence.VideoEntryPersistence;
 import vn.com.fis.portal.service.persistence.VideoGroupEntryPersistence;
 import vn.com.fis.portal.service.persistence.VideoUserContactEntryPersistence;
@@ -842,6 +841,25 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	}
 
 	/**
+	 * Returns the notification entry finder.
+	 *
+	 * @return the notification entry finder
+	 */
+	public NotificationEntryFinder getNotificationEntryFinder() {
+		return notificationEntryFinder;
+	}
+
+	/**
+	 * Sets the notification entry finder.
+	 *
+	 * @param notificationEntryFinder the notification entry finder
+	 */
+	public void setNotificationEntryFinder(
+		NotificationEntryFinder notificationEntryFinder) {
+		this.notificationEntryFinder = notificationEntryFinder;
+	}
+
+	/**
 	 * Returns the rating entry local service.
 	 *
 	 * @return the rating entry local service
@@ -951,24 +969,6 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	public void setServiceEntryPersistence(
 		ServiceEntryPersistence serviceEntryPersistence) {
 		this.serviceEntryPersistence = serviceEntryPersistence;
-	}
-
-	/**
-	 * Returns the service entry finder.
-	 *
-	 * @return the service entry finder
-	 */
-	public ServiceEntryFinder getServiceEntryFinder() {
-		return serviceEntryFinder;
-	}
-
-	/**
-	 * Sets the service entry finder.
-	 *
-	 * @param serviceEntryFinder the service entry finder
-	 */
-	public void setServiceEntryFinder(ServiceEntryFinder serviceEntryFinder) {
-		this.serviceEntryFinder = serviceEntryFinder;
 	}
 
 	/**
@@ -1308,24 +1308,6 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	public void setVideoEntryPersistence(
 		VideoEntryPersistence videoEntryPersistence) {
 		this.videoEntryPersistence = videoEntryPersistence;
-	}
-
-	/**
-	 * Returns the video entry finder.
-	 *
-	 * @return the video entry finder
-	 */
-	public VideoEntryFinder getVideoEntryFinder() {
-		return videoEntryFinder;
-	}
-
-	/**
-	 * Sets the video entry finder.
-	 *
-	 * @param videoEntryFinder the video entry finder
-	 */
-	public void setVideoEntryFinder(VideoEntryFinder videoEntryFinder) {
-		this.videoEntryFinder = videoEntryFinder;
 	}
 
 	/**
@@ -1976,6 +1958,8 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	protected NotificationEntryService notificationEntryService;
 	@BeanReference(type = NotificationEntryPersistence.class)
 	protected NotificationEntryPersistence notificationEntryPersistence;
+	@BeanReference(type = NotificationEntryFinder.class)
+	protected NotificationEntryFinder notificationEntryFinder;
 	@BeanReference(type = RatingEntryLocalService.class)
 	protected RatingEntryLocalService ratingEntryLocalService;
 	@BeanReference(type = RatingEntryService.class)
@@ -1988,8 +1972,6 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	protected ServiceEntryService serviceEntryService;
 	@BeanReference(type = ServiceEntryPersistence.class)
 	protected ServiceEntryPersistence serviceEntryPersistence;
-	@BeanReference(type = ServiceEntryFinder.class)
-	protected ServiceEntryFinder serviceEntryFinder;
 	@BeanReference(type = ServicePackageEntryLocalService.class)
 	protected ServicePackageEntryLocalService servicePackageEntryLocalService;
 	@BeanReference(type = ServicePackageEntryService.class)
@@ -2026,8 +2008,6 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	protected VideoEntryService videoEntryService;
 	@BeanReference(type = VideoEntryPersistence.class)
 	protected VideoEntryPersistence videoEntryPersistence;
-	@BeanReference(type = VideoEntryFinder.class)
-	protected VideoEntryFinder videoEntryFinder;
 	@BeanReference(type = VideoGroupEntryLocalService.class)
 	protected VideoGroupEntryLocalService videoGroupEntryLocalService;
 	@BeanReference(type = VideoGroupEntryService.class)

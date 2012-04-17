@@ -14,16 +14,9 @@
 
 package vn.com.fis.portal.service.impl;
 
-import java.util.List;
-
-import com.liferay.portal.kernel.exception.SystemException;
-
-import vn.com.fis.portal.NoSuchUserEntryException;
-
 import vn.com.fis.portal.model.UserEntry;
 import vn.com.fis.portal.service.base.UserEntryLocalServiceBaseImpl;
 import vn.com.fis.portal.service.persistence.UserEntryFinderUtil;
-import vn.com.fis.portal.service.persistence.UserEntryUtil;
 
 /**
  * The implementation of the user entry local service.
@@ -45,118 +38,6 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	 *
 	 * Never reference this interface directly. Always use {@link vn.com.fis.portal.service.UserEntryLocalServiceUtil} to access the user entry local service.
 	 */
-	/**
-	 * Returns the user entry where userName = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
-	 *
-	 * @param userName the user name
-	 * @return the matching user entry
-	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
-	 * @throws SystemException if a system exception occurred
-	 */
-	public UserEntry findByUserName(String userName)
-		throws NoSuchUserEntryException, SystemException {
-		return UserEntryUtil.findByUserName(userName);
-	}
-	
-	/**
-	 * Removes the user entry where userName = &#63; from the database.
-	 *
-	 * @param userName the user name
-	 * @throws SystemException if a system exception occurred
-	 */
-	public void removeByUserName(String userName)
-		throws NoSuchUserEntryException, SystemException {
-		UserEntryUtil.removeByUserName(userName);
-	}
-	/**
-	 * Returns the number of user entries where userName = &#63;.
-	 *
-	 * @param userName the user name
-	 * @return the number of matching user entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public int countByUserName(String userName) throws SystemException {
-		return UserEntryUtil.countByUserName(userName);
-	}
-	
-	/**
-	 * Returns the user entry where mobileNumber = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
-	 *
-	 * @param mobileNumber the mobile number
-	 * @return the matching user entry
-	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
-	 * @throws SystemException if a system exception occurred
-	 */
-	public UserEntry findByMobileNumber(String mobileNumber)
-		throws NoSuchUserEntryException, SystemException {
-		return UserEntryUtil.findByMobileNumber(mobileNumber);
-	}
-	/**
-	 * Returns the number of user entries where mobileNumber = &#63;.
-	 *
-	 * @param mobileNumber the mobile number
-	 * @return the number of matching user entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public int countByMobileNumber(String mobileNumber) throws SystemException {
-		return UserEntryUtil.countByMobileNumber(mobileNumber);
-	}
-	/**
-	 * Removes the user entry where mobileNumber = &#63; from the database.
-	 *
-	 * @param mobileNumber the mobile number
-	 * @throws SystemException if a system exception occurred
-	 */
-	public void removeByMobileNumber(String mobileNumber)
-		throws NoSuchUserEntryException, SystemException {
-		UserEntryUtil.removeByMobileNumber(mobileNumber);
-	}
-	/**
-	 * Returns the user entry where userId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
-	 *
-	 * @param userId the user ID
-	 * @return the matching user entry
-	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
-	 * @throws SystemException if a system exception occurred
-	 */
-	public UserEntry findByUserId(long userId)
-		throws NoSuchUserEntryException, SystemException {
-		return UserEntryUtil.findByUserId(userId);
-	}
-	/**
-	 * Returns the number of user entries where userId = &#63;.
-	 *
-	 * @param userId the user ID
-	 * @return the number of matching user entries
-	 * @throws SystemException if a system exception occurred
-	 */
-	public int countByUserId(long userId) throws SystemException {
-		return UserEntryUtil.countByUserId(userId);
-	}
-
-	/**
-	 * Removes the user entry where userId = &#63; from the database.
-	 *
-	 * @param userId the user ID
-	 * @throws SystemException if a system exception occurred
-	 */
-	public void removeByUserId(long userId)
-		throws NoSuchUserEntryException, SystemException {
-		 UserEntryUtil.removeByUserId(userId);
-	}
-	
-	public int countByStatus(int status) throws SystemException {
-		return UserEntryUtil.countByUserStatus(status);
-	}
-	
-	public int countAll() throws SystemException {
-		return UserEntryUtil.countAll();
-	}
-
-	public List<UserEntry> findByStatus(int status) throws SystemException {
-		return UserEntryUtil.findByUserStatus(status);
-	}
-	
 	public UserEntry getUserEntryByUserName(String userName)
 	{
 		return UserEntryFinderUtil.getUserEntryByUserName(userName);

@@ -149,6 +149,28 @@
           ]]>  
     </sql>
     <!-- End UserEntry -->
+    <!-- notification -->
+<sql id="vn.com.fis.portal.service.persistence.NotificationEntryFinderImpl.getNotificationEntryByUserIdFrom">
+   		<![CDATA[
+   		 select vn.* from tbl_notification vn, tbl_user vu where vn.useridto = vu.userid and vn.useridfrom=?
+		]]> 
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.NotificationEntryFinderImpl.getNotificationEntryByUserIdCountFrom">
+   		 <![CDATA[
+   		 SELECT  COUNT(*) AS COUNT_VALUE	from tbl_notification vn, tbl_user vu where vn.useridto = vu.userid and vn.useridfrom=?
+          ]]>  
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.NotificationEntryFinderImpl.getNotificationEntryByUserIdTo">
+   		<![CDATA[
+   		 select vn.* from tbl_notification vn, tbl_user vu where vn.useridfrom = vu.userid and vn.useridto=?
+		]]> 
+    </sql>
+    <sql id="vn.com.fis.portal.service.persistence.NotificationEntryFinderImpl.getNotificationEntryByUserIdCountTo">
+   		 <![CDATA[
+   		 SELECT  COUNT(*) AS COUNT_VALUE	from tbl_notification vn, tbl_user vu where vn.useridfrom = vu.userid and vn.useridto=?
+          ]]>  
+    </sql>
+<!-- end notification -->
 	<!-- end quangh -->
 	
 </custom-sql>

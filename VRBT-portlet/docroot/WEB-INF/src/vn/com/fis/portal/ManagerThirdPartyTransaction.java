@@ -1,4 +1,4 @@
-package vn.com.fis.portal.portlet;
+package vn.com.fis.portal;
 
 import java.io.IOException;
 

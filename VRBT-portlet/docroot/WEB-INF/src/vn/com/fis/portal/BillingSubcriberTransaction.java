@@ -1,4 +1,4 @@
-package vn.com.fis.portal.portlet;
+package vn.com.fis.portal;
 
 import com.liferay.util.bridges.mvc.MVCPortlet;
 
