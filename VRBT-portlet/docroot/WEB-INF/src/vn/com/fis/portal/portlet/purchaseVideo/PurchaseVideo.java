@@ -87,7 +87,7 @@ public class PurchaseVideo extends MVCPortlet {
 			violation_Video.setDate_(Calendar.getInstance().getTime());
 			
 			ViolationVideoEntryLocalServiceUtil.addViolationVideoEntry(violation_Video);
-			/*
+			
 			//Send notification to admin (TEST Account)
 			String subject = "A report about '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName() + "' VRBT";
 			String messageToAdmin = "User ID: "+ userId 
@@ -98,7 +98,7 @@ public class PurchaseVideo extends MVCPortlet {
 			String messageToUser = "You reported to admin about '"+ VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()
 					+"' vrbt. Reason: " + ViolationEntryLocalServiceUtil.getViolationEntry(violationId).getViolationTitle();
 			
-			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
+			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
 		} 
 		catch (Exception e) {
 			SessionErrors.add(actionRequest, "error-report-message");
