@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<custom-sql>
+	<sql id="vn.com.fis.portal.service.persistence.CategoryEntryFinderImpl.searchCategory">
+		<![CDATA[
+		 
+		]]>
+	</sql>
+	<sql id="vn.com.fis.portal.service.persistence.CategoryEntryFinderImpl.searchCategoryCount">
+		<![CDATA[
+			 
+		]]>
+	</sql>
+	 
+</custom-sql>
