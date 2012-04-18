@@ -1,6 +1,7 @@
 package vn.com.fis.portal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.portlet.RenderRequest;
@@ -48,15 +49,20 @@ public class VRBTLibrary {
 		{
 			try{
 				companyId = PortalUtil.getCompanyId(renderRequest);
-				roleId = RoleLocalServiceUtil.getRole(companyId, staff).getRoleId();
-				
-				if(UserLocalServiceUtil.hasRoleUser(roleId, userId))
+				String[] staffArr = staff.split("#");
+				for(int i = 0;i<staffArr.length;i++)
 				{
-					isAllow = "Success";
-				}
-				else
-				{
-					isAllow = "You don't have permission";
+					roleId = RoleLocalServiceUtil.getRole(companyId, staffArr[i]).getRoleId();
+					
+					if(UserLocalServiceUtil.hasRoleUser(roleId, userId))
+					{
+						isAllow = "Success";
+						return isAllow;
+					}
+					else
+					{
+						isAllow = "You don't have permission";
+					}
 				}
 			}catch(Exception e)
 			{	

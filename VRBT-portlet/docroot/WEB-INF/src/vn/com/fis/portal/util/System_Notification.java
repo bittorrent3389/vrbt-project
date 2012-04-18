@@ -22,7 +22,7 @@ public class System_Notification {
 		
 		if (!destination.register(new System_Notification_Listener()))
 			MessageBusUtil.registerMessageListener("systemNotification", new System_Notification_Listener());
-		System.out.println("SEND NOTIFICATION");
+		
 		//Create message object
 		Message notificationMessage = new Message();
 		
@@ -33,7 +33,7 @@ public class System_Notification {
 		notificationToAdmin.setMessage(messageToAdmin);
 		notificationToAdmin.setCreateDate(Calendar.getInstance().getTime());
 		notificationToAdmin.setStatus(1);
-		System.out.println("SEND NOTIFICATION");
+		
 		NotificationEntry notificationToUser = NotificationEntryLocalServiceUtil.createNotificationEntry(CounterLocalServiceUtil.increment());
 		notificationToUser.setUserIdFrom(userIdForm);
 		notificationToUser.setUserIdTo(userIdForm);
@@ -42,7 +42,6 @@ public class System_Notification {
 		notificationToUser.setCreateDate(Calendar.getInstance().getTime());
 		notificationToUser.setStatus(1);
 		
-		System.out.println("OKIIIIIIIIIIIIIIIIII");
 		notificationMessage.put("notificationToAdmin", notificationToAdmin);
 		notificationMessage.put("notificationToUser", notificationToUser);
 		

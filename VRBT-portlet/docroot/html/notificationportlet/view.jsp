@@ -7,9 +7,9 @@
 	long userId=user.getUserId();
 	VRBTLibrary vrbtLibrary = new VRBTLibrary();
 	//--------------------------check login and permission------------------------------
-		if(!vrbtLibrary.checkLogin(userId,renderRequest, "Third-party").equals("Success"))
+		if(!vrbtLibrary.checkLogin(userId,renderRequest, "Subscriber#Third-party").equals("Success"))
 		{
-			out.println(vrbtLibrary.checkLogin(userId,renderRequest, "Third-party"));
+			out.println(vrbtLibrary.checkLogin(userId,renderRequest, "Subscriber#Third-party"));
 			return;
 		}
 		//----------------------------------------------------------------------------------

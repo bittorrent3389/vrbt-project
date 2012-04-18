@@ -125,6 +125,7 @@ create table TBL_USER_SERVICE (
 create table TBL_VIDEO (
 	videoId LONG not null primary key,
 	videoName VARCHAR(75) null,
+	videoUrl VARCHAR(75) null,
 	description VARCHAR(75) null,
 	viewCount LONG,
 	date_ DATE null,

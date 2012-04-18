@@ -15,9 +15,9 @@ import vn.com.fis.portal.model.ServiceEntry;
 import vn.com.fis.portal.model.impl.ServiceEntryImpl;
 
 public class ServiceEntryFinderImpl extends BasePersistenceImpl implements ServiceEntryFinder {
-	public final String SEARCH_SQL_ID = ServicePackageEntryFinderImpl.class.getName()+".search";
+	public final String SEARCH_SQL_ID = ServiceEntryFinderImpl.class.getName()+".search";
 	
-	public final String SEARCH_COUNT_SQL_ID = ServicePackageEntryFinderImpl.class.getName()+".searchCount";
+	public final String SEARCH_COUNT_SQL_ID = ServiceEntryFinderImpl.class.getName()+".searchCount";
 	
 	private static String START_SERVICE_CODE = "001";
 	private static String UPLOAD_SERVICE_PACKAGE_CODE = "002";
