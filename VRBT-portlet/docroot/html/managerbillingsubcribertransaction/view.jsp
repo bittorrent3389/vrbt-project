@@ -52,9 +52,9 @@
 	rowChecker.setRowIds("transactionHistoryId");
 	rowChecker.setAllRowIds("transactionHistoryAllRowIds");
 %>
-<div class="fontTitleForm">
+<h3>
 		Manager billing subscripber ... 
-</div>
+</h3>
 <div>
 	<portlet:actionURL var="SeachVideoUserTransactionEntry" name="seachVideoUserTransactionEntry">
 	</portlet:actionURL>
