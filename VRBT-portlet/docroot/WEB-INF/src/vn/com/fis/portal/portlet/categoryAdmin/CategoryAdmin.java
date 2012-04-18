@@ -54,5 +54,42 @@ public class CategoryAdmin extends MVCPortlet {
 		}
 		return;
 	}
+	
+	
+	public void deleteCategory(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException, PortletException {
+		// TODO Auto-generated method stub
+		long categoryId = ParamUtil.getLong(actionRequest, "categoryId");
+		try {
+			CategoryEntryLocalServiceUtil.deleteCategoryEntry(categoryId);
+			SessionMessages.add(actionRequest, "delete-category-entry-successfully");
+		} catch (Exception e) {
+			// TODO: handle exception
+			_log.error(e, e);
+		}
+	}
+	
+	public void editCategory(ActionRequest actionRequest,
+			ActionResponse actionResponse) throws IOException, PortletException {
+		// TODO Auto-generated method stub
+		long categoryId = ParamUtil.getLong(actionRequest, "categoryId");
+		String categoryName = ParamUtil.getString(actionRequest, "categoryName");
+		
+		int status = ParamUtil.getInteger(actionRequest, "status");
+		String description = ParamUtil.getString(actionRequest, "description");
+		
+		CategoryEntry categoryEntry = null;
+		try {
+			categoryEntry = CategoryEntryLocalServiceUtil.getCategoryEntry(categoryId);
+			categoryEntry.setCategoryName(categoryName);
+			categoryEntry.setStatus(status);
+			categoryEntry.setDescription(description);
+			CategoryEntryLocalServiceUtil.updateCategoryEntry(categoryEntry);
+			SessionMessages.add(actionRequest, "update-category-entry-successfully");
+		} catch (Exception e) {
+			// TODO: handle exception
+			_log.error(e, e);
+		}
+	}
 
 }
