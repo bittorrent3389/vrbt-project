@@ -22,17 +22,21 @@ import org.apache.commons.logging.LogFactory;
 import oracle.net.aso.f;
 
 
+import vn.com.fis.portal.model.CategoryVideoEntry;
 import vn.com.fis.portal.model.FolderEntry;
 import vn.com.fis.portal.model.VideoEntry;
 import vn.com.fis.portal.model.VideoEntryModel;
 import vn.com.fis.portal.model.VideoUserEntry;
 
+import vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil;
 import vn.com.fis.portal.service.FolderEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoUserEntryLocalServiceUtil;
+import vn.com.fis.portal.service.persistence.VideoEntryFinderImpl;
 import vn.com.fis.portal.util.VideoAdminPortletUtil;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.process.ProcessException;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
@@ -50,8 +54,8 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
  * Portlet implementation class VideoAdminPortlet
  */
 public class VideoAdminPortlet extends MVCPortlet {
-	
-/*	private static  Log _log = LogFactory.getLog(VideoAdminPortlet.class);
+	private static com.liferay.portal.kernel.log.Log _log = LogFactoryUtil.getLog(VideoAdminPortlet.class);
+
 	
 	
 	public static final String VIDEO_DIR = "videos";
@@ -103,7 +107,7 @@ public class VideoAdminPortlet extends MVCPortlet {
 		SessionMessages.add(actionRequest, "delete-video-success");
 		actionResponse.sendRedirect(redirect);
 	}
-	
+	 
 	public void deleteFolder(ActionRequest actionRequest,
 			ActionResponse actionResponse) throws IOException, PortletException {
 		// TODO Auto-generated method stub
@@ -113,14 +117,14 @@ public class VideoAdminPortlet extends MVCPortlet {
 		if(userId<1) return ; 
 		try {
 			FolderEntryLocalServiceUtil.deleteFolderEntry(folderId);
-			
+			SessionMessages.add(actionRequest, "delete-folder-success");
 		} catch (Exception e) {
 			// TODO: handle exception
 			SessionErrors.add(actionRequest, "delete-folder-error");
-			e.printStackTrace();
+			_log.error(e,e);
 		}
 		actionResponse.setRenderParameter("currFolderId", String.valueOf(currFolderId));
-		SessionMessages.add(actionRequest, "delete-folder-success");
+		
 	}
 	
 	
@@ -143,13 +147,14 @@ public class VideoAdminPortlet extends MVCPortlet {
 			folderEntry.setFolderIdParent(currFolderId);
 			folderEntry.setModifiedDate(Calendar.getInstance().getTime());
 			FolderEntryLocalServiceUtil.updateFolderEntry(folderEntry);
+			SessionMessages.add(actionRequest, "renme-folder-success");
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 			SessionErrors.add(actionRequest, "rename-folder-error");
+			_log.error(e,e);
 		}
 		actionResponse.setRenderParameter("currFolderId", String.valueOf(currFolderId));
-		SessionMessages.add(actionRequest, "renme-folder-success");
+		
 		
 	}
 	
@@ -170,15 +175,15 @@ public class VideoAdminPortlet extends MVCPortlet {
 			folderEntry.setCreateDate(Calendar.getInstance().getTime());
 			folderEntry.setModifiedDate(Calendar.getInstance().getTime());
 			FolderEntryLocalServiceUtil.updateFolderEntry(folderEntry);
+			SessionMessages.add(actionRequest, "add-subfolder-success");
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 			SessionErrors.add(actionRequest, "add-subfolder-error");
+			_log.error(e,e);
 		}
 		actionResponse.setRenderParameter("currFolderId", String.valueOf(currFolderId));
-		SessionMessages.add(actionRequest, "add-subfolder-success");
-		
 	}
+	
 	
 	public void uploadVideo(ActionRequest actionRequest,
 			ActionResponse actionResponse) throws IOException, PortletException {
@@ -225,9 +230,9 @@ public class VideoAdminPortlet extends MVCPortlet {
 						 	break;
 						 	case 2: //ok 
 						 	break;
-						 default:
+						/* default:
 						 	SessionErrors.add(actionRequest, "unknown-case");
-							break;
+							break;*/
 						}
 						 _log.info("statusCode "+ statusCode);
 						 _log.info("role "+ role);
@@ -276,13 +281,12 @@ public class VideoAdminPortlet extends MVCPortlet {
 					videoEntry.setVideoUrl(path);
 					videoEntry.setDescription(description);
 					videoEntry.setFolderId(folderId);
-					videoEntry.setUserId(userId);
+					videoEntry.setUploaderId(userId);
 					videoEntry.setSmallImageUrl(SMALL_IMAGE_URL);
 					videoEntry.setLargeImageUrl(LARGE_IMAGE_URL);
-					videoEntry.setSize(bytes.length);
+					
 					
 					VideoEntryLocalServiceUtil.updateVideoEntry(videoEntry);
-					
 					
 					// insert to user_video
 					videoUserEntry = VideoUserEntryLocalServiceUtil.createVideoUserEntry(CounterLocalServiceUtil.increment(VideoUserEntry.class.getName()));
@@ -300,7 +304,7 @@ public class VideoAdminPortlet extends MVCPortlet {
 				} catch (Exception e) {
 					_log.warn(e);
 					SessionErrors.add(actionRequest, "upload-video-error");
-					throw new Exception(e.getMessage());
+					//throw new Exception(e.getMessage());
 				}
 				
 				// end insert 
@@ -345,10 +349,10 @@ public class VideoAdminPortlet extends MVCPortlet {
 					videoEntry.setVideoUrl(path);
 					videoEntry.setDescription(description);
 					videoEntry.setFolderId(folderId);
-					videoEntry.setUserId(userId);
+					videoEntry.setUploaderId(userId);
 					videoEntry.setSmallImageUrl(SMALL_IMAGE_URL);
 					videoEntry.setLargeImageUrl(LARGE_IMAGE_URL);
-					videoEntry.setSize(bytes.length);
+//					videoEntry.setSize(bytes.length);
 					
 					VideoEntryLocalServiceUtil.updateVideoEntry(videoEntry);
 				} catch (Exception e) {
@@ -387,13 +391,13 @@ public class VideoAdminPortlet extends MVCPortlet {
 	
 	public static void insertCategoryVideo(long[] categoryId , long videoId) throws Exception {
 		if(categoryId==null || categoryId.length==0){ return ;}
-		CateVideoEntry cateVideoEntry = null;
+		CategoryVideoEntry cateVideoEntry = null;
 		for (int i = 0; i < categoryId.length; i++) {
 			try {
-				cateVideoEntry = CateVideoEntryLocalServiceUtil.createCateVideoEntry(CounterLocalServiceUtil.increment(CateVideoEntry.class.getName()));
+				cateVideoEntry = CategoryVideoEntryLocalServiceUtil.createCategoryVideoEntry(CounterLocalServiceUtil.increment(CategoryVideoEntry.class.getName()));
 				cateVideoEntry.setVideoId(videoId);
 				cateVideoEntry.setCategoryId(categoryId[i]);
-				CateVideoEntryLocalServiceUtil.updateCateVideoEntry(cateVideoEntry);
+				CategoryVideoEntryLocalServiceUtil.updateCategoryVideoEntry(cateVideoEntry);
 				
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -405,22 +409,22 @@ public class VideoAdminPortlet extends MVCPortlet {
 	public static void removeCategoryVideoByVideoId(long videoId) throws Exception {
 		if(videoId==0){ return ;}
 		
-		CateVideoEntry cateVideoEntry = null;
-		List<CateVideoEntry> cateVideoEntries = new ArrayList<CateVideoEntry>();
+		CategoryVideoEntry cateVideoEntry = null;
+		List<CategoryVideoEntry> cateVideoEntries = new ArrayList<CategoryVideoEntry>();
 		
 		
 			try {
-				cateVideoEntries = CateVideoEntryLocalServiceUtil.findByVideoId(videoId);
+				cateVideoEntries = CategoryVideoEntryLocalServiceUtil.findByVideoId(videoId);
 				
 				for (int i = 0; i < cateVideoEntries.size(); i++) {
 					try {
-						CateVideoEntryLocalServiceUtil.deleteCateVideoEntry(cateVideoEntries.get(i).getVideoCateId());
+//						CategoryVideoEntryLocalServiceUtil.deleteCateVideoEntry(cateVideoEntries.get(i).getVideoCategoryId());
 					} catch (Exception e) {
 						// TODO: handle exception
 						e.printStackTrace();
 					}
 				}
-				CateVideoEntryLocalServiceUtil.updateCateVideoEntry(cateVideoEntry);
+				CategoryVideoEntryLocalServiceUtil.updateCategoryVideoEntry(cateVideoEntry);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -444,7 +448,7 @@ public class VideoAdminPortlet extends MVCPortlet {
 		try {
 			// update 
 			videoEntry = VideoEntryLocalServiceUtil.getVideoEntry(videoId);
-			videoEntry.setUserId(userId);
+			videoEntry.setUploaderId(userId);
 			videoEntry.setVideoName(videoName);
 			videoEntry.setDescription(description);
 			VideoEntryLocalServiceUtil.updateVideoEntry(videoEntry);
@@ -462,5 +466,5 @@ public class VideoAdminPortlet extends MVCPortlet {
 			actionResponse.sendRedirect(redirectCurr);
 			return;
 		}
-	}*/
+	}
 }
