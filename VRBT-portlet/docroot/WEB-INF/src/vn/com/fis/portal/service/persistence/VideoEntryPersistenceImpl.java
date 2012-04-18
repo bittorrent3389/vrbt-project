@@ -437,6 +437,7 @@ public class VideoEntryPersistenceImpl extends BasePersistenceImpl<VideoEntry>
 
 		videoEntryImpl.setVideoId(videoEntry.getVideoId());
 		videoEntryImpl.setVideoName(videoEntry.getVideoName());
+		videoEntryImpl.setVideoUrl(videoEntry.getVideoUrl());
 		videoEntryImpl.setDescription(videoEntry.getDescription());
 		videoEntryImpl.setViewCount(videoEntry.getViewCount());
 		videoEntryImpl.setDate_(videoEntry.getDate_());
