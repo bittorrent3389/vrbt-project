@@ -53,7 +53,7 @@ public class CategoryEntryLocalServiceImpl
 	 */
 	public List<CategoryEntry> findByCategoryName(String categoryName)
 		throws SystemException {
-		return CategoryEntryUtil.findByCategoryName(categoryName) ;
+		return CategoryEntryUtil.findByCategoryName("%"+categoryName+"%");
 	}
 
 	
@@ -73,7 +73,7 @@ public class CategoryEntryLocalServiceImpl
 	 */
 	public List<CategoryEntry> findByCategoryName(String categoryName,
 		int start, int end) throws SystemException {
-		return CategoryEntryUtil.findByCategoryName(categoryName, start, end);
+		return CategoryEntryUtil.findByCategoryName("%"+categoryName+"%", start, end);
 	}
 
 	/**
@@ -85,7 +85,7 @@ public class CategoryEntryLocalServiceImpl
 	 */
 	public int countByCategoryName(String categoryName)
 		throws SystemException {
-		return CategoryEntryUtil.countByCategoryName(categoryName);
+		return CategoryEntryUtil.countByCategoryName("%"+categoryName+"%");
 	}
 	
 
