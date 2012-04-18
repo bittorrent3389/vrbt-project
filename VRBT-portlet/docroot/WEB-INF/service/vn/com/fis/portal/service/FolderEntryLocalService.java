@@ -307,4 +307,55 @@ public interface FolderEntryLocalService extends PersistedModelLocalService {
 	*/
 	public int countByFolderIdParent(long folderIdParent)
 		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns all the folder entries where folderIdParent = &#63; and userId = &#63;.
+	*
+	* @param folderIdParent the folder ID parent
+	* @param userId the user ID
+	* @return the matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent_UserId(
+		long folderIdParent, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns a range of all the folder entries where folderIdParent = &#63; and userId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param folderIdParent the folder ID parent
+	* @param userId the user ID
+	* @param start the lower bound of the range of folder entries
+	* @param end the upper bound of the range of folder entries (not inclusive)
+	* @return the range of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public java.util.List<vn.com.fis.portal.model.FolderEntry> findByFolderIdParent_UserId(
+		long folderIdParent, long userId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of folder entries where folderIdParent = &#63; and userId = &#63;.
+	*
+	* @param folderIdParent the folder ID parent
+	* @param userId the user ID
+	* @return the number of matching folder entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByFolderIdParent_UserId(long folderIdParent, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Removes all the folder entries where folderIdParent = &#63; and userId = &#63; from the database.
+	*
+	* @param folderIdParent the folder ID parent
+	* @param userId the user ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByFolderIdParent_UserId(long folderIdParent, long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

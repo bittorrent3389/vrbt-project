@@ -10,6 +10,7 @@
 		<property name="service" ref="vn.com.fis.portal.service.CategoryEntryService" />
 	</bean>
 	<bean id="vn.com.fis.portal.service.persistence.CategoryEntryPersistence" class="vn.com.fis.portal.service.persistence.CategoryEntryPersistenceImpl" parent="basePersistence" />
+	<bean id="vn.com.fis.portal.service.persistence.CategoryEntryFinder" class="vn.com.fis.portal.service.persistence.CategoryEntryFinderImpl" parent="basePersistence" />
 	<bean id="vn.com.fis.portal.service.CategoryVideoEntryLocalService" class="vn.com.fis.portal.service.impl.CategoryVideoEntryLocalServiceImpl" />
 	<bean id="vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil" class="vn.com.fis.portal.service.CategoryVideoEntryLocalServiceUtil">
 		<property name="service" ref="vn.com.fis.portal.service.CategoryVideoEntryLocalService" />

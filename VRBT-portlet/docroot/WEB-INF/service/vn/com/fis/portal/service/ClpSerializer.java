@@ -1241,68 +1241,75 @@ public class ClpSerializer {
 
 				method1.invoke(newModel, value1);
 
-				Method method2 = newModelClass.getMethod("setDescription",
+				Method method2 = newModelClass.getMethod("setVideoUrl",
 						new Class[] { String.class });
 
-				String value2 = oldCplModel.getDescription();
+				String value2 = oldCplModel.getVideoUrl();
 
 				method2.invoke(newModel, value2);
 
-				Method method3 = newModelClass.getMethod("setViewCount",
-						new Class[] { Long.TYPE });
+				Method method3 = newModelClass.getMethod("setDescription",
+						new Class[] { String.class });
 
-				Long value3 = new Long(oldCplModel.getViewCount());
+				String value3 = oldCplModel.getDescription();
 
 				method3.invoke(newModel, value3);
 
-				Method method4 = newModelClass.getMethod("setDate_",
-						new Class[] { Date.class });
+				Method method4 = newModelClass.getMethod("setViewCount",
+						new Class[] { Long.TYPE });
 
-				Date value4 = oldCplModel.getDate_();
+				Long value4 = new Long(oldCplModel.getViewCount());
 
 				method4.invoke(newModel, value4);
 
-				Method method5 = newModelClass.getMethod("setSmallImageUrl",
-						new Class[] { String.class });
+				Method method5 = newModelClass.getMethod("setDate_",
+						new Class[] { Date.class });
 
-				String value5 = oldCplModel.getSmallImageUrl();
+				Date value5 = oldCplModel.getDate_();
 
 				method5.invoke(newModel, value5);
 
-				Method method6 = newModelClass.getMethod("setLargeImageUrl",
+				Method method6 = newModelClass.getMethod("setSmallImageUrl",
 						new Class[] { String.class });
 
-				String value6 = oldCplModel.getLargeImageUrl();
+				String value6 = oldCplModel.getSmallImageUrl();
 
 				method6.invoke(newModel, value6);
 
-				Method method7 = newModelClass.getMethod("setAccessModifier",
-						new Class[] { Integer.TYPE });
+				Method method7 = newModelClass.getMethod("setLargeImageUrl",
+						new Class[] { String.class });
 
-				Integer value7 = new Integer(oldCplModel.getAccessModifier());
+				String value7 = oldCplModel.getLargeImageUrl();
 
 				method7.invoke(newModel, value7);
 
-				Method method8 = newModelClass.getMethod("setUploaderId",
-						new Class[] { Long.TYPE });
+				Method method8 = newModelClass.getMethod("setAccessModifier",
+						new Class[] { Integer.TYPE });
 
-				Long value8 = new Long(oldCplModel.getUploaderId());
+				Integer value8 = new Integer(oldCplModel.getAccessModifier());
 
 				method8.invoke(newModel, value8);
 
-				Method method9 = newModelClass.getMethod("setFolderId",
+				Method method9 = newModelClass.getMethod("setUploaderId",
 						new Class[] { Long.TYPE });
 
-				Long value9 = new Long(oldCplModel.getFolderId());
+				Long value9 = new Long(oldCplModel.getUploaderId());
 
 				method9.invoke(newModel, value9);
 
-				Method method10 = newModelClass.getMethod("setStatus",
-						new Class[] { Integer.TYPE });
+				Method method10 = newModelClass.getMethod("setFolderId",
+						new Class[] { Long.TYPE });
 
-				Integer value10 = new Integer(oldCplModel.getStatus());
+				Long value10 = new Long(oldCplModel.getFolderId());
 
 				method10.invoke(newModel, value10);
+
+				Method method11 = newModelClass.getMethod("setStatus",
+						new Class[] { Integer.TYPE });
+
+				Integer value11 = new Integer(oldCplModel.getStatus());
+
+				method11.invoke(newModel, value11);
 
 				return newModel;
 			}
@@ -2852,61 +2859,67 @@ public class ClpSerializer {
 
 				newModel.setVideoName(value1);
 
-				Method method2 = oldModelClass.getMethod("getDescription");
+				Method method2 = oldModelClass.getMethod("getVideoUrl");
 
 				String value2 = (String)method2.invoke(oldModel, (Object[])null);
 
-				newModel.setDescription(value2);
+				newModel.setVideoUrl(value2);
 
-				Method method3 = oldModelClass.getMethod("getViewCount");
+				Method method3 = oldModelClass.getMethod("getDescription");
 
-				Long value3 = (Long)method3.invoke(oldModel, (Object[])null);
+				String value3 = (String)method3.invoke(oldModel, (Object[])null);
 
-				newModel.setViewCount(value3);
+				newModel.setDescription(value3);
 
-				Method method4 = oldModelClass.getMethod("getDate_");
+				Method method4 = oldModelClass.getMethod("getViewCount");
 
-				Date value4 = (Date)method4.invoke(oldModel, (Object[])null);
+				Long value4 = (Long)method4.invoke(oldModel, (Object[])null);
 
-				newModel.setDate_(value4);
+				newModel.setViewCount(value4);
 
-				Method method5 = oldModelClass.getMethod("getSmallImageUrl");
+				Method method5 = oldModelClass.getMethod("getDate_");
 
-				String value5 = (String)method5.invoke(oldModel, (Object[])null);
+				Date value5 = (Date)method5.invoke(oldModel, (Object[])null);
 
-				newModel.setSmallImageUrl(value5);
+				newModel.setDate_(value5);
 
-				Method method6 = oldModelClass.getMethod("getLargeImageUrl");
+				Method method6 = oldModelClass.getMethod("getSmallImageUrl");
 
 				String value6 = (String)method6.invoke(oldModel, (Object[])null);
 
-				newModel.setLargeImageUrl(value6);
+				newModel.setSmallImageUrl(value6);
 
-				Method method7 = oldModelClass.getMethod("getAccessModifier");
+				Method method7 = oldModelClass.getMethod("getLargeImageUrl");
 
-				Integer value7 = (Integer)method7.invoke(oldModel,
+				String value7 = (String)method7.invoke(oldModel, (Object[])null);
+
+				newModel.setLargeImageUrl(value7);
+
+				Method method8 = oldModelClass.getMethod("getAccessModifier");
+
+				Integer value8 = (Integer)method8.invoke(oldModel,
 						(Object[])null);
 
-				newModel.setAccessModifier(value7);
+				newModel.setAccessModifier(value8);
 
-				Method method8 = oldModelClass.getMethod("getUploaderId");
-
-				Long value8 = (Long)method8.invoke(oldModel, (Object[])null);
-
-				newModel.setUploaderId(value8);
-
-				Method method9 = oldModelClass.getMethod("getFolderId");
+				Method method9 = oldModelClass.getMethod("getUploaderId");
 
 				Long value9 = (Long)method9.invoke(oldModel, (Object[])null);
 
-				newModel.setFolderId(value9);
+				newModel.setUploaderId(value9);
 
-				Method method10 = oldModelClass.getMethod("getStatus");
+				Method method10 = oldModelClass.getMethod("getFolderId");
 
-				Integer value10 = (Integer)method10.invoke(oldModel,
+				Long value10 = (Long)method10.invoke(oldModel, (Object[])null);
+
+				newModel.setFolderId(value10);
+
+				Method method11 = oldModelClass.getMethod("getStatus");
+
+				Integer value11 = (Integer)method11.invoke(oldModel,
 						(Object[])null);
 
-				newModel.setStatus(value10);
+				newModel.setStatus(value11);
 
 				return newModel;
 			}

@@ -182,6 +182,7 @@
 			<generator class="assigned" />
 		</id>
 		<property name="videoName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="videoUrl" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="viewCount" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="date_" type="org.hibernate.type.TimestampType" />

@@ -83,6 +83,7 @@ import vn.com.fis.portal.service.ViolationEntryLocalService;
 import vn.com.fis.portal.service.ViolationEntryService;
 import vn.com.fis.portal.service.ViolationVideoEntryLocalService;
 import vn.com.fis.portal.service.ViolationVideoEntryService;
+import vn.com.fis.portal.service.persistence.CategoryEntryFinder;
 import vn.com.fis.portal.service.persistence.CategoryEntryPersistence;
 import vn.com.fis.portal.service.persistence.CategoryVideoEntryPersistence;
 import vn.com.fis.portal.service.persistence.ContactEntryPersistence;
@@ -442,6 +443,24 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	public void setCategoryEntryPersistence(
 		CategoryEntryPersistence categoryEntryPersistence) {
 		this.categoryEntryPersistence = categoryEntryPersistence;
+	}
+
+	/**
+	 * Returns the category entry finder.
+	 *
+	 * @return the category entry finder
+	 */
+	public CategoryEntryFinder getCategoryEntryFinder() {
+		return categoryEntryFinder;
+	}
+
+	/**
+	 * Sets the category entry finder.
+	 *
+	 * @param categoryEntryFinder the category entry finder
+	 */
+	public void setCategoryEntryFinder(CategoryEntryFinder categoryEntryFinder) {
+		this.categoryEntryFinder = categoryEntryFinder;
 	}
 
 	/**
@@ -1935,6 +1954,8 @@ public abstract class ContactGroupEntryLocalServiceBaseImpl
 	protected CategoryEntryService categoryEntryService;
 	@BeanReference(type = CategoryEntryPersistence.class)
 	protected CategoryEntryPersistence categoryEntryPersistence;
+	@BeanReference(type = CategoryEntryFinder.class)
+	protected CategoryEntryFinder categoryEntryFinder;
 	@BeanReference(type = CategoryVideoEntryLocalService.class)
 	protected CategoryVideoEntryLocalService categoryVideoEntryLocalService;
 	@BeanReference(type = CategoryVideoEntryService.class)

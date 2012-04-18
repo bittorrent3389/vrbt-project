@@ -36,8 +36,8 @@
 
 	<liferay-ui:search-container delta="10" emptyResultsMessage="portlet-service_transaction_history-view-search-container-emptyResultsMessage">
 		<liferay-ui:search-container-results 
-			results="<%= ServiceTransactionEntryLocalServiceUtil.search(transactionCodeNumber, 0, 0, searchContainer.getStart(), searchContainer.getEnd(), 1) %>"
-			total="<%= ServiceTransactionEntryLocalServiceUtil.searchCount(transactionCodeNumber, 0, 0, 1) %>"
+			results="<%= ServiceTransactionEntryLocalServiceUtil.searchService(transactionCodeNumber, 0, 0, searchContainer.getStart(), searchContainer.getEnd(), 1) %>"
+			total="<%= ServiceTransactionEntryLocalServiceUtil.searchServiceCount(transactionCodeNumber, 0, 0, 1) %>"
 		/>
 	
 		<liferay-ui:search-container-row className="vn.com.fis.portal.model.ServiceTransactionEntry" 

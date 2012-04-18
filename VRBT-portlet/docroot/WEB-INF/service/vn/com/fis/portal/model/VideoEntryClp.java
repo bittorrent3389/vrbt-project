@@ -76,6 +76,14 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 		_videoName = videoName;
 	}
 
+	public String getVideoUrl() {
+		return _videoUrl;
+	}
+
+	public void setVideoUrl(String videoUrl) {
+		_videoUrl = videoUrl;
+	}
+
 	public String getDescription() {
 		return _description;
 	}
@@ -169,6 +177,7 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 
 		clone.setVideoId(getVideoId());
 		clone.setVideoName(getVideoName());
+		clone.setVideoUrl(getVideoUrl());
 		clone.setDescription(getDescription());
 		clone.setViewCount(getViewCount());
 		clone.setDate_(getDate_());
@@ -232,12 +241,14 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{videoId=");
 		sb.append(getVideoId());
 		sb.append(", videoName=");
 		sb.append(getVideoName());
+		sb.append(", videoUrl=");
+		sb.append(getVideoUrl());
 		sb.append(", description=");
 		sb.append(getDescription());
 		sb.append(", viewCount=");
@@ -262,7 +273,7 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(40);
 
 		sb.append("<model><model-name>");
 		sb.append("vn.com.fis.portal.model.VideoEntry");
@@ -275,6 +286,10 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 		sb.append(
 			"<column><column-name>videoName</column-name><column-value><![CDATA[");
 		sb.append(getVideoName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>videoUrl</column-name><column-value><![CDATA[");
+		sb.append(getVideoUrl());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>description</column-name><column-value><![CDATA[");
@@ -320,6 +335,7 @@ public class VideoEntryClp extends BaseModelImpl<VideoEntry>
 
 	private long _videoId;
 	private String _videoName;
+	private String _videoUrl;
 	private String _description;
 	private long _viewCount;
 	private Date _date_;

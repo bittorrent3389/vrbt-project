@@ -65,6 +65,7 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 	public static final Object[][] TABLE_COLUMNS = {
 			{ "videoId", Types.BIGINT },
 			{ "videoName", Types.VARCHAR },
+			{ "videoUrl", Types.VARCHAR },
 			{ "description", Types.VARCHAR },
 			{ "viewCount", Types.BIGINT },
 			{ "date_", Types.TIMESTAMP },
@@ -75,7 +76,7 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 			{ "folderId", Types.BIGINT },
 			{ "status", Types.INTEGER }
 		};
-	public static final String TABLE_SQL_CREATE = "create table TBL_VIDEO (videoId LONG not null primary key,videoName VARCHAR(75) null,description VARCHAR(75) null,viewCount LONG,date_ DATE null,smallImageUrl VARCHAR(75) null,largeImageUrl VARCHAR(75) null,accessModifier INTEGER,uploaderId LONG,folderId LONG,status INTEGER)";
+	public static final String TABLE_SQL_CREATE = "create table TBL_VIDEO (videoId LONG not null primary key,videoName VARCHAR(75) null,videoUrl VARCHAR(75) null,description VARCHAR(75) null,viewCount LONG,date_ DATE null,smallImageUrl VARCHAR(75) null,largeImageUrl VARCHAR(75) null,accessModifier INTEGER,uploaderId LONG,folderId LONG,status INTEGER)";
 	public static final String TABLE_SQL_DROP = "drop table TBL_VIDEO";
 	public static final String ORDER_BY_JPQL = " ORDER BY videoEntry.videoName ASC, videoEntry.date_ ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY TBL_VIDEO.videoName ASC, TBL_VIDEO.date_ ASC";
@@ -106,6 +107,7 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 
 		model.setVideoId(soapModel.getVideoId());
 		model.setVideoName(soapModel.getVideoName());
+		model.setVideoUrl(soapModel.getVideoUrl());
 		model.setDescription(soapModel.getDescription());
 		model.setViewCount(soapModel.getViewCount());
 		model.setDate_(soapModel.getDate_());
@@ -188,6 +190,20 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 		_columnBitmask = -1L;
 
 		_videoName = videoName;
+	}
+
+	@JSON
+	public String getVideoUrl() {
+		if (_videoUrl == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _videoUrl;
+		}
+	}
+
+	public void setVideoUrl(String videoUrl) {
+		_videoUrl = videoUrl;
 	}
 
 	@JSON
@@ -356,6 +372,7 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 
 		videoEntryImpl.setVideoId(getVideoId());
 		videoEntryImpl.setVideoName(getVideoName());
+		videoEntryImpl.setVideoUrl(getVideoUrl());
 		videoEntryImpl.setDescription(getDescription());
 		videoEntryImpl.setViewCount(getViewCount());
 		videoEntryImpl.setDate_(getDate_());
@@ -450,6 +467,14 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 			videoEntryCacheModel.videoName = null;
 		}
 
+		videoEntryCacheModel.videoUrl = getVideoUrl();
+
+		String videoUrl = videoEntryCacheModel.videoUrl;
+
+		if ((videoUrl != null) && (videoUrl.length() == 0)) {
+			videoEntryCacheModel.videoUrl = null;
+		}
+
 		videoEntryCacheModel.description = getDescription();
 
 		String description = videoEntryCacheModel.description;
@@ -498,12 +523,14 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(23);
+		StringBundler sb = new StringBundler(25);
 
 		sb.append("{videoId=");
 		sb.append(getVideoId());
 		sb.append(", videoName=");
 		sb.append(getVideoName());
+		sb.append(", videoUrl=");
+		sb.append(getVideoUrl());
 		sb.append(", description=");
 		sb.append(getDescription());
 		sb.append(", viewCount=");
@@ -528,7 +555,7 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 	}
 
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(40);
 
 		sb.append("<model><model-name>");
 		sb.append("vn.com.fis.portal.model.VideoEntry");
@@ -541,6 +568,10 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 		sb.append(
 			"<column><column-name>videoName</column-name><column-value><![CDATA[");
 		sb.append(getVideoName());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>videoUrl</column-name><column-value><![CDATA[");
+		sb.append(getVideoUrl());
 		sb.append("]]></column-value></column>");
 		sb.append(
 			"<column><column-name>description</column-name><column-value><![CDATA[");
@@ -590,6 +621,7 @@ public class VideoEntryModelImpl extends BaseModelImpl<VideoEntry>
 		};
 	private long _videoId;
 	private String _videoName;
+	private String _videoUrl;
 	private String _description;
 	private long _viewCount;
 	private Date _date_;

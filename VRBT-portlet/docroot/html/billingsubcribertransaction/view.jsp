@@ -8,7 +8,7 @@
 	String pageRecord=renderRequest.getParameter("delta")+"";
 	VRBTLibrary vrbtLibrary = new VRBTLibrary();
 	//--------------------------check login and permission------------------------------
-	if(!vrbtLibrary.checkLogin(userId,renderRequest, "Third-party").equals("Success"))
+	if(!vrbtLibrary.checkLogin(userId,renderRequest, "Subscriber").equals("Success"))
 	{
 		out.println(vrbtLibrary.checkLogin(userId,renderRequest, "Third-party"));
 		return;

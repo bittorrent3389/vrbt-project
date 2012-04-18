@@ -54,7 +54,7 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
  * Portlet implementation class VideoAdminPortlet
  */
 public class VideoAdminPortlet extends MVCPortlet {
-	private static com.liferay.portal.kernel.log.Log _log = LogFactoryUtil.getLog(VideoAdminPortlet.class);
+	/*private static com.liferay.portal.kernel.log.Log _log = LogFactoryUtil.getLog(VideoAdminPortlet.class);
 
 	
 	
@@ -230,9 +230,9 @@ public class VideoAdminPortlet extends MVCPortlet {
 						 	break;
 						 	case 2: //ok 
 						 	break;
-						/* default:
+						 default:
 						 	SessionErrors.add(actionRequest, "unknown-case");
-							break;*/
+							break;
 						}
 						 _log.info("statusCode "+ statusCode);
 						 _log.info("role "+ role);
@@ -466,5 +466,5 @@ public class VideoAdminPortlet extends MVCPortlet {
 			actionResponse.sendRedirect(redirectCurr);
 			return;
 		}
-	}
+	}*/
 }

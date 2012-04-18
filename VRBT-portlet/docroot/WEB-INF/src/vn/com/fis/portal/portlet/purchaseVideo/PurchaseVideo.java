@@ -6,12 +6,11 @@ import java.util.Calendar;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 
-import vn.com.fis.portal.NoSuchRatingEntryException;
 import vn.com.fis.portal.model.RatingEntry;
 import vn.com.fis.portal.model.UserEntry;
 import vn.com.fis.portal.model.VideoUserEntry;
 import vn.com.fis.portal.model.ViolationVideoEntry;
-import vn.com.fis.portal.portlet.util.System_Notification;
+import vn.com.fis.portal.util.System_Notification;
 import vn.com.fis.portal.service.RatingEntryLocalServiceUtil;
 import vn.com.fis.portal.service.UserEntryLocalServiceUtil;
 import vn.com.fis.portal.service.VideoEntryLocalServiceUtil;

@@ -218,6 +218,7 @@
 		<attributes>
 			<id name="videoId" />
 			<basic name="videoName" />
+			<basic name="videoUrl" />
 			<basic name="description" />
 			<basic name="viewCount" />
 			<basic name="date_">

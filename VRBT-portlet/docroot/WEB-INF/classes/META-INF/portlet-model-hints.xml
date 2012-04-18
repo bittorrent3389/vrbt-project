@@ -114,6 +114,7 @@
 	<model name="vn.com.fis.portal.model.VideoEntry">
 		<field name="videoId" type="long" />
 		<field name="videoName" type="String" />
+		<field name="videoUrl" type="String" />
 		<field name="description" type="String" />
 		<field name="viewCount" type="long" />
 		<field name="date_" type="Date" />

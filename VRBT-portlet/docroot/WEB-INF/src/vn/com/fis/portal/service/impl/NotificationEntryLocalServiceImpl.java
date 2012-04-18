@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import vn.com.fis.portal.model.NotificationEntry;
 import vn.com.fis.portal.service.base.NotificationEntryLocalServiceBaseImpl;
 import vn.com.fis.portal.service.persistence.NotificationEntryFinderUtil;
+import vn.com.fis.portal.service.persistence.NotificationEntryUtil;
 
 /**
  * The implementation of the notification entry local service.
@@ -48,4 +49,5 @@ public class NotificationEntryLocalServiceImpl
 	{
 		return NotificationEntryFinderUtil.getNotificationEntryByUserIdCount(usreId,typeNotification);
 	}
+	
 }

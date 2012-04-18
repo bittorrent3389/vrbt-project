@@ -6,7 +6,7 @@
 	long userId=permissionChecker.getUserId();
 	VRBTLibrary vrbtLibrary = new VRBTLibrary();
 	//--------------------------check login and permission------------------------------
-	if(!vrbtLibrary.checkLogin(userId,renderRequest, "Third-party").equals("Success"))
+	if(!vrbtLibrary.checkLogin(userId,renderRequest, "Network-Operator").equals("Success"))
 	{
 		out.println(vrbtLibrary.checkLogin(userId,renderRequest, "Third-party"));
 		return;
