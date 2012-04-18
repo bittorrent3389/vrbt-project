@@ -389,18 +389,33 @@ public class ServiceTransactionEntryLocalServiceWrapper
 			transactionCode, date_);
 	}
 
-	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> search(
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> searchService(
 		long transactionCode, long serviceId, long servicePackageId, int start,
 		int end, int searchTypeFlag)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _serviceTransactionEntryLocalService.search(transactionCode,
+		return _serviceTransactionEntryLocalService.searchService(transactionCode,
 			serviceId, servicePackageId, start, end, searchTypeFlag);
 	}
 
-	public int searchCount(long transactionCode, long serviceId,
+	public int searchServiceCount(long transactionCode, long serviceId,
 		long servicePackageId, int searchTypeFlag)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _serviceTransactionEntryLocalService.searchCount(transactionCode,
+		return _serviceTransactionEntryLocalService.searchServiceCount(transactionCode,
+			serviceId, servicePackageId, searchTypeFlag);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> searchServicePac(
+		long transactionCode, long serviceId, long servicePackageId, int start,
+		int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.searchServicePac(transactionCode,
+			serviceId, servicePackageId, start, end, searchTypeFlag);
+	}
+
+	public int searchServicePacCount(long transactionCode, long serviceId,
+		long servicePackageId, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _serviceTransactionEntryLocalService.searchServicePacCount(transactionCode,
 			serviceId, servicePackageId, searchTypeFlag);
 	}
 

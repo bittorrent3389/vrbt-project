@@ -26,8 +26,6 @@
 </c:if>
 
 <c:if test="<%= isAllow %>">
-	<%@ include file="/html/service_transaction_history/transaction_history_chart_form.jsp" %>
-
 	<br/>
 	<hr/>
 	<br/>

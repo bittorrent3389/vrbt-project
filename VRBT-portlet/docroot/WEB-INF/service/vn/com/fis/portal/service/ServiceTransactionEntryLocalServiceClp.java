@@ -118,12 +118,21 @@ public class ServiceTransactionEntryLocalServiceClp
 				"countByUserId_TransactionCode_Date", long.class, int.class,
 				java.util.Date.class);
 
-		_searchMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
-				"search", long.class, long.class, long.class, int.class,
+		_searchServiceMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
+				"searchService", long.class, long.class, long.class, int.class,
 				int.class, int.class);
 
-		_searchCountMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
-				"searchCount", long.class, long.class, long.class, int.class);
+		_searchServiceCountMethodKey26 = new MethodKey(_classLoaderProxy.getClassName(),
+				"searchServiceCount", long.class, long.class, long.class,
+				int.class);
+
+		_searchServicePacMethodKey27 = new MethodKey(_classLoaderProxy.getClassName(),
+				"searchServicePac", long.class, long.class, long.class,
+				int.class, int.class, int.class);
+
+		_searchServicePacCountMethodKey28 = new MethodKey(_classLoaderProxy.getClassName(),
+				"searchServicePacCount", long.class, long.class, long.class,
+				int.class);
 	}
 
 	public vn.com.fis.portal.model.ServiceTransactionEntry addServiceTransactionEntry(
@@ -815,13 +824,13 @@ public class ServiceTransactionEntryLocalServiceClp
 		return ((Integer)returnObj).intValue();
 	}
 
-	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> search(
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> searchService(
 		long transactionCode, long serviceId, long servicePackageId, int start,
 		int end, int searchTypeFlag)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_searchMethodKey25,
+		MethodHandler methodHandler = new MethodHandler(_searchServiceMethodKey25,
 				transactionCode, serviceId, servicePackageId, start, end,
 				searchTypeFlag);
 
@@ -845,12 +854,70 @@ public class ServiceTransactionEntryLocalServiceClp
 		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
 	}
 
-	public int searchCount(long transactionCode, long serviceId,
+	public int searchServiceCount(long transactionCode, long serviceId,
 		long servicePackageId, int searchTypeFlag)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_searchCountMethodKey26,
+		MethodHandler methodHandler = new MethodHandler(_searchServiceCountMethodKey26,
+				transactionCode, serviceId, servicePackageId, searchTypeFlag);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry> searchServicePac(
+		long transactionCode, long serviceId, long servicePackageId, int start,
+		int end, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_searchServicePacMethodKey27,
+				transactionCode, serviceId, servicePackageId, start, end,
+				searchTypeFlag);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.ServiceTransactionEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public int searchServicePacCount(long transactionCode, long serviceId,
+		long servicePackageId, int searchTypeFlag)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_searchServicePacCountMethodKey28,
 				transactionCode, serviceId, servicePackageId, searchTypeFlag);
 
 		try {
@@ -903,6 +970,8 @@ public class ServiceTransactionEntryLocalServiceClp
 	private MethodKey _findByUserId_TransactionCode_DateMethodKey22;
 	private MethodKey _findByUserId_TransactionCode_DateMethodKey23;
 	private MethodKey _countByUserId_TransactionCode_DateMethodKey24;
-	private MethodKey _searchMethodKey25;
-	private MethodKey _searchCountMethodKey26;
+	private MethodKey _searchServiceMethodKey25;
+	private MethodKey _searchServiceCountMethodKey26;
+	private MethodKey _searchServicePacMethodKey27;
+	private MethodKey _searchServicePacCountMethodKey28;
 }

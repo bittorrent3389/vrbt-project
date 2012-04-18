@@ -234,4 +234,10 @@ public interface UserEntryLocalService extends PersistedModelLocalService {
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public vn.com.fis.portal.model.UserEntry getUserEntryByUserName(
 		java.lang.String userName);
+
+	public int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException;
 }

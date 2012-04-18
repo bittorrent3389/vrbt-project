@@ -14,9 +14,15 @@
 
 package vn.com.fis.portal.service.impl;
 
+import java.util.List;
+
+import com.liferay.portal.kernel.dao.orm.QueryUtil;
+import com.liferay.portal.kernel.exception.SystemException;
+
 import vn.com.fis.portal.model.UserEntry;
 import vn.com.fis.portal.service.base.UserEntryLocalServiceBaseImpl;
 import vn.com.fis.portal.service.persistence.UserEntryFinderUtil;
+import vn.com.fis.portal.service.persistence.UserEntryUtil;
 
 /**
  * The implementation of the user entry local service.
@@ -41,5 +47,13 @@ public class UserEntryLocalServiceImpl extends UserEntryLocalServiceBaseImpl {
 	public UserEntry getUserEntryByUserName(String userName)
 	{
 		return UserEntryFinderUtil.getUserEntryByUserName(userName);
+	}
+	
+	public int countByStatus(int status) throws SystemException {
+		return UserEntryUtil.countByStatus(status);
+	}
+	
+	public List<UserEntry> findByStatus(int status) throws SystemException {
+		return UserEntryUtil.findByStatus(status);
 	}
 }

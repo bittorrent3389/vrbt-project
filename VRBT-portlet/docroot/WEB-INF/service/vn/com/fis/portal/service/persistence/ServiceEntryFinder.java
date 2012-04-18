@@ -29,6 +29,8 @@ public interface ServiceEntryFinder {
 
 	public boolean isStartService(java.lang.String serviceCode);
 
+	public boolean isUploadServicePackage(java.lang.String serviceCode);
+
 	public java.lang.String getStartServiceCode();
 
 	public java.lang.String getUploadServicePackageCode();

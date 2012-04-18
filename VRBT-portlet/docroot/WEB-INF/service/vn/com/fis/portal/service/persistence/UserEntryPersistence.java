@@ -211,7 +211,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @return the matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserEntry> findByUserStatus(
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
 		int status) throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -227,7 +227,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @return the range of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserEntry> findByUserStatus(
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
 		int status, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -245,7 +245,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @return the ordered range of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public java.util.List<vn.com.fis.portal.model.UserEntry> findByUserStatus(
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
 		int status, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException;
@@ -263,8 +263,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserEntry findByUserStatus_First(
-		int status,
+	public vn.com.fis.portal.model.UserEntry findByStatus_First(int status,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
@@ -282,7 +281,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserEntry findByUserStatus_Last(int status,
+	public vn.com.fis.portal.model.UserEntry findByStatus_Last(int status,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException;
@@ -301,7 +300,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @throws vn.com.fis.portal.NoSuchUserEntryException if a user entry with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public vn.com.fis.portal.model.UserEntry[] findByUserStatus_PrevAndNext(
+	public vn.com.fis.portal.model.UserEntry[] findByStatus_PrevAndNext(
 		long userId, int status,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
@@ -386,7 +385,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @param status the status
 	* @throws SystemException if a system exception occurred
 	*/
-	public void removeByUserStatus(int status)
+	public void removeByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**
@@ -434,7 +433,7 @@ public interface UserEntryPersistence extends BasePersistence<UserEntry> {
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public int countByUserStatus(int status)
+	public int countByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	/**

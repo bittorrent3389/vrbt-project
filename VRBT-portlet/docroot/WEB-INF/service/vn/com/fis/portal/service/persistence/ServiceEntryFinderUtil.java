@@ -41,6 +41,10 @@ public class ServiceEntryFinderUtil {
 		return getFinder().isStartService(serviceCode);
 	}
 
+	public static boolean isUploadServicePackage(java.lang.String serviceCode) {
+		return getFinder().isUploadServicePackage(serviceCode);
+	}
+
 	public static java.lang.String getStartServiceCode() {
 		return getFinder().getStartServiceCode();
 	}

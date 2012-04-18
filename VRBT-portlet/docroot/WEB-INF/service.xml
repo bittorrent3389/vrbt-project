@@ -362,7 +362,7 @@
 		<finder name="UserId" return-type="UserEntry">
 			<finder-column name="userId" />
 		</finder>
-		<finder name="UserStatus" return-type="Collection">
+		<finder name="Status" return-type="Collection">
 			<finder-column name="status" />
 		</finder>
 	</entity>

@@ -16,4 +16,10 @@ public class ServiceTransactionChartReport extends MVCPortlet {
 		actionResponse.setRenderParameter("cbServicePackageChart", ParamUtil.getString(actionRequest, "cbServicePackageChart"));
 		actionResponse.setRenderParameter("serviceTransactionCode", ParamUtil.getString(actionRequest, "serviceTransactionCode"));
 	}
+	
+	public void searchTransaction_History(ActionRequest actionRequest, ActionResponse actionResponse) {
+		actionResponse.setRenderParameter("cbServiceChart", ParamUtil.getString(actionRequest, "cbServiceChart"));
+		actionResponse.setRenderParameter("cbServicePackageChart", ParamUtil.getString(actionRequest, "cbServicePackageChart"));
+		actionResponse.setRenderParameter("serviceTransactionCode", ParamUtil.getString(actionRequest, "serviceTransactionCode"));
+	}
 }

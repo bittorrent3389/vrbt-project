@@ -104,25 +104,24 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
 			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserId",
 			new String[] { Long.class.getName() });
-	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_USERSTATUS =
-		new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByUserStatus",
+			FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByStatus",
 			new String[] {
 				Integer.class.getName(),
 				
 			"java.lang.Integer", "java.lang.Integer",
 				"com.liferay.portal.kernel.util.OrderByComparator"
 			});
-	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERSTATUS =
+	public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS =
 		new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByUserStatus",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByStatus",
 			new String[] { Integer.class.getName() },
 			UserEntryModelImpl.STATUS_COLUMN_BITMASK);
-	public static final FinderPath FINDER_PATH_COUNT_BY_USERSTATUS = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
+	public static final FinderPath FINDER_PATH_COUNT_BY_STATUS = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, Long.class,
-			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByUserStatus",
+			FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByStatus",
 			new String[] { Integer.class.getName() });
 	public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_ALL = new FinderPath(UserEntryModelImpl.ENTITY_CACHE_ENABLED,
 			UserEntryModelImpl.FINDER_CACHE_ENABLED, UserEntryImpl.class,
@@ -361,23 +360,21 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 		else {
 			if ((userEntryModelImpl.getColumnBitmask() &
-					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERSTATUS.getColumnBitmask()) != 0) {
+					FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS.getColumnBitmask()) != 0) {
 				Object[] args = new Object[] {
 						Integer.valueOf(userEntryModelImpl.getOriginalStatus())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERSTATUS,
-					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERSTATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS,
 					args);
 
 				args = new Object[] {
 						Integer.valueOf(userEntryModelImpl.getStatus())
 					};
 
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_USERSTATUS,
-					args);
-				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERSTATUS,
+				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUS, args);
+				FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS,
 					args);
 			}
 		}
@@ -982,10 +979,8 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the matching user entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserEntry> findByUserStatus(int status)
-		throws SystemException {
-		return findByUserStatus(status, QueryUtil.ALL_POS, QueryUtil.ALL_POS,
-			null);
+	public List<UserEntry> findByStatus(int status) throws SystemException {
+		return findByStatus(status, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
 	}
 
 	/**
@@ -1001,9 +996,9 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the range of matching user entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserEntry> findByUserStatus(int status, int start, int end)
+	public List<UserEntry> findByStatus(int status, int start, int end)
 		throws SystemException {
-		return findByUserStatus(status, start, end, null);
+		return findByStatus(status, start, end, null);
 	}
 
 	/**
@@ -1020,18 +1015,18 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the ordered range of matching user entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public List<UserEntry> findByUserStatus(int status, int start, int end,
+	public List<UserEntry> findByStatus(int status, int start, int end,
 		OrderByComparator orderByComparator) throws SystemException {
 		FinderPath finderPath = null;
 		Object[] finderArgs = null;
 
 		if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
 				(orderByComparator == null)) {
-			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_USERSTATUS;
+			finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STATUS;
 			finderArgs = new Object[] { status };
 		}
 		else {
-			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_USERSTATUS;
+			finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_STATUS;
 			finderArgs = new Object[] { status, start, end, orderByComparator };
 		}
 
@@ -1051,7 +1046,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 			query.append(_SQL_SELECT_USERENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_USERSTATUS_STATUS_2);
+			query.append(_FINDER_COLUMN_STATUS_STATUS_2);
 
 			if (orderByComparator != null) {
 				appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -1111,10 +1106,10 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry findByUserStatus_First(int status,
+	public UserEntry findByStatus_First(int status,
 		OrderByComparator orderByComparator)
 		throws NoSuchUserEntryException, SystemException {
-		List<UserEntry> list = findByUserStatus(status, 0, 1, orderByComparator);
+		List<UserEntry> list = findByStatus(status, 0, 1, orderByComparator);
 
 		if (list.isEmpty()) {
 			StringBundler msg = new StringBundler(4);
@@ -1146,12 +1141,12 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry findByUserStatus_Last(int status,
+	public UserEntry findByStatus_Last(int status,
 		OrderByComparator orderByComparator)
 		throws NoSuchUserEntryException, SystemException {
-		int count = countByUserStatus(status);
+		int count = countByStatus(status);
 
-		List<UserEntry> list = findByUserStatus(status, count - 1, count,
+		List<UserEntry> list = findByStatus(status, count - 1, count,
 				orderByComparator);
 
 		if (list.isEmpty()) {
@@ -1185,7 +1180,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @throws vn.com.fis.portal.NoSuchUserEntryException if a user entry with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
-	public UserEntry[] findByUserStatus_PrevAndNext(long userId, int status,
+	public UserEntry[] findByStatus_PrevAndNext(long userId, int status,
 		OrderByComparator orderByComparator)
 		throws NoSuchUserEntryException, SystemException {
 		UserEntry userEntry = findByPrimaryKey(userId);
@@ -1197,12 +1192,12 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 			UserEntry[] array = new UserEntryImpl[3];
 
-			array[0] = getByUserStatus_PrevAndNext(session, userEntry, status,
+			array[0] = getByStatus_PrevAndNext(session, userEntry, status,
 					orderByComparator, true);
 
 			array[1] = userEntry;
 
-			array[2] = getByUserStatus_PrevAndNext(session, userEntry, status,
+			array[2] = getByStatus_PrevAndNext(session, userEntry, status,
 					orderByComparator, false);
 
 			return array;
@@ -1215,7 +1210,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 		}
 	}
 
-	protected UserEntry getByUserStatus_PrevAndNext(Session session,
+	protected UserEntry getByStatus_PrevAndNext(Session session,
 		UserEntry userEntry, int status, OrderByComparator orderByComparator,
 		boolean previous) {
 		StringBundler query = null;
@@ -1230,7 +1225,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 		query.append(_SQL_SELECT_USERENTRY_WHERE);
 
-		query.append(_FINDER_COLUMN_USERSTATUS_STATUS_2);
+		query.append(_FINDER_COLUMN_STATUS_STATUS_2);
 
 		if (orderByComparator != null) {
 			String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -1481,8 +1476,8 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @param status the status
 	 * @throws SystemException if a system exception occurred
 	 */
-	public void removeByUserStatus(int status) throws SystemException {
-		for (UserEntry userEntry : findByUserStatus(status)) {
+	public void removeByStatus(int status) throws SystemException {
+		for (UserEntry userEntry : findByStatus(status)) {
 			remove(userEntry);
 		}
 	}
@@ -1689,10 +1684,10 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	 * @return the number of matching user entries
 	 * @throws SystemException if a system exception occurred
 	 */
-	public int countByUserStatus(int status) throws SystemException {
+	public int countByStatus(int status) throws SystemException {
 		Object[] finderArgs = new Object[] { status };
 
-		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_USERSTATUS,
+		Long count = (Long)FinderCacheUtil.getResult(FINDER_PATH_COUNT_BY_STATUS,
 				finderArgs, this);
 
 		if (count == null) {
@@ -1700,7 +1695,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 
 			query.append(_SQL_COUNT_USERENTRY_WHERE);
 
-			query.append(_FINDER_COLUMN_USERSTATUS_STATUS_2);
+			query.append(_FINDER_COLUMN_STATUS_STATUS_2);
 
 			String sql = query.toString();
 
@@ -1725,7 +1720,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 					count = Long.valueOf(0);
 				}
 
-				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_USERSTATUS,
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUS,
 					finderArgs, count);
 
 				closeSession(session);
@@ -1863,7 +1858,7 @@ public class UserEntryPersistenceImpl extends BasePersistenceImpl<UserEntry>
 	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_2 = "userEntry.mobileNumber = ?";
 	private static final String _FINDER_COLUMN_MOBILENUMBER_MOBILENUMBER_3 = "(userEntry.mobileNumber IS NULL OR userEntry.mobileNumber = ?)";
 	private static final String _FINDER_COLUMN_USERID_USERID_2 = "userEntry.userId = ?";
-	private static final String _FINDER_COLUMN_USERSTATUS_STATUS_2 = "userEntry.status = ?";
+	private static final String _FINDER_COLUMN_STATUS_STATUS_2 = "userEntry.status = ?";
 	private static final String _ORDER_BY_ENTITY_ALIAS = "userEntry.";
 	private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No UserEntry exists with the primary key ";
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No UserEntry exists with the key {";

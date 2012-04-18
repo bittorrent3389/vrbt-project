@@ -318,9 +318,9 @@ public class UserEntryUtil {
 	* @return the matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByUserStatus(
+	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
 		int status) throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().findByUserStatus(status);
+		return getPersistence().findByStatus(status);
 	}
 
 	/**
@@ -336,10 +336,10 @@ public class UserEntryUtil {
 	* @return the range of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByUserStatus(
+	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
 		int status, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().findByUserStatus(status, start, end);
+		return getPersistence().findByStatus(status, start, end);
 	}
 
 	/**
@@ -356,12 +356,12 @@ public class UserEntryUtil {
 	* @return the ordered range of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByUserStatus(
+	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
 		int status, int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence()
-				   .findByUserStatus(status, start, end, orderByComparator);
+				   .findByStatus(status, start, end, orderByComparator);
 	}
 
 	/**
@@ -377,12 +377,12 @@ public class UserEntryUtil {
 	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static vn.com.fis.portal.model.UserEntry findByUserStatus_First(
+	public static vn.com.fis.portal.model.UserEntry findByStatus_First(
 		int status,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
-		return getPersistence().findByUserStatus_First(status, orderByComparator);
+		return getPersistence().findByStatus_First(status, orderByComparator);
 	}
 
 	/**
@@ -398,12 +398,12 @@ public class UserEntryUtil {
 	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static vn.com.fis.portal.model.UserEntry findByUserStatus_Last(
+	public static vn.com.fis.portal.model.UserEntry findByStatus_Last(
 		int status,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
-		return getPersistence().findByUserStatus_Last(status, orderByComparator);
+		return getPersistence().findByStatus_Last(status, orderByComparator);
 	}
 
 	/**
@@ -420,14 +420,13 @@ public class UserEntryUtil {
 	* @throws vn.com.fis.portal.NoSuchUserEntryException if a user entry with the primary key could not be found
 	* @throws SystemException if a system exception occurred
 	*/
-	public static vn.com.fis.portal.model.UserEntry[] findByUserStatus_PrevAndNext(
+	public static vn.com.fis.portal.model.UserEntry[] findByStatus_PrevAndNext(
 		long userId, int status,
 		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserEntryException {
 		return getPersistence()
-				   .findByUserStatus_PrevAndNext(userId, status,
-			orderByComparator);
+				   .findByStatus_PrevAndNext(userId, status, orderByComparator);
 	}
 
 	/**
@@ -521,9 +520,9 @@ public class UserEntryUtil {
 	* @param status the status
 	* @throws SystemException if a system exception occurred
 	*/
-	public static void removeByUserStatus(int status)
+	public static void removeByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		getPersistence().removeByUserStatus(status);
+		getPersistence().removeByStatus(status);
 	}
 
 	/**
@@ -579,9 +578,9 @@ public class UserEntryUtil {
 	* @return the number of matching user entries
 	* @throws SystemException if a system exception occurred
 	*/
-	public static int countByUserStatus(int status)
+	public static int countByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().countByUserStatus(status);
+		return getPersistence().countByStatus(status);
 	}
 
 	/**

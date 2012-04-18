@@ -168,12 +168,21 @@ public class ServiceTransactionEntryLocalServiceImpl
 		return ServiceTransactionEntryUtil.countByUserId_TransactionCode_Date(userId, transactionCode, date_);
 	}
 	
-	public List<ServiceTransactionEntry> search(long transactionCode, long serviceId, long servicePackageId, int start, int end, int searchTypeFlag) 
+	public List<ServiceTransactionEntry> searchService(long transactionCode, long serviceId, long servicePackageId, int start, int end, int searchTypeFlag) 
 			throws SystemException {
-		return ServiceTransactionEntryFinderUtil.search(transactionCode, serviceId, servicePackageId, start, end, searchTypeFlag);
+		return ServiceTransactionEntryFinderUtil.searchService(transactionCode, serviceId, servicePackageId, start, end, searchTypeFlag);
 	}
 	
-	public int searchCount(long transactionCode, long serviceId, long servicePackageId, int searchTypeFlag) throws SystemException {
-		return ServiceTransactionEntryFinderUtil.searchCount(transactionCode, serviceId, servicePackageId, searchTypeFlag);
+	public int searchServiceCount(long transactionCode, long serviceId, long servicePackageId, int searchTypeFlag) throws SystemException {
+		return ServiceTransactionEntryFinderUtil.searchServiceCount(transactionCode, serviceId, servicePackageId, searchTypeFlag);
+	}
+	
+	public List<ServiceTransactionEntry> searchServicePac(long transactionCode, long serviceId, long servicePackageId, int start, int end, int searchTypeFlag) 
+			throws SystemException {
+		return ServiceTransactionEntryFinderUtil.searchServicePac(transactionCode, serviceId, servicePackageId, start, end, searchTypeFlag);
+	}
+	
+	public int searchServicePacCount(long transactionCode, long serviceId, long servicePackageId, int searchTypeFlag) throws SystemException {
+		return ServiceTransactionEntryFinderUtil.searchServicePacCount(transactionCode, serviceId, servicePackageId, searchTypeFlag);
 	}
 }

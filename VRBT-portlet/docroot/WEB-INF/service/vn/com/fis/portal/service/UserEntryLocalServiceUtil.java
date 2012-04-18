@@ -263,6 +263,16 @@ public class UserEntryLocalServiceUtil {
 		return getService().getUserEntryByUserName(userName);
 	}
 
+	public static int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByStatus(status);
+	}
+
+	public static java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByStatus(status);
+	}
+
 	public static void clearService() {
 		_service = null;
 	}

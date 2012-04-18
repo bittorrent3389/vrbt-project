@@ -84,6 +84,7 @@ import vn.com.fis.portal.service.persistence.FolderEntryPersistence;
 import vn.com.fis.portal.service.persistence.NotificationEntryFinder;
 import vn.com.fis.portal.service.persistence.NotificationEntryPersistence;
 import vn.com.fis.portal.service.persistence.RatingEntryPersistence;
+import vn.com.fis.portal.service.persistence.ServiceEntryFinder;
 import vn.com.fis.portal.service.persistence.ServiceEntryPersistence;
 import vn.com.fis.portal.service.persistence.ServicePackageEntryFinder;
 import vn.com.fis.portal.service.persistence.ServicePackageEntryPersistence;
@@ -708,6 +709,24 @@ public abstract class ContactGroupContactEntryServiceBaseImpl
 	public void setServiceEntryPersistence(
 		ServiceEntryPersistence serviceEntryPersistence) {
 		this.serviceEntryPersistence = serviceEntryPersistence;
+	}
+
+	/**
+	 * Returns the service entry finder.
+	 *
+	 * @return the service entry finder
+	 */
+	public ServiceEntryFinder getServiceEntryFinder() {
+		return serviceEntryFinder;
+	}
+
+	/**
+	 * Sets the service entry finder.
+	 *
+	 * @param serviceEntryFinder the service entry finder
+	 */
+	public void setServiceEntryFinder(ServiceEntryFinder serviceEntryFinder) {
+		this.serviceEntryFinder = serviceEntryFinder;
 	}
 
 	/**
@@ -1707,6 +1726,8 @@ public abstract class ContactGroupContactEntryServiceBaseImpl
 	protected ServiceEntryService serviceEntryService;
 	@BeanReference(type = ServiceEntryPersistence.class)
 	protected ServiceEntryPersistence serviceEntryPersistence;
+	@BeanReference(type = ServiceEntryFinder.class)
+	protected ServiceEntryFinder serviceEntryFinder;
 	@BeanReference(type = ServicePackageEntryLocalService.class)
 	protected ServicePackageEntryLocalService servicePackageEntryLocalService;
 	@BeanReference(type = ServicePackageEntryService.class)

@@ -86,6 +86,12 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 
 		_getUserEntryByUserNameMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
 				"getUserEntryByUserName", java.lang.String.class);
+
+		_countByStatusMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByStatus", int.class);
+
+		_findByStatusMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByStatus", int.class);
 	}
 
 	public vn.com.fis.portal.model.UserEntry addUserEntry(
@@ -571,6 +577,60 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByStatusMethodKey18,
+				status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByStatusMethodKey19,
+				status);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.List<vn.com.fis.portal.model.UserEntry>)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public ClassLoaderProxy getClassLoaderProxy() {
 		return _classLoaderProxy;
 	}
@@ -594,4 +654,6 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
 	private MethodKey _getUserEntryByUserNameMethodKey17;
+	private MethodKey _countByStatusMethodKey18;
+	private MethodKey _findByStatusMethodKey19;
 }

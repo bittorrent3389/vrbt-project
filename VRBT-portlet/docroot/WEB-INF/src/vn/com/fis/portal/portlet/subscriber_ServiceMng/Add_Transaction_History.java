@@ -11,8 +11,9 @@ import vn.com.fis.portal.service.ServiceTransactionEntryLocalServiceUtil;
 public class Add_Transaction_History {
 	public static int START_SERVICE_CODE = 1;
 	public static int STOP_SERVICE_CODE = 2;
-	public static int START_UPLOAD_PACKAGE_CODE = 3;
-	public static int STOP_UPLOAD_SERVICE_PACKAGE_CODE = 4;
+	public static int REMOVE_SERVICE_CODE = 3;
+	public static int START_SERVICE_PACKAGE_CODE = 4;
+	public static int STOP_SERVICE_PACKAGE_CODE = 5;
 	
 	public static void addService_Transaction_History(int transactionCode, Date transactionDate, long userId,
 			long serviceId, int serviceStatus, Date serviceStartDate, Date serviceStopDate,

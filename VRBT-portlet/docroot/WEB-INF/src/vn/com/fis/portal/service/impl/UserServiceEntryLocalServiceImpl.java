@@ -14,6 +14,8 @@
 
 package vn.com.fis.portal.service.impl;
 
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.SystemException;
 
 import vn.com.fis.portal.NoSuchUserServiceEntryException;
@@ -51,5 +53,38 @@ public class UserServiceEntryLocalServiceImpl
 	public UserServiceEntry findByUserId_ServiceId(long userId, long serviceId)
 			throws NoSuchUserServiceEntryException, SystemException {
 		return UserServiceEntryUtil.findByUserId_ServiceId(userId, serviceId);
+	}
+	
+	public List<UserServiceEntry> findByserviceId_Status(long serviceId,
+			int serviceStatus) throws SystemException {
+		return UserServiceEntryUtil.findByserviceId_Status(serviceId, serviceStatus);
+	}
+	
+	public int countByserviceId_Status(long serviceId, int serviceStatus) throws SystemException{
+		return UserServiceEntryUtil.countByserviceId_Status(serviceId, serviceStatus);
+	}
+	
+	public int countByservicePackageId(long servicePackageId)
+			throws SystemException {
+		return UserServiceEntryUtil.countByservicePackageId(servicePackageId);
+	}
+	
+	public int countByuserId(long userId) throws SystemException {
+		return UserServiceEntryUtil.countByuserId(userId);
+	}
+	
+	public List<UserServiceEntry> findByuserId(long userId)
+			throws SystemException {
+		return UserServiceEntryUtil.findByuserId(userId);
+	}
+	
+	public List<UserServiceEntry> findByUserId_serviceStatus(long userId,
+			int serviceStatus) throws SystemException {
+		return UserServiceEntryUtil.findByUserId_serviceStatus(userId, serviceStatus);
+	}
+	
+	public int countByUserId_ServiceId(long userId, long serviceId)
+			throws SystemException {
+		return UserServiceEntryUtil.countByUserId_ServiceId(userId, serviceId);
 	}
 }

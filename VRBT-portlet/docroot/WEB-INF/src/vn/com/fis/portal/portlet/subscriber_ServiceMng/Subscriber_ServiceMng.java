@@ -10,11 +10,11 @@ import vn.com.fis.portal.model.ServiceEntry;
 import vn.com.fis.portal.model.ServicePackageEntry;
 import vn.com.fis.portal.model.UserEntry;
 import vn.com.fis.portal.model.UserServiceEntry;
-import vn.com.fis.portal.portlet.util.System_Notification;
 import vn.com.fis.portal.service.ServiceEntryLocalServiceUtil;
 import vn.com.fis.portal.service.ServicePackageEntryLocalServiceUtil;
 import vn.com.fis.portal.service.UserEntryLocalServiceUtil;
 import vn.com.fis.portal.service.UserServiceEntryLocalServiceUtil;
+import vn.com.fis.portal.util.System_Notification;
 
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -140,7 +140,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 				
 				ServicePackageEntry packageExt = ServicePackageEntryLocalServiceUtil.fetchServicePackageEntry(packageId);
 				
-				Add_Transaction_History.addService_Transaction_History(Add_Transaction_History.START_UPLOAD_PACKAGE_CODE, 
+				Add_Transaction_History.addService_Transaction_History(Add_Transaction_History.START_SERVICE_PACKAGE_CODE, 
 						Calendar.getInstance().getTime(), userId, 0, 0, null, null, packageId, userService.getPackageDate());
 					
 					//Send notification to admin (TEST Account)
@@ -175,11 +175,11 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 				
 				UserServiceEntryLocalServiceUtil.updateUserServiceEntry(userService);
 				
-				Add_Transaction_History.addService_Transaction_History(Add_Transaction_History.STOP_UPLOAD_SERVICE_PACKAGE_CODE, 
+				Add_Transaction_History.addService_Transaction_History(Add_Transaction_History.STOP_SERVICE_PACKAGE_CODE, 
 						Calendar.getInstance().getTime(), userId, 0, 0, null, null, packageId, null);
 				
 				//Send notification to admin (TEST Account)
-				/*String subject = UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
+				String subject = UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
 									+ " stoped to use '"
 									+  ServicePackageEntryLocalServiceUtil.getServicePackageEntry(packageId).getServicePackageName() +"' service Package";
 				String messageToAdmin = "User ID: "+ userId 
@@ -189,7 +189,7 @@ public class Subscriber_ServiceMng extends MVCPortlet {
 				String messageToUser = "Stoped '"+ ServicePackageEntryLocalServiceUtil.getServicePackageEntry(packageId).getServicePackageName() 
 						+"' service Package";
 				
-				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);*/
+				new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
 			}
 			
 		} catch (Exception e) {

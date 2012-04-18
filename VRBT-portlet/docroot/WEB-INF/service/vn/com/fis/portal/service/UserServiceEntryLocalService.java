@@ -244,4 +244,27 @@ public interface UserServiceEntryLocalService extends PersistedModelLocalService
 		long userId, long serviceId)
 		throws com.liferay.portal.kernel.exception.SystemException,
 			vn.com.fis.portal.NoSuchUserServiceEntryException;
+
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByserviceId_Status(
+		long serviceId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByserviceId_Status(long serviceId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByservicePackageId(long servicePackageId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByuserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByuserId(
+		long userId) throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<vn.com.fis.portal.model.UserServiceEntry> findByUserId_serviceStatus(
+		long userId, int serviceStatus)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByUserId_ServiceId(long userId, long serviceId)
+		throws com.liferay.portal.kernel.exception.SystemException;
 }

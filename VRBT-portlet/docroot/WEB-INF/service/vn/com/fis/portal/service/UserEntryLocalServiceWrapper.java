@@ -255,6 +255,16 @@ public class UserEntryLocalServiceWrapper implements UserEntryLocalService,
 		return _userEntryLocalService.getUserEntryByUserName(userName);
 	}
 
+	public int countByStatus(int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _userEntryLocalService.countByStatus(status);
+	}
+
+	public java.util.List<vn.com.fis.portal.model.UserEntry> findByStatus(
+		int status) throws com.liferay.portal.kernel.exception.SystemException {
+		return _userEntryLocalService.findByStatus(status);
+	}
+
 	/**
 	 * @deprecated Renamed to {@link #getWrappedService}
 	 */

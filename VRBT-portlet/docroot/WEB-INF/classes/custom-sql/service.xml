@@ -46,17 +46,41 @@
 		]]>
 	</sql>
 	
-	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchAll">
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchServiceAll">
 		<![CDATA[
 			SELECT tbl_service_transaction.* 
 			FROM tbl_service_transaction
+			WHERE tbl_service_transaction.transactioncode = 1 
+				OR tbl_service_transaction.transactioncode = 2
+				OR tbl_service_transaction.transactioncode = 3
 		]]>
 	</sql>
 	
-	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchCountAll">
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchServiceCountAll">
 		<![CDATA[
 		 SELECT  COUNT(*) AS COUNT_VALUE
 		 FROM tbl_service_transaction
+		 WHERE tbl_service_transaction.transactioncode = 1 
+			OR tbl_service_transaction.transactioncode = 2
+			OR tbl_service_transaction.transactioncode = 3
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchServicePacAll">
+		<![CDATA[
+			SELECT tbl_service_transaction.* 
+			FROM tbl_service_transaction
+			WHERE tbl_service_transaction.transactioncode = 4 
+				OR tbl_service_transaction.transactioncode = 5
+		]]>
+	</sql>
+	
+	<sql id="vn.com.fis.portal.service.persistence.ServiceTransactionEntryFinderImpl.searchServicePacCountAll">
+		<![CDATA[
+		 SELECT  COUNT(*) AS COUNT_VALUE
+		 FROM tbl_service_transaction
+		 WHERE tbl_service_transaction.transactioncode = 4 
+				OR tbl_service_transaction.transactioncode = 5
 		]]>
 	</sql>
 	
