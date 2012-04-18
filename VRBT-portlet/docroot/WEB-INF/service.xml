@@ -8,6 +8,7 @@
 		<column name="videoId" type="long" primary="true" />
 		<!-- Audit fields -->
 		<column name="videoName" type="String" />
+		<column name="videoUrl" type="String" />
 		<column name="description" type="String" />
 		<column name="viewCount" type="long" />
 		<column name="date_" type="Date" />
