@@ -1,0 +1,76 @@
+
+
+
+.expand-folder {
+		float: right;
+	}
+
+	.folder-search {
+		float: right;
+		margin: 0 0 0.5em 0.5em;
+	}
+
+	img.locked-icon, img.shortcut-icon {
+		bottom: 12px;
+		position: absolute;
+		right: 0;
+		z-index: 10;
+	}
+
+	.lfr-menu-list ul {
+		background: #00A2EA;
+		position: relative;
+
+		&:after {
+			border: 0px solid transparent;
+			border-bottom-color: #00A2EA;
+			content: '';
+			position: absolute;
+			right: 0px;
+			top: -10px;
+		}
+	}
+
+	.videoAdminPortlet	ul.lfr-actions {
+		background-color: #00A2EA;
+		border: 0px;
+	}
+	.videoAdminPortlet	ul.lfr-actions {
+		&.lfr-extended .lfr-trigger {
+			min-width: auto;
+		
+			strong {
+				min-width: 10px;
+				border:0px;
+				float:right;
+				margin-right:0px;
+				background-color: #00A2EA;
+			}
+		}
+
+		&.show-arrow.direction-down .lfr-trigger strong a {
+			background: url(@theme_image_path@/arrows/08_down.png) 100% -5px no-repeat;
+			background-color: #00A2EA;
+			border: 0px;
+		}
+	}
+
+	
+	.rightPanel_VRBT_Purchase_Shop
+{
+	width: 200px;
+	height: 100%;
+}
+
+.centerPanel_VRBT_Purchase_Shop
+{
+	width: 450px;
+	height: 100%;
+}
+
+.leftPanel_VRBT_Purchase_Shop
+{
+	width: 200px;
+	height: 100%;
+}
+	
