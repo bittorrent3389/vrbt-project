@@ -43,7 +43,8 @@ String redirect = redirectURL.toString();
 							try{
 								videoId=  videoEntry.getVideoId();
 //								videoUserEntry =  VideoUserEntryLocalServiceUtil.findByVideoId_UserId(videoId, PortalUtil.getUserId(request));
-								videoUserEntry =  VideoUserEntryLocalServiceUtil.findByUserId_VideoId(PortalUtil.getUserId(request), videoId);
+								//videoUserEntry =  VideoUserEntryLocalServiceUtil.findByUserId_VideoId(PortalUtil.getUserId(request), videoId);
+								
 								//serviceActive = videoUserEntry.getServiceActive();
 							}catch(Exception e){}
 						%>

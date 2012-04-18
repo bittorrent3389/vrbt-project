@@ -59,7 +59,7 @@ String backURL = ParamUtil.getString(renderRequest, "redirectURL");
 		  	<aui:validator name="required" />
 		  </aui:input>
 		  
-		  <aui:select  name="categoryId" multiple="true" label="Category"  showEmptyOption="true">
+		  <aui:select  name="categoryId" multiple="true" label="Category"  showEmptyOption="true" >
 		  	
 		  	<c:forEach var="categoryEntry" items="<%=categoryEntries %>" >
 		  			<aui:option value="${categoryEntry.categoryId}" >
