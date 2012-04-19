@@ -87,10 +87,28 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		_getUserEntryByUserNameMethodKey17 = new MethodKey(_classLoaderProxy.getClassName(),
 				"getUserEntryByUserName", java.lang.String.class);
 
-		_countByStatusMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+		_findByMobileNumberMethodKey18 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByMobileNumber", java.lang.String.class);
+
+		_removeByMobileNumberMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByMobileNumber", java.lang.String.class);
+
+		_countByMobileNumberMethodKey20 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByMobileNumber", java.lang.String.class);
+
+		_countByUserIdMethodKey21 = new MethodKey(_classLoaderProxy.getClassName(),
+				"countByUserId", long.class);
+
+		_removeByUserIdMethodKey22 = new MethodKey(_classLoaderProxy.getClassName(),
+				"removeByUserId", long.class);
+
+		_findByUserIdMethodKey23 = new MethodKey(_classLoaderProxy.getClassName(),
+				"findByUserId", long.class);
+
+		_countByStatusMethodKey24 = new MethodKey(_classLoaderProxy.getClassName(),
 				"countByStatus", int.class);
 
-		_findByStatusMethodKey19 = new MethodKey(_classLoaderProxy.getClassName(),
+		_findByStatusMethodKey25 = new MethodKey(_classLoaderProxy.getClassName(),
 				"findByStatus", int.class);
 	}
 
@@ -577,11 +595,186 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
 	}
 
+	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
+		java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByMobileNumberMethodKey18,
+				ClpSerializer.translateInput(mobileNumber));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
+	public void removeByMobileNumber(java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByMobileNumberMethodKey19,
+				ClpSerializer.translateInput(mobileNumber));
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public int countByMobileNumber(java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByMobileNumberMethodKey20,
+				ClpSerializer.translateInput(mobileNumber));
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_countByUserIdMethodKey21,
+				userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	public void removeByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		MethodHandler methodHandler = new MethodHandler(_removeByUserIdMethodKey22,
+				userId);
+
+		try {
+			_classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+	}
+
+	public vn.com.fis.portal.model.UserEntry findByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException {
+		Object returnObj = null;
+
+		MethodHandler methodHandler = new MethodHandler(_findByUserIdMethodKey23,
+				userId);
+
+		try {
+			returnObj = _classLoaderProxy.invoke(methodHandler);
+		}
+		catch (Throwable t) {
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof vn.com.fis.portal.NoSuchUserEntryException) {
+				throw (vn.com.fis.portal.NoSuchUserEntryException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (vn.com.fis.portal.model.UserEntry)ClpSerializer.translateOutput(returnObj);
+	}
+
 	public int countByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_countByStatusMethodKey18,
+		MethodHandler methodHandler = new MethodHandler(_countByStatusMethodKey24,
 				status);
 
 		try {
@@ -608,7 +801,7 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 		int status) throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
 
-		MethodHandler methodHandler = new MethodHandler(_findByStatusMethodKey19,
+		MethodHandler methodHandler = new MethodHandler(_findByStatusMethodKey25,
 				status);
 
 		try {
@@ -654,6 +847,12 @@ public class UserEntryLocalServiceClp implements UserEntryLocalService {
 	private MethodKey _getBeanIdentifierMethodKey15;
 	private MethodKey _setBeanIdentifierMethodKey16;
 	private MethodKey _getUserEntryByUserNameMethodKey17;
-	private MethodKey _countByStatusMethodKey18;
-	private MethodKey _findByStatusMethodKey19;
+	private MethodKey _findByMobileNumberMethodKey18;
+	private MethodKey _removeByMobileNumberMethodKey19;
+	private MethodKey _countByMobileNumberMethodKey20;
+	private MethodKey _countByUserIdMethodKey21;
+	private MethodKey _removeByUserIdMethodKey22;
+	private MethodKey _findByUserIdMethodKey23;
+	private MethodKey _countByStatusMethodKey24;
+	private MethodKey _findByStatusMethodKey25;
 }

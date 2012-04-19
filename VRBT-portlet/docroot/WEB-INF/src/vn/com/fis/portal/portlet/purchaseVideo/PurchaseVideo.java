@@ -53,15 +53,15 @@ public class PurchaseVideo extends MVCPortlet {
 			VideoUserEntryLocalServiceUtil.addVideoUserEntry(videoUserEntry);
 			
 			//Send notification to admin (TEST Account)
-//			String subject = "New purchase transaction from " + UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() + "account";
-//			String messageToAdmin = "User ID: "+ userId 
-//								+"; Username: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
-//								+"; Mobile: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getMobileNumber() 
-//								+"; VRBT ID: "+ videoId 
-//								+"; VRBT Name: "+ VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+".";
-//			String messageToUser = "You bought '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+"' vrbt.";
-//			
-//			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
+			String subject = "New purchase transaction from " + UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() + "account";
+			String messageToAdmin = "User ID: "+ userId 
+								+"; Username: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getUserName() 
+								+"; Mobile: "+ UserEntryLocalServiceUtil.getUserEntry(userId).getMobileNumber() 
+								+"; VRBT ID: "+ videoId 
+								+"; VRBT Name: "+ VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+".";
+			String messageToUser = "You bought '" + VideoEntryLocalServiceUtil.getVideoEntry(videoId).getVideoName()+"' vrbt.";
+			
+			new System_Notification().sendNotification(userId, subject, messageToAdmin, messageToUser);
 			
 		} catch (Exception e) {
 			SessionErrors.add(actionRequest, "error-message");

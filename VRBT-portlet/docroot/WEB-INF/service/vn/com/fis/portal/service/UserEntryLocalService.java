@@ -235,6 +235,71 @@ public interface UserEntryLocalService extends PersistedModelLocalService {
 	public vn.com.fis.portal.model.UserEntry getUserEntryByUserName(
 		java.lang.String userName);
 
+	/**
+	* Returns the user entry where mobileNumber = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
+	*
+	* @param mobileNumber the mobile number
+	* @return the matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.UserEntry findByMobileNumber(
+		java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
+	/**
+	* Removes the user entry where mobileNumber = &#63; from the database.
+	*
+	* @param mobileNumber the mobile number
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByMobileNumber(java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
+	/**
+	* Returns the number of user entries where mobileNumber = &#63;.
+	*
+	* @param mobileNumber the mobile number
+	* @return the number of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByMobileNumber(java.lang.String mobileNumber)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Returns the number of user entries where userId = &#63;.
+	*
+	* @param userId the user ID
+	* @return the number of matching user entries
+	* @throws SystemException if a system exception occurred
+	*/
+	public int countByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	/**
+	* Removes the user entry where userId = &#63; from the database.
+	*
+	* @param userId the user ID
+	* @throws SystemException if a system exception occurred
+	*/
+	public void removeByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
+	/**
+	* Returns the user entry where userId = &#63; or throws a {@link vn.com.fis.portal.NoSuchUserEntryException} if it could not be found.
+	*
+	* @param userId the user ID
+	* @return the matching user entry
+	* @throws vn.com.fis.portal.NoSuchUserEntryException if a matching user entry could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public vn.com.fis.portal.model.UserEntry findByUserId(long userId)
+		throws com.liferay.portal.kernel.exception.SystemException,
+			vn.com.fis.portal.NoSuchUserEntryException;
+
 	public int countByStatus(int status)
 		throws com.liferay.portal.kernel.exception.SystemException;
 

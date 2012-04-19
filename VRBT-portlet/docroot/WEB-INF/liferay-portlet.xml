@@ -5,6 +5,15 @@
 	<portlet>
 		<portlet-name>VRBT</portlet-name>
 		<icon>/icon.png</icon>
+		<scheduler-entry>
+		    <scheduler-description>send notification about billing to subscriber and third-party</scheduler-description>
+		    <scheduler-event-listener-class>vn.com.fis.portal.util.SendNotificationUserListener</scheduler-event-listener-class>
+		    <trigger>
+		        <cron>
+		            <cron-trigger-value>1/10 * * * * ?</cron-trigger-value>
+		        </cron>
+		    </trigger>
+		</scheduler-entry>
 		<instanceable>false</instanceable>
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
