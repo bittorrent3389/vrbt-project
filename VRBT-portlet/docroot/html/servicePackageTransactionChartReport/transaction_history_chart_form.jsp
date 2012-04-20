@@ -117,19 +117,7 @@
 				</c:if>
 				
 				<c:if test="<%= viewServicePac != null && listPackage!= null %>">
-					<%-- <span id="uploadServiceName_Chart"><%= packageName %></span>
-					<span id="uploadServiceTotal_Chart"><%= packageTotal %></span>
-		
-					<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-					<script type="text/javascript" src="/js/chartUtil.js"></script>
-					<script type="text/javascript">
-						drawUploadServiceChart();
-					</script>
-			
-					<div style="clear: both; ">
-						<div id="uploadService_Chart_div"  style="width:500px; height:300px;float: left; background-color:#F1F3EF;"></div>
-					</div> --%>
-					
+										
 					<link rel="stylesheet" type="text/css" href="<%=renderRequest.getContextPath()%>/ext/resources/css/ext-all.css" />
    			 		<link rel="stylesheet" type="text/css" href="<%=renderRequest.getContextPath()%>/ext/examples/shared/example.css" />
     				<script type="text/javascript" src="<%=renderRequest.getContextPath()%>/ext/bootstrap.js"></script>

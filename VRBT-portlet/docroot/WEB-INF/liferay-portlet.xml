@@ -10,7 +10,7 @@
 		    <scheduler-event-listener-class>vn.com.fis.portal.util.SendNotificationUserListener</scheduler-event-listener-class>
 		    <trigger>
 		        <cron>
-		            <cron-trigger-value>1/10 * * * * ?</cron-trigger-value>
+		            <cron-trigger-value> 1 * * * * ?</cron-trigger-value>
 		        </cron>
 		    </trigger>
 		</scheduler-entry>
@@ -86,18 +86,6 @@
 		</footer-portlet-javascript>
 		<css-class-wrapper>
 			subscriber_servicemng-portlet
-		</css-class-wrapper>
-	</portlet>
-	<portlet>
-		<portlet-name>service_transaction_history</portlet-name>
-		<icon>/icon.png</icon>
-		<instanceable>false</instanceable>
-		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
-		<css-class-wrapper>
-			service_transaction_history-portlet
 		</css-class-wrapper>
 	</portlet>
 	<portlet>

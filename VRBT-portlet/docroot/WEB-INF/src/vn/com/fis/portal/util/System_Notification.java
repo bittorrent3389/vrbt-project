@@ -49,12 +49,12 @@ public class System_Notification {
 	}
 	
 	public void sendNotificationToUser(long userIdTo, String subject, String message) throws SystemException {
-		Destination destination = new ParallelDestination("notificationToUserDestination");
+		Destination destination = new ParallelDestination("systemNotification");
 		
 		MessageBusUtil.addDestination(destination);
 		
 		if (!destination.register(new SendNotificationUserListener()))
-			MessageBusUtil.registerMessageListener("notificationToUserDestination", new SendNotificationUserListener());
+			MessageBusUtil.registerMessageListener("systemNotification", new SendNotificationUserListener());
 		
 		//Create message object
 		Message notificationMessage = new Message();
@@ -68,7 +68,6 @@ public class System_Notification {
 		notificationEntry.setStatus(1);
 		 
 		notificationMessage.put("notificationToUser", notificationEntry);
-		MessageBusUtil.sendMessage("notificationToUserDestination", notificationMessage);
-		
+		MessageBusUtil.sendMessage("systemNotification", notificationMessage);
 	}
 }

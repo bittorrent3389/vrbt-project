@@ -241,40 +241,6 @@
 		</security-role-ref>
 	</portlet>
 	<portlet>
-		<portlet-name>service_transaction_history</portlet-name>
-		<display-name>Service_Transaction_History</display-name>
-		<portlet-class>
-			vn.com.fis.portal.portlet.service_Transaction_History.Service_Transaction_History
-		</portlet-class>
-		<init-param>
-			<name>view-jsp</name>
-			<value>/html/service_transaction_history/view.jsp</value>
-		</init-param>
-		<expiration-cache>0</expiration-cache>
-		<supports>
-			<mime-type>text/html</mime-type>
-			<portlet-mode>view</portlet-mode>
-		</supports>
-		<resource-bundle>content/Language</resource-bundle>
-		<portlet-info>
-			<title>Service_Transaction_History</title>
-			<short-title>Service_Transaction_History</short-title>
-			<keywords></keywords>
-		</portlet-info>
-		<security-role-ref>
-			<role-name>administrator</role-name>
-		</security-role-ref>
-		<security-role-ref>
-			<role-name>guest</role-name>
-		</security-role-ref>
-		<security-role-ref>
-			<role-name>power-user</role-name>
-		</security-role-ref>
-		<security-role-ref>
-			<role-name>user</role-name>
-		</security-role-ref>
-	</portlet>
-	<portlet>
 		<portlet-name>billingsubcribertransaction</portlet-name>
 		<display-name>BillingSubcriberTransaction</display-name>
 		<portlet-class>

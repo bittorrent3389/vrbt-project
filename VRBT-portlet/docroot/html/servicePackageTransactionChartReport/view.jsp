@@ -31,7 +31,7 @@
 	<hr/>
 	<br/>
 
-	<%@ include file="/html/service_transaction_history/transaction_history_search_form.jsp" %>
+	<%@ include file="/html/servicePackageTransactionChartReport/transaction_history_search_form.jsp" %>
 
 	<br/>
 
