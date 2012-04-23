@@ -48,12 +48,23 @@
 		purchase = VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_TransactionCode(2);
 		nopurchase= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_TransactionCode(1)-purchase;
 		
-		for(int i = 1;i<12;i++)
+		for(int i = 0;i<12;i++)
 			{
 				int moth=i+1;
-				
-				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(1, "1/"+i+"/"+year,"1/"+moth+"/"+year)-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"#";
-				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"$";
+				String startdate="";
+				String enddate="";
+				if(i==0)
+				{
+					startdate="1/"+12+"/"+(Integer.parseInt(year)-1);
+					enddate="1/"+moth+"/"+year;
+				}
+				else
+				{
+					startdate="1/"+i+"/"+year;
+					enddate="1/"+moth+"/"+year;
+				}
+				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(1, startdate,enddate)-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, startdate,enddate)+"#";
+				strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_transactionCode_And_Date(2, startdate,enddate)+"$";
 				
 			}
 		
@@ -67,11 +78,23 @@
 		//data chart
 		purchase = VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode(userId,2);
 		nopurchase= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_Tbl_Video_User_Transaction_By_UploaderId_And_TransactionCode(userId,1)-purchase;
-		for(int i = 1;i<12;i++)
+		for(int i = 0;i<12;i++)
 		{
 			int moth=i+1;
-			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,1, "1/"+i+"/"+year,"1/"+moth+"/"+year)-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"#";
-			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"$";
+			String startdate="";
+			String enddate="";
+			if(i==0)
+			{
+				startdate="1/"+12+"/"+(Integer.parseInt(year)-1);
+				enddate="1/"+moth+"/"+year;
+			}
+			else
+			{
+				startdate="1/"+i+"/"+year;
+				enddate="1/"+moth+"/"+year;
+			}
+			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,1, startdate,enddate)-VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, startdate,enddate)+"#";
+			strColumnChart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, startdate,enddate)+"$";
 		}
 		
 	}

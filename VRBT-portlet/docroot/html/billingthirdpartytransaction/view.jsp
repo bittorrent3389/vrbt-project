@@ -60,14 +60,26 @@
 
 	String strchart="";
 	
-	for(int i = 1;i<12;i++)
+	for(int i = 0;i<12;i++)
 	{
 		int moth=i+1;
 		Date date = new Date();
 		String year = vrbtLibrary.convertDateToString(date, "yyyy");
+		String stardate="";
+		String enddate="";
+		if(i==0)
+		{
+			stardate="1/"+12+"/"+(Integer.parseInt(year)-1);
+			enddate="1/"+moth+"/"+year;
+		}
+		else
+		{
+			stardate="1/"+i+"/"+year;
+			enddate="1/"+moth+"/"+year;
+		}
+		strchart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,1,stardate ,enddate)+"#";
+		strchart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, stardate,enddate)+"$";
 		
-		strchart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,1, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"#";
-		strchart+= VideoUserTransactionEntryLocalServiceUtil.getCount_Destinct_VideoUserTransaction_By_UploaderId_And_transactionCode_And_Date(userId,2, "1/"+i+"/"+year,"1/"+moth+"/"+year)+"$";
 	}
 	//System.out.println(strchart);
 	out.println(strchart);
