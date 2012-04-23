@@ -1,3 +1,4 @@
+<%@include file="/html/init.jsp" %>
 <%@page import="com.liferay.portal.util.PortalUtil"%>
 <%@page import="vn.com.fis.portal.util.VideoAdminPortletUtil"%>
 <%@page import="vn.com.fis.portal.service.VideoUserEntryLocalServiceUtil"%>
@@ -78,7 +79,7 @@ int serviceActive = ParamUtil.getInteger(renderRequest, "serviceActive",-1);
 						<div> <h4><%= videoEntry.getVideoName() %> </h4></div>
 						<div><%= videoEntry.getDescription()%> </div>
 						<div>  <span> 0 views</span></div>
-						<div><%= String.valueOf(videoEntry.getUserId()) %>  <span>uploaded</span></div>
+						<div><%= String.valueOf(videoEntry.getUploaderId()) %>  <span>uploaded</span></div>
 					</span>
 				</liferay-ui:search-container-column-text>
 				
