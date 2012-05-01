@@ -1,0 +1,114 @@
+ div#mainContainer{
+	overflow:auto;
+	height:auto;
+	border:1px dotted #E7E7E7;
+	}
+ div.title{
+	 	padding-left:10px;
+		background-color:#5FBBE6;
+		color:white;
+		font-size:20px;
+		font-weight:800;
+		line-height:35px;
+		margin-bottom:5px;
+	}
+ div#mainContainerWrapper{
+	/*height:auto;*/
+		padding:5px;
+		overflow:auto;
+		height:auto;
+
+	}
+ div.entry{
+	float:left;
+	height:200px;
+	width:200px;
+	padding:3px;
+	background-color:#FFF;
+	margin:5px;
+	border:1px dotted #E7E7E7;
+	}
+ div.entry:hover{
+	background-color:#E7E7E7;
+
+	}
+	
+ div.entry div.entryThumbnail{
+		overflow:hidden;
+		text-align:center;
+		vertical-align:middle;
+	}
+ div.entry div.entryThumbnail img{
+		width:150px;
+		height:150px;
+	}
+ div.entry	div.entryText{
+	 	text-align:center;
+		vertical-align:middle;
+	 }
+ div.purchaseButton a{
+		width:80px;
+		margin-right:3px;
+		margin-top:3px;
+		background-color:#7A4794;
+		text-align:center;
+		float:right;
+		color:white;
+		text-decoration:none;
+	}
+	
+	
+/* player*/
+div#playerMainContainer{
+	width:500px;
+	height:auto;
+	margin:auto;
+	
+	}
+
+div#playerMainContainer div#playerContainer{
+/*	height:auto; */
+	height:300px;
+	width:auto;
+	background-color:#99F;
+	}
+ 
+ 
+
+
+/*	 rating bar */	
+
+div#rating div.ratingBar{
+		width:auto;
+		margin:auto;
+	}
+div#rating  div.ratingBar div.ratingButton{
+		float:left;
+		width:auto;
+	}
+div#rating  div.ratingBar div.viewCount{
+		float:right;
+		width:auto;
+	}
+span.like {
+		font-weight:500;
+		font-size:20px;
+		margin:0px 5px 0px 0px;
+		background-color:#9742A7;
+		text-shadow:#FFF;
+	}
+span.like:hover{
+		cursor:pointer;
+		
+	}
+span.dislike {
+		font-weight:500;
+		font-size:20px;
+		margin:0px 5px 0px 5px;
+		background-color:#9742A7;
+		text-shadow:#FFF;
+	}
+span.dislike:hover{
+		cursor:pointer;
+		
+	}
